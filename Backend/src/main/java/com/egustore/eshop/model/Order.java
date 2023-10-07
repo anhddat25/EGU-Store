@@ -1,10 +1,15 @@
 package com.egustore.eshop.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 import java.util.List;
-
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Order {
 
     @Id
@@ -28,6 +33,6 @@ public class Order {
     private Double discountPrice;
     @Column(name = "user_id")
     private int userId;
-    @OneToMany(mappedBy = "order_id")
+    @OneToMany(mappedBy = "order")
     private List<OrderDetail> orderDetail;
 }
