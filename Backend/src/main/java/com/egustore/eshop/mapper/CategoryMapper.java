@@ -10,11 +10,11 @@ import org.mapstruct.factory.Mappers;
 public interface CategoryMapper {
     CategoryMapper INSTANCE = Mappers.getMapper(CategoryMapper.class);
 
-    @Mapping(source = "status", target = "status")
-    CategoryDTO categoryToCategoryDTO(Category category);
-
-    @Mapping(source = "status", target = "status")
-    Category categoryDTOToCategory(CategoryDTO categoryDTO);
+//    @Mapping(source = "status", target = "status")
+//    CategoryDTO categoryToCategoryDTO(Category category);
+//
+//    @Mapping(source = "status", target = "status")
+//    Category categoryDTOToCategory(CategoryDTO categoryDTO);
 }
 
 

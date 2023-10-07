@@ -5,10 +5,5 @@ spring:
     url: jdbc:mysql://localhost:3306/egu_store
     username: root
     password: 123456
-    driverClassName: com.mysql.cj.jdbc.driver
-  jpa:
-    hibernate:
-      dialect: org.hibernate.dialect.MySQL8Dialect
-      ddl-auto: none
-    show-sql: true
+    DriverClassName: com.mysql.cj.jdbc.driver
 
