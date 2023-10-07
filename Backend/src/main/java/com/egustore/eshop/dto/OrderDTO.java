@@ -1,7 +1,15 @@
 package com.egustore.eshop.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.util.Date;
 
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class OrderDTO {
     private int Id;
     private String Email;

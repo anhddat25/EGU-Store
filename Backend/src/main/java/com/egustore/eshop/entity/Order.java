@@ -1,12 +1,12 @@
 package com.egustore.eshop.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.Date;
 import java.util.List;
+
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -31,8 +31,8 @@ public class Order {
     private String paymentMethod;
     @Column(name = "discount_price")
     private Double discountPrice;
-    @Column(name = "user_id")
-    private int userId;
+    @Column(name = "customer_id")
+    private int customerId;
     @OneToMany(mappedBy = "order")
     private List<OrderDetail> orderDetail;
 }
