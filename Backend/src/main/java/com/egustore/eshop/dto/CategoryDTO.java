@@ -5,20 +5,14 @@ import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 @Data
-@Getter
-@Setter
-//@AllArgsConstructor
-//@NoArgsConstructor
 public class CategoryDTO {
-//    private int id;
-//
-//    @NotEmpty(message = "empty")
-//    private String name;
-//
-//    private String description;
-//
-//    private String status;
-//
-//    private String title;
+    public Integer categoryId;
 
+    public String categoryName;
+
+//    public String description;
+
+//    private String status;
+
+//    public String title;
 }
