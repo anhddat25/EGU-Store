@@ -11,6 +11,6 @@ public class OrderDetailDTO {
     private Double totalPrice;
     private int orderId;
     private int productId;
-    private Order order;
+//    private Order order;
 
 }

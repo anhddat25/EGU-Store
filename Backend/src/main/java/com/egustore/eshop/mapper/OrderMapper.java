@@ -3,7 +3,6 @@ package com.egustore.eshop.mapper;
 import com.egustore.eshop.dto.OrderDTO;
 import com.egustore.eshop.model.Order;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
 import java.util.List;
