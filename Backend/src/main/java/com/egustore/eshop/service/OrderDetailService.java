@@ -1,8 +1,8 @@
 package com.egustore.eshop.service;
 
-import com.egustore.eshop.dto.OrderDTO;
 import com.egustore.eshop.dto.OrderDetailDTO;
 import com.egustore.eshop.entity.OrderDetail;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 

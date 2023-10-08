@@ -11,13 +11,13 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class OrderDTO {
-    private int Id;
-    private String Email;
-    private String Phone;
+    private int orderId;
+    private String orderEmail;
+    private String orderPhone;
     private Date orderDate = new Date();
-    private String Note;
-    private com.egustore.eshop.entity.Status Status;
-    private String paymentMethod;
-    private Double discountPrice;
-    private int userId;
+    private String orderNote;
+    private String orderStatus;
+    private String orderPaymentMethod;
+    private Double orderDiscountPrice;
+    private int orderCustomerId;
 }

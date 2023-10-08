@@ -7,8 +7,8 @@ import lombok.*;
 @Data
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
+//@AllArgsConstructor
+//@NoArgsConstructor
 public class CategoryDTO {
 //    private int id;
 //

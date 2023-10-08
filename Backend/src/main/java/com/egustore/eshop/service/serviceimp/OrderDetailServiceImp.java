@@ -1,15 +1,15 @@
 package com.egustore.eshop.service.serviceimp;
 
-import com.egustore.eshop.dto.OrderDTO;
 import com.egustore.eshop.dto.OrderDetailDTO;
 import com.egustore.eshop.entity.OrderDetail;
 import com.egustore.eshop.mapper.OrderDetailMapper;
 import com.egustore.eshop.repository.OrderDetailRepository;
 import com.egustore.eshop.service.OrderDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class OrderDetailServiceImp implements OrderDetailService {
     @Autowired
     OrderDetailRepository orderDetailRepository;

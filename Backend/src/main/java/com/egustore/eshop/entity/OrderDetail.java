@@ -7,6 +7,8 @@ import lombok.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
+@Table (name = "OrderDetail")
 public class OrderDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,7 +17,7 @@ public class OrderDetail {
     private int quantity;
     @Column(name = "total_price")
     private Double totalPrice;
-    @Column(name = "order_id")
+    @Column(name = "order_id", insertable=false, updatable=false)
     private int orderId;
     @Column(name = "product_id")
     private int productId;

@@ -6,9 +6,10 @@ import com.egustore.eshop.mapper.OrderMapper;
 import com.egustore.eshop.repository.OrderRepository;
 import com.egustore.eshop.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class OrderServiceImp implements OrderService {
     @Autowired
     OrderRepository orderRepository;

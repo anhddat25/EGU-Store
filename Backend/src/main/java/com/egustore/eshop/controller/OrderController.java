@@ -16,6 +16,22 @@ public class OrderController {
     @Autowired
     OrderService orderService;
 
+//    //Create Order
+//    @PostMapping("/order")
+//    public ResponseEntity<Order> createOrder(@RequestBody OrderDTO orderDTO) {
+//        return ResponseEntity.ok(orderService.saveOrder(orderDTO));
+//    }
+//
+//    @GetMapping("/orders")
+//    public ResponseEntity<List<OrderDTO>> getAllCategories() {
+//        return ResponseEntity.ok(orderService.getOrderList());
+//    }
+//
+//    @PutMapping("/order/{id}")
+//    public ResponseEntity<OrderDTO> updateOrder(@PathVariable int id) {
+//        return ResponseEntity.ok(orderService.getOrderById(id));
+//    }
+
     //Create Order
     @PostMapping("/order")
     public ResponseEntity<Order> createOrder(@RequestBody OrderDTO orderDTO) {

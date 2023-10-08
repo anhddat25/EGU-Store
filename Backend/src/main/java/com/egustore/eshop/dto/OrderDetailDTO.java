@@ -4,8 +4,6 @@ import lombok.*;
 
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class OrderDetailDTO {
     private int Id;
     private int quantity;

@@ -10,6 +10,8 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
+@Table(name = "Orders")
 public class Order {
 
     @Id
