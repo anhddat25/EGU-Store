@@ -6,9 +6,9 @@ import com.egustore.eshop.model.Category;
 import java.util.List;
 
 public interface CategoryService {
-//    Category getCategoryById(int id);
-//    Category createCategory(CategoryDTO categoryDTO);
+    Category createCategory(CategoryDTO categoryDTO);
+    Category getCategoryById(int id);
+    Category updateCategory(int id, CategoryDTO category);
     List<Category> getAllCategories();
-//    Category updateCategory(int id, CategoryDTO category);
-//    void deleteCategory(int id);
+    void deleteCategory(int id);
 }
