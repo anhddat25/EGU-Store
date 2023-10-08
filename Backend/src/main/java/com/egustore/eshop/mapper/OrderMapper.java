@@ -1,7 +1,7 @@
 package com.egustore.eshop.mapper;
 
 import com.egustore.eshop.dto.OrderDTO;
-import com.egustore.eshop.entity.Order;
+import com.egustore.eshop.model.Order;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
@@ -11,7 +11,7 @@ import java.util.List;
 public interface OrderMapper {
     OrderMapper INSTANCE = Mappers.getMapper(OrderMapper.class);
 
-    @Mapping(source = "orderId",target = "Id")
+    @Mapping(source = "orderId",target = "id")
 //    @Mapping(source = "EmailDTO", target = "Email")
 //    @Mapping(source = "PhoneDTO", target = "Phone")
 //    @Mapping(source = "orderDateDTO", target = "orderDate")
@@ -21,7 +21,7 @@ public interface OrderMapper {
 //    @Mapping(source = "discountPriceDTO", target = "discountPrice")
     Order toEntity(OrderDTO orderDTO);
 
-    @Mapping(source = "Id",target = "orderId")
+    @Mapping(source = "id",target = "orderId")
 //    @Mapping(source = "Email", target = "EmailDTO")
 //    @Mapping(source = "Phone", target = "PhoneDTO")
 //    @Mapping(source = "orderDate", target = "orderDateDTO")

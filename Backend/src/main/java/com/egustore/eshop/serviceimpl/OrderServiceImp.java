@@ -1,7 +1,7 @@
-package com.egustore.eshop.service.serviceimp;
+package com.egustore.eshop.serviceimpl;
 
 import com.egustore.eshop.dto.OrderDTO;
-import com.egustore.eshop.entity.Order;
+import com.egustore.eshop.model.Order;
 import com.egustore.eshop.mapper.OrderMapper;
 import com.egustore.eshop.repository.OrderRepository;
 import com.egustore.eshop.service.OrderService;

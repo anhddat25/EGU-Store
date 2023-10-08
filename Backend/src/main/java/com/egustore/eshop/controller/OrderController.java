@@ -1,9 +1,8 @@
 package com.egustore.eshop.controller;
 
 import com.egustore.eshop.dto.OrderDTO;
-import com.egustore.eshop.entity.Order;
+import com.egustore.eshop.model.Order;
 import com.egustore.eshop.service.OrderService;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;

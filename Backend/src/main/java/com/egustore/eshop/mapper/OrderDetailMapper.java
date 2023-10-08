@@ -1,8 +1,7 @@
 package com.egustore.eshop.mapper;
 
 import com.egustore.eshop.dto.OrderDetailDTO;
-import com.egustore.eshop.entity.Order;
-import com.egustore.eshop.entity.OrderDetail;
+import com.egustore.eshop.model.OrderDetail;
 import org.mapstruct.Mapper;
 
 import java.util.List;

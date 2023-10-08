@@ -1,7 +1,7 @@
 package com.egustore.eshop.controller;
 
 import com.egustore.eshop.dto.OrderDetailDTO;
-import com.egustore.eshop.entity.OrderDetail;
+import com.egustore.eshop.model.OrderDetail;
 import com.egustore.eshop.service.OrderDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
