@@ -16,19 +16,19 @@ public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int Id;
+    private int id;
     @Column(name = "Email")
-    private String Email;
+    private String email;
     @Column(name = "Phone")
-    private String Phone;
+    private String phone;
     @Temporal(TemporalType.DATE)
     @Column(name = "order_date")
     private Date orderDate = new Date();
     @Column(name = "Note")
-    private String Note;
-    @Enumerated(EnumType.STRING)
-    @Column(name = "status")
-    private com.egustore.eshop.enums.Status Status;
+    private String note;
+//    @Enumerated(EnumType.STRING)
+//    @Column(name = "status")
+//    private com.egustore.eshop.enums.Status status;
     @Column(name = "payment_method")
     private String paymentMethod;
     @Column(name = "discount_price")

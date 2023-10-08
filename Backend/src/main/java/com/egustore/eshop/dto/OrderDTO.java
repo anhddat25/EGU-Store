@@ -1,23 +1,22 @@
 package com.egustore.eshop.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.egustore.eshop.enums.Status;
+import com.egustore.eshop.model.OrderDetail;
+import lombok.*;
 
 import java.util.Date;
+import java.util.List;
 
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class OrderDTO {
-    private int orderId;
-    private String orderEmail;
-    private String orderPhone;
+    private int id;
+    private String email;
+    private String phone;
     private Date orderDate = new Date();
-    private String orderNote;
-    private String orderStatus;
-    private String orderPaymentMethod;
-    private Double orderDiscountPrice;
-    private int orderCustomerId;
+    private String note;
+//    private Status orderStatus;
+    private String paymentMethod;
+    private Double discountPrice;
+    private int customerId;
 }

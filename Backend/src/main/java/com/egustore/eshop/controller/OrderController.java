@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
+@RequestMapping("/order")
 public class OrderController {
     @Autowired
     OrderService orderService;
@@ -32,7 +33,7 @@ public class OrderController {
 //    }
 
     //Create Order
-    @PostMapping("/order")
+    @PostMapping("/create")
     public ResponseEntity<Order> createOrder(@RequestBody OrderDTO orderDTO) {
         return ResponseEntity.ok(orderService.saveOrder(orderDTO));
     }
@@ -42,7 +43,7 @@ public class OrderController {
         return ResponseEntity.ok(orderService.getOrderList());
     }
 
-    @PutMapping("/order/{id}")
+    @PutMapping("/update/{id}")
     public ResponseEntity<OrderDTO> updateOrder(@PathVariable int id) {
         return ResponseEntity.ok(orderService.getOrderById(id));
     }
