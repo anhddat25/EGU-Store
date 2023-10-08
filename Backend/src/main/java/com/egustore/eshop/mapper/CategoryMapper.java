@@ -4,14 +4,20 @@ import com.egustore.eshop.dto.CategoryDTO;
 import com.egustore.eshop.model.Category;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
 import org.mapstruct.factory.Mappers;
+import org.springframework.stereotype.Component;
 
-@Mapper
+@Mapper(componentModel = "spring")
 public interface CategoryMapper {
-    @Mapping(source = "categoryId", target = "id")
-    @Mapping(source = "categoryName", target = "name")
-    Category formDTO(CategoryDTO categoryDTO);
-    CategoryDTO toDTO(Category category);
+    CategoryMapper INSTANCE = Mappers.getMapper(CategoryMapper.class);
+    Category mapToCategory(CategoryDTO categoryDTO);
+    CategoryDTO mapToCategoryDTO(Category category);
+    @Mapping(target = "id", ignore = true)
+    void updateCategoryFromDTO(CategoryDTO categoryDTO, @MappingTarget Category category);
+
+
+
 }
 
 

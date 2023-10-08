@@ -1,5 +1,6 @@
 package com.egustore.eshop.model;
 
+import com.egustore.eshop.enums.CategoryStatus;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -16,13 +17,11 @@ public class Category {
     @Column(name = "name")
     private String name;
 
-//    @Column(name = "description")
-//    private String description;
+    @Column(name = "description")
+    private String description;
 
 //    @Column(name = "status")
-//    private String status;
+//    private CategoryStatus status;
 
-//    @Column(name = "title")
-//    private String title;
 }
 

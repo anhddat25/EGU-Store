@@ -1,19 +1,19 @@
 package com.egustore.eshop.dto;
 
+import com.egustore.eshop.enums.CategoryStatus;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 @Data
 public class CategoryDTO {
-    public Integer categoryId;
+    private Integer id;
 
-    public String categoryName;
+    private String name;
 
-//    public String description;
+    private String description;
 
-//    private String status;
+//    private CategoryStatus status;
 
-//    public String title;
 
 }
