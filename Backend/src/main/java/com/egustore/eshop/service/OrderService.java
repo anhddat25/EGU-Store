@@ -10,6 +10,10 @@ public interface OrderService {
     OrderDTO getOrderById(int id);
     List<OrderDTO> getOrderList();
 
+    Integer updateOrder(int id, OrderDTO orderDTO);
+    void deleteOrder(int id);
+
+
 //    Order saveOrder1(Order order);
 //    OrderDTO getOrderById1(int id);
 }

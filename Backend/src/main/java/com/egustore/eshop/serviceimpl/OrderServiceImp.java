@@ -33,4 +33,22 @@ public class OrderServiceImp implements OrderService {
     public List<OrderDTO> getOrderList() {
         return orderMapper.toDTOList(orderRepository.findAll());
     }
+
+    @Override
+    public Integer updateOrder(int id, OrderDTO orderDTO) {
+//        Order order = orderMapper.toEntity(getOrderById(id));
+////        Order order = orderRepository
+////                .findById(id)
+////                .orElseThrow(() -> new RuntimeException("Order Not Found"));
+////        orderMapper.updateCategoryFromDTO(orderDTO,order);
+////        orderRepository.save(order);
+//        orderMapper.updateOrderFromDTO(orderDTO,order);
+//        orderRepository.save(orderMapper.updateOrderFromDTO(orderDTO,order));
+        return orderRepository.updateOrderById(orderDTO, id);
+    }
+
+    @Override
+    public void deleteOrder(int id) {
+        orderRepository.deleteById(id);
+    }
 }

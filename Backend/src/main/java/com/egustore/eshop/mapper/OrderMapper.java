@@ -3,6 +3,7 @@ package com.egustore.eshop.mapper;
 import com.egustore.eshop.dto.OrderDTO;
 import com.egustore.eshop.model.Order;
 import org.mapstruct.Mapper;
+import org.mapstruct.MappingTarget;
 import org.mapstruct.factory.Mappers;
 
 import java.util.List;
@@ -32,5 +33,6 @@ public interface OrderMapper {
 //    @Mapping(source = "discountPrice", target = "orderDiscountPrice")
 //    @Mapping(source = "customerId", target = "orderCustomerId")
     OrderDTO toDTO (Order order);
+    Order updateOrderFromDTO(OrderDTO orderDTO, @MappingTarget Order order);
     List<OrderDTO> toDTOList(List<Order> orders);
 }

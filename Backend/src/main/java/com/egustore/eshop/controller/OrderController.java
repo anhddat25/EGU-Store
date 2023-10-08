@@ -1,5 +1,6 @@
 package com.egustore.eshop.controller;
 
+import com.egustore.eshop.dto.CategoryDTO;
 import com.egustore.eshop.dto.OrderDTO;
 import com.egustore.eshop.model.Order;
 import com.egustore.eshop.service.OrderService;
@@ -43,13 +44,19 @@ public class OrderController {
         return ResponseEntity.ok(orderService.getOrderList());
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/get-item/{id}")
     public ResponseEntity<OrderDTO> updateOrder(@PathVariable int id) {
         return ResponseEntity.ok(orderService.getOrderById(id));
     }
 
-//    @DeleteMapping("/{id}")
-//    public ResponseEntity<String> deleteOrder(@PathVariable int id) {
-//        return ResponseEntity.ok("delete Order " + id);
-//    }
+    @PutMapping("/update/{id}")
+    public ResponseEntity<Integer> updateCategory(@PathVariable int id,@RequestBody OrderDTO orderDTO) {
+        return ResponseEntity.ok(orderService.updateOrder(id,orderDTO));
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<String> deleteOrder(@PathVariable int id) {
+        orderService.deleteOrder(id);
+        return ResponseEntity.ok("delete Order " + id);
+    }
 }
