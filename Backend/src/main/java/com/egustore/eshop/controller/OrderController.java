@@ -6,6 +6,8 @@ import com.egustore.eshop.service.OrderService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,7 +23,15 @@ public class OrderController {
 
     //Create Order
     @PostMapping("/create")
-    public ResponseEntity<Order> createOrder(@RequestBody @Valid OrderDTO orderDTO) {
+    public ResponseEntity<?> createOrder(@RequestBody @Valid OrderDTO orderDTO, BindingResult result) {
+        if(result.hasErrors())
+        {
+            List<String> errMessage = result.getFieldErrors()
+                    .stream()
+                    .map(FieldError::getDefaultMessage)
+                    .toList();
+            return ResponseEntity.badRequest().body(errMessage);
+        }
         return ResponseEntity.ok(orderService.saveOrder(orderDTO));
     }
 
