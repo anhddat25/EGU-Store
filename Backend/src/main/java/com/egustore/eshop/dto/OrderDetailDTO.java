@@ -6,7 +6,7 @@ import lombok.*;
 
 @Data
 public class OrderDetailDTO {
-    private int Id;
+    private int id;
     private int quantity;
     private Double totalPrice;
     private int orderId;

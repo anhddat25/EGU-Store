@@ -1,11 +1,9 @@
 package com.egustore.eshop.dto;
 
 import com.egustore.eshop.enums.Status;
-import com.egustore.eshop.model.OrderDetail;
-import lombok.*;
+import lombok.Data;
 
 import java.util.Date;
-import java.util.List;
 
 
 @Data
@@ -15,7 +13,7 @@ public class OrderDTO {
     private String phone;
     private Date orderDate = new Date();
     private String note;
-//    private Status orderStatus;
+    private Status status;
     private String paymentMethod;
     private Double discountPrice;
     private int customerId;

@@ -26,9 +26,9 @@ public class Order {
     private Date orderDate = new Date();
     @Column(name = "Note")
     private String note;
-//    @Enumerated(EnumType.STRING)
-//    @Column(name = "status")
-//    private com.egustore.eshop.enums.Status status;
+    @Column(name = "status")
+    @Enumerated(EnumType.STRING)
+    private com.egustore.eshop.enums.Status status;
     @Column(name = "payment_method")
     private String paymentMethod;
     @Column(name = "discount_price")

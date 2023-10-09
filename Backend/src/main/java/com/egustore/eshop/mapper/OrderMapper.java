@@ -33,6 +33,5 @@ public interface OrderMapper {
 //    @Mapping(source = "discountPrice", target = "orderDiscountPrice")
 //    @Mapping(source = "customerId", target = "orderCustomerId")
     OrderDTO toDTO (Order order);
-    Order updateOrderFromDTO(OrderDTO orderDTO, @MappingTarget Order order);
     List<OrderDTO> toDTOList(List<Order> orders);
 }

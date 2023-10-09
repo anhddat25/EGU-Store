@@ -32,4 +32,14 @@ public class OrderDetailServiceImp implements OrderDetailService {
     public List<OrderDetailDTO> getOrderDetailList() {
         return orderDetailMapper.toDTOList(orderDetailRepository.findAll());
     }
+
+    @Override
+    public Integer updateOrderDetail(int id, OrderDetailDTO orderDetailDTO) {
+        return orderDetailRepository.updateOrderDetailById(orderDetailDTO, id);
+    }
+
+    @Override
+    public void deleteOrderDetail(int id) {
+        orderDetailRepository.deleteById(id);
+    }
 }
