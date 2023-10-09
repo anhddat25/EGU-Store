@@ -11,18 +11,11 @@ import java.util.List;
 public interface OrderDetailMapper {
     OrderDetailMapper INSTANCE = Mappers.getMapper(OrderDetailMapper.class);
 
-//    @Mapping(source = "quantity",target = "quantity")
     @Mapping(source = "id", target = "id")
-//    @Mapping(source = "totalPrice", target = "totalPrice")
-//    @Mapping(source = "orderId", target = "orderId")
-//    @Mapping(source = "productId", target = "productId")
     OrderDetail toEntity(OrderDetailDTO orderDetailDTO);
 
-//    @Mapping(source = "quantity",target = "quantity")
+
     @Mapping(source = "id", target = "id")
-//    @Mapping(source = "totalPrice", target = "totalPrice")
-//    @Mapping(source = "orderId", target = "orderId")
-//    @Mapping(source = "productId", target = "productId")
     OrderDetailDTO toDTO(OrderDetail orderDetail);
     List<OrderDetailDTO> toDTOList(List<OrderDetail> orderDetails);
 }

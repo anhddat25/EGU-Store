@@ -3,20 +3,23 @@ package com.egustore.eshop.controller;
 import com.egustore.eshop.dto.OrderDetailDTO;
 import com.egustore.eshop.model.OrderDetail;
 import com.egustore.eshop.service.OrderDetailService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 @RestController
 @RequestMapping("/api/v0/order-details")
+@Validated
 public class OrderDetailController {
     @Autowired
     OrderDetailService orderDetailService;
 
     //Create Order
     @PostMapping("/create")
-    public ResponseEntity<OrderDetail> createOrder(@RequestBody OrderDetailDTO orderDetailDTO) {
+    public ResponseEntity<OrderDetail> createOrder(@RequestBody @Valid OrderDetailDTO orderDetailDTO) {
         return ResponseEntity.ok(orderDetailService.saveOrder(orderDetailDTO));
     }
 
