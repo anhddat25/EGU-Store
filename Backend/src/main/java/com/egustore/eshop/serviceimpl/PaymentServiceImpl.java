@@ -1,55 +1,55 @@
 package com.egustore.eshop.serviceimpl;
 
-import com.egustore.eshop.entity.Payment;
+import com.egustore.eshop.dto.PaymentDTO;
+import com.egustore.eshop.mapper.PaymentMapper;
+import com.egustore.eshop.model.Payment;
 import com.egustore.eshop.repository.PaymentRepository;
+import com.egustore.eshop.service.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.List;
 
-public class PaymentServiceImpl {
-//    @Autowired
-//    private PaymentRepository paymentRepository;
-//
-//    @Override
-//    public List<Payment> getAllPayments() {
-//        return paymentRepository.findAll();
-//    }
-//
-//    @Override
-//    public Payment getPaymentById(Long id) {
-//        return paymentRepository.findById(id).orElse(null);
-//    }
-//
-//    @Override
-//    public Payment createPayment(Payment payment) {
-//        return paymentRepository.save(payment);
-//    }
-//
-//    @Override
-//    public void deletePayment(Long id) {
-//        paymentRepository.deleteById(id);
-//    }
-//
-//    @Override
-//    public Page<Payment> getAllPaymentsByPage(Pageable pageable) {
-//        return paymentRepository.findAll(pageable);
-//    }
-//
-//    @Override
-//    public Page<Payment> getAllPaymentsByStatus(String status, Pageable pageable) {
-//        return paymentRepository.findByStatus(status, pageable);
-//    }
-//
-//    @Override
-//    public Page<Payment> getAllPaymentsByAmount(Double amount, Pageable pageable) {
-//        return paymentRepository.findByAmount(amount, pageable);
-//    }
-//
-//    @Override
-//    public Page<Payment> getAllPaymentsByDate(Date date, Pageable pageable) {
-//        return paymentRepository.findByCreateDate(date, pageable);
-//    }
+@Service
+public class PaymentServiceImpl implements PaymentService {
+    private final PaymentRepository paymentRepository;
+    private final PaymentMapper paymentMapper;
+
+    @Autowired
+    public PaymentServiceImpl(PaymentRepository paymentRepository, PaymentMapper paymentMapper)
+    {
+        this.paymentRepository = paymentRepository;
+        this.paymentMapper = paymentMapper;
+    }
+
+    @Override
+    public Payment createPayment(PaymentDTO paymentDTO) {
+        Payment payment = paymentMapper.mapToPayment(paymentDTO);
+        return paymentRepository.save(payment);
+    }
+
+    @Override
+    public Payment getPaymentByVer(int version){
+        return paymentRepository.findById(version)
+                .orElseThrow(() -> new RuntimeException("Payment not found"));
+    }
+
+    @Override
+    public Payment updatePayment(int version, PaymentDTO paymentDTO) {
+        Payment existPayment = getPaymentByVer(version);
+        paymentMapper.updatePaymentFromDTO(paymentDTO, existPayment);
+        paymentRepository.save(existPayment);
+        return existPayment;
+    }
+
+    @Override
+    public List<Payment> getAllPayment() {
+        return paymentRepository.findAll();
+    }
+
+    @Override
+    public void deletePayment(int version) {
+
+        paymentRepository.deleteById(version);
+    }
 }

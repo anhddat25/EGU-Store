@@ -1,13 +1,15 @@
 package com.egustore.eshop.service;
 
-import com.egustore.eshop.entity.Payment;
+import com.egustore.eshop.dto.PaymentDTO;
+import com.egustore.eshop.model.Payment;
 
 import java.util.List;
 
 public interface PaymentService {
-//    Payment createCategory(CategoryDTO categoryDTO);
-//    Payment getCategoryById(int id);
-//    void PaymentupdateCategory(int id, CategoryDTO category);
-//    List<Payment> getAllPayment();
-//    void deleteCategory(int id);
+    Payment createPayment(PaymentDTO paymentDTO);
+    Payment getPaymentByVer(int version);
+    Payment updatePayment(int version, PaymentDTO payment);
+    List<Payment> getAllPayment();
+    void deletePayment(int version);
+
 }
