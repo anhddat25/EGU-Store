@@ -56,4 +56,5 @@ public class Customer {
     @ManyToOne
     @JoinColumn(name = "role_id")
     private Role role;
+
 }

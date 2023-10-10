@@ -43,6 +43,11 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
+    public List<Category> getActiveCategories() {
+        return categoryRepository.getActiveCategories();
+    }
+
+    @Override
     public Category updateCategory(int id,
                                    CategoryDTO categoryDTO) {
         Category existCategory = getCategoryById(id);

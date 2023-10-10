@@ -13,7 +13,6 @@ public class CategoryDTO {
 
     private String description;
 
-//    private CategoryStatus status;
-
+    private CategoryStatus status;
 
 }

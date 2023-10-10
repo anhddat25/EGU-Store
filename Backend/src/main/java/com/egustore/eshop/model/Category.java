@@ -20,8 +20,10 @@ public class Category {
     @Column(name = "description")
     private String description;
 
-//    @Column(name = "status")
-//    private CategoryStatus status;
+    @Column(name = "status")
+    @Enumerated(EnumType.STRING)
+    private CategoryStatus status;
+
 
 }
 
