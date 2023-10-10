@@ -16,4 +16,8 @@ public class CategoryDTO {
 //    private CategoryStatus status;
 
 
+//    public String title;
+
+
+
 }
