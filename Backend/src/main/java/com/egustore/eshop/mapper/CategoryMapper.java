@@ -8,6 +8,7 @@ import org.mapstruct.MappingTarget;
 import org.mapstruct.factory.Mappers;
 import org.springframework.stereotype.Component;
 
+
 @Mapper(componentModel = "spring")
 public interface CategoryMapper {
     CategoryMapper INSTANCE = Mappers.getMapper(CategoryMapper.class);
@@ -15,8 +16,6 @@ public interface CategoryMapper {
     CategoryDTO mapToCategoryDTO(Category category);
     @Mapping(target = "id", ignore = true)
     void updateCategoryFromDTO(CategoryDTO categoryDTO, @MappingTarget Category category);
-
-
 
 }
 
