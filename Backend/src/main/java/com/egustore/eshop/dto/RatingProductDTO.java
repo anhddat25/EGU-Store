@@ -1,5 +1,7 @@
 package com.egustore.eshop.dto;
 
+import com.egustore.eshop.model.Customer;
+import com.egustore.eshop.model.Product;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,6 +17,6 @@ public class RatingProductDTO {
     private int rating;
     private Date createDate;
     private Date updateDate;
-//    private int customerId;
-//    private int productId;
+    private Customer customer;
+    private Product product;
 }

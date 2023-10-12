@@ -11,6 +11,6 @@ import java.util.List;
 public interface FeedbackProductRepository  extends JpaRepository<FeedbackProduct, Integer> {
 //    List<FeedbackProduct> findByProductId(int productId);
 
-    @Query(value = "SELECT f.*, c.name FROM Feedback_Product f JOIN Customer c ON f.customer_id = c.id WHERE f.product_id = ?", nativeQuery = true)
+    @Query(value = "SELECT f.* FROM Feedback_Product f  WHERE f.product_id = ?", nativeQuery = true)
     List<FeedbackProduct> findByProductId(int productId);
 }

@@ -34,13 +34,12 @@ public class FeedbackProduct {
     @Column(name = "update_date")
     private Date updateDate;
 
-//    @ManyToOne
-//    @JoinColumn(name = "customer_id")
-//    private int customerId;
-//
-//    @ManyToOne
-//    @JoinColumn(name = "product_id")
-//    private int productId;
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private Product product;
 
 
 }
