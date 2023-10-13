@@ -58,4 +58,10 @@ public class CategoryController {
         categoryService.deleteCategory(id);
         return ResponseEntity.ok("delete category " + id);
     }
+
+    @GetMapping("/active")
+    public ResponseEntity<List<Category>> getActiveCategories() {
+        List<Category> categories = categoryService.getActiveCategories();
+        return ResponseEntity.ok(categories);
+    }
 }
