@@ -13,6 +13,8 @@ import java.awt.*;
 public interface ProductMapper {
    ProductMapper INSTANCE = Mappers.getMapper(ProductMapper.class);
     Product mapToProduct(ProductDTO productDTO);
+
+    @Mapping(source = "category.id", target = "categoryId")
     ProductDTO mapToProductDTO(Product product);
     @Mapping(target = "id", ignore = true)
     void updateProductFromDTO(ProductDTO productDTO, @MappingTarget Product product);

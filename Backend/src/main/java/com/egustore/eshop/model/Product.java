@@ -13,40 +13,44 @@ import java.sql.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="product")
+@Table(name="products")
 public class Product {
     @Id
     private int id;
 
     @Column(name = "name")
-    private String Name;
+    private String name;
 
-    @Column(name = "Model")
-    private String Model;
+    @Column(name = "model")
+    private String model;
 
     @Column(name = "price")
-    private double Price;
+    private double price;
 
     @Column(name = "stock_quantity")
     private int stock_quantity;
 
     @Column(name = "create_date")
-    private Date Create_date;
+    private Date create_date;
 
     @Column(name = "update_date")
-    private Date Update_date;
+    private Date update_date;
 
-    @Column(name = "Description")
-    private String Description;
+    @Column(name = "description")
+    private String description;
 
-    @Column(name = "Discount")
-    private double Discount;
+    @Column(name = "discount")
+    private double discount_percentage;
 
     @Column(name = "discount_price")
-    private String Discount_price;
+    private String discount_price;
 
     @Column(name = "status")
     @Enumerated(EnumType.STRING)
-    private ProductStatus productStatus;
+    private ProductStatus status;
+
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
 
 }
