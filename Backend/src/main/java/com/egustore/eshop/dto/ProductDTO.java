@@ -14,22 +14,22 @@ public class ProductDTO {
 
     private Double price;
 
-    private Integer stock_quantity;
+    private Integer stockQuantity;
 
-    private Date create_date;
+    private Date createDate;
 
-    private Date update_date;
+    private Date updateDate;
 
     private String description;
 
-    private Double discount_percentage;
+    private Double discountPercentage;
 
-    private String discount_price;
+    private String discountPrice;
 
     private String status;
 
     @JsonProperty("category_id")
-    private String categoryId;
+    private Integer categoryId;
 
     private CategoryDTO category;
 

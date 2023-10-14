@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 @RestController
-@RequestMapping("/api/v0/ratingproducts")
+@RequestMapping("/api/v0/rating-products")
 @Validated
 public class RatingProductController {
 

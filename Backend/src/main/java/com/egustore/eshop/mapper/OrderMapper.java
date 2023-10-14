@@ -3,6 +3,7 @@ package com.egustore.eshop.mapper;
 import com.egustore.eshop.dto.OrderDTO;
 import com.egustore.eshop.model.Order;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.factory.Mappers;
 
@@ -13,6 +14,7 @@ public interface OrderMapper {
 
     Order toEntity(OrderDTO orderDTO);
 
+    @Mapping(source = "customer.id", target = "customerId")
     OrderDTO toDTO (Order order);
     List<OrderDTO> toDTOList(List<Order> orders);
 }

@@ -16,7 +16,8 @@ import java.sql.Date;
 @Table(name="products")
 public class Product {
     @Id
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
     @Column(name = "name")
     private String name;
@@ -28,22 +29,22 @@ public class Product {
     private double price;
 
     @Column(name = "stock_quantity")
-    private int stock_quantity;
+    private int stockQuantity;
 
     @Column(name = "create_date")
-    private Date create_date;
+    private Date createDate;
 
     @Column(name = "update_date")
-    private Date update_date;
+    private Date updateDate;
 
     @Column(name = "description")
     private String description;
 
-    @Column(name = "discount")
-    private double discount_percentage;
+    @Column(name = "discount_percentage")
+    private double discountPercentage;
 
     @Column(name = "discount_price")
-    private String discount_price;
+    private String discountPrice;
 
     @Column(name = "status")
     @Enumerated(EnumType.STRING)

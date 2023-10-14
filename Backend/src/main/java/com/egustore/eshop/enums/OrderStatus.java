@@ -1,5 +1,5 @@
 package com.egustore.eshop.enums;
 
-public enum Status {
+public enum OrderStatus {
     PENDING, PROCESSING, DELIVERED, CANCELLED
 }

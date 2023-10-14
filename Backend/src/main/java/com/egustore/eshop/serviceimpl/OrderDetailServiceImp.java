@@ -11,32 +11,37 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 @Service
 public class OrderDetailServiceImp implements OrderDetailService {
-    @Autowired
-    OrderDetailRepository orderDetailRepository;
-    @Autowired
-    OrderDetailMapper orderDetailMapper;
+    private final OrderDetailRepository orderDetailRepository;
+    private final OrderDetailMapper orderDetailMapper;
 
-    @Override
-    public OrderDetail saveOrder(OrderDetailDTO orderDetailDTO) {
-        return orderDetailRepository.save(orderDetailMapper.toEntity(orderDetailDTO));
+    @Autowired
+    public OrderDetailServiceImp(OrderDetailRepository orderDetailRepository, OrderDetailMapper orderDetailMapper) {
+        this.orderDetailRepository = orderDetailRepository;
+        this.orderDetailMapper = orderDetailMapper;
     }
 
     @Override
-    public OrderDetailDTO getOrderDetailById(int id) {
+    public OrderDetail createOrderDetail(OrderDetailDTO orderDetailDTO) {
+        OrderDetail orderDetail = OrderDetailMapper.INSTANCE.toEntity(orderDetailDTO);
+        return orderDetailRepository.save(orderDetail);
+    }
+
+    @Override
+    public OrderDetail getOrderDetailById(int id) {
         return orderDetailRepository.findById(id)
-                .map(orderDetailMapper::toDTO)
-                .orElse(new OrderDetailDTO());
+                .orElseThrow(() -> new RuntimeException("OrderDetail not found"));
+
     }
 
     @Override
-    public List<OrderDetailDTO> getOrderDetailList() {
-        return orderDetailMapper.toDTOList(orderDetailRepository.findAll());
+    public List<OrderDetail> getAllOrderDetails() {
+        return orderDetailRepository.findAll();
     }
 
-    @Override
-    public Integer updateOrderDetail(int id, OrderDetailDTO orderDetailDTO) {
-        return orderDetailRepository.updateOrderDetailById(orderDetailDTO, id);
-    }
+//    @Override
+//    public Integer updateOrderDetail(int id, OrderDetailDTO orderDetailDTO) {
+//        r
+//    }
 
     @Override
     public void deleteOrderDetail(int id) {

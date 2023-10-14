@@ -10,7 +10,7 @@ public interface OrderService {
     OrderDTO getOrderById(int id);
     List<OrderDTO> getOrderList();
 
-    Integer updateOrder(int id, OrderDTO orderDTO);
+//    Integer updateOrder(int id, OrderDTO orderDTO);
     void deleteOrder(int id);
 
 
