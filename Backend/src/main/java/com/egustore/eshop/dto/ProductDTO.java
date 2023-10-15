@@ -3,10 +3,11 @@ package com.egustore.eshop.dto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import java.sql.Date;
+import java.time.LocalDateTime;
 
 @Data
 public class ProductDTO {
-    private int id;
+    private Integer id;
 
     private String name;
 
@@ -16,9 +17,9 @@ public class ProductDTO {
 
     private Integer stockQuantity;
 
-    private Date createDate;
+    private LocalDateTime createDate;
 
-    private Date updateDate;
+    private LocalDateTime updateDate;
 
     private String description;
 

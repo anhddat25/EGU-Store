@@ -15,7 +15,7 @@ public class OrderDTO {
 
     private String phone;
 
-    private Date orderDate = new Date();
+//    private Date orderDate = new Date();
 
     private String note;
 
