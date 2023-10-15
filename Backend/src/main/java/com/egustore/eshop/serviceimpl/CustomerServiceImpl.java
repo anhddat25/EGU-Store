@@ -7,6 +7,7 @@ import com.egustore.eshop.model.Customer;
 import com.egustore.eshop.repository.CustomerRepository;
 import com.egustore.eshop.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,17 +16,26 @@ import java.util.List;
 public class CustomerServiceImpl implements CustomerService {
     private final CustomerRepository customerRepository;
     private final CustomerMapper customerMapper;
+    private  final PasswordEncoder passwordEncoder;
 
     @Autowired
-    public CustomerServiceImpl(CustomerRepository customerRepository, CustomerMapper customerMapper)
+    public CustomerServiceImpl(CustomerRepository customerRepository, CustomerMapper customerMapper, PasswordEncoder passwordEncoder)
     {
         this.customerRepository = customerRepository;
         this.customerMapper = customerMapper;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
     public Customer createCustomer(CustomerDTO customerDTO) {
         Customer customer = CustomerMapper.INSTANCE.mapToCustomer(customerDTO);
+//        if (customer.getFacebookId() == null && customer.getGoogleId() == null) {
+            String password = customer.getPassword();
+            String encodePassword = passwordEncoder.encode(password);
+            customer.setPassword(encodePassword);
+
+//        }
+
         return customerRepository.save(customer);
     }
 

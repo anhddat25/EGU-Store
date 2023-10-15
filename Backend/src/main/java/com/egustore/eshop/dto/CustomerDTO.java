@@ -42,6 +42,7 @@ public class CustomerDTO {
 
     private String resetPasswordToken;
 
+
     private Role role;
 
 //    @NotBlank(message = "Không được để trống trạng thái!")
