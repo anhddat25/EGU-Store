@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/specification")
+@RequestMapping("/api/v0/specifications")
 @Validated
 public class SpecificationsController {
     private final SpecificationsService specificationsService;

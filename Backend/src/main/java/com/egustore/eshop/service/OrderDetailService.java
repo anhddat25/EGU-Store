@@ -7,11 +7,10 @@ import com.egustore.eshop.model.OrderDetail;
 import java.util.List;
 
 public interface OrderDetailService {
-    OrderDetail saveOrder(OrderDetailDTO orderDetailDTO);
-    OrderDetailDTO getOrderDetailById(int id);
-    List<OrderDetailDTO> getOrderDetailList();
-
-    Integer updateOrderDetail(int id, OrderDetailDTO orderDetailDTO);
+    OrderDetail createOrderDetail(OrderDetailDTO orderDetailDTO);
+    OrderDetail getOrderDetailById(int id);
+    List<OrderDetail> getAllOrderDetails();
+//    Integer updateOrderDetail(int id, OrderDetailDTO orderDetailDTO);
 
     void deleteOrderDetail(int id);
 }

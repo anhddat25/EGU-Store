@@ -12,7 +12,6 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "specifications")
 public class Specifications {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;

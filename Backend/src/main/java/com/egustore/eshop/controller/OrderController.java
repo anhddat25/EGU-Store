@@ -45,11 +45,11 @@ public class OrderController {
         return ResponseEntity.ok(orderService.getOrderById(id));
     }
 
-    @PutMapping("/update/{id}")
-    public ResponseEntity<String> updateCategory(@PathVariable int id,@RequestBody OrderDTO orderDTO) {
-        orderService.updateOrder(id,orderDTO);
-        return ResponseEntity.ok("update Order " + id);
-    }
+//    @PutMapping("/update/{id}")
+//    public ResponseEntity<String> updateCategory(@PathVariable int id,@RequestBody OrderDTO orderDTO) {
+//        orderService.updateOrder(id,orderDTO);
+//        return ResponseEntity.ok("update Order " + id);
+//    }
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteOrder(@PathVariable int id) {

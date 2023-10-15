@@ -10,12 +10,5 @@ import org.springframework.data.repository.query.Param;
 
 
 public interface OrderDetailRepository extends JpaRepository<OrderDetail,Integer> {
-    @Modifying
-    @Transactional
-    @Query(value = "UPDATE OrderDetail o SET o.quantity = :#{#orderDetailDTO.quantity}, " +
-            "o.totalPrice = :#{#orderDetailDTO.totalPrice}, " +
-            "o.orderId = :#{#orderDetailDTO.orderId}, " +
-            "o.productId = :#{#orderDetailDTO.productId} " +
-            "WHERE o.Id = :id")
-    Integer updateOrderDetailById(@Param("orderDetailDTO") OrderDetailDTO orderDetailDTO, @Param("id") int id);
+
 }

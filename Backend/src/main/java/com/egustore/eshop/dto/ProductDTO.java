@@ -1,27 +1,37 @@
 package com.egustore.eshop.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import java.sql.Date;
+import java.time.LocalDateTime;
 
 @Data
 public class ProductDTO {
-    private int id;
+    private Integer id;
 
-    private String Name;
+    private String name;
 
-    private String Model;
+    private String model;
 
-    private double Price;
+    private Double price;
 
-    private int stock_quantity;
+    private Integer stockQuantity;
 
-    private Date Create_date;
+    private LocalDateTime createDate;
 
-    private Date Update_date;
+    private LocalDateTime updateDate;
 
-    private String Description;
+    private String description;
 
-    private double Discount;
+    private Double discountPercentage;
 
-    private String Discount_price;
+    private String discountPrice;
+
+    private String status;
+
+    @JsonProperty("category_id")
+    private Integer categoryId;
+
+    private CategoryDTO category;
+
 }

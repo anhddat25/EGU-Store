@@ -4,49 +4,51 @@ import com.egustore.eshop.enums.ProductStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import java.sql.Date;
 
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="product")
-public class Product {
+@EqualsAndHashCode(callSuper = false)
+@Table(name="products")
+public class Product extends BaseEntity {
     @Id
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
     @Column(name = "name")
-    private String Name;
+    private String name;
 
-    @Column(name = "Model")
-    private String Model;
+    @Column(name = "model")
+    private String model;
 
     @Column(name = "price")
-    private double Price;
+    private Double price;
 
     @Column(name = "stock_quantity")
-    private int stock_quantity;
+    private Integer stockQuantity;
 
-    @Column(name = "create_date")
-    private Date Create_date;
+    @Column(name = "description")
+    private String description;
 
-    @Column(name = "update_date")
-    private Date Update_date;
-
-    @Column(name = "Description")
-    private String Description;
-
-    @Column(name = "Discount")
-    private double Discount;
+    @Column(name = "discount_percentage")
+    private Double discountPercentage;
 
     @Column(name = "discount_price")
-    private String Discount_price;
+    private String discountPrice;
 
     @Column(name = "status")
     @Enumerated(EnumType.STRING)
-    private ProductStatus productStatus;
+    private ProductStatus status;
+
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
+
+
 
 }

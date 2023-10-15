@@ -16,8 +16,12 @@ import java.util.List;
 @RequestMapping("/api/v0/order-details")
 @Validated
 public class OrderDetailController {
+    private final OrderDetailService orderDetailService;
+
     @Autowired
-    OrderDetailService orderDetailService;
+    public OrderDetailController(OrderDetailService orderDetailService) {
+        this.orderDetailService = orderDetailService;
+    }
 
     //Create Order
     @PostMapping("/create")
@@ -30,25 +34,25 @@ public class OrderDetailController {
                     .toList();
             return ResponseEntity.badRequest().body(errMessage);
         }
-        return ResponseEntity.ok(orderDetailService.saveOrder(orderDetailDTO));
+        return ResponseEntity.ok(orderDetailService.createOrderDetail(orderDetailDTO));
     }
 
     @GetMapping("/list")
-    public ResponseEntity<List<OrderDetailDTO>> getAllOrderDetail() {
-        return ResponseEntity.ok(orderDetailService.getOrderDetailList());
+    public ResponseEntity<List<OrderDetail>> getAllOrderDetails() {
+        return ResponseEntity.ok(orderDetailService.getAllOrderDetails());
     }
 
     @PutMapping("/get-item/{id}")
-    public ResponseEntity<OrderDetailDTO> updateOrder(@PathVariable int id) {
+    public ResponseEntity<OrderDetail> updateOrder(@PathVariable int id) {
         return ResponseEntity.ok(orderDetailService.getOrderDetailById(id));
     }
 
 
-    @PutMapping("/update/{id}")
-    public ResponseEntity<String> updateCategory(@PathVariable int id,@RequestBody OrderDetailDTO orderDetailDTO) {
-        orderDetailService.updateOrderDetail(id,orderDetailDTO);
-        return ResponseEntity.ok("update OrderDetail " + id);
-    }
+//    @PutMapping("/update/{id}")
+//    public ResponseEntity<String> updateCategory(@PathVariable int id,@RequestBody OrderDetailDTO orderDetailDTO) {
+//        orderDetailService.updateOrderDetail(id,orderDetailDTO);
+//        return ResponseEntity.ok("update OrderDetail " + id);
+//    }
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteOrder(@PathVariable int id) {

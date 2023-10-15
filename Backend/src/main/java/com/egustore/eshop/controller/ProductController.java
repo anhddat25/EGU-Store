@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/product")
+@RequestMapping("api/v0/products")
 @Validated
 public class ProductController {
     private final ProductService productService;
@@ -39,7 +39,9 @@ public class ProductController {
         return ResponseEntity.ok("Create Product successfully!");
     }
 
-    //    //Show all categories
+
+
+    //Show all categories
     @GetMapping("")
     public ResponseEntity<List<Product>> getAllProduct() {
         List<Product> product = productService.getAllProduct();

@@ -1,10 +1,12 @@
 package com.egustore.eshop.controller;
 
 import com.egustore.eshop.dto.CustomerDTO;
+import com.egustore.eshop.dto.CustomerLoginDTO;
 import com.egustore.eshop.model.Customer;
 import com.egustore.eshop.service.CustomerService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -23,23 +25,37 @@ public class CustomerController {
     public CustomerController(CustomerService customerService) {
         this.customerService = customerService;
     }
+
     //Create category
-    @PostMapping("")
+    @PostMapping("/register")
     public ResponseEntity<?> createCustomer(@RequestBody @Valid CustomerDTO customerDTO, BindingResult result)
     {
-        if(result.hasErrors())
-        {
-            List<String> errMessage = result.getFieldErrors()
-                    .stream()
-                    .map(FieldError::getDefaultMessage)
-                    .toList();
-            return ResponseEntity.badRequest().body(errMessage);
+        try {
+            if(result.hasErrors())
+            {
+                List<String> errMessage = result.getFieldErrors()
+                        .stream()
+                        .map(FieldError::getDefaultMessage)
+                        .toList();
+                return ResponseEntity.badRequest().body(errMessage);
+            }
+            customerService.createCustomer(customerDTO);
+            return ResponseEntity.ok("Register account successfully!");
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
-        customerService.createCustomer(customerDTO);
-        return ResponseEntity.ok("Create customer successfully!");
     }
 
-    //    //Show all categories
+    @PostMapping("/login")
+    public ResponseEntity<String> login(@RequestBody @Valid CustomerLoginDTO customerLoginDTODTO, BindingResult result)
+    {
+
+            return ResponseEntity.ok("Token");
+
+    }
+
+
+    //Show all categories
     @GetMapping("")
     public ResponseEntity<List<Customer>> getAllCustomers() {
         List<Customer> customers = customerService.getAllCustomers();

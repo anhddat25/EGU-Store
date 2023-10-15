@@ -34,10 +34,10 @@ public class OrderServiceImp implements OrderService {
         return orderMapper.toDTOList(orderRepository.findAll());
     }
 
-    @Override
-    public Integer updateOrder(int id, OrderDTO orderDTO) {
-        return orderRepository.updateOrderById(orderDTO, id);
-    }
+//    @Override
+//    public Integer updateOrder(int id, OrderDTO orderDTO) {
+//        return orderRepository.updateOrderById(orderDTO, id);
+//    }
 
     @Override
     public void deleteOrder(int id) {

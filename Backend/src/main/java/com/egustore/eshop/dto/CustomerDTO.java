@@ -15,36 +15,35 @@ public class CustomerDTO {
     private Integer id;
 
 //    @NotBlank(message = "Không được để trống!")
-    private String first_name;
+    private String firstName;
 
 //    @NotBlank(message = "Không được để trống!")
-    private String last_name;
+    private String lastName;
 
-    private LocalDateTime date_of_birth;
+    private LocalDateTime dateOfBirth;
 
 //    @Email(message = "Email không hợp lệ!")
     private String email;
 
 //    @Pattern(regexp = "^[0-9]+$", message = "Số điện thoại phải là số")
 //    @Size(min=11, max=13, message = "Số điện thoại chưa đúng!")
-    private String phone_number;
+    private String phoneNumber;
 
 //    @NotBlank(message = "Mật khẩu không được để trống!")
 //    @Min(value = 8, message = "Mật khẩu không được ít hơn 8 ký tự!")
 //    @Pattern(regexp = "^(?=.*[a-zA-Z])(?=.*\\d)(?=.*[@_\\-()<>/])+$", message = "Mật khẩu chỉ bao gồm chũ in hoa, chữ thường, số và các kí tự {@_-()<>/}")
     private String password;
 
+    private LocalDateTime createDate;
 
-    private LocalDateTime create_date;
+    private String facebookId;
 
-    private String facebook_id;
+    private String googleId;
 
-    private String google_id;
-
-    private String reset_password_token;
+    private String resetPasswordToken;
 
     private Role role;
 
 //    @NotBlank(message = "Không được để trống trạng thái!")
-    private CustomerStatus customerstatus;
+    private CustomerStatus status;
 }
