@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("api/v0/categories")
 @Validated
 public class CategoryController {
@@ -46,7 +47,10 @@ public class CategoryController {
         List<Category> categories = categoryService.getAllCategories();
         return ResponseEntity.ok(categories);
     }
-
+    @GetMapping("/{id}")
+    public ResponseEntity<Category> getCategoryById(@PathVariable int id) {
+        return ResponseEntity.ok(categoryService.getCategoryById(id));
+    }
     @PutMapping("/{id}")
     public ResponseEntity<String> updateCategory(@PathVariable int id,@RequestBody CategoryDTO categoryDTO) {
         categoryService.updateCategory(id,categoryDTO);
@@ -64,4 +68,5 @@ public class CategoryController {
         List<Category> categories = categoryService.getActiveCategories();
         return ResponseEntity.ok(categories);
     }
+
 }
