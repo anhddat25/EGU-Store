@@ -13,6 +13,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v0/feedbacks")
 @Validated
+@CrossOrigin("*")
 public class FeedbackController {
 
     private final FeedbackProductService  feedbackProductService;

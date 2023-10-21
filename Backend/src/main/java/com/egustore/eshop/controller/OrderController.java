@@ -16,6 +16,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v0/orders")
 @Validated
+@CrossOrigin("*")
 public class OrderController {
     @Autowired
     OrderService orderService;

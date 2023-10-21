@@ -17,6 +17,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v0/specifications")
 @Validated
+@CrossOrigin("*")
 public class SpecificationsController {
     private final SpecificationsService specificationsService;
 
