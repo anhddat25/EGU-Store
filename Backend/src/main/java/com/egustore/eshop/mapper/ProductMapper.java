@@ -15,6 +15,8 @@ public interface ProductMapper {
     Product mapToProduct(ProductDTO productDTO);
 
     @Mapping(source ="category.id", target = "categoryId")
+    @Mapping(source ="brand.id", target = "brandId")
+    @Mapping(source ="origins.id", target = "originId")
     ProductDTO mapToProductDTO(Product product);
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "createDate", ignore = true)
