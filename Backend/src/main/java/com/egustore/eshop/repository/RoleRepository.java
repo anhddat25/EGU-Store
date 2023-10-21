@@ -1,6 +1,5 @@
 package com.egustore.eshop.repository;
 
-import com.egustore.eshop.model.Customer;
 import com.egustore.eshop.model.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 
