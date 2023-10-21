@@ -7,6 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface CategoryRepository extends JpaRepository<Category, Integer> {
-    @Query("SELECT c FROM Category c WHERE c.status = 'ACTIVE'")
-    List<Category> getActiveCategories();
+//    @Query("SELECT c FROM Category c WHERE c.status = 'ACTIVE'")
+//    List<Category> getActiveCategories();
 }

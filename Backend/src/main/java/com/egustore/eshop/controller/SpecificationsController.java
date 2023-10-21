@@ -15,8 +15,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/specification")
+@RequestMapping("/api/v0/specifications")
 @Validated
+@CrossOrigin("*")
 public class SpecificationsController {
     private final SpecificationsService specificationsService;
 
@@ -41,7 +42,7 @@ public class SpecificationsController {
     }
 
     //    //Show all categories
-    @GetMapping("")
+    @GetMapping("/list")
     public ResponseEntity<List<Specifications>> getAllPayment() {
         List<Specifications> specifications = specificationsService.getAllSpec();
         return ResponseEntity.ok(specifications);

@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import java.util.Date;
 
 @Entity
-@Table(name = "feedback_product")
+@Table(name = "FeedbackProducts")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -28,19 +28,21 @@ public class FeedbackProduct {
     @Column(name = "status")
     private String status;
 
+    @Temporal(TemporalType.DATE)
     @Column(name = "create_date")
     private Date createDate;
 
+    @Temporal(TemporalType.DATE)
     @Column(name = "update_date")
     private Date updateDate;
 
-//    @ManyToOne
-//    @JoinColumn(name = "customer_id")
-//    private int customerId;
-//
-//    @ManyToOne
-//    @JoinColumn(name = "product_id")
-//    private int productId;
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
+    private Customer customerId;
+
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private Product productId;
 
 
 }

@@ -1,40 +1,48 @@
 package com.egustore.eshop.model;
 
+import com.egustore.eshop.enums.OrderStatus;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import java.util.Date;
-import java.util.List;
-
+import java.time.LocalDateTime;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity
-@Table(name = "Orders")
+@Table(name = "orders")
 public class Order {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    @Column(name = "Email")
+    private Integer id;
+
+    @Column(name = "email")
     private String email;
-    @Column(name = "Phone")
+
+    @Column(name = "phone")
     private String phone;
-    @Temporal(TemporalType.DATE)
+
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "order_date")
-    private Date orderDate = new Date();
-    @Column(name = "Note")
+    private LocalDateTime orderDate;
+
+    @Column(name = "note")
     private String note;
-    @Column(name = "status")
-    @Enumerated(EnumType.STRING)
-    private com.egustore.eshop.enums.Status status;
+
     @Column(name = "payment_method")
     private String paymentMethod;
+
     @Column(name = "discount_price")
     private Double discountPrice;
-    @Column(name = "customer_id")
-    private int customerId;
-    @OneToMany(mappedBy = "order")
-    private List<OrderDetail> orderDetail;
+
+    @Column(name = "status")
+    @Enumerated(EnumType.STRING)
+    private OrderStatus orderStatus;
+
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
+    private Customer customerId;
+
 }

@@ -24,7 +24,7 @@ public class ImageController {
         this.imageService = imageService;
     }
     //Create images
-    @PostMapping("")
+    @PostMapping("/create")
     public ResponseEntity<?> createImages(@RequestBody @Valid ImageDTO imageDTO, BindingResult result)
     {
         if(result.hasErrors())
@@ -40,19 +40,19 @@ public class ImageController {
     }
 
     //Show all image
-    @GetMapping("")
+    @GetMapping("/list")
     public ResponseEntity<List<Images>> getAllImages() {
         List<Images> images = imageService.getAllImages();
         return ResponseEntity.ok(images);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/update/{id}")
     public ResponseEntity<String> updateImages(@PathVariable int id,@RequestBody ImageDTO imageDTO) {
         imageService.updateImage(id,imageDTO);
         return ResponseEntity.ok("update image ");
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteImages(@PathVariable int id) {
         imageService.deleteImage(id);
         return ResponseEntity.ok("delete image " + id);

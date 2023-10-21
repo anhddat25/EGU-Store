@@ -1,20 +1,31 @@
 package com.egustore.eshop.dto;
 
-import com.egustore.eshop.enums.Status;
+import com.egustore.eshop.enums.CustomerStatus;
+import com.egustore.eshop.enums.OrderStatus;
+import com.egustore.eshop.model.Customer;
+import com.egustore.eshop.model.Role;
+import jakarta.persistence.*;
 import lombok.Data;
 
-import java.util.Date;
-
+import java.time.LocalDateTime;
 
 @Data
 public class OrderDTO {
-    private int id;
+    private Integer id;
+
     private String email;
+
     private String phone;
-    private Date orderDate = new Date();
+
+    private LocalDateTime orderDate;
+
     private String note;
-    private Status status;
+
     private String paymentMethod;
+
     private Double discountPrice;
-    private int customerId;
+
+    private OrderStatus orderStatus;
+
+    private Customer customerId;
 }

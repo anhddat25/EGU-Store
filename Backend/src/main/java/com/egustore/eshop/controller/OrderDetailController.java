@@ -12,16 +12,21 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
 @RestController
-@RequestMapping("/api/v0/order-details")
+@RequestMapping("api/v0/order_details")
 @Validated
 public class OrderDetailController {
-    @Autowired
-    OrderDetailService orderDetailService;
+    private final OrderDetailService orderDetailService;
 
-    //Create Order
+    @Autowired
+    public OrderDetailController(OrderDetailService orderDetailService) {
+        this.orderDetailService = orderDetailService;
+    }
+    //Create category
     @PostMapping("/create")
-    public ResponseEntity<?> createOrder(@RequestBody @Valid OrderDetailDTO orderDetailDTO, BindingResult result) {
+    public ResponseEntity<?> createOrderDetail(@RequestBody @Valid OrderDetailDTO orderDetailDTO, BindingResult result)
+    {
         if(result.hasErrors())
         {
             List<String> errMessage = result.getFieldErrors()
@@ -30,29 +35,27 @@ public class OrderDetailController {
                     .toList();
             return ResponseEntity.badRequest().body(errMessage);
         }
-        return ResponseEntity.ok(orderDetailService.saveOrder(orderDetailDTO));
+        orderDetailService.createOrderDetail(orderDetailDTO);
+        return ResponseEntity.ok("Create orderDetail successfully!");
     }
 
+    //    //Show all categories
     @GetMapping("/list")
-    public ResponseEntity<List<OrderDetailDTO>> getAllOrderDetail() {
-        return ResponseEntity.ok(orderDetailService.getOrderDetailList());
+    public ResponseEntity<List<OrderDetail>> getAllOrderDetails() {
+        List<OrderDetail> orderDetails = orderDetailService.getAllOrderDetails();
+        return ResponseEntity.ok(orderDetails);
     }
-
-    @PutMapping("/get-item/{id}")
-    public ResponseEntity<OrderDetailDTO> updateOrder(@PathVariable int id) {
-        return ResponseEntity.ok(orderDetailService.getOrderDetailById(id));
-    }
-
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<String> updateCategory(@PathVariable int id,@RequestBody OrderDetailDTO orderDetailDTO) {
+    public ResponseEntity<String> updateOrderDetail(@PathVariable int id,@RequestBody OrderDetailDTO orderDetailDTO) {
         orderDetailService.updateOrderDetail(id,orderDetailDTO);
-        return ResponseEntity.ok("update OrderDetail " + id);
+        return ResponseEntity.ok("update orderDetail ");
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> deleteOrder(@PathVariable int id) {
+    public ResponseEntity<String> deleteOrderDetail(@PathVariable int id) {
         orderDetailService.deleteOrderDetail(id);
-        return ResponseEntity.ok("delete OrderDetail " + id);
+        return ResponseEntity.ok("delete orderDetail " + id);
     }
+
 }

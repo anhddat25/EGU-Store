@@ -1,5 +1,7 @@
 package com.egustore.eshop.dto;
 
+import com.egustore.eshop.model.Customer;
+import com.egustore.eshop.model.Product;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,11 +12,18 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class RatingProductDTO {
-    private int id;
+
+    private Integer id;
+
     private String nameCustomer;
-    private int rating;
+
+    private Integer rating;
+
     private Date createDate;
+
     private Date updateDate;
-//    private int customerId;
-//    private int productId;
+
+    private Customer customerId;
+
+    private Product productId;
 }

@@ -25,7 +25,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public Customer createCustomer(CustomerDTO customerDTO) {
-        Customer customer = CustomerMapper.INSTANCE.mapToCustomer(customerDTO);
+        Customer customer = customerMapper.mapToCustomer(customerDTO);
         return customerRepository.save(customer);
     }
 

@@ -24,7 +24,7 @@ public class CustomerController {
         this.customerService = customerService;
     }
     //Create category
-    @PostMapping("")
+    @PostMapping("/register")
     public ResponseEntity<?> createCustomer(@RequestBody @Valid CustomerDTO customerDTO, BindingResult result)
     {
         if(result.hasErrors())
@@ -40,19 +40,19 @@ public class CustomerController {
     }
 
     //    //Show all categories
-    @GetMapping("")
+    @GetMapping("/list")
     public ResponseEntity<List<Customer>> getAllCustomers() {
         List<Customer> customers = customerService.getAllCustomers();
         return ResponseEntity.ok(customers);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/update/{id}")
     public ResponseEntity<String> updateCustomer(@PathVariable int id,@RequestBody CustomerDTO customerDTO) {
         customerService.updateCustomer(id,customerDTO);
         return ResponseEntity.ok("update customer ");
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteCustomer(@PathVariable int id) {
         customerService.deleteCustomer(id);
         return ResponseEntity.ok("delete customer " + id);

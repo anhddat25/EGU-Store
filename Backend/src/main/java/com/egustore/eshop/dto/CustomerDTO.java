@@ -8,6 +8,7 @@ import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Data
 public class CustomerDTO {
@@ -15,19 +16,19 @@ public class CustomerDTO {
     private Integer id;
 
 //    @NotBlank(message = "Không được để trống!")
-    private String first_name;
+    private String firstName;
 
 //    @NotBlank(message = "Không được để trống!")
-    private String last_name;
+    private String lastName;
 
-    private LocalDateTime date_of_birth;
+    private Date dateOfBirth;
 
 //    @Email(message = "Email không hợp lệ!")
     private String email;
 
 //    @Pattern(regexp = "^[0-9]+$", message = "Số điện thoại phải là số")
 //    @Size(min=11, max=13, message = "Số điện thoại chưa đúng!")
-    private String phone_number;
+    private String phoneNumber;
 
 //    @NotBlank(message = "Mật khẩu không được để trống!")
 //    @Min(value = 8, message = "Mật khẩu không được ít hơn 8 ký tự!")
@@ -35,16 +36,17 @@ public class CustomerDTO {
     private String password;
 
 
-    private LocalDateTime create_date;
+    private LocalDateTime createDate;
+//    private Date createDate;
 
-    private String facebook_id;
+    private String facebookId;
 
-    private String google_id;
+    private String googleId;
 
-    private String reset_password_token;
+    private String resetPasswordToken;
 
-    private Role role;
+    private Role roleId;
 
 //    @NotBlank(message = "Không được để trống trạng thái!")
-    private CustomerStatus customerstatus;
+    private CustomerStatus customerStatus;
 }

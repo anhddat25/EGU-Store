@@ -8,7 +8,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "category")
+@Table(name = "categories")
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,10 +20,12 @@ public class Category {
     @Column(name = "description")
     private String description;
 
+    @Column(name = "title")
+    private String title;
+
     @Column(name = "status")
     @Enumerated(EnumType.STRING)
-    private CategoryStatus status;
-
+    private CategoryStatus categoryStatus;
 
 }
 

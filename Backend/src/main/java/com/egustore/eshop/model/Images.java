@@ -22,18 +22,19 @@ public class Images {
     private String title;
 
     @Column(name = "image_url")
-    private String image_url;
+    private String imageUrl;
 
     @Temporal(TemporalType.DATE)
     @Column(name = "create_date")
-    private Date create_date;
+    private Date createDate;
 
     @Temporal(TemporalType.DATE)
     @Column(name = "update_date")
-    private Date update_date;
+    private Date updateDate;
 
-    @Column(name = "product_id")
-    private Integer product_id;
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private Product productId;
 
     @Column(name = "status")
     @Enumerated(EnumType.STRING)
