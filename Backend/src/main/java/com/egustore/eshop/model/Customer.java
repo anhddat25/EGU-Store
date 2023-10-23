@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 @Data
@@ -29,7 +30,7 @@ public class Customer implements UserDetails {
     private String lastName;
 
     @Column(name = "date_of_birth")
-    private LocalDateTime dateOfBirth;
+    private Date dateOfBirth;
 
     @Column(name = "email")
     private String email;
@@ -67,7 +68,6 @@ public class Customer implements UserDetails {
         authorityList.add(new SimpleGrantedAuthority("ROLE_" + getRole().getName().toUpperCase()));
         return authorityList;
     }
-
     @Override
     public String getUsername() {
         return email;

@@ -4,7 +4,6 @@ import com.egustore.eshop.dto.OrderDTO;
 import com.egustore.eshop.model.Order;
 import com.egustore.eshop.service.OrderService;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -18,33 +17,43 @@ import java.util.List;
 @Validated
 @CrossOrigin("*")
 public class OrderController {
-    @Autowired
-    OrderService orderService;
+    private final OrderService orderService;
+
+    public OrderController(OrderService orderService) {
+        this.orderService = orderService;
+    }
 
 
     //Create Order
     @PostMapping("/create")
     public ResponseEntity<?> createOrder(@RequestBody @Valid OrderDTO orderDTO, BindingResult result) {
-        if(result.hasErrors())
-        {
-            List<String> errMessage = result.getFieldErrors()
-                    .stream()
-                    .map(FieldError::getDefaultMessage)
-                    .toList();
-            return ResponseEntity.badRequest().body(errMessage);
-        }
-        return ResponseEntity.ok(orderService.saveOrder(orderDTO));
+       try {
+           if(result.hasErrors())
+           {
+               List<String> errMessage = result.getFieldErrors()
+                       .stream()
+                       .map(FieldError::getDefaultMessage)
+                       .toList();
+               return ResponseEntity.badRequest().body(errMessage);
+           }
+           ResponseEntity.ok(orderService.saveOrder(orderDTO));
+           return ResponseEntity.ok("Succes!");
+
+       }catch (Exception e){
+           return ResponseEntity.badRequest().body(e.getMessage());
+       }
+
     }
 
     @GetMapping("/list")
-    public ResponseEntity<List<OrderDTO>> getAllCategories() {
-        return ResponseEntity.ok(orderService.getOrderList());
+    public ResponseEntity<List<Order>> getAllCategories() {
+        return ResponseEntity.ok(orderService.getAllOrders());
     }
 
-    @PutMapping("/get-item/{id}")
-    public ResponseEntity<OrderDTO> updateOrder(@PathVariable int id) {
-        return ResponseEntity.ok(orderService.getOrderById(id));
-    }
+//    @PutMapping("/get-item/{id}")
+//    public ResponseEntity<Order> updateOrder(@PathVariable int id) {
+//        return ResponseEntity.ok(orderService.getOrderById(id));
+//    }
 
 //    @PutMapping("/update/{id}")
 //    public ResponseEntity<String> updateCategory(@PathVariable int id,@RequestBody OrderDTO orderDTO) {

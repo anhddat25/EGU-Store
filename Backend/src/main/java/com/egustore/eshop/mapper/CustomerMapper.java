@@ -10,7 +10,10 @@ import org.mapstruct.factory.Mappers;
 public interface CustomerMapper {
 
     CustomerMapper INSTANCE = Mappers.getMapper(CustomerMapper.class);
+
     Customer mapToCustomer(CustomerDTO customerDTO);
+
+    @Mapping(source ="role.id", target = "roleId")
     CustomerDTO mapToCustomerDto(Customer customer);
     @Mapping(target = "id", ignore = true)
     void updateCustomerFromDTO(CustomerDTO customerDTO, @MappingTarget Customer customer);

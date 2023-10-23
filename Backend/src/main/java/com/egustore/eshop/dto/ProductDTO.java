@@ -42,7 +42,7 @@ public class ProductDTO {
 
     private CategoryDTO category;
 
-    private OriginDTO origin;
+    private OriginDTO origins;
 
 
 }
