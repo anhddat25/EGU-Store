@@ -60,4 +60,15 @@ public class ProductServiceImpl implements ProductService {
 
         productRepository.deleteById(id);
     }
+
+    @Override
+    public Integer updateProductById(ProductDTO productDTO, int id) {
+
+        return productRepository.updateProductById(productDTO, id);
+    }
+
+    @Override
+    public Integer createQuerryProduct(ProductDTO productDTO) {
+        return productRepository.createQuerryProduct(productDTO);
+    }
 }

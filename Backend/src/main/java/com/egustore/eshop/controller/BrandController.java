@@ -13,6 +13,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v0/brands")
 @Validated
+@CrossOrigin("*")
 public class BrandController {
 
     private final BrandService brandService;
@@ -22,7 +23,7 @@ public class BrandController {
     }
 
     @GetMapping("")
-    public ResponseEntity<List<Brand>> getAllBrand(){
+    public ResponseEntity<List<Brand>> getAllBrands(){
         List<Brand> brands = brandService.getAllBrands();
         return ResponseEntity.ok(brands);
     }

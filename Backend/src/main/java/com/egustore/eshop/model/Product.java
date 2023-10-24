@@ -45,10 +45,26 @@ public class Product extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private ProductStatus status;
 
+
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
 
+    @ManyToOne
+    @JoinColumn(name = "brand_id")
+    private Brand brand;
+
+    @ManyToOne
+    @JoinColumn(name = "origins_id")
+    private Origins origins;
 
 
+    @Column(name = "origins_id", insertable=false, updatable=false)
+    private Integer origins_id;
+
+    @Column(name = "brand_id",  insertable=false, updatable=false)
+    private Integer brand_id;
+
+    @Column(name = "category_id", insertable=false, updatable=false)
+    private Integer category_id;
 }
