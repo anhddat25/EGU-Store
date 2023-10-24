@@ -36,6 +36,14 @@ public class ProductDTO {
     @JsonProperty("category_id")
     private Integer category_id;
 
+    @JsonProperty("brand_id")
+    private Integer brandId;
+
+    @JsonProperty("origin_id")
+    private Integer originId;
+
+
+
     private CategoryDTO category;
 
     @JsonProperty("brand_id")
@@ -48,6 +56,7 @@ public class ProductDTO {
 
 
     private OriginDTO origins;
+
 
 
 

@@ -5,16 +5,20 @@ import com.egustore.eshop.model.Order;
 import com.egustore.eshop.mapper.OrderMapper;
 import com.egustore.eshop.repository.OrderRepository;
 import com.egustore.eshop.service.OrderService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 @Service
 public class OrderServiceImp implements OrderService {
-    @Autowired
-    OrderRepository orderRepository;
-    @Autowired
-    OrderMapper orderMapper;
+
+   private final OrderRepository orderRepository;
+
+   private final OrderMapper orderMapper;
+
+    public OrderServiceImp(OrderRepository orderRepository, OrderMapper orderMapper) {
+        this.orderRepository = orderRepository;
+        this.orderMapper = orderMapper;
+    }
 
     @Override
     public Order saveOrder(OrderDTO orderDTO) {
@@ -22,16 +26,15 @@ public class OrderServiceImp implements OrderService {
     }
 
     @Override
-    public OrderDTO getOrderById(int id) {
+    public Order getOrderById(int id) {
         return orderRepository
                 .findById(id)
-                .map(orderMapper::toDTO)
-                .orElse(new OrderDTO());
+                .orElseThrow(() -> new RuntimeException("order not found"));
     }
 
     @Override
-    public List<OrderDTO> getOrderList() {
-        return orderMapper.toDTOList(orderRepository.findAll());
+    public List<Order> getAllOrders() {
+        return orderRepository.findAll();
     }
 
 //    @Override

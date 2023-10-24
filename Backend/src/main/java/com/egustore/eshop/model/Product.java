@@ -59,6 +59,7 @@ public class Product extends BaseEntity {
     private Origins origins;
 
 
+
     @Column(name = "origins_id", insertable=false, updatable=false)
     private Integer origins_id;
 

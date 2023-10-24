@@ -9,6 +9,7 @@ import io.jsonwebtoken.io.Encoders;
 import io.jsonwebtoken.security.Keys;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import java.security.InvalidParameterException;
@@ -34,7 +35,7 @@ public class JwtTokenUtil {
 
     public String generateToken(Customer customer) throws Exception{
         Map<String,Object> claims = new HashMap<>();
-        this.genarateSecretKey();
+//        this.genarateSecretKey();
         claims.put("email", customer.getEmail());
         try {
             String token = Jwts.builder()
@@ -49,10 +50,7 @@ public class JwtTokenUtil {
         }
     }
 
-    private Key getSignKey(){
-        byte[] bytes = Decoders.BASE64.decode(secretKey);
-        return Keys.hmacShaKeyFor(bytes);
-    }
+
     private  String genarateSecretKey() {
         SecureRandom secureRandom = new SecureRandom();
         byte[] keyBytes = new byte[32];
@@ -61,11 +59,16 @@ public class JwtTokenUtil {
         return secretKey;
     }
 
+    private Key getSignKey(){
+        byte[] bytes = Decoders.BASE64.decode(secretKey); //Decoders.BASE64.decode("TBhqQps4YkrQTQ6jJJy5V6+zIbzCtGNSnBAuaIlOmME=")
+        return Keys.hmacShaKeyFor(bytes); //Keys.hmacShaKeyFor(Decoders.BASE64.decode("TBhqQps4YkrQTQ6jJJy5V6+zIbzCtGNSnBAuaIlOmME="))
+    }
+
     private Claims extraAllClaims(String token) {
         return Jwts.parserBuilder()
                 .setSigningKey(getSignKey())
                 .build()
-                .parseClaimsJwt(token)
+                .parseClaimsJws(token)
                 .getBody();
     }
 
@@ -77,5 +80,14 @@ public class JwtTokenUtil {
     public  boolean isTokenExpired(String token) {
         Date expiraDate = this.extraClaim(token, Claims::getExpiration);
         return expiraDate.before(new Date());
+    }
+
+    public String extraEmail(String token){
+        return extraClaim(token, Claims:: getSubject);
+    }
+
+    public boolean validateToken(String token, UserDetails userDetails){
+        String email = extraEmail(token);
+        return (email.equals(userDetails.getUsername())) && !isTokenExpired(token);
     }
 }

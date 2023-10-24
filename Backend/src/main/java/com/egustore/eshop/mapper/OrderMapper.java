@@ -16,5 +16,4 @@ public interface OrderMapper {
 
     @Mapping(source = "customer.id", target = "customerId")
     OrderDTO toDTO (Order order);
-    List<OrderDTO> toDTOList(List<Order> orders);
 }

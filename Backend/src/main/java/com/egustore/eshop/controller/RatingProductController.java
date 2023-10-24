@@ -14,6 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v0/rating-products")
 @Validated
+@CrossOrigin("*")
 public class RatingProductController {
 
     private final RatingProductService ratingProductService;
