@@ -19,36 +19,10 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
             "p.discountPercentage = :#{#productDTO.discountPercentage}, " +
             "p.discountPrice = :#{#productDTO.discountPrice}, " +
             "p.status = :#{#productDTO.status}, " +
-            "p.category_id = :#{#productDTO.category_id}, " +
-            "p.brand_id = :#{#productDTO.brand_id}, " +
-            "p.origins_id = :#{#productDTO.origins_id} " +
+            "p.categoryId = :#{#productDTO.categoryId}, " +
+            "p.brandId = :#{#productDTO.brandId}, " +
+            "p.originId = :#{#productDTO.originId} " +
             "WHERE p.Id = :id")
     Integer updateProductById(@Param("productDTO") ProductDTO productDTO, @Param("id") int id);
-    @Modifying
-    @Transactional
-    @Query  ("INSERT INTO Product p" +
-            "(p.name,"+
-                    "p.model," +
-                    "p.price," +
-                    "p.stockQuantity," +
-                    "p.description," +
-                    "p.discountPercentage," +
-                    "p.discountPrice," +
-                    "p.status," +
-                    "p.category_id," +
-                    "p.brand_id," +
-                    "p.origins_id)"+
-            "VALUES " +
-            "   (:#{#productDTO.name}, " +
-            "   :#{#productDTO.model}, " +
-            "    :#{#productDTO.price}, " +
-            "    :#{#productDTO.stockQuantity}, " +
-            "    :#{#productDTO.description}, " +
-            "   	:#{#productDTO.discountPercentage}, " +
-            "   	:#{#productDTO.discountPrice}, " +
-            "    :#{#productDTO.status}, " +
-            "    :#{#productDTO.category_id}, " +
-            "    :#{#productDTO.brand_id}, " +
-            "    :#{#productDTO.origins_id})")
-    Integer createQuerryProduct(@Param("productDTO") ProductDTO productDTO);
+
 }

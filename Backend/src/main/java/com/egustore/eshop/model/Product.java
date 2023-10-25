@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @EqualsAndHashCode(callSuper = false)
-@Table(name="products")
+@Table(name="product")
 public class Product extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -55,17 +55,17 @@ public class Product extends BaseEntity {
     private Brand brand;
 
     @ManyToOne
-    @JoinColumn(name = "origins_id")
-    private Origins origins;
+    @JoinColumn(name = "origin_id")
+    private Origin origin;
 
 
 
-    @Column(name = "origins_id", insertable=false, updatable=false)
-    private Integer origins_id;
+    @Column(name = "origin_id", insertable=false, updatable=false)
+    private Integer originId;
 
     @Column(name = "brand_id",  insertable=false, updatable=false)
-    private Integer brand_id;
+    private Integer brandId;
 
     @Column(name = "category_id", insertable=false, updatable=false)
-    private Integer category_id;
+    private Integer categoryId;
 }

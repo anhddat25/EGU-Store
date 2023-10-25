@@ -66,18 +66,4 @@ public class ProductController {
         return ResponseEntity.ok("update Product " + id);
     }
 
-    @PostMapping("/create2")
-    public ResponseEntity<?> createQuerryProduct(@RequestBody @Valid ProductDTO productDTO, BindingResult result)
-    {
-        if(result.hasErrors())
-        {
-            List<String> errMessage = result.getFieldErrors()
-                    .stream()
-                    .map(FieldError::getDefaultMessage)
-                    .toList();
-            return ResponseEntity.badRequest().body(errMessage);
-        }
-        productService.createQuerryProduct(productDTO);
-        return ResponseEntity.ok("Create Product successfully!");
-    }
 }

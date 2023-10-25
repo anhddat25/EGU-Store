@@ -16,6 +16,5 @@ public interface ProductService {
     void deleteProduct(int id);
 
     Integer updateProductById(ProductDTO productDTO, int id);
-    Integer createQuerryProduct(@Param("productDTO") ProductDTO productDTO);
 
 }

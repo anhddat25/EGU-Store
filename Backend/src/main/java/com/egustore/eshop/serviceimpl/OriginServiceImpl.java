@@ -2,7 +2,7 @@ package com.egustore.eshop.serviceimpl;
 
 import com.egustore.eshop.dto.OriginDTO;
 import com.egustore.eshop.mapper.OriginMapper;
-import com.egustore.eshop.model.Origins;
+import com.egustore.eshop.model.Origin;
 import com.egustore.eshop.repository.OriginRepository;
 
 import com.egustore.eshop.service.OriginService;
@@ -24,13 +24,13 @@ public class OriginServiceImpl implements OriginService {
     }
 
     @Override
-    public Origins createOrigin(OriginDTO originDTO) {
-        Origins origins = originMapper.mapToOrigins(originDTO);
-        return originRepository.save(origins);
+    public Origin createOrigin(OriginDTO originDTO) {
+        Origin origin = originMapper.mapToOrigins(originDTO);
+        return originRepository.save(origin);
     }
 
     @Override
-    public Origins getOriginById(int id){
+    public Origin getOriginById(int id){
         return originRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Origin not found"));
     }
@@ -38,17 +38,17 @@ public class OriginServiceImpl implements OriginService {
 
 
     @Override
-    public List<Origins> getAllOrigins() {
+    public List<Origin> getAllOrigins() {
         return originRepository.findAll();
     }
 
     @Override
-    public Origins updateOrigins(int id,
-                              OriginDTO originDTO) {
-        Origins existOrigins = getOriginById(id);
-        originMapper.updateOriginFromDTO(originDTO, existOrigins);
-        originRepository.save(existOrigins);
-        return existOrigins;
+    public Origin updateOrigins(int id,
+                                OriginDTO originDTO) {
+        Origin existOrigin = getOriginById(id);
+        originMapper.updateOriginFromDTO(originDTO, existOrigin);
+        originRepository.save(existOrigin);
+        return existOrigin;
     }
 
     @Override

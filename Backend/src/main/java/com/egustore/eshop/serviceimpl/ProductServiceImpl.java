@@ -67,8 +67,5 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.updateProductById(productDTO, id);
     }
 
-    @Override
-    public Integer createQuerryProduct(ProductDTO productDTO) {
-        return productRepository.createQuerryProduct(productDTO);
-    }
+
 }
