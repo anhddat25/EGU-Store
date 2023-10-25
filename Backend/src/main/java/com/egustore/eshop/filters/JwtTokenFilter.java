@@ -1,11 +1,13 @@
 package com.egustore.eshop.filters;
 
 import com.egustore.eshop.component.JwtTokenUtil;
+import com.egustore.eshop.model.Customer;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.constraints.NotNull;
+import lombok.NonNull;
 import org.springframework.data.util.Pair;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -31,34 +33,43 @@ public class JwtTokenFilter extends OncePerRequestFilter {
     }
 
     @Override
-    protected void doFilterInternal(@NotNull HttpServletRequest request,
-                                    @NotNull HttpServletResponse response,
-                                    @NotNull FilterChain filterChain)
+    protected void doFilterInternal(@NonNull HttpServletRequest request,
+                                    @NonNull HttpServletResponse response,
+                                    @NonNull FilterChain filterChain)
             throws ServletException, IOException {
-       if (isBypassToken(request)){
-           filterChain.doFilter(request,response);
-            return;
-       }
-       final String authHeader = request.getHeader("Authorization");
-       if(authHeader != null && authHeader.startsWith("Bearer ")){
-            final String token = authHeader.substring(7);
-            final String email = jwtTokenUtil.extraEmail(token);
-            if (email != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-                UserDetails userDetails = userDetailsService.loadUserByUsername(email);
-                if (jwtTokenUtil.validateToken(token, userDetails)){
-                    UsernamePasswordAuthenticationToken authenticationToken =
-                            new UsernamePasswordAuthenticationToken(
-                                    userDetails,
-                                    null,
-                                    userDetails.getAuthorities()
-                            );
-                    authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-                    SecurityContextHolder.getContext().setAuthentication(authenticationToken);
-                }
+        try {
+            if (isBypassToken(request)){
+                filterChain.doFilter(request,response);
+                return;
             }
-       }
+            final String authHeader = request.getHeader("Authorization");
+            if(authHeader == null || !authHeader.startsWith("Bearer ")){
+                response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Unauthorized");
+                return;
+            }
+                final String token = authHeader.substring(7);
+                final String email = jwtTokenUtil.extraEmail(token);
+                if (email != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+                    Customer userDetails = (Customer) userDetailsService.loadUserByUsername(email);
+                    if (jwtTokenUtil.validateToken(token, userDetails)){
+                        UsernamePasswordAuthenticationToken authenticationToken =
+                                new UsernamePasswordAuthenticationToken(
+                                        userDetails,
+                                        null,
+                                        userDetails.getAuthorities()
+                                );
+                        authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+                        SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+                    }
+                }
+
+            filterChain.doFilter(request,response);
+        } catch (Exception e) {
+            response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Unauthorized");
+        }
+
     }
-    private  boolean isBypassToken(@NotNull HttpServletRequest request){
+    private  boolean isBypassToken(@NonNull HttpServletRequest request){
         final List<Pair<String,String>> bypassTokens = Arrays.asList(
                 Pair.of("/api/v0/roles", "GET"),
                 Pair.of("/api/v0/products", "GET"),
