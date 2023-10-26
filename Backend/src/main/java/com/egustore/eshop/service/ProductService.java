@@ -1,21 +1,17 @@
 package com.egustore.eshop.service;
 
-
 import com.egustore.eshop.dto.ProductDTO;
 import com.egustore.eshop.model.Product;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 
 import java.util.List;
 
 public interface ProductService {
-
-    Product createProduct(ProductDTO ProductDTO);
-
+    Product createProduct(ProductDTO productDTO);
     Product getProductById(int id);
-
+    Product updateProduct(int id, ProductDTO Product);
     List<Product> getAllProducts();
-
-    Product updateProduct(int id,
-                          ProductDTO ProductDTO);
-
     void deleteProduct(int id);
+
 }

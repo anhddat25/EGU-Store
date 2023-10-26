@@ -11,8 +11,9 @@ import org.mapstruct.factory.Mappers;
 public interface OrderMapper {
 
     OrderMapper INSTANCE = Mappers.getMapper(OrderMapper.class);
-    Order mapToOrder(OrderDTO orderDTO);
-    OrderDTO mapToOrderDto(Order order);
-    @Mapping(target = "id", ignore = true)
-    void updateOrderFromDTO(OrderDTO orderDTO, @MappingTarget Order order);
+
+    Order toEntity(OrderDTO orderDTO);
+
+    @Mapping(source = "customer.id", target = "customerId")
+    OrderDTO toDTO (Order order);
 }

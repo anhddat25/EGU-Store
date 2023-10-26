@@ -1,9 +1,10 @@
 package com.egustore.eshop.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
+import java.util.List;
+
 
 @Data
 @AllArgsConstructor
@@ -13,20 +14,24 @@ import lombok.NoArgsConstructor;
 public class OrderDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private int id;
 
-    @Column(name = "quantity")
-    private Integer quantity;
+    @Column(name = "Quantity")
+    private int quantity;
 
     @Column(name = "total_price")
     private Double totalPrice;
 
     @ManyToOne
     @JoinColumn(name = "order_id")
-    private Order orderId;
+    private Order order;
 
     @ManyToOne
     @JoinColumn(name = "product_id")
-    private Product productId;
+    private Product product;
+
+
+
+
 
 }

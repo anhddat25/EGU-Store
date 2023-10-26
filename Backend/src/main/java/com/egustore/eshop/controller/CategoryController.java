@@ -41,8 +41,8 @@ public class CategoryController {
         return ResponseEntity.ok("Create category successfully!");
     }
 
-//    //Show all categories
-    @GetMapping("/list")
+    //Show all categories
+    @GetMapping("")
     public ResponseEntity<List<Category>> getAllCategories() {
         List<Category> categories = categoryService.getAllCategories();
         return ResponseEntity.ok(categories);

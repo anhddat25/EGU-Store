@@ -16,8 +16,14 @@ import java.util.List;
 @RestController
 @RequestMapping("api/v0/order_details")
 @Validated
+@CrossOrigin("*")
 public class OrderDetailController {
     private final OrderDetailService orderDetailService;
+
+    @Autowired
+    public OrderDetailController(OrderDetailService orderDetailService) {
+        this.orderDetailService = orderDetailService;
+    }
 
     @Autowired
     public OrderDetailController(OrderDetailService orderDetailService) {
@@ -35,22 +41,26 @@ public class OrderDetailController {
                     .toList();
             return ResponseEntity.badRequest().body(errMessage);
         }
-        orderDetailService.createOrderDetail(orderDetailDTO);
-        return ResponseEntity.ok("Create orderDetail successfully!");
+        return ResponseEntity.ok(orderDetailService.createOrderDetail(orderDetailDTO));
     }
 
     //    //Show all categories
     @GetMapping("/list")
     public ResponseEntity<List<OrderDetail>> getAllOrderDetails() {
-        List<OrderDetail> orderDetails = orderDetailService.getAllOrderDetails();
-        return ResponseEntity.ok(orderDetails);
+        return ResponseEntity.ok(orderDetailService.getAllOrderDetails());
     }
 
-    @PutMapping("/update/{id}")
-    public ResponseEntity<String> updateOrderDetail(@PathVariable int id,@RequestBody OrderDetailDTO orderDetailDTO) {
-        orderDetailService.updateOrderDetail(id,orderDetailDTO);
-        return ResponseEntity.ok("update orderDetail ");
+    @PutMapping("/get-item/{id}")
+    public ResponseEntity<OrderDetail> updateOrder(@PathVariable int id) {
+        return ResponseEntity.ok(orderDetailService.getOrderDetailById(id));
     }
+
+
+//    @PutMapping("/update/{id}")
+//    public ResponseEntity<String> updateCategory(@PathVariable int id,@RequestBody OrderDetailDTO orderDetailDTO) {
+//        orderDetailService.updateOrderDetail(id,orderDetailDTO);
+//        return ResponseEntity.ok("update OrderDetail " + id);
+//    }
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteOrderDetail(@PathVariable int id) {

@@ -7,12 +7,9 @@ import java.util.List;
 
 public interface OrderDetailService {
     OrderDetail createOrderDetail(OrderDetailDTO orderDetailDTO);
-
     OrderDetail getOrderDetailById(int id);
-
     List<OrderDetail> getAllOrderDetails();
-
-    OrderDetail updateOrderDetail(int id, OrderDetailDTO orderDetailDTO);
+//    Integer updateOrderDetail(int id, OrderDetailDTO orderDetailDTO);
 
     void deleteOrderDetail(int id);
 }

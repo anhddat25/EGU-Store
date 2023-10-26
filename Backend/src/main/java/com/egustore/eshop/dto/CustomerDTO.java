@@ -2,12 +2,15 @@ package com.egustore.eshop.dto;
 
 import com.egustore.eshop.enums.CustomerStatus;
 import com.egustore.eshop.model.Role;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.core.GrantedAuthority;
 
 import java.time.LocalDateTime;
+import java.util.Collection;
 import java.util.Date;
 
 @Data
@@ -35,9 +38,7 @@ public class CustomerDTO {
 //    @Pattern(regexp = "^(?=.*[a-zA-Z])(?=.*\\d)(?=.*[@_\\-()<>/])+$", message = "Mật khẩu chỉ bao gồm chũ in hoa, chữ thường, số và các kí tự {@_-()<>/}")
     private String password;
 
-
     private LocalDateTime createDate;
-//    private Date createDate;
 
     private String facebookId;
 
@@ -45,8 +46,11 @@ public class CustomerDTO {
 
     private String resetPasswordToken;
 
-    private Role roleId;
+    @JsonProperty("role_id")
+    private Integer roleId;
+
+    private RoleDTO role;
 
 //    @NotBlank(message = "Không được để trống trạng thái!")
-    private CustomerStatus customerStatus;
+    private CustomerStatus status;
 }

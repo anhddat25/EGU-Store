@@ -1,29 +1,21 @@
 package com.egustore.eshop.dto;
 
-import com.egustore.eshop.enums.CustomerStatus;
-import com.egustore.eshop.enums.ProductStatus;
-import com.egustore.eshop.model.Brand;
-import com.egustore.eshop.model.Category;
-import com.egustore.eshop.model.Origins;
-import com.egustore.eshop.model.Role;
-import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
-
+import java.sql.Date;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Data
 public class ProductDTO {
-
     private Integer id;
 
     private String name;
 
-    private Integer stockQuantity;
-
     private String model;
 
     private Double price;
+
+    private Integer stockQuantity;
 
     private LocalDateTime createDate;
 
@@ -31,15 +23,26 @@ public class ProductDTO {
 
     private String description;
 
-    private Double discountPrice;
+    private Double discountPercentage;
 
-    private Double discount;
+    private String discountPrice;
 
-    private ProductStatus productStatus;
+    private String status;
 
-    private Category categoryId;
+    @JsonProperty("category_id")
+    private Integer categoryId;
 
-    private Brand brandId;
+    @JsonProperty("brand_id")
+    private Integer brandId;
 
-    private Origins originsId;
+    @JsonProperty("origin_id")
+    private Integer originId;
+
+    private BrandDTO brand;
+
+    private CategoryDTO category;
+
+    private OriginDTO origins;
+
+
 }

@@ -12,8 +12,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 @RestController
-@RequestMapping("/api/v0/rating_products")
+@RequestMapping("/api/v0/rating-products")
 @Validated
+@CrossOrigin("*")
 public class RatingProductController {
 
     private final RatingProductService ratingProductService;

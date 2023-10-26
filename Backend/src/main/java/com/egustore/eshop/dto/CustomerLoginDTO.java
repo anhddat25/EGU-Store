@@ -7,8 +7,10 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class BrandDTO {
-    private int id;
-    private String name;
+public class CustomerLoginDTO {
+    private String email;
 
+    private String password;
+
+    private Integer role;
 }

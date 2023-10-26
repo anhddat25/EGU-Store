@@ -4,7 +4,6 @@ import com.egustore.eshop.dto.OrderDTO;
 import com.egustore.eshop.model.Order;
 import com.egustore.eshop.service.OrderService;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -16,41 +15,52 @@ import java.util.List;
 @RestController
 @RequestMapping("api/v0/orders")
 @Validated
+@CrossOrigin("*")
 public class OrderController {
     private final OrderService orderService;
 
-    @Autowired
     public OrderController(OrderService orderService) {
         this.orderService = orderService;
     }
-    //Create category
+
+
+    //Create Order
     @PostMapping("/create")
-    public ResponseEntity<?> createOrder(@RequestBody @Valid OrderDTO orderDTO, BindingResult result)
-    {
-        if(result.hasErrors())
-        {
-            List<String> errMessage = result.getFieldErrors()
-                    .stream()
-                    .map(FieldError::getDefaultMessage)
-                    .toList();
-            return ResponseEntity.badRequest().body(errMessage);
-        }
-        orderService.createOrder(orderDTO);
-        return ResponseEntity.ok("Create order successfully!");
+    public ResponseEntity<?> createOrder(@RequestBody @Valid OrderDTO orderDTO, BindingResult result) {
+       try {
+           if(result.hasErrors())
+           {
+               List<String> errMessage = result.getFieldErrors()
+                       .stream()
+                       .map(FieldError::getDefaultMessage)
+                       .toList();
+               return ResponseEntity.badRequest().body(errMessage);
+           }
+           ResponseEntity.ok(orderService.saveOrder(orderDTO));
+           return ResponseEntity.ok("Succes!");
+
+       }catch (Exception e){
+           return ResponseEntity.badRequest().body(e.getMessage());
+       }
+
     }
 
     //    //Show all categories
     @GetMapping("/list")
-    public ResponseEntity<List<Order>> getAllOrders() {
-        List<Order> orders = orderService.getAllOrders();
-        return ResponseEntity.ok(orders);
+    public ResponseEntity<List<Order>> getAllCategories() {
+        return ResponseEntity.ok(orderService.getAllOrders());
     }
 
-    @PutMapping("/update/{id}")
-    public ResponseEntity<String> updateOrder(@PathVariable int id,@RequestBody OrderDTO orderDTO) {
-        orderService.updateOrder(id,orderDTO);
-        return ResponseEntity.ok("update order ");
-    }
+//    @PutMapping("/get-item/{id}")
+//    public ResponseEntity<Order> updateOrder(@PathVariable int id) {
+//        return ResponseEntity.ok(orderService.getOrderById(id));
+//    }
+
+//    @PutMapping("/update/{id}")
+//    public ResponseEntity<String> updateCategory(@PathVariable int id,@RequestBody OrderDTO orderDTO) {
+//        orderService.updateOrder(id,orderDTO);
+//        return ResponseEntity.ok("update Order " + id);
+//    }
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteOrder(@PathVariable int id) {

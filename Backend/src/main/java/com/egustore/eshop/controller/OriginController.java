@@ -16,6 +16,7 @@ import java.util.List;
 @RestController
 @RequestMapping("api/v0/origins")
 @Validated
+@CrossOrigin("*")
 public class OriginController {
     private final OriginService originService;
 

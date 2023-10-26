@@ -37,26 +37,27 @@ public class ProductController {
             return ResponseEntity.badRequest().body(errMessage);
         }
         productService.createProduct(productDTO);
-        return ResponseEntity.ok("Create product successfully!");
+        return ResponseEntity.ok("Create Product successfully!");
     }
 
-    //    //Show all categories
-    @GetMapping("/list")
-    public ResponseEntity<List<Product>> getAllProducts() {
-        List<Product> products = productService.getAllProducts();
-        return ResponseEntity.ok(products);
+
+
+    //Show all categories
+    @GetMapping("")
+    public ResponseEntity<List<Product>> getAllProduct() {
+        List<Product> product = productService.getAllProducts();
+        return ResponseEntity.ok(product);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<String> updateProduct(@PathVariable int id,@RequestBody ProductDTO productDTO) {
         productService.updateProduct(id,productDTO);
         return ResponseEntity.ok("update product ");
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteProduct(@PathVariable int id) {
         productService.deleteProduct(id);
-        return ResponseEntity.ok("delete product " + id);
+        return ResponseEntity.ok("delete Product " + id);
     }
-
 }

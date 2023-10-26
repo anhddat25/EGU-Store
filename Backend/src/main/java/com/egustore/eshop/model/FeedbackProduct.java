@@ -38,11 +38,10 @@ public class FeedbackProduct {
 
     @ManyToOne
     @JoinColumn(name = "customer_id")
-    private Customer customerId;
-
+    private Customer customer;
     @ManyToOne
     @JoinColumn(name = "product_id")
-    private Product productId;
+    private Product product;
 
 
 }

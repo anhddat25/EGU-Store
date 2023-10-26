@@ -2,9 +2,9 @@ package com.egustore.eshop.model;
 
 import com.egustore.eshop.enums.OrderStatus;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
+import java.util.Date;
 
 import java.time.LocalDateTime;
 
@@ -16,20 +16,24 @@ import java.time.LocalDateTime;
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private int id;
 
-    @Column(name = "email")
+    @Column(name = "Email")
     private String email;
 
-    @Column(name = "phone")
+    @Column(name = "Phone")
     private String phone;
 
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     @Column(name = "order_date")
-    private LocalDateTime orderDate;
+    private Date orderDate = new Date();
 
-    @Column(name = "note")
+    @Column(name = "Note")
     private String note;
+
+    @Column(name = "status")
+    @Enumerated(EnumType.STRING)
+    private OrderStatus status;
 
     @Column(name = "payment_method")
     private String paymentMethod;
@@ -37,12 +41,10 @@ public class Order {
     @Column(name = "discount_price")
     private Double discountPrice;
 
-    @Column(name = "status")
-    @Enumerated(EnumType.STRING)
-    private OrderStatus orderStatus;
-
     @ManyToOne
     @JoinColumn(name = "customer_id")
-    private Customer customerId;
+    private Customer customer;
 
+//    @OneToMany(mappedBy = "order")
+//    private List<OrderDetail> orderDetail;
 }

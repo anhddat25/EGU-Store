@@ -1,10 +1,7 @@
 package com.egustore.eshop.dto;
 
-import com.egustore.eshop.enums.CustomerStatus;
 import com.egustore.eshop.enums.OrderStatus;
-import com.egustore.eshop.model.Customer;
-import com.egustore.eshop.model.Role;
-import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -17,15 +14,16 @@ public class OrderDTO {
 
     private String phone;
 
-    private LocalDateTime orderDate;
-
     private String note;
+
+    private OrderStatus status;
 
     private String paymentMethod;
 
     private Double discountPrice;
 
-    private OrderStatus orderStatus;
+    @JsonProperty("customer_id")
+    private Integer customerId;
 
-    private Customer customerId;
+    private CustomerDTO customer;
 }
