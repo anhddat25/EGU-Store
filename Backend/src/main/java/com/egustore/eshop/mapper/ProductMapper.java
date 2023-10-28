@@ -12,9 +12,13 @@ import java.awt.*;
 @Mapper(componentModel = "spring")
 public interface ProductMapper {
    ProductMapper INSTANCE = Mappers.getMapper(ProductMapper.class);
-    Product mapToProduct(ProductDTO productDTO);
+
+   Product mapToProduct(ProductDTO productDTO);
+
 
     @Mapping(source ="category.id", target = "categoryId")
+    @Mapping(source ="brand.id", target = "brandId")
+    @Mapping(source ="origins.id", target = "originId")
     ProductDTO mapToProductDTO(Product product);
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "createDate", ignore = true)

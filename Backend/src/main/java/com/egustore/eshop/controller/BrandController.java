@@ -13,6 +13,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v0/brands")
 @Validated
+@CrossOrigin("*")
 public class BrandController {
 
     private final BrandService brandService;

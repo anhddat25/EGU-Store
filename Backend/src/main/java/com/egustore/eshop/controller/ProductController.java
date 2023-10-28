@@ -16,6 +16,7 @@ import java.util.List;
 @RestController
 @RequestMapping("api/v0/products")
 @Validated
+@CrossOrigin("*")
 public class ProductController {
     private final ProductService productService;
 
@@ -44,7 +45,7 @@ public class ProductController {
     //Show all categories
     @GetMapping("")
     public ResponseEntity<List<Product>> getAllProduct() {
-        List<Product> product = productService.getAllProduct();
+        List<Product> product = productService.getAllProducts();
         return ResponseEntity.ok(product);
     }
 

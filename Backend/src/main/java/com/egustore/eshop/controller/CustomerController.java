@@ -18,6 +18,7 @@ import java.util.List;
 @RestController
 @RequestMapping("api/v0/customers")
 @Validated
+@CrossOrigin("*")
 public class CustomerController {
     private final CustomerService customerService;
 
@@ -47,10 +48,15 @@ public class CustomerController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody @Valid CustomerLoginDTO customerLoginDTODTO, BindingResult result)
+    public ResponseEntity<String> login(@RequestBody @Valid CustomerLoginDTO customerLoginDTO, BindingResult result)
     {
+        try {
+            String token = customerService.login(customerLoginDTO.getEmail(),customerLoginDTO.getPassword());
+            return ResponseEntity.ok(token);
+        }  catch (Exception e) {
+            return  ResponseEntity.badRequest().body(e.getMessage());
+        }
 
-            return ResponseEntity.ok("Token");
 
     }
 
