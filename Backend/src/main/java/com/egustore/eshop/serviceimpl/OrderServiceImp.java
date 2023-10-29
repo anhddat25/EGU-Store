@@ -8,6 +8,8 @@ import com.egustore.eshop.service.OrderService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class OrderServiceImp implements OrderService {
 
@@ -21,8 +23,11 @@ public class OrderServiceImp implements OrderService {
     }
 
     @Override
-    public Order saveOrder(OrderDTO orderDTO) {
-        return orderRepository.save(orderMapper.toEntity(orderDTO));
+    public List<Order> saveOrders(List<OrderDTO> orderDTOList) {
+        List<Order> orders = orderDTOList.stream()
+                .map(orderMapper::toEntity)
+                .collect(Collectors.toList());
+        return orderRepository.saveAll(orders);
     }
 
     @Override

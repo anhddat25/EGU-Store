@@ -6,7 +6,7 @@ import com.egustore.eshop.model.Order;
 import java.util.List;
 
 public interface OrderService {
-    Order saveOrder(OrderDTO orderDTO);
+    List<Order> saveOrders(List<OrderDTO> orderDTOList);
     Order getOrderById(int id);
     List<Order> getAllOrders();
 
