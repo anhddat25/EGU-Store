@@ -16,19 +16,18 @@ import java.time.LocalDateTime;
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
-    @Column(name = "Email")
+    @Column(name = "email")
     private String email;
 
-    @Column(name = "Phone")
+    @Column(name = "phone")
     private String phone;
 
-    @Temporal(TemporalType.DATE)
     @Column(name = "order_date")
     private Date orderDate = new Date();
 
-    @Column(name = "Note")
+    @Column(name = "note")
     private String note;
 
     @Column(name = "status")

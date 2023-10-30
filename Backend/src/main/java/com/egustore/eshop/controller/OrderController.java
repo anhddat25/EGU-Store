@@ -26,7 +26,7 @@ public class OrderController {
 
     //Create Order
     @PostMapping("/create")
-    public ResponseEntity<?> createOrder(@RequestBody @Valid OrderDTO orderDTO, BindingResult result) {
+    public ResponseEntity<?> createOrder(@RequestBody @Valid List<OrderDTO> orderDTOList, BindingResult result) {
        try {
            if(result.hasErrors())
            {
@@ -36,7 +36,7 @@ public class OrderController {
                        .toList();
                return ResponseEntity.badRequest().body(errMessage);
            }
-           ResponseEntity.ok(orderService.saveOrder(orderDTO));
+           orderService.saveOrders(orderDTOList);
            return ResponseEntity.ok("Succes!");
 
        }catch (Exception e){
