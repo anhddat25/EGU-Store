@@ -43,16 +43,23 @@ public class WebSecurityConfig {
                                     "/api/v0/customers/login", "/api/v0/customers/register"
                             )
                             .permitAll()
+                            .requestMatchers(GET,
+                                    "/api/v0/categories").permitAll()
+                            .requestMatchers(POST,
+                                    "/api/v0/categories").hasAnyRole("ADMIN")
+                            .requestMatchers(PUT,
+                                    "/api/v0/categories").hasAnyRole(Role.ADMIN)
+                            .requestMatchers(GET,
+                                    "/api/v0/roles/").permitAll()
 //                            .requestMatchers(GET,
-//                                    "/api/v0/roles/").hasRole("MANAGER")
+//                                    "/api/v0/customers/**").permitAll()
 //                            .requestMatchers(GET,
 //                                    "/api/v0/products/").hasRole("MANAGER")
-//                            .requestMatchers(GET,
-//                                    "/api/v0/categories/").hasRole("MANAGER")
+
                             .requestMatchers(GET,
-                                    "/api/v0/orders/list").hasRole("MANAGER")
+                                    "/api/v0/orders/list").hasRole(Role.ADMIN)
                             .requestMatchers(POST,
-                                    "/api/v0/orders/create").hasRole("MANAGER")
+                                    "/api/v0/orders/create").hasRole("ADMIN")
 
                             .anyRequest().authenticated();
 

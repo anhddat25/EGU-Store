@@ -11,7 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "role")
+@Table(name = "roles")
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,6 +20,7 @@ public class Role {
     @Column(name = "name")
     private String name;
 
-    public static String MANAGER = "MANAGER";
+   public static String ADMIN = "ADMIN";
+
 
 }
