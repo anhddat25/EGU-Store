@@ -12,6 +12,7 @@ import java.util.Date;
 @Entity
 public class IncomeReport {
     @Id
+    @Temporal(TemporalType.DATE)
     private Date date;
     private Long orders;
 

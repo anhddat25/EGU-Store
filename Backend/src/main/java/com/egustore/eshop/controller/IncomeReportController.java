@@ -2,13 +2,16 @@ package com.egustore.eshop.controller;
 
 
 import com.egustore.eshop.dto.IncomeReportDTO;
-import com.egustore.eshop.model.OrderDetail;
+import com.egustore.eshop.model.IncomeReport;
 import com.egustore.eshop.service.IncomeReportService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -29,8 +32,23 @@ public class IncomeReportController {
         return ResponseEntity.ok(incomeReportService.getDefaultIncomeReport());
     }
 
-    @GetMapping("/byTime")
-    public ResponseEntity<List<IncomeReportDTO>> getAllOrderDetails(@RequestParam Date from, @RequestParam Date to) {
+//    @GetMapping(value = "/byTime")
+    @RequestMapping(value = "/byTime", method = RequestMethod.GET)
+    public ResponseEntity<List<IncomeReportDTO>> getAllOrderDetails(
+            @RequestParam(name = "from") @DateTimeFormat(pattern = "yyyy-MM-dd") Date from,
+            @RequestParam(name = "to") @DateTimeFormat(pattern = "yyyy-MM-dd") Date to
+    ) {
         return ResponseEntity.ok(incomeReportService.getAllIncomeReportByTime(from, to));
+//        try {
+//            if (from != null || to != null) {
+//                return ResponseEntity.ok(incomeReportService.getAllIncomeReportByTime(from, to));
+//            } else {
+//                System.out.println("du lieu null");
+//                return ResponseEntity.badRequest().body("Dữ liệu không hợp lệ: from hoặc to là null");
+//            }
+//        } catch (Exception e){
+//            e.printStackTrace();
+//            return ResponseEntity.badRequest().body("Dữ liệu không hợp lệ: from hoặc to là null" + e);
+//        }
     }
 }

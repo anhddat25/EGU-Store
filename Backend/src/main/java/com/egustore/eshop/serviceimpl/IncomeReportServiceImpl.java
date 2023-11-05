@@ -2,10 +2,10 @@ package com.egustore.eshop.serviceimpl;
 
 import com.egustore.eshop.dto.IncomeReportDTO;
 import com.egustore.eshop.mapper.IncomeReportMapper;
-import com.egustore.eshop.model.IncomeReport;
 import com.egustore.eshop.repository.IncomeReportRepository;
 import com.egustore.eshop.service.IncomeReportService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -24,8 +24,13 @@ public class IncomeReportServiceImpl implements IncomeReportService {
 
 
     @Override
-    public List<IncomeReportDTO> getAllIncomeReportByTime(Date from, Date to) {
-        return incomeReportMapper.toDTOList(incomeReportRepository.spSelectedByYear(from,to));
+    public List<IncomeReportDTO> getAllIncomeReportByTime(
+            @DateTimeFormat(pattern = "yyyy-MM-dd")Date from,
+            @DateTimeFormat(pattern = "yyyy-MM-dd") Date to) {
+
+            return incomeReportMapper.toDTOList(incomeReportRepository.spSelectedByYear(from, to));
+//            return incomeReportRepository.spSelectedByYear(from, to);
+
     }
 
     @Override
