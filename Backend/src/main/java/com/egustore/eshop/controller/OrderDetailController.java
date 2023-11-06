@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 @RestController
-@RequestMapping("/api/v0/order-details")
+@RequestMapping("/api/v0/orderdetail")
 @Validated
 @CrossOrigin("*")
 public class OrderDetailController {
@@ -38,7 +38,7 @@ public class OrderDetailController {
         return ResponseEntity.ok(orderDetailService.createOrderDetail(orderDetailDTO));
     }
 
-    @GetMapping("/list")
+    @GetMapping("")
     public ResponseEntity<List<OrderDetail>> getAllOrderDetails() {
         return ResponseEntity.ok(orderDetailService.getAllOrderDetails());
     }
@@ -59,5 +59,9 @@ public class OrderDetailController {
     public ResponseEntity<String> deleteOrder(@PathVariable int id) {
         orderDetailService.deleteOrderDetail(id);
         return ResponseEntity.ok("delete OrderDetail " + id);
+    }
+    @GetMapping("/{id}")
+    public ResponseEntity<OrderDetail> getOrderDetailById(@PathVariable int id) {
+        return ResponseEntity.ok(orderDetailService.getOrderDetailById(id));
     }
 }

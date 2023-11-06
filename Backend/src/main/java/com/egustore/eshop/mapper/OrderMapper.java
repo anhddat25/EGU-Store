@@ -7,7 +7,6 @@ import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.factory.Mappers;
 
-import java.util.List;
 @Mapper(componentModel = "spring")
 public interface OrderMapper {
     OrderMapper INSTANCE = Mappers.getMapper(OrderMapper.class);
@@ -16,4 +15,7 @@ public interface OrderMapper {
 
     @Mapping(source = "customer.id", target = "customerId")
     OrderDTO toDTO (Order order);
+    @Mapping(target = "id", ignore = true)
+    void updateOrderFromDTO(OrderDTO orderDTO, @MappingTarget Order order);
+
 }
