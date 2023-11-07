@@ -52,6 +52,15 @@ public class WebSecurityConfig {
                             .requestMatchers(GET,
                                     "/api/v0/income-reports/byTime**"
                             ).permitAll()
+                            .requestMatchers(GET,
+                                    "/api/v0/customer-reports/all-list"
+                                    , "/api/v0/customer-reports/buying-list"
+                                    , "/api/v0/customer-reports/none-buying-list"
+                                    ,"/api/v0/customer-reports/status"
+                            ).permitAll()
+                            .requestMatchers(GET,
+                                     "api/v0/customers"
+                            ).permitAll()
 //                            .requestMatchers(GET,
 //                                    "/api/v0/roles/").hasRole("MANAGER")
 //                            .requestMatchers(GET,

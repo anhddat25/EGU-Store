@@ -39,16 +39,5 @@ public class IncomeReportController {
             @RequestParam(name = "to") @DateTimeFormat(pattern = "yyyy-MM-dd") Date to
     ) {
         return ResponseEntity.ok(incomeReportService.getAllIncomeReportByTime(from, to));
-//        try {
-//            if (from != null || to != null) {
-//                return ResponseEntity.ok(incomeReportService.getAllIncomeReportByTime(from, to));
-//            } else {
-//                System.out.println("du lieu null");
-//                return ResponseEntity.badRequest().body("Dữ liệu không hợp lệ: from hoặc to là null");
-//            }
-//        } catch (Exception e){
-//            e.printStackTrace();
-//            return ResponseEntity.badRequest().body("Dữ liệu không hợp lệ: from hoặc to là null" + e);
-//        }
     }
 }
