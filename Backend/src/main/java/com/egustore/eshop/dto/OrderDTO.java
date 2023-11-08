@@ -15,6 +15,8 @@ public class OrderDTO {
 
     private String phone;
 
+    private  Date orderDate;
+
     private String note;
 
     private OrderStatus status;
