@@ -1,6 +1,10 @@
 package com.egustore.eshop.model;
 
 import com.egustore.eshop.enums.ImageStatus;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,20 +26,29 @@ public class Images {
     private String title;
 
     @Column(name = "image_url")
-    private String image_url;
+    private String imageUrl;
 
     @Temporal(TemporalType.DATE)
     @Column(name = "create_date")
-    private Date create_date;
+    private Date createDate;
 
     @Temporal(TemporalType.DATE)
     @Column(name = "update_date")
-    private Date update_date;
+    private Date updateDate;
 
-    @Column(name = "product_id")
-    private Integer product_id;
+//    @Column(name = "product_id", insertable=false, updatable=false)
+//    private Integer product_id;
 
     @Column(name = "status")
     @Enumerated(EnumType.STRING)
     private ImageStatus imageStatus;
+
+    @ManyToOne
+//    @JsonIgnore
+    @JsonIgnoreProperties("images")
+//    @JsonManagedReference
+//    @JsonBackReference
+    @JoinColumn(name = "product_id")
+    private Product products;
+
 }

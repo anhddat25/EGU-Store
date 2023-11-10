@@ -1,6 +1,7 @@
 package com.egustore.eshop.dto;
 
 import com.egustore.eshop.enums.ImageStatus;
+import com.egustore.eshop.model.Product;
 import lombok.Data;
 
 import java.util.Date;
@@ -12,13 +13,13 @@ public class ImageDTO {
 
     private String title;
 
-    private String image_url;
+    private String imageUrl;
 
-    private Date create_date;
+    private Date createDate;
 
-    private Date update_date;
+    private Date updateDate;
 
-    private Integer product_id;
+    private Product products;
 
     private ImageStatus imageStatus;
 }

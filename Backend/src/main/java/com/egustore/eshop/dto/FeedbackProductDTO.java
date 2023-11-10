@@ -2,6 +2,7 @@ package com.egustore.eshop.dto;
 
 import com.egustore.eshop.model.Customer;
 import com.egustore.eshop.model.Product;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,6 +19,9 @@ public class FeedbackProductDTO {
     private Date createDate;
     private Date updateDate;
     private Customer customer;
-    private Product product;
+    private Product products;
+
+//    @JsonProperty("product_id")
+//    private Integer productId;
 
 }

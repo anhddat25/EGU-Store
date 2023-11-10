@@ -24,10 +24,10 @@ public class SecurityConfig {
     @Bean
     public UserDetailsService userDetailsService(){
         return email ->  customerRepository
-                    .findByEmail(email)
-                    .orElseThrow(() ->
-                            new UsernameNotFoundException(
-                                    "Customer with email not found!"));
+                .findByEmail(email)
+                .orElseThrow(() ->
+                        new UsernameNotFoundException(
+                                "Customer with email not found!"));
     }
 
     @Bean

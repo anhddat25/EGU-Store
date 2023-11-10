@@ -1,12 +1,14 @@
 package com.egustore.eshop.dto;
 
 import com.egustore.eshop.enums.ProductStatus;
+import com.egustore.eshop.model.Images;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import lombok.Data;
 import java.sql.Date;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 public class ProductDTO {
@@ -17,6 +19,8 @@ public class ProductDTO {
     private String model;
 
     private Double price;
+
+    private String thumbImage;
 
     private Integer stockQuantity;
 
@@ -42,14 +46,9 @@ public class ProductDTO {
     @JsonProperty("origin_id")
     private Integer originId;
 
-
-
     private CategoryDTO category;
 
-
-
     private BrandDTO brand;
-
 
     private OriginDTO origin;
 

@@ -1,16 +1,21 @@
 package com.egustore.eshop.controller;
 
 import com.egustore.eshop.dto.ImageDTO;
+import com.egustore.eshop.enums.ImageStatus;
 import com.egustore.eshop.model.Images;
+import com.egustore.eshop.model.Product;
 import com.egustore.eshop.service.ImageService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -25,20 +30,20 @@ public class ImageController {
         this.imageService = imageService;
     }
     //Create images
-    @PostMapping("")
-    public ResponseEntity<?> createImages(@RequestBody @Valid ImageDTO imageDTO, BindingResult result)
-    {
-        if(result.hasErrors())
-        {
-            List<String> errMessage = result.getFieldErrors()
-                    .stream()
-                    .map(FieldError::getDefaultMessage)
-                    .toList();
-            return ResponseEntity.badRequest().body(errMessage);
-        }
-        imageService.createImage(imageDTO);
-        return ResponseEntity.ok("Create image successfully!");
-    }
+//    @PostMapping("")
+//    public ResponseEntity<?> createImages(@RequestBody @Valid ImageDTO imageDTO, BindingResult result)
+//    {
+//        if(result.hasErrors())
+//        {
+//            List<String> errMessage = result.getFieldErrors()
+//                    .stream()
+//                    .map(FieldError::getDefaultMessage)
+//                    .toList();
+//            return ResponseEntity.badRequest().body(errMessage);
+//        }
+//        imageService.createImage(imageDTO);
+//        return ResponseEntity.ok("Create image successfully!");
+//    }
 
     //Show all image
     @GetMapping("")
@@ -46,6 +51,8 @@ public class ImageController {
         List<Images> images = imageService.getAllImages();
         return ResponseEntity.ok(images);
     }
+
+
 
     @PutMapping("/{id}")
     public ResponseEntity<String> updateImages(@PathVariable int id,@RequestBody ImageDTO imageDTO) {
@@ -57,5 +64,14 @@ public class ImageController {
     public ResponseEntity<String> deleteImages(@PathVariable int id) {
         imageService.deleteImage(id);
         return ResponseEntity.ok("delete image " + id);
+    }
+    @PostMapping("/upload")
+    public ResponseEntity<?> uploadImageToFIleSystem(@RequestParam("imageUrl") MultipartFile files,
+                                                     @RequestParam("productId") Product productId,
+                                                     @RequestParam("updateDate") Date updateD,
+                                                     @RequestParam("imageStatus") ImageStatus status) throws Exception {
+        String uploadImage = imageService.uploadImageToGoogleDrive(files, productId, updateD, status);
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(uploadImage);
     }
 }

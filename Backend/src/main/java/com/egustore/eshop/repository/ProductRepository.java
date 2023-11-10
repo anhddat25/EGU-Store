@@ -14,6 +14,7 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
     @Query (value = "UPDATE Product p SET p.name = :#{#productDTO.name}, " +
             "p.model = :#{#productDTO.model}, " +
             "p.price = :#{#productDTO.price}, " +
+            "p.thumbImage = :#{#productDTO.thumbImage}, " +
             "p.stockQuantity = :#{#productDTO.stockQuantity}, " +
             "p.description = :#{#productDTO.description}," +
             "p.discountPercentage = :#{#productDTO.discountPercentage}, " +
@@ -24,5 +25,4 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
             "p.originId = :#{#productDTO.originId} " +
             "WHERE p.Id = :id")
     Integer updateProductById(@Param("productDTO") ProductDTO productDTO, @Param("id") int id);
-
 }

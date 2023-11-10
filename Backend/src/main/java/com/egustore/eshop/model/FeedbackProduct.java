@@ -1,5 +1,6 @@
 package com.egustore.eshop.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,7 +9,7 @@ import lombok.NoArgsConstructor;
 import java.util.Date;
 
 @Entity
-@Table(name = "feedback_product")
+@Table(name = "feedbackProducts")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -19,7 +20,7 @@ public class FeedbackProduct {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "name_customer")
+    @Column(name = "name_user")
     private String nameCustomer;
 
     @Column(name = "comment")
@@ -37,9 +38,13 @@ public class FeedbackProduct {
     @ManyToOne
     @JoinColumn(name = "customer_id")
     private Customer customer;
-    @ManyToOne
-    @JoinColumn(name = "product_id")
-    private Product product;
 
+    @ManyToOne
+//    @JsonIgnoreProperties("feedbackProducts")
+    @JoinColumn(name = "product_id")
+    private Product products;
+
+//    @Column(name = "product_id", insertable=false, updatable=false)
+//    private Integer productId;
 
 }
