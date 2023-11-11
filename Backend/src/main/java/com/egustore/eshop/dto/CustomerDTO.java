@@ -51,6 +51,6 @@ public class CustomerDTO {
 
     private RoleDTO role;
 
-//    @NotBlank(message = "Không được để trống trạng thái!")
+    @Enumerated(EnumType.STRING)
     private CustomerStatus status;
 }

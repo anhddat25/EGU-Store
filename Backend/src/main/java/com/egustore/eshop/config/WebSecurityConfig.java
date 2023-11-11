@@ -1,6 +1,7 @@
 package com.egustore.eshop.config;
 
 
+//import com.egustore.eshop.filters.JwtTokenFilter;
 import com.egustore.eshop.model.Role;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -39,7 +40,7 @@ public class WebSecurityConfig {
 //                .addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class)
                 .authorizeHttpRequests(requests -> {
                     requests
-                            .requestMatchers(
+                            .requestMatchers( "**",
                                     "/api/v0/customers/login", "/api/v0/customers/register"
                             )
                             .permitAll()
@@ -59,7 +60,7 @@ public class WebSecurityConfig {
                                     ,"/api/v0/customer-reports/status"
                             ).permitAll()
                             .requestMatchers(GET,
-                                     "api/v0/customers"
+                                    "api/v0/customers"
                             ).permitAll()
 //                            .requestMatchers(GET,
 //                                    "/api/v0/roles/").hasRole("MANAGER")
@@ -70,9 +71,11 @@ public class WebSecurityConfig {
 //                            .requestMatchers(GET,
 //                                    "/api/v0/orders/list").hasRole("MANAGER")
                             .requestMatchers(GET,
-                                    "/api/v0/orders/list").permitAll()
+                                    "/api/v0/orders").permitAll()
                             .requestMatchers(GET,
-                                    "/api/v0/order-details/list").permitAll()
+                                    "/api/v0/order-details").permitAll()
+                            .requestMatchers(PUT,
+                                    "/api/v0/orders/status/**").hasAnyRole("")
                             .anyRequest().authenticated();
 
 

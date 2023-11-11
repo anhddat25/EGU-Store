@@ -1,6 +1,7 @@
 package com.egustore.eshop.serviceimpl;
 
 import com.egustore.eshop.dto.OrderDetailDTO;
+import com.egustore.eshop.model.Order;
 import com.egustore.eshop.model.OrderDetail;
 import com.egustore.eshop.mapper.OrderDetailMapper;
 import com.egustore.eshop.repository.OrderDetailRepository;
@@ -34,6 +35,11 @@ public class OrderDetailServiceImp implements OrderDetailService {
     }
 
     @Override
+    public List<OrderDetailDTO> getOrderDetailByOrderID(Integer id) {
+        return orderDetailMapper.toDTOList(orderDetailRepository.getOrderDetailByOrderID(id));
+    }
+
+    @Override
     public List<OrderDetail> getAllOrderDetails() {
         return orderDetailRepository.findAll();
     }
@@ -47,4 +53,5 @@ public class OrderDetailServiceImp implements OrderDetailService {
     public void deleteOrderDetail(int id) {
         orderDetailRepository.deleteById(id);
     }
+
 }

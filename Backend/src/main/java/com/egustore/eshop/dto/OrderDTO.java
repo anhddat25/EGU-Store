@@ -29,4 +29,9 @@ public class OrderDTO {
     private Integer customerId;
 
     private CustomerDTO customer;
+
+    @JsonProperty("order_details_id")
+    private Integer orderdetailId;
+
+    private OrderDetailDTO orderdetail;
 }

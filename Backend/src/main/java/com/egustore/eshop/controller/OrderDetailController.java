@@ -1,6 +1,7 @@
 package com.egustore.eshop.controller;
 
 import com.egustore.eshop.dto.OrderDetailDTO;
+import com.egustore.eshop.model.Order;
 import com.egustore.eshop.model.OrderDetail;
 import com.egustore.eshop.service.OrderDetailService;
 import jakarta.validation.Valid;
@@ -63,5 +64,9 @@ public class OrderDetailController {
     @GetMapping("/{id}")
     public ResponseEntity<OrderDetail> getOrderDetailById(@PathVariable int id) {
         return ResponseEntity.ok(orderDetailService.getOrderDetailById(id));
+    }
+    @GetMapping("/getorderdetailbyorderid/{id}")
+    public ResponseEntity<List<OrderDetailDTO>>getOrderDetailByOrderID(@PathVariable Integer id) {
+        return ResponseEntity.ok(orderDetailService.getOrderDetailByOrderID(id));
     }
 }

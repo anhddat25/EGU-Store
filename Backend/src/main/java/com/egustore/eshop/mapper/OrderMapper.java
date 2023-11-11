@@ -14,6 +14,7 @@ public interface OrderMapper {
     Order toEntity(OrderDTO orderDTO);
 
     @Mapping(source = "customer.id", target = "customerId")
+    @Mapping(source = "orderdetail.id", target = "orderdetailId")
     OrderDTO toDTO (Order order);
     @Mapping(target = "id", ignore = true)
     void updateOrderFromDTO(OrderDTO orderDTO, @MappingTarget Order order);

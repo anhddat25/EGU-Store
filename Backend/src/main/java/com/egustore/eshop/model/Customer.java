@@ -17,7 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "customer")
+@Table(name = "customers")
 public class Customer implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -61,6 +61,9 @@ public class Customer implements UserDetails {
     @ManyToOne
     @JoinColumn(name = "role_id")
     private Role role;
+
+    @Column(name = "role_id", insertable=false, updatable=false)
+    private Integer roleId;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
