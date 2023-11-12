@@ -25,9 +25,9 @@ import static org.springframework.http.HttpMethod.*;
 
 
 @Configuration
-@EnableMethodSecurity
+//@EnableMethodSecurity
 @EnableWebSecurity
-//@EnableWebMvc
+@EnableWebMvc
 @RequiredArgsConstructor
 public class WebSecurityConfig {
     private final JwtTokenFilter jwtTokenFilter;
@@ -45,6 +45,8 @@ public class WebSecurityConfig {
                             .permitAll()
                             .requestMatchers(GET,
                                     "/api/v0/categories").permitAll()
+                            .requestMatchers(GET,
+                                    "/api/v0/products**").permitAll()
                             .requestMatchers(POST,
                                     "/api/v0/categories").hasAnyRole("ADMIN")
                             .requestMatchers(PUT,

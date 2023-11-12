@@ -2,6 +2,7 @@ package com.egustore.eshop.serviceimpl;
 
 
 import com.egustore.eshop.component.JwtTokenUtil;
+import com.egustore.eshop.controller.ProductController;
 import com.egustore.eshop.dto.CustomerDTO;
 import com.egustore.eshop.mapper.CustomerMapper;
 import com.egustore.eshop.model.Customer;
@@ -9,6 +10,8 @@ import com.egustore.eshop.model.Role;
 import com.egustore.eshop.repository.CustomerRepository;
 import com.egustore.eshop.repository.RoleRepository;
 import com.egustore.eshop.service.CustomerService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -21,6 +24,8 @@ import java.util.Optional;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(ProductController.class);
     private final CustomerRepository customerRepository;
     private final RoleRepository roleRepository;
     private final CustomerMapper customerMapper;
@@ -82,6 +87,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public String login(String email, String password) throws Exception{
+        LOGGER.info(String.format("email = %s", email));
         Optional<Customer> optionalCustomer = customerRepository.findByEmail(email);
         if (optionalCustomer.isEmpty()){
             throw  new Exception("Invalid");
