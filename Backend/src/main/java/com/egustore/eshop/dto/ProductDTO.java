@@ -1,6 +1,9 @@
 package com.egustore.eshop.dto;
 
+import com.egustore.eshop.enums.ProductStatus;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import lombok.Data;
 import java.sql.Date;
 import java.time.LocalDateTime;
@@ -27,7 +30,8 @@ public class ProductDTO {
 
     private String discountPrice;
 
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private ProductStatus status;
 
     @JsonProperty("category_id")
     private Integer categoryId;
@@ -38,11 +42,18 @@ public class ProductDTO {
     @JsonProperty("origin_id")
     private Integer originId;
 
-    private BrandDTO brand;
+
 
     private CategoryDTO category;
 
-    private OriginDTO origins;
+
+
+    private BrandDTO brand;
+
+
+    private OriginDTO origin;
+
+
 
 
 }

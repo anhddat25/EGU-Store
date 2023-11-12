@@ -1,6 +1,7 @@
 package com.egustore.eshop.model;
 
 import com.egustore.eshop.enums.OrderStatus;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -44,6 +45,17 @@ public class Order {
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
+    @Column(name = "customer_id", insertable=false, updatable=false)
+    private Integer customerId;
+
+    @ManyToOne
+    @JsonIgnoreProperties("order")
+    @JoinColumn(name = "order_details_id")
+    private OrderDetail orderdetail;
+
+
+    @Column(name = "order_details_id", insertable=false, updatable=false)
+    private Integer orderdetailId;
 //    @OneToMany(mappedBy = "order")
 //    private List<OrderDetail> orderDetail;
 }

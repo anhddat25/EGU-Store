@@ -14,6 +14,8 @@ public class OrderDTO {
 
     private String phone;
 
+    private  Date orderDate;
+
     private String note;
 
     private OrderStatus status;
@@ -26,4 +28,9 @@ public class OrderDTO {
     private Integer customerId;
 
     private CustomerDTO customer;
+
+    @JsonProperty("order_details_id")
+    private Integer orderdetailId;
+
+    private OrderDetailDTO orderdetail;
 }

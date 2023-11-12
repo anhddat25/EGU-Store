@@ -2,6 +2,7 @@ package com.egustore.eshop.controller;
 
 import com.egustore.eshop.dto.OrderDTO;
 import com.egustore.eshop.model.Order;
+import com.egustore.eshop.model.Product;
 import com.egustore.eshop.service.OrderService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
@@ -45,8 +46,7 @@ public class OrderController {
 
     }
 
-    //    //Show all categories
-    @GetMapping("/list")
+    @GetMapping(" ")
     public ResponseEntity<List<Order>> getAllCategories() {
         return ResponseEntity.ok(orderService.getAllOrders());
     }
@@ -56,16 +56,24 @@ public class OrderController {
 //        return ResponseEntity.ok(orderService.getOrderById(id));
 //    }
 
-//    @PutMapping("/update/{id}")
-//    public ResponseEntity<String> updateCategory(@PathVariable int id,@RequestBody OrderDTO orderDTO) {
-//        orderService.updateOrder(id,orderDTO);
-//        return ResponseEntity.ok("update Order " + id);
-//    }
+    @PutMapping("/{id}")
+    public ResponseEntity<String> updateOrderById(@PathVariable int id,@RequestBody OrderDTO orderDTO) {
+        orderService.updateOrderById(orderDTO, id);
+        return ResponseEntity.ok("update Order " + id);
+    }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteOrder(@PathVariable int id) {
         orderService.deleteOrder(id);
         return ResponseEntity.ok("delete order " + id);
     }
-
+    @GetMapping("/{id}")
+    public ResponseEntity<Order> getOrderById(@PathVariable int id) {
+        return ResponseEntity.ok(orderService.getOrderById(id));
+    }
+    @PutMapping("/status/{id}")
+    public ResponseEntity<String> updateOrderStatus(@PathVariable int id,@RequestBody OrderDTO orderDTO) {
+        orderService.updateOrderStatus(orderDTO, id);
+        return ResponseEntity.ok("update Order " + id);
+    }
 }

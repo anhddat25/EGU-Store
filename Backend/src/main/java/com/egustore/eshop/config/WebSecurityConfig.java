@@ -1,6 +1,7 @@
 package com.egustore.eshop.config;
 
-import com.egustore.eshop.filters.JwtTokenFilter;
+
+//import com.egustore.eshop.filters.JwtTokenFilter;
 import com.egustore.eshop.model.Role;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -30,30 +31,51 @@ import static org.springframework.http.HttpMethod.*;
 //@EnableWebMvc
 @RequiredArgsConstructor
 public class WebSecurityConfig {
-    private final JwtTokenFilter jwtTokenFilter;
+//    private final JwtTokenFilter jwtTokenFilter;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(AbstractHttpConfigurer::disable)
-                .addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class)
+//                .addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class)
                 .authorizeHttpRequests(requests -> {
                     requests
-                            .requestMatchers(
+                            .requestMatchers( "**",
                                     "/api/v0/customers/login", "/api/v0/customers/register"
                             )
                             .permitAll()
+                            .requestMatchers(GET,
+                                    "api/v0/products"
+                            ).permitAll()
+                            .requestMatchers(GET,
+                                    "api/v0/income-reports/default-list"
+                            ).permitAll()
+                            .requestMatchers(GET,
+                                    "/api/v0/income-reports/byTime**"
+                            ).permitAll()
+                            .requestMatchers(GET,
+                                    "/api/v0/customer-reports/all-list"
+                                    , "/api/v0/customer-reports/buying-list"
+                                    , "/api/v0/customer-reports/none-buying-list"
+                                    ,"/api/v0/customer-reports/status"
+                            ).permitAll()
+                            .requestMatchers(GET,
+                                    "api/v0/customers"
+                            ).permitAll()
 //                            .requestMatchers(GET,
 //                                    "/api/v0/roles/").hasRole("MANAGER")
 //                            .requestMatchers(GET,
 //                                    "/api/v0/products/").hasRole("MANAGER")
 //                            .requestMatchers(GET,
 //                                    "/api/v0/categories/").hasRole("MANAGER")
+//                            .requestMatchers(GET,
+//                                    "/api/v0/orders/list").hasRole("MANAGER")
                             .requestMatchers(GET,
-                                    "/api/v0/orders/list").hasRole("MANAGER")
-                            .requestMatchers(POST,
-                                    "/api/v0/orders/create").hasRole("MANAGER")
-
+                                    "/api/v0/orders").permitAll()
+                            .requestMatchers(GET,
+                                    "/api/v0/order-details").permitAll()
+                            .requestMatchers(PUT,
+                                    "/api/v0/orders/status/**").hasAnyRole("")
                             .anyRequest().authenticated();
 
 

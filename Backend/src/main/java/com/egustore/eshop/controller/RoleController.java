@@ -1,10 +1,7 @@
 package com.egustore.eshop.controller;
 
-import com.egustore.eshop.dto.CustomerDTO;
 import com.egustore.eshop.dto.RoleDTO;
-import com.egustore.eshop.model.Customer;
 import com.egustore.eshop.model.Role;
-import com.egustore.eshop.service.CustomerService;
 import com.egustore.eshop.service.RoleService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,5 +55,10 @@ public class RoleController {
     public ResponseEntity<String> deleteRole(@PathVariable int id) {
         roleService.deleteRole(id);
         return ResponseEntity.ok("delete role " + id);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Role> getRoleById(@PathVariable int id) {
+        return ResponseEntity.ok(roleService.getRoleById(id));
     }
 }

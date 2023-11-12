@@ -63,6 +63,9 @@ public class Customer implements UserDetails {
     @JoinColumn(name = "role_id")
     private Role roleId;
 
+    @Column(name = "role_id", insertable=false, updatable=false)
+    private Integer roleId;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<SimpleGrantedAuthority> authorityList = new ArrayList<>();
