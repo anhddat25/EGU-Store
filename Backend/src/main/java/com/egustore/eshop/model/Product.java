@@ -73,16 +73,12 @@ public class Product extends BaseEntity {
     @JoinColumn(name = "origin_id")
     private Origin origin;
 
-    @JsonIgnore
+//    @JsonIgnore
     @JsonIgnoreProperties("products")
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "products")
 //    @JsonManagedReference
 //    @JsonBackReference
     private List<Images> images;
-
-    @JsonIgnoreProperties("products")
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "products")
-    private List<FeedbackProduct> feedbackProducts;
 
     @Column(name = "origin_id", insertable=false, updatable=false)
     private Integer originId;

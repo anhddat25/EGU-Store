@@ -3,9 +3,7 @@ package com.egustore.eshop.serviceimpl;
 import com.egustore.eshop.dto.FeedbackProductDTO;
 import com.egustore.eshop.mapper.FeedbackProductMapper;
 import com.egustore.eshop.model.FeedbackProduct;
-import com.egustore.eshop.model.Product;
 import com.egustore.eshop.repository.FeedbackProductRepository;
-import com.egustore.eshop.repository.ProductRepository;
 import com.egustore.eshop.service.FeedbackProductService;
 import org.springframework.stereotype.Service;
 
@@ -18,12 +16,9 @@ public class FeedbackProductServiceImpl implements FeedbackProductService {
 
     private final FeedbackProductRepository feedbackProductRepository;
     private final FeedbackProductMapper feedbackProductMapper;
-
-    private final ProductRepository productRepository;
-    public FeedbackProductServiceImpl(FeedbackProductRepository feedbackProductRepository, FeedbackProductMapper feedbackProductMapper, ProductRepository productRepository) {
+    public FeedbackProductServiceImpl(FeedbackProductRepository feedbackProductRepository, FeedbackProductMapper feedbackProductMapper) {
         this.feedbackProductRepository = feedbackProductRepository;
         this.feedbackProductMapper = feedbackProductMapper;
-        this.productRepository = productRepository;
     }
 
     @Override
@@ -34,7 +29,7 @@ public class FeedbackProductServiceImpl implements FeedbackProductService {
 
     @Override
     public List<FeedbackProduct> getFeedbackByProductId(int productId) {
-        return feedbackProductRepository.findByProducts_Id(productId);
+        return feedbackProductRepository.findByProductId(productId);
     }
 
 
