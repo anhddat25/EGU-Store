@@ -4,8 +4,7 @@ import com.egustore.eshop.enums.OrderStatus;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
-import java.util.Date;
-
+import java.time.LocalDateTime;
 
 @Data
 public class OrderDTO {
@@ -29,4 +28,9 @@ public class OrderDTO {
     private Integer customerId;
 
     private CustomerDTO customer;
+
+    @JsonProperty("order_details_id")
+    private Integer orderdetailId;
+
+    private OrderDetailDTO orderdetail;
 }

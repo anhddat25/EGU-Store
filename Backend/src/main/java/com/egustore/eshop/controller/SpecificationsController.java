@@ -42,7 +42,7 @@ public class SpecificationsController {
     }
 
     //    //Show all categories
-    @GetMapping("")
+    @GetMapping("/list")
     public ResponseEntity<List<Specifications>> getAllPayment() {
         List<Specifications> specifications = specificationsService.getAllSpec();
         return ResponseEntity.ok(specifications);

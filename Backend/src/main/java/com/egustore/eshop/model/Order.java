@@ -1,34 +1,34 @@
 package com.egustore.eshop.model;
 
 import com.egustore.eshop.enums.OrderStatus;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Date;
 
+import java.time.LocalDateTime;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity
-@Table(name = "Orders")
+@Table(name = "orders")
 public class Order {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
-    @Column(name = "Email")
+    @Column(name = "email")
     private String email;
 
-    @Column(name = "Phone")
+    @Column(name = "phone")
     private String phone;
 
-    @Temporal(TemporalType.DATE)
     @Column(name = "order_date")
     private Date orderDate = new Date();
 
-    @Column(name = "Note")
+    @Column(name = "note")
     private String note;
 
     @Column(name = "status")
@@ -47,6 +47,15 @@ public class Order {
 
     @Column(name = "customer_id", insertable=false, updatable=false)
     private Integer customerId;
+
+    @ManyToOne
+    @JsonIgnoreProperties("order")
+    @JoinColumn(name = "order_details_id")
+    private OrderDetail orderdetail;
+
+
+    @Column(name = "order_details_id", insertable=false, updatable=false)
+    private Integer orderdetailId;
 //    @OneToMany(mappedBy = "order")
 //    private List<OrderDetail> orderDetail;
 }

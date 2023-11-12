@@ -46,7 +46,7 @@ public class ImageController {
 //    }
 
     //Show all image
-    @GetMapping("")
+    @GetMapping("/list")
     public ResponseEntity<List<Images>> getAllImages() {
         List<Images> images = imageService.getAllImages();
         return ResponseEntity.ok(images);
@@ -60,7 +60,7 @@ public class ImageController {
         return ResponseEntity.ok("update image ");
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteImages(@PathVariable int id) {
         imageService.deleteImage(id);
         return ResponseEntity.ok("delete image " + id);

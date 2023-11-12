@@ -1,6 +1,7 @@
 package com.egustore.eshop.controller;
 
 import com.egustore.eshop.dto.OrderDetailDTO;
+import com.egustore.eshop.model.Order;
 import com.egustore.eshop.model.OrderDetail;
 import com.egustore.eshop.service.OrderDetailService;
 import jakarta.validation.Valid;
@@ -12,6 +13,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
 @RestController
 @RequestMapping("/api/v0/orderdetail")
 @Validated
@@ -24,9 +26,14 @@ public class OrderDetailController {
         this.orderDetailService = orderDetailService;
     }
 
-    //Create Order
+    @Autowired
+    public OrderDetailController(OrderDetailService orderDetailService) {
+        this.orderDetailService = orderDetailService;
+    }
+    //Create category
     @PostMapping("/create")
-    public ResponseEntity<?> createOrder(@RequestBody @Valid OrderDetailDTO orderDetailDTO, BindingResult result) {
+    public ResponseEntity<?> createOrderDetail(@RequestBody @Valid OrderDetailDTO orderDetailDTO, BindingResult result)
+    {
         if(result.hasErrors())
         {
             List<String> errMessage = result.getFieldErrors()
@@ -56,12 +63,16 @@ public class OrderDetailController {
 //    }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> deleteOrder(@PathVariable int id) {
+    public ResponseEntity<String> deleteOrderDetail(@PathVariable int id) {
         orderDetailService.deleteOrderDetail(id);
-        return ResponseEntity.ok("delete OrderDetail " + id);
+        return ResponseEntity.ok("delete orderDetail " + id);
     }
     @GetMapping("/{id}")
     public ResponseEntity<OrderDetail> getOrderDetailById(@PathVariable int id) {
         return ResponseEntity.ok(orderDetailService.getOrderDetailById(id));
+    }
+    @GetMapping("/getorderdetailbyorderid/{id}")
+    public ResponseEntity<List<OrderDetailDTO>>getOrderDetailByOrderID(@PathVariable Integer id) {
+        return ResponseEntity.ok(orderDetailService.getOrderDetailByOrderID(id));
     }
 }

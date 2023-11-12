@@ -15,18 +15,25 @@ import java.util.Date;
 public class RatingProduct {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
+
     @Column(name = "name_customer")
     private String nameCustomer;
-    private int rating;
+
+    @Column(name = "rating")
+    private Integer rating;
+
     @Column(name = "create_date")
     private Date createDate;
+
     @Column(name = "update_date")
     private Date updateDate;
+
     @ManyToOne
     @JoinColumn(name = "customer_id")
-    private Customer customer;
+    private Customer customerId;
+
     @ManyToOne
-    @JoinColumn(name = "product_id")
-    private Product product;
+    @JoinColumn(name = "product-id")
+    private Product productId;
 }

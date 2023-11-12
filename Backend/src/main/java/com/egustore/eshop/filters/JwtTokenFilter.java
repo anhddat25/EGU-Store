@@ -82,7 +82,16 @@
 //                Pair.of("/api/v0/categories", "POST"),
 //                Pair.of("/api/v0/product/create", "POST"),
 //                Pair.of("/api/v0/customers/login", "POST"),
-//                Pair.of("/api/v0/customers/register", "POST")
+//                Pair.of("/api/v0/customers/register", "POST"),
+//                Pair.of("/api/v0/orders","GET"),
+//                Pair.of("/api/v0/income-reports/default-list", "GET"),
+//                Pair.of("/api/v0/income-reports/byTime", "GET"),
+//                Pair.of("/api/v0/order-details","GET"),
+//                Pair.of("/api/v0/customer-reports/all-list","GET"),
+//                Pair.of("/api/v0/customer-reports/none-buying-list","GET"),
+//                Pair.of("/api/v0/customer-reports/buying-list","GET"),
+//                Pair.of("/api/v0/customer-reports/status","GET"),
+//                Pair.of("api/v0/customers","GET")
 //        );
 //        for(Pair<String,String> bypassToken: bypassTokens ){
 //            if (request.getServletPath().contains(bypassToken.getFirst()) &&
@@ -93,3 +102,4 @@
 //        return false;
 //    }
 //}
+//

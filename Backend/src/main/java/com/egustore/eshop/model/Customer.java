@@ -29,6 +29,7 @@ public class Customer implements UserDetails {
     @Column(name = "last_name")
     private String lastName;
 
+    @Temporal(TemporalType.DATE)
     @Column(name = "date_of_birth")
     private Date dateOfBirth;
 
@@ -60,7 +61,10 @@ public class Customer implements UserDetails {
 
     @ManyToOne
     @JoinColumn(name = "role_id")
-    private Role role;
+    private Role roleId;
+
+    @Column(name = "role_id", insertable=false, updatable=false)
+    private Integer roleId;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

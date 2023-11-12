@@ -14,6 +14,8 @@ public class CategoryDTO {
 
     private String description;
 
-    private CategoryStatus status;
+    private String title;
+
+    private CategoryStatus categoryStatus;
 
 }

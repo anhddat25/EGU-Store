@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v0/orders")
+@RequestMapping("api/v0/orders")
 @Validated
 @CrossOrigin("*")
 public class OrderController {
@@ -27,7 +27,7 @@ public class OrderController {
 
     //Create Order
     @PostMapping("/create")
-    public ResponseEntity<?> createOrder(@RequestBody @Valid OrderDTO orderDTO, BindingResult result) {
+    public ResponseEntity<?> createOrder(@RequestBody @Valid List<OrderDTO> orderDTOList, BindingResult result) {
        try {
            if(result.hasErrors())
            {
@@ -37,7 +37,7 @@ public class OrderController {
                        .toList();
                return ResponseEntity.badRequest().body(errMessage);
            }
-           ResponseEntity.ok(orderService.saveOrder(orderDTO));
+           orderService.saveOrders(orderDTOList);
            return ResponseEntity.ok("Succes!");
 
        }catch (Exception e){
@@ -65,7 +65,7 @@ public class OrderController {
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteOrder(@PathVariable int id) {
         orderService.deleteOrder(id);
-        return ResponseEntity.ok("delete Order " + id);
+        return ResponseEntity.ok("delete order " + id);
     }
     @GetMapping("/{id}")
     public ResponseEntity<Order> getOrderById(@PathVariable int id) {

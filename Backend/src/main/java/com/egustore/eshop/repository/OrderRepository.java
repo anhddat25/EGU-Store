@@ -1,6 +1,5 @@
 package com.egustore.eshop.repository;
 
-import com.egustore.eshop.dto.OrderDTO;
 import com.egustore.eshop.model.Order;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -31,4 +30,3 @@ public interface OrderRepository extends JpaRepository<Order, Integer> {
             "WHERE o.id = :id")
     Integer updateOrderStatus(@Param("orderDTO") OrderDTO orderDTO, @Param("id") int id);
 }
-

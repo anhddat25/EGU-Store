@@ -42,19 +42,19 @@ public class PaymentController {
     }
 
     //    //Show all categories
-    @GetMapping("")
+    @GetMapping("/list")
     public ResponseEntity<List<Payment>> getAllPayment() {
         List<Payment> payment = paymentService.getAllPayment();
         return ResponseEntity.ok(payment);
     }
 
-    @PutMapping("/{version}")
+    @PutMapping("/update/{version}")
     public ResponseEntity<String> updatePayment(@PathVariable int version,@RequestBody PaymentDTO paymentDTO) {
         paymentService.updatePayment(version,paymentDTO);
         return ResponseEntity.ok("update payment ");
     }
 
-    @DeleteMapping("/{version}")
+    @DeleteMapping("/delete/{version}")
     public ResponseEntity<String> deletePayment(@PathVariable int version) {
         paymentService.deletePayment(version);
         return ResponseEntity.ok("delete Payment " + version);

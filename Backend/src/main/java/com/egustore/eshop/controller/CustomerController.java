@@ -68,13 +68,13 @@ public class CustomerController {
         return ResponseEntity.ok(customers);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/update/{id}")
     public ResponseEntity<String> updateCustomer(@PathVariable int id,@RequestBody CustomerDTO customerDTO) {
         customerService.updateCustomer(id,customerDTO);
         return ResponseEntity.ok("update customer ");
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteCustomer(@PathVariable int id) {
         customerService.deleteCustomer(id);
         return ResponseEntity.ok("delete customer " + id);

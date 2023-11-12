@@ -28,9 +28,11 @@ public class FeedbackProduct {
     @Column(name = "status")
     private String status;
 
+    @Temporal(TemporalType.DATE)
     @Column(name = "create_date")
     private Date createDate;
 
+    @Temporal(TemporalType.DATE)
     @Column(name = "update_date")
     private Date updateDate;
 
