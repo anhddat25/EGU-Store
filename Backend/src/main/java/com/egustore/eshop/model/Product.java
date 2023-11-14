@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
 
 
 @Data
@@ -25,6 +26,12 @@ public class Product extends BaseEntity {
 
     @Column(name = "model")
     private String model;
+
+    @Column(name = "create_date")
+    private LocalDateTime createDate;
+
+    @Column(name = "update_date")
+    private LocalDateTime updateDate;
 
     @Column(name = "price")
     private Double price;
