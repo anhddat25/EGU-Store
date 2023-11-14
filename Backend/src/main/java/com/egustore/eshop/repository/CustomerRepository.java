@@ -17,8 +17,8 @@ public interface CustomerRepository extends JpaRepository<Customer, Integer> {
     @Modifying
     @Transactional
     @Query(value = "UPDATE Customer c SET " +
-            "c.status = :#{#customerDTO.status} " +
-            "c.role = :#{#customerDTO.role} " +
-            "WHERE c.id = :id")
-    Integer updateStatusCustomer(@Param("customerDTO") CustomerDTO customerDTO, @Param("id") Integer id);
+            "c.status = :#{#customerDTO.status}, " +
+            "c.roleId = :#{#customerDTO.roleId} " +
+            "WHERE c.Id = :id")
+    Integer updateStatusCustomer(@Param("customerDTO") CustomerDTO customerDTO, @Param("id") int id);
 }

@@ -75,7 +75,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Integer updateStatusCustomer(Integer id, CustomerDTO customerDTO) {
+    public Integer updateStatusCustomer(CustomerDTO customerDTO, int id) {
         return customerRepository.updateStatusCustomer(customerDTO, id);
     }
 
