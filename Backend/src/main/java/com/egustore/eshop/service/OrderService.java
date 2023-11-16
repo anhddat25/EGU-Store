@@ -11,9 +11,9 @@ public interface OrderService {
     Order getOrderById(int id);
     List<Order> getAllOrders();
 
-//    Integer updateOrder(int id, OrderDTO orderDTO);
-    void deleteOrder(int id);
     Integer updateOrderById(OrderDTO orderDTO, int id);
+    void deleteOrder(int id);
+//    Integer updateOrderById(OrderDTO orderDTO, int id);
     Integer updateOrderStatus(OrderDTO orderDTO, int id);
     Order updateOrder(int id, OrderDTO Order);
 //    Order saveOrder1(Order order);

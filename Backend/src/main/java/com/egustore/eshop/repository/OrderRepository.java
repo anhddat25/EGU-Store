@@ -20,7 +20,8 @@ public interface OrderRepository extends JpaRepository<Order, Integer> {
             "o.status = :#{#orderDTO.status}, " +
             "o.paymentMethod = :#{#orderDTO.paymentMethod}, " +
             "o.discountPrice = :#{#orderDTO.discountPrice}, " +
-            "o.customerId = :#{#orderDTO.customerId} " +  // Remove the extra comma
+            "o.customerId = :#{#orderDTO.customerId} " +
+            // Remove the extra comma
             "WHERE o.id = :id")
     Integer updateOrderById(@Param("orderDTO") OrderDTO orderDTO, @Param("id") int id);
 

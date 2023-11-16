@@ -12,7 +12,7 @@ public interface OrderMapper {
     OrderMapper INSTANCE = Mappers.getMapper(OrderMapper.class);
 
     Order toEntity(OrderDTO orderDTO);
-
+    @Mapping(source = "address.id", target = "addressId")
     @Mapping(source = "customer.id", target = "customerId")
     @Mapping(source = "orderdetail.id", target = "orderdetailId")
     OrderDTO toDTO (Order order);

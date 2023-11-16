@@ -25,6 +25,7 @@ public class Order {
     @Column(name = "Phone")
     private String phone;
 
+
     @Temporal(TemporalType.DATE)
     @Column(name = "order_date")
     private Date orderDate = new Date();
@@ -57,6 +58,15 @@ public class Order {
 
     @Column(name = "order_details_id", insertable=false, updatable=false)
     private Integer orderdetailId;
+
+    @ManyToOne
+    @JsonIgnoreProperties("order")
+    @JoinColumn(name = "address_id")
+    private Address address;
+
+
+    @Column(name = "address_id", insertable=false, updatable=false)
+    private Integer addressId;
 //    @OneToMany(mappedBy = "order")
 //    private List<OrderDetail> orderDetail;
 }
