@@ -18,4 +18,6 @@ public interface CustomerService {
     void deleteCustomer(int id);
 
     String login(String email, String password) throws Exception;
+
+    Customer getCustomerDetails(String token) throws Exception;
 }

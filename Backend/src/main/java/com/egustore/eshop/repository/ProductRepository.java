@@ -3,6 +3,8 @@ package com.egustore.eshop.repository;
 import com.egustore.eshop.dto.ProductDTO;
 import com.egustore.eshop.model.Product;
 import jakarta.transaction.Transactional;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -30,4 +32,8 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 
     @Query (value ="SELECT p.* ,SUM(od.quantity) AS total_ordered_quantity FROM Products p JOIN  OrderDetails od ON p.id = od.product_id GROUP BY p.id ORDER BY total_ordered_quantity DESC LIMIT 8;", nativeQuery = true)
     List<Product> getTopProduct();
+  
+    boolean existsByName(String name);
+    Page<Product> findAll(Pageable pageable);
+
 }

@@ -33,6 +33,12 @@ public class Product extends BaseEntity {
     @Column(name = "model")
     private String model;
 
+    @Column(name = "create_date")
+    private LocalDateTime createDate;
+
+    @Column(name = "update_date")
+    private LocalDateTime updateDate;
+
     @Column(name = "price")
     private Double price;
 
@@ -44,6 +50,8 @@ public class Product extends BaseEntity {
 
     @Column(name = "update_date")
     private LocalDateTime updateDate;
+    @Column(name = "thumbnail")
+    private String thumbnail;
 
     @Column(name = "stock_quantity")
     private Integer stockQuantity;

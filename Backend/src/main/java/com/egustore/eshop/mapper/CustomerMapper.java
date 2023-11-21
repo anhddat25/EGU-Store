@@ -14,6 +14,7 @@ public interface CustomerMapper {
     Customer mapToCustomer(CustomerDTO customerDTO);
 
     @Mapping(source ="role.id", target = "roleId")
+    @Mapping(target = "password", ignore = true)
     CustomerDTO mapToCustomerDto(Customer customer);
     @Mapping(target = "id", ignore = true)
     void updateCustomerFromDTO(CustomerDTO customerDTO, @MappingTarget Customer customer);
