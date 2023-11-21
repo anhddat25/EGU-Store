@@ -26,7 +26,7 @@ public class SpecificationsController {
         this.specificationsService = specificationsService;
     }
     //Create category
-    @PostMapping("")
+    @PostMapping("/create")
     public ResponseEntity<?> createSpec(@RequestBody @Valid SpecificationsDTO specificationsDTO, BindingResult result)
     {
         if(result.hasErrors())

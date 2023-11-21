@@ -5,7 +5,6 @@ import com.egustore.eshop.mapper.ProductMapper;
 import com.egustore.eshop.model.Product;
 import com.egustore.eshop.repository.CategoryRepository;
 import com.egustore.eshop.repository.ProductRepository;
-import com.egustore.eshop.response.ProductResponse;
 import com.egustore.eshop.service.ProductService;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,7 +51,6 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.save(product);
     }
 
-
     @Override
     public Product getProductById(int id){
         return productRepository.findById(id)
@@ -79,10 +77,8 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Page<ProductResponse>getAllProducts(PageRequest pageRequest) {
-        return productRepository
-                .findAll(pageRequest)
-                .map(ProductResponse::fromProduct);
+    public List<Product>getAllProducts() {
+        return productRepository.findAll();
     }
 
     @Override

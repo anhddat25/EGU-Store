@@ -26,7 +26,7 @@ public class PaymentController {
         this.paymentService = paymentService;
     }
     //Create category
-    @PostMapping("")
+    @PostMapping("/create")
     public ResponseEntity<?> createPayment(@RequestBody @Valid PaymentDTO paymentDTO, BindingResult result)
     {
         if(result.hasErrors())

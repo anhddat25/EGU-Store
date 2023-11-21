@@ -18,7 +18,9 @@ import java.util.List;
 @Validated
 @CrossOrigin("*")
 public class CategoryController {
+
     private final CategoryService categoryService;
+
     @Autowired
     public CategoryController(CategoryService categoryService) {
         this.categoryService = categoryService;
@@ -46,11 +48,11 @@ public class CategoryController {
         return ResponseEntity.ok(categories);
     }
 
-//    @PutMapping("/{id}")
-//    public ResponseEntity<String> updateCategory(@PathVariable int id,@RequestBody CategoryDTO categoryDTO) {
-//        categoryService.updateCategory(id,categoryDTO);
-//        return ResponseEntity.ok("update category ");
-//    }
+    @PutMapping("/update/{id}")
+    public ResponseEntity<String> updateCategory(@PathVariable int id,@RequestBody CategoryDTO categoryDTO) {
+        categoryService.updateCategory(id,categoryDTO);
+        return ResponseEntity.ok("update category ");
+    }
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteCategory(@PathVariable int id) {

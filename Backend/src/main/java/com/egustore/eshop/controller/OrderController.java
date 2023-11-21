@@ -27,19 +27,19 @@ public class OrderController {
 
 
     //Create Order
-    @PostMapping("")
-    public ResponseEntity<?> createOrder(@RequestBody @Valid List<OrderDTO> orderDTOList, BindingResult result) {
-       try {
-           if(result.hasErrors())
-           {
-               List<String> errMessage = result.getFieldErrors()
-                       .stream()
-                       .map(FieldError::getDefaultMessage)
-                       .toList();
-               return ResponseEntity.badRequest().body(errMessage);
-           }
-           orderService.saveOrders(orderDTOList);
-           return ResponseEntity.ok("Succes!");
+    @PostMapping("/create")
+    public ResponseEntity<?> createOrder(@RequestBody @Valid OrderDTO orderDTO, BindingResult result) {
+        try {
+            if(result.hasErrors())
+            {
+                List<String> errMessage = result.getFieldErrors()
+                        .stream()
+                        .map(FieldError::getDefaultMessage)
+                        .toList();
+                return ResponseEntity.badRequest().body(errMessage);
+            }
+            ResponseEntity.ok(orderService.saveOrder(orderDTO));
+            return ResponseEntity.ok("Succes!");
 
         }catch (Exception e){
             return ResponseEntity.badRequest().body(e.getMessage());
@@ -47,7 +47,7 @@ public class OrderController {
 
     }
 
-    @GetMapping("")
+    @GetMapping(" ")
     public ResponseEntity<List<Order>> getAllCategories() {
         return ResponseEntity.ok(orderService.getAllOrders());
     }
