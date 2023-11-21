@@ -1,12 +1,15 @@
 package com.egustore.eshop.dto;
 
+import com.egustore.eshop.model.BaseEntity;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+
 import java.sql.Date;
 import java.time.LocalDateTime;
 
 @Data
-public class ProductDTO {
+public class ProductDTO  {
     private Integer id;
 
     private String name;

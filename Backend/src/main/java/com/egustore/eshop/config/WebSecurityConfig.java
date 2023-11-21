@@ -44,37 +44,18 @@ public class WebSecurityConfig {
                             )
                             .permitAll()
                             .requestMatchers(GET,
-                                    "api/v0/products**","api/v0/products/**"
-                            ).permitAll()
+                                    "/api/v0/categories").permitAll()
+                            .requestMatchers(POST,
+                                    "/api/v0/categories").hasAnyRole("ADMIN")
+                            .requestMatchers(PUT,
+                                    "/api/v0/categories").hasAnyRole(Role.ADMIN)
                             .requestMatchers(GET,
-                                    "api/v0/income-reports/default-list"
-                            ).permitAll()
-                            .requestMatchers(GET,
-                                    "/api/v0/income-reports/byTime**"
-                            ).permitAll()
-                            .requestMatchers("/api/v0/rating-products**","/api/v0/rating-products/**")
-                            .permitAll()
-                            .requestMatchers(GET,
-                                    "/api/v0/customer-reports/all-list"
-                                    , "/api/v0/customer-reports/buying-list"
-                                    , "/api/v0/customer-reports/none-buying-list"
-                                    ,"/api/v0/customer-reports/status"
-                            ).permitAll()
-                            .requestMatchers(GET,
-                                     "api/v0/customers"
-                            ).permitAll()
+                                    "/api/v0/roles/").permitAll()
 //                            .requestMatchers(GET,
-//                                    "/api/v0/roles/").hasRole("MANAGER")
+//                                    "/api/v0/customers/**").permitAll()
 //                            .requestMatchers(GET,
 //                                    "/api/v0/products/").hasRole("MANAGER")
-//                            .requestMatchers(GET,
-//                                    "/api/v0/categories/").hasRole("MANAGER")
-//                            .requestMatchers(GET,
-//                                    "/api/v0/orders/list").hasRole("MANAGER")
-                            .requestMatchers(GET,
-                                    "/api/v0/orders/list").permitAll()
-                            .requestMatchers(GET,
-                                    "/api/v0/order-details/list").permitAll()
+
                             .anyRequest().authenticated();
 
 
