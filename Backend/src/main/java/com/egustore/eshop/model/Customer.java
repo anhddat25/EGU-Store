@@ -61,7 +61,7 @@ public class Customer implements UserDetails {
 
     @ManyToOne
     @JoinColumn(name = "role_id")
-    private Role roleId;
+    private Role role;
 
     @Column(name = "role_id", insertable=false, updatable=false)
     private Integer roleId;

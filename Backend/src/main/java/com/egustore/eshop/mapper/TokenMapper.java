@@ -3,7 +3,7 @@ package com.egustore.eshop.mapper;
 
 import com.egustore.eshop.dto.OriginDTO;
 import com.egustore.eshop.dto.TokenDTO;
-import com.egustore.eshop.model.Origins;
+import com.egustore.eshop.model.Origin;
 import com.egustore.eshop.model.Tokens;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

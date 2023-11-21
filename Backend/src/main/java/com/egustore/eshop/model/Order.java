@@ -5,30 +5,33 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.Date;
-
 import java.time.LocalDateTime;
+import java.util.Date;
+import java.util.List;
+
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
-@Table(name = "orders")
+@Table(name = "Orders")
 public class Order {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private int id;
 
-    @Column(name = "email")
+    @Column(name = "Email")
     private String email;
 
-    @Column(name = "phone")
+    @Column(name = "Phone")
     private String phone;
 
+    @Temporal(TemporalType.DATE)
     @Column(name = "order_date")
-    private Date orderDate = new Date();
+    private Date orderDate;
 
-    @Column(name = "note")
+    @Column(name = "Note")
     private String note;
 
     @Column(name = "status")
@@ -48,14 +51,14 @@ public class Order {
     @Column(name = "customer_id", insertable=false, updatable=false)
     private Integer customerId;
 
-    @ManyToOne
+    @OneToMany(mappedBy = "order")
     @JsonIgnoreProperties("order")
-    @JoinColumn(name = "order_details_id")
-    private OrderDetail orderdetail;
+//    @JoinColumn(name = "order_details_id")
+    private List<OrderDetail> orderDetail;
 
 
-    @Column(name = "order_details_id", insertable=false, updatable=false)
-    private Integer orderdetailId;
+//    @Column(name = "order_details_id", insertable=false, updatable=false)
+//    private Integer orderdetailId;
 //    @OneToMany(mappedBy = "order")
 //    private List<OrderDetail> orderDetail;
 }

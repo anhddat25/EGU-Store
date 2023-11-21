@@ -20,8 +20,10 @@ public interface ImageService {
     Images updateImage(int id,
                        ImageDTO imageDTO);
 
+    Images updateImageUrl(int Id, MultipartFile files, ImageStatus status) throws IOException;
+
     void deleteImage(int id);
 
 
-    String uploadImageToGoogleDrive(MultipartFile files, Product productId, Date updateD, ImageStatus status) throws IOException;
+    String uploadImageToGoogleDrive(MultipartFile files, Product productId, ImageStatus status) throws IOException;
 }

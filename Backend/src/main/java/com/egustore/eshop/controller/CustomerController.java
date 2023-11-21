@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v0/customers")
+@RequestMapping("/api/v0/customers")
 @Validated
 @CrossOrigin("*")
 public class CustomerController {

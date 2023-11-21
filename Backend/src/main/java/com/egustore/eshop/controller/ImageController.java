@@ -15,6 +15,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
@@ -52,7 +53,11 @@ public class ImageController {
         return ResponseEntity.ok(images);
     }
 
-
+    @GetMapping("/{id}")
+    public ResponseEntity<Images> getImagesById(@PathVariable int id) {
+        Images images = imageService.getImageById(id);
+        return ResponseEntity.ok(images);
+    }
 
     @PutMapping("/{id}")
     public ResponseEntity<String> updateImages(@PathVariable int id,@RequestBody ImageDTO imageDTO) {
@@ -68,10 +73,18 @@ public class ImageController {
     @PostMapping("/upload")
     public ResponseEntity<?> uploadImageToFIleSystem(@RequestParam("imageUrl") MultipartFile files,
                                                      @RequestParam("productId") Product productId,
-                                                     @RequestParam("updateDate") Date updateD,
                                                      @RequestParam("imageStatus") ImageStatus status) throws Exception {
-        String uploadImage = imageService.uploadImageToGoogleDrive(files, productId, updateD, status);
+        String uploadImage = imageService.uploadImageToGoogleDrive(files, productId, status);
         return ResponseEntity.status(HttpStatus.OK)
                 .body(uploadImage);
+    }
+
+    @PutMapping("/update/{id}")
+    public ResponseEntity<String> updateImageUrl(@PathVariable int id,
+                                                 @RequestParam("imageUrl") MultipartFile files,
+                                                 @RequestParam("imageStatus") ImageStatus status
+                                                 ) throws IOException {
+        imageService.updateImageUrl(id, files, status);
+        return ResponseEntity.ok("update url image " + id);
     }
 }

@@ -101,5 +101,8 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.updateProductById(productDTO, id);
     }
 
-
+    @Override
+    public List<Product>getTopProduct() {
+        return productRepository.getTopProduct();
+    }
 }

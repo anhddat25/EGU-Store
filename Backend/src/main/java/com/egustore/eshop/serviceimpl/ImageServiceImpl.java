@@ -3,18 +3,20 @@ package com.egustore.eshop.serviceimpl;
 import com.egustore.eshop.dto.ImageDTO;
 import com.egustore.eshop.enums.ImageStatus;
 import com.egustore.eshop.mapper.ImageMapper;
+import com.egustore.eshop.model.FeedbackProduct;
 import com.egustore.eshop.model.Images;
 import com.egustore.eshop.model.Product;
 import com.egustore.eshop.repository.ImageRepository;
 import com.egustore.eshop.service.ImageService;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ImageServiceImpl implements ImageService {
@@ -51,12 +53,32 @@ public class ImageServiceImpl implements ImageService {
     }
 
     @Override
-    public Images updateImage(int id,
-                                   ImageDTO imageDTO) {
+    public Images updateImage(int id,ImageDTO imageDTO) {
         Images existImage = getImageById(id);
         imageMapper.updateImageFromDTO(imageDTO, existImage);
         imageRepository.save(existImage);
         return existImage;
+    }
+
+    @Override
+    public Images updateImageUrl(int Id, MultipartFile files, ImageStatus status) throws IOException {
+        Optional<Images> existingImages = imageRepository.findById(Id);
+
+        if (existingImages.isPresent()) {
+            // Update the image in Google Drive
+            String folderId = "19ZF5ZY7MZ0TdnFfMsOZrZS6unc1YEkxk";
+            String imageUrl = googleDriveApiService.uploadImageToGoogleDrive(files, folderId);
+
+            // Update the image URL in the database
+            Images existingEntity = existingImages.get();
+            existingEntity.setImageUrl(imageUrl);
+            existingEntity.setImageStatus(status);
+            existingEntity.setUpdateDate(new Date());
+            return imageRepository.save(existingEntity);
+        } else {
+            // Handle the case where the entity with the given ID does not exist
+            throw new EntityNotFoundException("Entity with ID " + Id + " not found");
+        }
     }
 
     @Override
@@ -65,8 +87,10 @@ public class ImageServiceImpl implements ImageService {
         imageRepository.deleteById(id);
     }
 
+
+
     @Override
-    public String uploadImageToGoogleDrive(MultipartFile files, Product productId, Date updateD, ImageStatus status) throws IOException {
+    public String uploadImageToGoogleDrive(MultipartFile files, Product productId, ImageStatus status) throws IOException {
         String folderId = "19ZF5ZY7MZ0TdnFfMsOZrZS6unc1YEkxk"; // Thay thế bằng ID của thư mục cần
 
         String imageUrl = googleDriveApiService.uploadImageToGoogleDrive(files, folderId);
@@ -76,7 +100,7 @@ public class ImageServiceImpl implements ImageService {
                 fileData.setImageUrl(imageUrl);
                 fileData.setCreateDate(new Date()); // You might want to set the creation date
                 fileData.setImageStatus(status);
-                fileData.setUpdateDate(updateD);
+                fileData.setUpdateDate(new Date());
                 fileData.setProducts(productId);
                 Images savedImage = imageRepository.save(fileData);
                 if (savedImage != null) {

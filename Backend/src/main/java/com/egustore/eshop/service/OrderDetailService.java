@@ -1,5 +1,6 @@
 package com.egustore.eshop.service;
 
+import com.egustore.eshop.dto.OrderDTO;
 import com.egustore.eshop.dto.OrderDetailDTO;
 import com.egustore.eshop.model.Order;
 import com.egustore.eshop.model.OrderDetail;

@@ -4,7 +4,7 @@ package com.egustore.eshop.mapper;
 import com.egustore.eshop.dto.CountryDTO;
 import com.egustore.eshop.dto.OriginDTO;
 import com.egustore.eshop.model.Country;
-import com.egustore.eshop.model.Origins;
+import com.egustore.eshop.model.Origin;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;

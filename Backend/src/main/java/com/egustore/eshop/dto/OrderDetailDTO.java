@@ -31,11 +31,4 @@ public class OrderDetailDTO {
 
 
 
-    private Integer quantity;
-
-    private Double totalPrice;
-
-    private Order orderId;
-
-    private Product productId;
 }

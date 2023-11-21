@@ -1,36 +1,42 @@
 package com.egustore.eshop.config;
 
-
-//import com.egustore.eshop.filters.JwtTokenFilter;
+import com.egustore.eshop.filters.JwtTokenFilter;
 import com.egustore.eshop.model.Role;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.annotation.web.configurers.CorsConfigurer;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+
+import java.util.Arrays;
+import java.util.List;
 
 import static org.springframework.http.HttpMethod.*;
 
 
 @Configuration
-@EnableMethodSecurity
+//@EnableMethodSecurity
 @EnableWebSecurity
-//@EnableWebMvc
+@EnableWebMvc
 @RequiredArgsConstructor
 public class WebSecurityConfig {
-//    private final JwtTokenFilter jwtTokenFilter;
+    private final JwtTokenFilter jwtTokenFilter;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(AbstractHttpConfigurer::disable)
-//                .addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class)
+                .addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class)
                 .authorizeHttpRequests(requests -> {
                     requests
                             .requestMatchers( "**",
@@ -39,6 +45,9 @@ public class WebSecurityConfig {
                             .permitAll()
                             .requestMatchers(GET,
                                     "api/v0/products"
+                            ).permitAll()
+                            .requestMatchers(GET,
+                                    "api/v0/products/top"
                             ).permitAll()
                             .requestMatchers(GET,
                                     "api/v0/income-reports/default-list"
@@ -53,7 +62,7 @@ public class WebSecurityConfig {
                                     ,"/api/v0/customer-reports/status"
                             ).permitAll()
                             .requestMatchers(GET,
-                                    "api/v0/customers"
+                                    "/api/v0/customers"
                             ).permitAll()
 //                            .requestMatchers(GET,
 //                                    "/api/v0/roles/").hasRole("MANAGER")
@@ -67,12 +76,43 @@ public class WebSecurityConfig {
                                     "/api/v0/orders").permitAll()
                             .requestMatchers(GET,
                                     "/api/v0/order-details").permitAll()
+                            .requestMatchers(GET,
+                                    "/api/v0/feedbacks/list/**","/api/v0/feedbacks/list**").permitAll()
+                            .requestMatchers(POST,
+                                    "/api/v0/feedbacks/create").permitAll()
+                            .requestMatchers(GET,
+                                    "/api/v0/images/list").permitAll()
+                            .requestMatchers(GET,
+                                    "/api/v0/images/**","/api/v0/images**").permitAll()
+                            .requestMatchers(POST,
+                                    "/api/v0/images/upload").permitAll()
+                            .requestMatchers(PUT,
+                                    "/api/v0/images/update/**","/api/v0/images/update**").permitAll()
+                            .requestMatchers(PUT,
+                                    "/api/v0/images/**","/api/v0/images**").permitAll()
+                            .requestMatchers(DELETE,
+                                    "/api/v0/images/delete/**","/api/v0/images/delete**").permitAll()
                             .requestMatchers(PUT,
                                     "/api/v0/orders/status/**").hasAnyRole("")
+//                            .requestMatchers("**").permitAll();
                             .anyRequest().authenticated();
 
 
-                });
+                })
+                .csrf(AbstractHttpConfigurer::disable);
+        http.cors(new Customizer<CorsConfigurer<HttpSecurity>>() {
+            @Override
+            public void customize(CorsConfigurer<HttpSecurity> httpSecurityCorsConfigurer) {
+                CorsConfiguration configuration = new CorsConfiguration();
+                configuration.setAllowedOrigins(List.of("*"));
+                configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
+                configuration.setAllowedHeaders(Arrays.asList("authorization", "content-type", "x-auth-token"));
+                configuration.setExposedHeaders(List.of("x-auth-token"));
+                UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+                source.registerCorsConfiguration("/**", configuration);
+                httpSecurityCorsConfigurer.configurationSource(source);
+            }
+        });
+
         return http.build();
-    }
-}
+    }}

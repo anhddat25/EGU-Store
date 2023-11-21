@@ -81,4 +81,10 @@ public class ProductController {
         return ResponseEntity.ok("create thumb product image " + id);
     }
 
+    @GetMapping("/top")
+    public ResponseEntity<List<Product>> getTopProduct() {
+        List<Product> product = productService.getTopProduct();
+        return ResponseEntity.ok(product);
+    }
+
 }

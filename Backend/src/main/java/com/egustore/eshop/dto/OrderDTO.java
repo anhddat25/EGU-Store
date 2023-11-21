@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 import java.time.LocalDateTime;
+import java.util.Date;
+
 
 @Data
 public class OrderDTO {
@@ -14,7 +16,7 @@ public class OrderDTO {
 
     private String phone;
 
-    private  Date orderDate;
+    private Date orderDate;
 
     private String note;
 
@@ -29,8 +31,8 @@ public class OrderDTO {
 
     private CustomerDTO customer;
 
-    @JsonProperty("order_details_id")
-    private Integer orderdetailId;
+//    @JsonProperty("order_details_id")
+//    private Integer orderdetailId;
 
     private OrderDetailDTO orderdetail;
 }

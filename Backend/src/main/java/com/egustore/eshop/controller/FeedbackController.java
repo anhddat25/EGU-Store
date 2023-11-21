@@ -5,6 +5,8 @@ import com.egustore.eshop.model.FeedbackProduct;
 import com.egustore.eshop.service.FeedbackProductService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -36,10 +38,21 @@ public class FeedbackController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<String> createFeedback(@RequestBody @Valid FeedbackProductDTO feedbackProductDTO){
+    public ResponseEntity<?> createFeedback(@RequestBody @Valid FeedbackProductDTO feedbackProductDTO, BindingResult result){
+
+        if(result.hasErrors())
+        {
+            List<String> errMessage = result.getFieldErrors()
+                    .stream()
+                    .map(FieldError::getDefaultMessage)
+                    .toList();
+            return ResponseEntity.badRequest().body(errMessage);
+        }
         feedbackProductService.createFeedback(feedbackProductDTO);
         return ResponseEntity.ok("Create Success");
     }
+
+
     @PutMapping("/update/{id}")
     public ResponseEntity<String> updateFeedback(@PathVariable int id, @RequestBody FeedbackProductDTO feedbackProductDTO){
         feedbackProductService.updateFeedback(id,feedbackProductDTO);
@@ -50,5 +63,7 @@ public class FeedbackController {
         feedbackProductService.deleteFeedback(id);
       return ResponseEntity.ok("delete Success "+id);
     }
+
+
 
 }

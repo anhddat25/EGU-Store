@@ -8,6 +8,8 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.util.List;
+
 public interface ProductRepository extends JpaRepository<Product, Integer> {
     @Modifying
     @Transactional
@@ -25,4 +27,7 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
             "p.originId = :#{#productDTO.originId} " +
             "WHERE p.Id = :id")
     Integer updateProductById(@Param("productDTO") ProductDTO productDTO, @Param("id") int id);
+
+    @Query (value ="SELECT p.* ,SUM(od.quantity) AS total_ordered_quantity FROM Products p JOIN  OrderDetails od ON p.id = od.product_id GROUP BY p.id ORDER BY total_ordered_quantity DESC LIMIT 8;", nativeQuery = true)
+    List<Product> getTopProduct();
 }

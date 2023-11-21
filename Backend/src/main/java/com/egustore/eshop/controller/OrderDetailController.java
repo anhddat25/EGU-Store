@@ -13,7 +13,6 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
 @RestController
 @RequestMapping("/api/v0/orderdetail")
 @Validated
@@ -26,14 +25,9 @@ public class OrderDetailController {
         this.orderDetailService = orderDetailService;
     }
 
-    @Autowired
-    public OrderDetailController(OrderDetailService orderDetailService) {
-        this.orderDetailService = orderDetailService;
-    }
-    //Create category
+    //Create Order
     @PostMapping("/create")
-    public ResponseEntity<?> createOrderDetail(@RequestBody @Valid OrderDetailDTO orderDetailDTO, BindingResult result)
-    {
+    public ResponseEntity<?> createOrder(@RequestBody @Valid OrderDetailDTO orderDetailDTO, BindingResult result) {
         if(result.hasErrors())
         {
             List<String> errMessage = result.getFieldErrors()
@@ -63,9 +57,9 @@ public class OrderDetailController {
 //    }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> deleteOrderDetail(@PathVariable int id) {
+    public ResponseEntity<String> deleteOrder(@PathVariable int id) {
         orderDetailService.deleteOrderDetail(id);
-        return ResponseEntity.ok("delete orderDetail " + id);
+        return ResponseEntity.ok("delete OrderDetail " + id);
     }
     @GetMapping("/{id}")
     public ResponseEntity<OrderDetail> getOrderDetailById(@PathVariable int id) {
