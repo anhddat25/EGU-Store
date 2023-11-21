@@ -18,4 +18,10 @@ public interface OrderDetailRepository extends JpaRepository<OrderDetail,Integer
 //    @Transactional
     @Query (value = "Select od.* from order_details od join orders o on od.order_id = o.Id where o.Id = :id", nativeQuery = true)
     List <OrderDetail>getOrderDetailByOrderID(@Param("id") Integer id);
+        @Modifying
+    @Transactional
+        @Query(value = "UPDATE OrderDetail o SET " +
+                "o.quantity = :#{#orderDetailDTO.quantity} " +
+                "WHERE o.id = :id")
+        Integer updateQuantityDetail(@Param("orderDetailDTO") OrderDetailDTO orderDetailDTO, @Param("id") int id);
 }

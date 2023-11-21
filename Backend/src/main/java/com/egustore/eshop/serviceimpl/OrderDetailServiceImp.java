@@ -1,5 +1,6 @@
 package com.egustore.eshop.serviceimpl;
 
+import com.egustore.eshop.dto.OrderDTO;
 import com.egustore.eshop.dto.OrderDetailDTO;
 import com.egustore.eshop.model.Order;
 import com.egustore.eshop.model.OrderDetail;
@@ -53,5 +54,8 @@ public class OrderDetailServiceImp implements OrderDetailService {
     public void deleteOrderDetail(int id) {
         orderDetailRepository.deleteById(id);
     }
+    public Integer updateQuantityDetail(OrderDetailDTO orderDetailDTO, int id) {
 
+        return orderDetailRepository.updateQuantityDetail(orderDetailDTO, id);
+    }
 }
