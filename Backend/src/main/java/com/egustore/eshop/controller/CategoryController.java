@@ -18,9 +18,7 @@ import java.util.List;
 @Validated
 @CrossOrigin("*")
 public class CategoryController {
-
     private final CategoryService categoryService;
-
     @Autowired
     public CategoryController(CategoryService categoryService) {
         this.categoryService = categoryService;

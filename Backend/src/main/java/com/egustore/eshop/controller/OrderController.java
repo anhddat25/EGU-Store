@@ -25,7 +25,7 @@ public class OrderController {
 
 
     //Create Order
-    @PostMapping("/create")
+    @PostMapping("")
     public ResponseEntity<?> createOrder(@RequestBody @Valid List<OrderDTO> orderDTOList, BindingResult result) {
        try {
            if(result.hasErrors())
@@ -45,7 +45,7 @@ public class OrderController {
 
     }
 
-    @GetMapping("/list")
+    @GetMapping("")
     public ResponseEntity<List<Order>> getAllCategories() {
         return ResponseEntity.ok(orderService.getAllOrders());
     }
@@ -61,7 +61,7 @@ public class OrderController {
 //        return ResponseEntity.ok("update Order " + id);
 //    }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteOrder(@PathVariable int id) {
         orderService.deleteOrder(id);
         return ResponseEntity.ok("delete Order " + id);

@@ -36,6 +36,9 @@ public class Product extends BaseEntity {
     @Column(name = "price")
     private Double price;
 
+    @Column(name = "thumbnail")
+    private String thumbnail;
+
     @Column(name = "stock_quantity")
     private Integer stockQuantity;
 

@@ -2,6 +2,7 @@ package com.egustore.eshop.dto;
 
 import com.egustore.eshop.model.BaseEntity;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.Column;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -11,25 +12,16 @@ import java.time.LocalDateTime;
 @Data
 public class ProductDTO  {
     private Integer id;
-
     private String name;
-
     private String model;
-
     private Double price;
-
+    private String thumbnail;
     private Integer stockQuantity;
-
     private LocalDateTime createDate;
-
     private LocalDateTime updateDate;
-
     private String description;
-
     private Double discountPercentage;
-
     private String discountPrice;
-
     private String status;
 
     @JsonProperty("category_id")

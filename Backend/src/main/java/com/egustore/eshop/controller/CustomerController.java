@@ -23,7 +23,6 @@ import java.util.List;
 @CrossOrigin("*")
 public class CustomerController {
     private final CustomerService customerService;
-
     @Autowired
     public CustomerController(CustomerService customerService) {
         this.customerService = customerService;
@@ -57,10 +56,7 @@ public class CustomerController {
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(LoginResponse.builder().build());
         }
-
-
     }
-
 
     //Show all categories
     @GetMapping("")

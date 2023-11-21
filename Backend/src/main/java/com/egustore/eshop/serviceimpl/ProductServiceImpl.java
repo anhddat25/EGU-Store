@@ -5,6 +5,7 @@ import com.egustore.eshop.mapper.ProductMapper;
 import com.egustore.eshop.model.Product;
 import com.egustore.eshop.repository.CategoryRepository;
 import com.egustore.eshop.repository.ProductRepository;
+import com.egustore.eshop.response.ProductResponse;
 import com.egustore.eshop.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -44,8 +45,10 @@ public class ProductServiceImpl implements ProductService {
 
 
     @Override
-    public List<Product>getAllProducts() {
-        return productRepository.findAll();
+    public Page<ProductResponse>getAllProducts(PageRequest pageRequest) {
+        return productRepository
+                .findAll(pageRequest)
+                .map(ProductResponse::fromProduct);
     }
 
     @Override
