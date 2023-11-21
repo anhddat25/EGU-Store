@@ -57,7 +57,10 @@ public class WebSecurityConfig {
 //                                    "/api/v0/customers/**").permitAll()
 //                            .requestMatchers(GET,
 //                                    "/api/v0/products/").hasRole("MANAGER")
-
+                            .requestMatchers(GET,
+                                    "/api/v0/orders/list").hasRole(Role.ADMIN)
+                            .requestMatchers(POST,
+                                    "/api/v0/orders/create").hasRole("ADMIN")
                             .anyRequest().authenticated();
 
 
