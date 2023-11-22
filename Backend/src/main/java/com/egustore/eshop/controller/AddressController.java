@@ -40,19 +40,19 @@ public class AddressController {
     }
 
     //    //Show all categories
-    @GetMapping("/list")
-    public ResponseEntity<List<Address>> getAllAddresss() {
-        List<Address> addresss = addressService.getAllAddresss();
-        return ResponseEntity.ok(addresss);
+    @GetMapping("")
+    public ResponseEntity<List<Address>> getAllAddress() {
+        List<Address> address = addressService.getAllAddress();
+        return ResponseEntity.ok(address);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<String> updateAddress(@PathVariable int id,@RequestBody AddressDTO addressDTO) {
         addressService.updateAddress(id,addressDTO);
         return ResponseEntity.ok("update address ");
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteAddress(@PathVariable int id) {
         addressService.deleteAddress(id);
         return ResponseEntity.ok("delete address " + id);

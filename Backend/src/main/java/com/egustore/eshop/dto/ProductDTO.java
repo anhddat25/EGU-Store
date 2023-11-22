@@ -5,6 +5,9 @@ import com.egustore.eshop.model.Images;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import com.egustore.eshop.model.BaseEntity;
+import jakarta.persistence.Column;
+
 import lombok.Data;
 import java.sql.Date;
 import java.time.LocalDateTime;
@@ -40,19 +43,16 @@ public class ProductDTO {
     @JsonProperty("category_id")
     private Integer categoryId;
 
+    private CategoryDTO category;
+
     @JsonProperty("brand_id")
     private Integer brandId;
+
+    private BrandDTO brand;
 
     @JsonProperty("origin_id")
     private Integer originId;
 
-    private CategoryDTO category;
-
-    private BrandDTO brand;
-
     private OriginDTO origin;
-
-
-
 
 }

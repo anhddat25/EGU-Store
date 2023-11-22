@@ -1,6 +1,5 @@
 package com.egustore.eshop.serviceimpl;
 
-
 import com.egustore.eshop.dto.CountryDTO;
 import com.egustore.eshop.mapper.CountryMapper;
 import com.egustore.eshop.model.Country;
@@ -44,7 +43,7 @@ public class CountryServiceImpl implements CountryService {
 
     @Override
     public Country updateCountry(int id,
-                             CountryDTO CountryDTO) {
+                                 CountryDTO CountryDTO) {
         Country existCountry = getCountryById(id);
         countryMapper.updateCountryFromDTO(CountryDTO, existCountry);
         countryRepository.save(existCountry);

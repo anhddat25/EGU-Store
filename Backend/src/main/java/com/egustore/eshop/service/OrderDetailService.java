@@ -13,6 +13,6 @@ public interface OrderDetailService {
     List<OrderDetailDTO> getOrderDetailByOrderID(Integer id);
     List<OrderDetail> getAllOrderDetails();
 //    Integer updateOrderDetail(int id, OrderDetailDTO orderDetailDTO);
-
+    Integer updateQuantityDetail(OrderDetailDTO orderDetailDTO, int id);
     void deleteOrderDetail(int id);
 }

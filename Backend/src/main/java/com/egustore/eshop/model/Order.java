@@ -57,8 +57,17 @@ public class Order {
     private List<OrderDetail> orderDetail;
 
 
-//    @Column(name = "order_details_id", insertable=false, updatable=false)
-//    private Integer orderdetailId;
+    @Column(name = "order_details_id", insertable=false, updatable=false)
+    private Integer orderdetailId;
+
+    @ManyToOne
+    @JsonIgnoreProperties("order")
+    @JoinColumn(name = "address_id")
+    private Address address;
+
+
+    @Column(name = "address_id", insertable=false, updatable=false)
+    private Integer addressId;
 //    @OneToMany(mappedBy = "order")
 //    private List<OrderDetail> orderDetail;
 }

@@ -1,5 +1,6 @@
 package com.egustore.eshop.controller;
 
+import com.egustore.eshop.dto.OrderDTO;
 import com.egustore.eshop.dto.OrderDetailDTO;
 import com.egustore.eshop.model.Order;
 import com.egustore.eshop.model.OrderDetail;
@@ -68,5 +69,10 @@ public class OrderDetailController {
     @GetMapping("/getorderdetailbyorderid/{id}")
     public ResponseEntity<List<OrderDetailDTO>>getOrderDetailByOrderID(@PathVariable Integer id) {
         return ResponseEntity.ok(orderDetailService.getOrderDetailByOrderID(id));
+    }
+    @PutMapping("/quantity/{id}")
+    public ResponseEntity<String> updateQuantityDetail(@PathVariable int id,@RequestBody OrderDetailDTO orderDetailDTO) {
+        orderDetailService.updateQuantityDetail(orderDetailDTO, id);
+        return ResponseEntity.ok("update Quantity Order Detail " + id);
     }
 }

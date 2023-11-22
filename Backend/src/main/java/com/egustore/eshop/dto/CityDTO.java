@@ -13,5 +13,4 @@ public class CityDTO {
     private String city;
 
     private Country countryId;
-
 }

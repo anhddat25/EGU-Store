@@ -1,6 +1,5 @@
 package com.egustore.eshop.service;
 
-
 import com.egustore.eshop.dto.AddressDTO;
 import com.egustore.eshop.model.Address;
 
@@ -12,10 +11,10 @@ public interface AddressService {
 
     Address getAddressById(int id);
 
-    List<Address> getAllAddresss();
+    List<Address> getAllAddress();
 
-    Address updateAddress(int id,
-                      AddressDTO AddressDTO);
+    Address updateAddress(int id, AddressDTO AddressDTO);
 
     void deleteAddress(int id);
 }
+

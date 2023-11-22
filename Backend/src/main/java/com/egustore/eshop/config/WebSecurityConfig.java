@@ -39,7 +39,7 @@ public class WebSecurityConfig {
                 .addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class)
                 .authorizeHttpRequests(requests -> {
                     requests
-                            .requestMatchers( "**",
+                            .requestMatchers(
                                     "/api/v0/customers/login", "/api/v0/customers/register"
                             )
                             .permitAll()
@@ -70,6 +70,15 @@ public class WebSecurityConfig {
                             .requestMatchers(GET,
                                     "/api/v0/customers"
                             ).permitAll()
+                        //             "/api/v0/categories").permitAll()
+                        //     .requestMatchers(GET,
+                        //             "/api/v0/products**").permitAll()
+                        //     .requestMatchers(POST,
+                        //             "/api/v0/categories").hasAnyRole("ADMIN")
+                        //     .requestMatchers(PUT,
+                        //             "/api/v0/categories").hasAnyRole(Role.ADMIN)
+                        //     .requestMatchers(GET,
+                        //             "/api/v0/roles/").permitAll()
 //                            .requestMatchers(GET,
 //                                    "/api/v0/roles/").hasRole("MANAGER")
 //                            .requestMatchers(GET,
@@ -101,6 +110,10 @@ public class WebSecurityConfig {
                             .requestMatchers(PUT,
                                     "/api/v0/orders/status/**").hasAnyRole("")
 //                            .requestMatchers("**").permitAll();
+                        //     .requestMatchers(GET,
+                        //             "/api/v0/orders/list").hasRole(Role.ADMIN)
+                        //     .requestMatchers(POST,
+                        //             "/api/v0/orders/create").hasRole("ADMIN")
                             .anyRequest().authenticated();
 
 

@@ -2,6 +2,7 @@ package com.egustore.eshop.dto;
 
 import com.egustore.eshop.enums.OrderStatus;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.Column;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -16,7 +17,8 @@ public class OrderDTO {
 
     private String phone;
 
-    private Date orderDate;
+
+    private  Date orderDate;
 
     private String note;
 
@@ -35,4 +37,9 @@ public class OrderDTO {
 //    private Integer orderdetailId;
 
     private OrderDetailDTO orderdetail;
+
+    @JsonProperty("address_id")
+    private Integer addressId;
+
+    private AddressDTO address;
 }

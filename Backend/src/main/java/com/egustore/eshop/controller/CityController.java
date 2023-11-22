@@ -40,19 +40,19 @@ public class CityController {
     }
 
     //    //Show all categories
-    @GetMapping("/list")
+    @GetMapping("")
     public ResponseEntity<List<City>> getAllCitys() {
         List<City> citys = cityService.getAllCitys();
         return ResponseEntity.ok(citys);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<String> updateCity(@PathVariable int id,@RequestBody CityDTO cityDTO) {
         cityService.updateCity(id,cityDTO);
         return ResponseEntity.ok("update city ");
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteCity(@PathVariable int id) {
         cityService.deleteCity(id);
         return ResponseEntity.ok("delete city " + id);

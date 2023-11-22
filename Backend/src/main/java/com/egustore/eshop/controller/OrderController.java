@@ -47,15 +47,16 @@ public class OrderController {
 
     }
 
-    @GetMapping(" ")
+
+    @GetMapping("")
     public ResponseEntity<List<Order>> getAllCategories() {
         return ResponseEntity.ok(orderService.getAllOrders());
     }
 
-//    @PutMapping("/get-item/{id}")
-//    public ResponseEntity<Order> updateOrder(@PathVariable int id) {
-//        return ResponseEntity.ok(orderService.getOrderById(id));
-//    }
+    @PutMapping("/get-item/{id}")
+    public ResponseEntity<Order> updateOrder(@PathVariable int id) {
+        return ResponseEntity.ok(orderService.getOrderById(id));
+    }
 
     @PutMapping("/{id}")
     public ResponseEntity<String> updateOrderById(@PathVariable int id,@RequestBody OrderDTO orderDTO) {

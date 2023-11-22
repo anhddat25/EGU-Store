@@ -21,5 +21,4 @@ public class City {
     @ManyToOne
     @JoinColumn(name = "country_id")
     private Country countryId;
-
 }

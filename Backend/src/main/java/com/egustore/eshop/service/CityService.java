@@ -1,6 +1,5 @@
 package com.egustore.eshop.service;
 
-
 import com.egustore.eshop.dto.CityDTO;
 import com.egustore.eshop.model.City;
 
@@ -15,7 +14,7 @@ public interface CityService {
     List<City> getAllCitys();
 
     City updateCity(int id,
-                      CityDTO CityDTO);
+                    CityDTO CityDTO);
 
     void deleteCity(int id);
 }

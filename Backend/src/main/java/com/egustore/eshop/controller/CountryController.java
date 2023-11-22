@@ -40,19 +40,19 @@ public class CountryController {
     }
 
     //    //Show all categories
-    @GetMapping("/list")
+    @GetMapping("")
     public ResponseEntity<List<Country>> getAllCountrys() {
         List<Country> countrys = countryService.getAllCountrys();
         return ResponseEntity.ok(countrys);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<String> updateCountry(@PathVariable int id,@RequestBody CountryDTO countryDTO) {
         countryService.updateCountry(id,countryDTO);
         return ResponseEntity.ok("update country ");
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteCountry(@PathVariable int id) {
         countryService.deleteCountry(id);
         return ResponseEntity.ok("delete country " + id);

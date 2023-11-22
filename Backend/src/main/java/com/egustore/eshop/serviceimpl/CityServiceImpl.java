@@ -1,6 +1,5 @@
 package com.egustore.eshop.serviceimpl;
 
-
 import com.egustore.eshop.dto.CityDTO;
 import com.egustore.eshop.mapper.CityMapper;
 import com.egustore.eshop.model.City;
@@ -44,7 +43,7 @@ public class CityServiceImpl implements CityService {
 
     @Override
     public City updateCity(int id,
-                             CityDTO CityDTO) {
+                           CityDTO CityDTO) {
         City existCity = getCityById(id);
         cityMapper.updateCityFromDTO(CityDTO, existCity);
         cityRepository.save(existCity);

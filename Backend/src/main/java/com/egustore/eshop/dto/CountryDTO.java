@@ -9,5 +9,4 @@ public class CountryDTO {
     private Integer id;
 
     private String country;
-
 }

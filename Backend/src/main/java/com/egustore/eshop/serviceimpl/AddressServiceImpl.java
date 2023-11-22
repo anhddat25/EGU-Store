@@ -1,6 +1,5 @@
 package com.egustore.eshop.serviceimpl;
 
-
 import com.egustore.eshop.dto.AddressDTO;
 import com.egustore.eshop.mapper.AddressMapper;
 import com.egustore.eshop.model.Address;
@@ -37,13 +36,12 @@ public class AddressServiceImpl implements AddressService {
 
 
     @Override
-    public List<Address> getAllAddresss() {
+    public List<Address> getAllAddress() {
         return addressRepository.findAll();
     }
 
     @Override
-    public Address updateAddress(int id,
-                             AddressDTO AddressDTO) {
+    public Address updateAddress(int id, AddressDTO AddressDTO) {
         Address existAddress = getAddressById(id);
         addressMapper.updateAddressFromDTO(AddressDTO, existAddress);
         addressRepository.save(existAddress);

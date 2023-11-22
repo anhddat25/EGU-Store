@@ -1,6 +1,5 @@
 package com.egustore.eshop.service;
 
-
 import com.egustore.eshop.dto.CountryDTO;
 import com.egustore.eshop.model.Country;
 
@@ -15,7 +14,7 @@ public interface CountryService {
     List<Country> getAllCountrys();
 
     Country updateCountry(int id,
-                      CountryDTO CountryDTO);
+                          CountryDTO CountryDTO);
 
     void deleteCountry(int id);
 }
