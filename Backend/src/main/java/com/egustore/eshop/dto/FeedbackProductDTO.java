@@ -23,11 +23,11 @@ public class FeedbackProductDTO {
 
     private LocalDateTime updateDate;
 
-//    @JsonProperty("customer_id")
-//    private Integer customerId;
-//
-//    @JsonProperty("product_id")
-//    private Integer productId;
+    @JsonProperty("customer_id")
+    private Integer customerId;
+
+    @JsonProperty("product_id")
+    private Integer productId;
 
     private Product products;
 

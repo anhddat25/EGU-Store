@@ -48,11 +48,11 @@ public class FeedbackProduct {
     @JoinColumn(name = "product_id")
     private Product products;
 
-//    @Column(name = "customer_id", insertable=false, updatable=false)
-//    private Integer customerId;
-//
-//    @Column(name = "product_id",  insertable=false, updatable=false)
-//    private Integer productId;
+    @Column(name = "customer_id", insertable=false, updatable=false)
+    private Integer customerId;
+
+    @Column(name = "product_id",  insertable=false, updatable=false)
+    private Integer productId;
 
 
 }

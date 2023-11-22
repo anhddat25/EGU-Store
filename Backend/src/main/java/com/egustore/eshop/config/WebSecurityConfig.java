@@ -47,7 +47,13 @@ public class WebSecurityConfig {
                                     "api/v0/products"
                             ).permitAll()
                             .requestMatchers(GET,
+                                    "api/v0/products/**","api/v0/products**"
+                            ).permitAll()
+                            .requestMatchers(GET,
                                     "api/v0/products/top"
+                            ).permitAll()
+                            .requestMatchers(PUT,
+                                    "api/v0/products/image/**","/api/v0/products/image**"
                             ).permitAll()
                             .requestMatchers(GET,
                                     "api/v0/income-reports/default-list"
