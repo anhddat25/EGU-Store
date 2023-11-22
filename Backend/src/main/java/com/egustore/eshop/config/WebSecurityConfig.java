@@ -1,7 +1,7 @@
 package com.egustore.eshop.config;
 
 
-//import com.egustore.eshop.filters.JwtTokenFilter;
+import com.egustore.eshop.filters.JwtTokenFilter;
 import com.egustore.eshop.model.Role;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -31,7 +31,7 @@ import static org.springframework.http.HttpMethod.*;
 @EnableWebMvc
 @RequiredArgsConstructor
 public class WebSecurityConfig {
-//    private final JwtTokenFilter jwtTokenFilter;
+    private final JwtTokenFilter jwtTokenFilter;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
