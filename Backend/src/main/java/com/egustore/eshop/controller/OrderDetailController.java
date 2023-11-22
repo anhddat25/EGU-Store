@@ -27,7 +27,7 @@ public class OrderDetailController {
     }
 
     //Create Order
-    @PostMapping("/create")
+    @PostMapping("")
     public ResponseEntity<?> createOrder(@RequestBody @Valid OrderDetailDTO orderDetailDTO, BindingResult result) {
         if(result.hasErrors())
         {
@@ -45,7 +45,7 @@ public class OrderDetailController {
         return ResponseEntity.ok(orderDetailService.getAllOrderDetails());
     }
 
-    @PutMapping("/get-item/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<OrderDetail> updateOrder(@PathVariable int id) {
         return ResponseEntity.ok(orderDetailService.getOrderDetailById(id));
     }
@@ -57,7 +57,7 @@ public class OrderDetailController {
 //        return ResponseEntity.ok("update OrderDetail " + id);
 //    }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteOrder(@PathVariable int id) {
         orderDetailService.deleteOrderDetail(id);
         return ResponseEntity.ok("delete OrderDetail " + id);

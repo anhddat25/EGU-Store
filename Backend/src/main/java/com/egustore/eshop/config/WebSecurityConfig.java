@@ -26,9 +26,9 @@ import static org.springframework.http.HttpMethod.*;
 
 
 @Configuration
-@EnableMethodSecurity
+//@EnableMethodSecurity
 @EnableWebSecurity
-//@EnableWebMvc
+@EnableWebMvc
 @RequiredArgsConstructor
 public class WebSecurityConfig {
 //    private final JwtTokenFilter jwtTokenFilter;
@@ -45,37 +45,23 @@ public class WebSecurityConfig {
                             )
                             .permitAll()
                             .requestMatchers(GET,
-                                    "api/v0/products"
-                            ).permitAll()
+                                    "/api/v0/categories").permitAll()
                             .requestMatchers(GET,
-                                    "api/v0/income-reports/default-list"
-                            ).permitAll()
+                                    "/api/v0/products**").permitAll()
+                            .requestMatchers(POST,
+                                    "/api/v0/categories").hasAnyRole("ADMIN")
+                            .requestMatchers(PUT,
+                                    "/api/v0/categories").hasAnyRole(Role.ADMIN)
                             .requestMatchers(GET,
-                                    "/api/v0/income-reports/byTime**"
-                            ).permitAll()
-                            .requestMatchers(GET,
-                                    "/api/v0/customer-reports/all-list"
-                                    , "/api/v0/customer-reports/buying-list"
-                                    , "/api/v0/customer-reports/none-buying-list"
-                                    ,"/api/v0/customer-reports/status"
-                            ).permitAll()
-                            .requestMatchers(GET,
-                                    "api/v0/customers"
-                            ).permitAll()
+                                    "/api/v0/roles/").permitAll()
 //                            .requestMatchers(GET,
-//                                    "/api/v0/roles/").hasRole("MANAGER")
+//                                    "/api/v0/customers/**").permitAll()
 //                            .requestMatchers(GET,
 //                                    "/api/v0/products/").hasRole("MANAGER")
-//                            .requestMatchers(GET,
-//                                    "/api/v0/categories/").hasRole("MANAGER")
-//                            .requestMatchers(GET,
-//                                    "/api/v0/orders/list").hasRole("MANAGER")
                             .requestMatchers(GET,
-                                    "/api/v0/orders").permitAll()
-                            .requestMatchers(GET,
-                                    "/api/v0/order-details").permitAll()
-                            .requestMatchers(PUT,
-                                    "/api/v0/orders/status/**").hasAnyRole("")
+                                    "/api/v0/orders/list").hasRole(Role.ADMIN)
+                            .requestMatchers(POST,
+                                    "/api/v0/orders/create").hasRole("ADMIN")
                             .anyRequest().authenticated();
 
 

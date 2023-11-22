@@ -19,4 +19,6 @@ public interface OrderMapper {
     @Mapping(target = "id", ignore = true)
     void updateOrderFromDTO(OrderDTO orderDTO, @MappingTarget Order order);
 
+    List<OrderDTO> toDTOList(List<Order> orders);
+
 }

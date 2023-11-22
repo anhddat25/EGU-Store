@@ -3,6 +3,8 @@ package com.egustore.eshop.repository;
 import com.egustore.eshop.dto.ProductDTO;
 import com.egustore.eshop.model.Product;
 import jakarta.transaction.Transactional;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -24,5 +26,9 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
             "p.originId = :#{#productDTO.originId} " +
             "WHERE p.Id = :id")
     Integer updateProductById(@Param("productDTO") ProductDTO productDTO, @Param("id") int id);
+
+    boolean existsByName(String name);
+    Page<Product> findAll(Pageable pageable);
+
 
 }
