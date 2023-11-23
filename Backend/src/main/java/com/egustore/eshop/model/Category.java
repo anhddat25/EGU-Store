@@ -10,7 +10,7 @@ import lombok.*;
 @Entity
 @EqualsAndHashCode(callSuper = false)
 @Table(name = "categories")
-public class Category extends BaseEntity {
+public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;

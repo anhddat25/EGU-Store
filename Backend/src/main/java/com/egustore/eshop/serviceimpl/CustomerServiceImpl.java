@@ -74,10 +74,10 @@ public class CustomerServiceImpl implements CustomerService {
         return existCustomer;
     }
 
-    @Override
-    public Integer updateStatusCustomer(CustomerDTO customerDTO, int id) {
-        return customerRepository.updateStatusCustomer(customerDTO, id);
-    }
+//    @Override
+//    public Integer updateStatusCustomer(CustomerDTO customerDTO, int id) {
+//        return customerRepository.updateStatusCustomer(customerDTO, id);
+//    }
 
     @Override
     public void deleteCustomer(int id) {

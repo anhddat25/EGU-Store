@@ -17,6 +17,13 @@ public class OrderDTO {
 
     private String phone;
 
+    private String address;
+
+    private String district;
+
+    private String city;
+
+    private String country;
 
     private  Date orderDate;
 
@@ -38,8 +45,10 @@ public class OrderDTO {
 
     private OrderDetailDTO orderdetail;
 
-    @JsonProperty("address_id")
-    private Integer addressId;
 
-    private AddressDTO address;
+//    private AddressDTO address;
+//    @JsonProperty("address_id")
+//    private Integer addressId;
+//
+//    private AddressDTO address;
 }

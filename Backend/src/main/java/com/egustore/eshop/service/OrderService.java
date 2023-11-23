@@ -14,7 +14,7 @@ public interface OrderService {
     //    Integer updateOrder(int id, OrderDTO orderDTO);
     void deleteOrder(int id);
     Integer updateOrderById(OrderDTO orderDTO, int id);
-    void deleteOrder(int id);
+//    void deleteOrder(int id);
 //    Integer updateOrderById(OrderDTO orderDTO, int id);
     Integer updateOrderStatus(OrderDTO orderDTO, int id);
     Order updateOrder(int id, OrderDTO Order);

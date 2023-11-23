@@ -28,9 +28,9 @@ public class AddressDTO {
 
     private CustomerDTO customer;
 
-    @JsonProperty("order_id")
-    private Integer orderId;
-
-    private OrderDTO order;
+//    @JsonProperty("order_id")
+//    private Integer orderId;
+//
+//    private OrderDTO order;
 
 }

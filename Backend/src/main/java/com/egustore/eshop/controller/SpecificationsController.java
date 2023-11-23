@@ -2,6 +2,7 @@ package com.egustore.eshop.controller;
 
 
 import com.egustore.eshop.dto.SpecificationsDTO;
+import com.egustore.eshop.model.Product;
 import com.egustore.eshop.model.Specifications;
 import com.egustore.eshop.service.SpecificationsService;
 import jakarta.validation.Valid;
@@ -26,7 +27,7 @@ public class SpecificationsController {
         this.specificationsService = specificationsService;
     }
     //Create category
-    @PostMapping("/create")
+    @PostMapping("")
     public ResponseEntity<?> createSpec(@RequestBody @Valid SpecificationsDTO specificationsDTO, BindingResult result)
     {
         if(result.hasErrors())
@@ -42,7 +43,7 @@ public class SpecificationsController {
     }
 
     //    //Show all categories
-    @GetMapping("/list")
+    @GetMapping("")
     public ResponseEntity<List<Specifications>> getAllPayment() {
         List<Specifications> specifications = specificationsService.getAllSpec();
         return ResponseEntity.ok(specifications);
@@ -58,4 +59,12 @@ public class SpecificationsController {
     public ResponseEntity<String> deleteSpec(@PathVariable int id) {
         specificationsService.deleteSpec(id);
         return ResponseEntity.ok("delete Specifications " + id);
-}}
+    }
+
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Specifications> getSpecById(@PathVariable int id) {
+        return ResponseEntity.ok(specificationsService.getSpecById(id));
+    }
+
+}

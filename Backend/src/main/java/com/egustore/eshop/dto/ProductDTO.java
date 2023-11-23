@@ -27,9 +27,9 @@ public class ProductDTO {
 
     private Integer stockQuantity;
 
-    private LocalDateTime createDate;
+    private Date createDate;
 
-    private LocalDateTime updateDate;
+    private Date updateDate;
 
     private String description;
 

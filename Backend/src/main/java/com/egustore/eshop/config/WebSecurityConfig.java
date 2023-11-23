@@ -70,7 +70,8 @@ public class WebSecurityConfig {
                             .requestMatchers(GET,
                                     "/api/v0/customers"
                             ).permitAll()
-                        //             "/api/v0/categories").permitAll()
+                            .requestMatchers(GET,
+                                     "/api/v0/categories").permitAll()
                         //     .requestMatchers(GET,
                         //             "/api/v0/products**").permitAll()
                         //     .requestMatchers(POST,
@@ -88,7 +89,11 @@ public class WebSecurityConfig {
 //                            .requestMatchers(GET,
 //                                    "/api/v0/orders/list").hasRole("MANAGER")
                             .requestMatchers(GET,
-                                    "/api/v0/orders").permitAll()
+                                    "/api/v0/orders**", "/api/v0/orders/**").permitAll()
+                            .requestMatchers(GET,
+                                    "/api/v0/brands").permitAll()
+                            .requestMatchers(POST,
+                                    "/api/v0/brands").permitAll()
                             .requestMatchers(GET,
                                     "/api/v0/order-details").permitAll()
                             .requestMatchers(GET,
@@ -101,6 +106,12 @@ public class WebSecurityConfig {
                                     "/api/v0/images/**","/api/v0/images**").permitAll()
                             .requestMatchers(POST,
                                     "/api/v0/images/upload").permitAll()
+                            .requestMatchers(GET,
+                                    "/api/v0/specifications").permitAll()
+                            .requestMatchers(GET,
+                                    "/api/v0/specifications/**","/api/v0/specifications**").permitAll()
+                            .requestMatchers(POST,
+                                    "/api/v0/specifications").permitAll()
                             .requestMatchers(PUT,
                                     "/api/v0/images/update/**","/api/v0/images/update**").permitAll()
                             .requestMatchers(PUT,
@@ -110,8 +121,12 @@ public class WebSecurityConfig {
                             .requestMatchers(PUT,
                                     "/api/v0/orders/status/**").hasAnyRole("")
 //                            .requestMatchers("**").permitAll();
-                        //     .requestMatchers(GET,
-                        //             "/api/v0/orders/list").hasRole(Role.ADMIN)
+                             .requestMatchers(GET,
+                                     "/api/v0/orders/list/**","/api/v0/orders/list**").permitAll()
+                            .requestMatchers(GET,
+                                    "/api/v0/orderdetail/getByOrder/**","/api/v0/orderdetail/getByOrder**").permitAll()
+                            .requestMatchers(PUT,
+                                    "/api/v0/orderdetail/quantity/**","/api/v0/orderdetail/quantity**").permitAll()
                         //     .requestMatchers(POST,
                         //             "/api/v0/orders/create").hasRole("ADMIN")
                             .anyRequest().authenticated();

@@ -22,7 +22,7 @@ import java.util.List;
 @Entity
 @EqualsAndHashCode(callSuper = false)
 @Table(name="products")
-public class Product extends BaseEntity {
+public class Product{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -39,11 +39,13 @@ public class Product extends BaseEntity {
     @Column(name = "thumb_image")
     private String thumbImage;
 
+    @Temporal(TemporalType.DATE)
     @Column(name = "create_date")
-    private LocalDateTime createDate;
+    private Date createDate;
 
+    @Temporal(TemporalType.DATE)
     @Column(name = "update_date")
-    private LocalDateTime updateDate;
+    private Date updateDate;
 
     @Column(name = "stock_quantity")
     private Integer stockQuantity;

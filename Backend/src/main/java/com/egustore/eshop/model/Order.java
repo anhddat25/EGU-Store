@@ -38,6 +38,18 @@ public class Order {
     @Enumerated(EnumType.STRING)
     private OrderStatus status;
 
+    @Column(name = "address")
+    private String address;
+
+    @Column(name = "district")
+    private String district;
+
+    @Column(name = "city")
+    private String city;
+
+    @Column(name = "country")
+    private String country;
+
     @Column(name = "payment_method")
     private String paymentMethod;
 
@@ -57,17 +69,17 @@ public class Order {
     private List<OrderDetail> orderDetail;
 
 
-    @Column(name = "order_details_id", insertable=false, updatable=false)
-    private Integer orderdetailId;
+//    @Column(name = "orderdetails_id", insertable=false, updatable=false)
+//    private Integer orderdetailId;
+//
+//    @OneToMany(mappedBy = "orders")
+//    @JsonIgnoreProperties("orders")
+////    @JoinColumn(name = "address_id")
+//    private List<Address> address;
 
-    @ManyToOne
-    @JsonIgnoreProperties("order")
-    @JoinColumn(name = "address_id")
-    private Address address;
 
-
-    @Column(name = "address_id", insertable=false, updatable=false)
-    private Integer addressId;
+//    @Column(name = "address_id", insertable=false, updatable=false)
+//    private Integer addressId;
 //    @OneToMany(mappedBy = "order")
 //    private List<OrderDetail> orderDetail;
 }

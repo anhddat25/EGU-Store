@@ -66,7 +66,7 @@ public class OrderDetailController {
     public ResponseEntity<OrderDetail> getOrderDetailById(@PathVariable int id) {
         return ResponseEntity.ok(orderDetailService.getOrderDetailById(id));
     }
-    @GetMapping("/getorderdetailbyorderid/{id}")
+    @GetMapping("/getByOrder/{id}")
     public ResponseEntity<List<OrderDetailDTO>>getOrderDetailByOrderID(@PathVariable Integer id) {
         return ResponseEntity.ok(orderDetailService.getOrderDetailByOrderID(id));
     }

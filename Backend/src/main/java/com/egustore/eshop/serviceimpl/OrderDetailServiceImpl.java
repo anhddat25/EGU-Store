@@ -52,8 +52,8 @@ public class OrderDetailServiceImpl implements OrderDetailService {
     public void deleteOrderDetail(int id) {
         orderDetailRepository.deleteById(id);
     }
+    @Override
     public Integer updateQuantityDetail(OrderDetailDTO orderDetailDTO, int id) {
-
         return orderDetailRepository.updateQuantityDetail(orderDetailDTO, id);
     }
 }

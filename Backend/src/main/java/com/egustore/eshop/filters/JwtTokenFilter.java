@@ -21,6 +21,8 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.springframework.http.HttpMethod.GET;
+
 @Component
 public class JwtTokenFilter extends OncePerRequestFilter {
     private final UserDetailsService userDetailsService;
@@ -84,11 +86,15 @@ public class JwtTokenFilter extends OncePerRequestFilter {
                 Pair.of("/api/v0/customers/login", "POST"),
                 Pair.of("/api/v0/customers/register", "POST"),
                 Pair.of("/api/v0/orders","GET"),
+                Pair.of("/api/v0/orders/list","GET"),
+                Pair.of("/api/v0/orderdetail/getByOrder","GET"),
+                Pair.of("/api/v0/orderdetail/quantity","PUT"),
                 Pair.of("/api/v0/feedbacks/list","GET"),
                 Pair.of("/api/v0/feedbacks/create","POST"),
+                Pair.of("/api/v0/specifications","GET"),
+                Pair.of("/api/v0/specifications","POST"),
                 Pair.of("/api/v0/income-reports/default-list", "GET"),
                 Pair.of("/api/v0/income-reports/byTime", "GET"),
-                Pair.of("/api/v0/order-details","GET"),
                 Pair.of("/api/v0/images/list","GET"),
                 Pair.of("/api/v0/images","GET"),
                 Pair.of("/api/v0/images/upload","POST"),
