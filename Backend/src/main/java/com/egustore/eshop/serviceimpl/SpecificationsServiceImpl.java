@@ -52,4 +52,9 @@ public class SpecificationsServiceImpl implements SpecificationsService {
 
         specificationsReposity.deleteById(id);
     }
+
+    @Override
+    public Integer updateSpecById(SpecificationsDTO specificationsDTO, int id) {
+        return specificationsReposity.updateSpecById(specificationsDTO, id);
+    }
 }

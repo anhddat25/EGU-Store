@@ -1,6 +1,7 @@
 package com.egustore.eshop.controller;
 
 import com.egustore.eshop.dto.ProductDTO;
+import com.egustore.eshop.model.Origin;
 import com.egustore.eshop.model.Product;
 import com.egustore.eshop.response.ProductListResponse;
 import com.egustore.eshop.response.ProductResponse;
@@ -30,7 +31,7 @@ public class ProductController {
         this.productService = productService;
     }
     //Create category
-    @PostMapping("")
+    @PostMapping("/create")
     public ResponseEntity<?> createProduct(@RequestBody @Valid ProductDTO productDTO, BindingResult result)
     {
         if(result.hasErrors())
@@ -81,6 +82,12 @@ public class ProductController {
     @GetMapping("/{id}")
     public ResponseEntity<Product> getProductById(@PathVariable int id) {
         return ResponseEntity.ok(productService.getProductById(id));
+    }
+
+    @GetMapping("/list")
+    public ResponseEntity<List<Product>> getAllProduct() {
+        List<Product> products = productService.getAllProduct();
+        return ResponseEntity.ok(products);
     }
 
 }

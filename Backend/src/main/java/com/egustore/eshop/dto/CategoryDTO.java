@@ -18,7 +18,7 @@ public class CategoryDTO  {
 
     private CategoryStatus status;
 
-    private LocalDateTime createDate;
+//    private LocalDateTime createDate;
 
     private LocalDateTime updateDate;
 
