@@ -9,9 +9,9 @@ import org.mapstruct.factory.Mappers;
 @Mapper(componentModel = "spring")
 public interface BrandMapper {
     BrandMapper INSTANCE = Mappers.getMapper(BrandMapper.class);
-    BrandDTO mapToDto(Brand entity);
+    BrandDTO mapToBrandDTO(Brand brand);
 
-    Brand mapToEntity(BrandDTO dto);
+    Brand mapToBrand(BrandDTO dto);
 
     @Mapping(target = "id", ignore = true)
     void updateBrandFromDTO(BrandDTO dto, @MappingTarget Brand entity);

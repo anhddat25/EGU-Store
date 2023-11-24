@@ -1,8 +1,10 @@
 package com.egustore.eshop.serviceimpl;
 
 import com.egustore.eshop.dto.OrderDTO;
+import com.egustore.eshop.dto.ProductDTO;
 import com.egustore.eshop.model.Order;
 import com.egustore.eshop.mapper.OrderMapper;
+import com.egustore.eshop.model.Product;
 import com.egustore.eshop.repository.OrderRepository;
 import com.egustore.eshop.service.OrderService;
 import org.springframework.stereotype.Service;
@@ -48,7 +50,24 @@ public class OrderServiceImp implements OrderService {
 //    }
 
     @Override
+    public Order updateOrder(int id, OrderDTO orderDTO) {
+        Order existOrder = getOrderById(id);
+        orderMapper.updateOrderFromDTO(orderDTO, existOrder);
+        orderRepository.save(existOrder);
+        return existOrder;
+    }
+    @Override
     public void deleteOrder(int id) {
         orderRepository.deleteById(id);
+    }
+
+    @Override
+    public Integer updateOrderById(OrderDTO orderDTO, int id) {
+
+        return orderRepository.updateOrderById(orderDTO, id);
+    }
+    public Integer updateOrderStatus(OrderDTO orderDTO, int id) {
+
+        return orderRepository.updateOrderStatus(orderDTO, id);
     }
 }

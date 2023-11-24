@@ -1,8 +1,13 @@
 package com.egustore.eshop.dto;
 
-import com.egustore.eshop.model.BaseEntity;
+
+import com.egustore.eshop.enums.ProductStatus;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import com.egustore.eshop.model.BaseEntity;
 import jakarta.persistence.Column;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -22,22 +27,24 @@ public class ProductDTO  {
     private String description;
     private Double discountPercentage;
     private String discountPrice;
-    private String status;
+
+    @Enumerated(EnumType.STRING)
+    private ProductStatus status;
+
 
     @JsonProperty("category_id")
     private Integer categoryId;
 
+    private CategoryDTO category;
+
     @JsonProperty("brand_id")
     private Integer brandId;
+
+    private BrandDTO brand;
 
     @JsonProperty("origin_id")
     private Integer originId;
 
-    private BrandDTO brand;
-
-    private CategoryDTO category;
-
-    private OriginDTO origins;
-
+    private OriginDTO origin;
 
 }
