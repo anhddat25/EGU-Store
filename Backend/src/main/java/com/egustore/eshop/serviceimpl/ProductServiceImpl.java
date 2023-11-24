@@ -35,6 +35,7 @@ public class ProductServiceImpl implements ProductService {
         Product product = productMapper.mapToProduct(productDTO);
         return productRepository.save(product);
     }
+
     @Override
     public List<Product> getAllProduct() {
         return productRepository.findAll();
