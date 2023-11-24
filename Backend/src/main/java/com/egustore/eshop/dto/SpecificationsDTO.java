@@ -1,5 +1,6 @@
 package com.egustore.eshop.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Column;
 import lombok.*;
 
@@ -14,4 +15,8 @@ public class SpecificationsDTO {
     private String operatingSystem;
     private String camera;
 //    private Integer product_id;
+
+    @JsonProperty("product_id")
+    private Integer productId;
+    private ProductDTO product;
 }

@@ -5,16 +5,16 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
-@Table(name = "origins")
+import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Origins {
+@Entity
+public class IncomeReport {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    @Temporal(TemporalType.DATE)
+    private Date date;
+    private Long orders;
 
-    @Column(name = "country")
-    private String country;
+    private Double revenue;
 }

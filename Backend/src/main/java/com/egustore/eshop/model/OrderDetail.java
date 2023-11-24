@@ -1,5 +1,6 @@
 package com.egustore.eshop.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -10,7 +11,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "Order_Details")
+@Table(name = "order_details")
 public class OrderDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,6 +24,7 @@ public class OrderDetail {
     private Double totalPrice;
 
     @ManyToOne
+    @JsonIgnoreProperties("orderdetail")
     @JoinColumn(name = "order_id")
     private Order order;
 
@@ -30,8 +32,9 @@ public class OrderDetail {
     @JoinColumn(name = "product_id")
     private Product product;
 
-
-
-
+    @Column(name ="product_id", insertable = false, updatable = false)
+    private Integer productId;
+    @Column(name ="order_id", insertable = false, updatable = false)
+    private Integer orderId;
 
 }

@@ -2,6 +2,7 @@ package com.egustore.eshop.serviceimpl;
 
 import com.egustore.eshop.dto.ProductDTO;
 import com.egustore.eshop.mapper.ProductMapper;
+import com.egustore.eshop.model.Order;
 import com.egustore.eshop.model.Product;
 import com.egustore.eshop.repository.CategoryRepository;
 import com.egustore.eshop.repository.ProductRepository;
@@ -34,7 +35,10 @@ public class ProductServiceImpl implements ProductService {
         Product product = productMapper.mapToProduct(productDTO);
         return productRepository.save(product);
     }
-
+    @Override
+    public List<Product> getAllProduct() {
+        return productRepository.findAll();
+    }
     @Override
     public Product getProductById(int id){
         return productRepository.findById(id)
@@ -63,4 +67,12 @@ public class ProductServiceImpl implements ProductService {
 
         productRepository.deleteById(id);
     }
+
+    @Override
+    public Integer updateProductById(ProductDTO productDTO, int id) {
+
+        return productRepository.updateProductById(productDTO, id);
+    }
+
+
 }

@@ -1,6 +1,8 @@
 package com.egustore.eshop.controller;
 
+import com.egustore.eshop.dto.OrderDTO;
 import com.egustore.eshop.dto.OrderDetailDTO;
+import com.egustore.eshop.model.Order;
 import com.egustore.eshop.model.OrderDetail;
 import com.egustore.eshop.service.OrderDetailService;
 import jakarta.validation.Valid;
@@ -13,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 @RestController
-@RequestMapping("/api/v0/order-details")
+@RequestMapping("/api/v0/orderdetail")
 @Validated
 @CrossOrigin("*")
 public class OrderDetailController {
@@ -38,7 +40,7 @@ public class OrderDetailController {
         return ResponseEntity.ok(orderDetailService.createOrderDetail(orderDetailDTO));
     }
 
-    @GetMapping("/list")
+    @GetMapping("")
     public ResponseEntity<List<OrderDetail>> getAllOrderDetails() {
         return ResponseEntity.ok(orderDetailService.getAllOrderDetails());
     }
@@ -59,5 +61,18 @@ public class OrderDetailController {
     public ResponseEntity<String> deleteOrder(@PathVariable int id) {
         orderDetailService.deleteOrderDetail(id);
         return ResponseEntity.ok("delete OrderDetail " + id);
+    }
+    @GetMapping("/{id}")
+    public ResponseEntity<OrderDetail> getOrderDetailById(@PathVariable int id) {
+        return ResponseEntity.ok(orderDetailService.getOrderDetailById(id));
+    }
+    @GetMapping("/getorderdetailbyorderid/{id}")
+    public ResponseEntity<List<OrderDetailDTO>>getOrderDetailByOrderID(@PathVariable Integer id) {
+        return ResponseEntity.ok(orderDetailService.getOrderDetailByOrderID(id));
+    }
+    @PutMapping("/quantity/{id}")
+    public ResponseEntity<String> updateQuantityDetail(@PathVariable int id,@RequestBody OrderDetailDTO orderDetailDTO) {
+        orderDetailService.updateQuantityDetail(orderDetailDTO, id);
+        return ResponseEntity.ok("update Quantity Order Detail " + id);
     }
 }
