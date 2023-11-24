@@ -3,6 +3,7 @@ package com.egustore.eshop.model;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
@@ -20,12 +21,14 @@ public class RatingProduct {
     @Column(name = "name_customer")
     private String nameCustomer;
 
-    @Column(name = "rating")
-    private Integer rating;
+    @Column(name = "Rating")
+    private int rating;
 
+//    @Temporal(TemporalType.DATE)
     @Column(name = "create_date")
     private Date createDate;
 
+//    @Temporal(TemporalType.DATE)
     @Column(name = "update_date")
     private Date updateDate;
 

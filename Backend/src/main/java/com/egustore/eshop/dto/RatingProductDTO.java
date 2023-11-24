@@ -17,11 +17,12 @@ public class RatingProductDTO {
 
     private String nameCustomer;
 
-    private Integer rating;
+    private int rating;
 
     private Date createDate;
 
     private Date updateDate;
-    private Customer customer;
-    private Product product;
+
+    private Customer customerId;
+    private Product productId;
 }

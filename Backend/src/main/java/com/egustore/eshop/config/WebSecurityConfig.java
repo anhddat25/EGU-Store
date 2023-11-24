@@ -74,6 +74,7 @@ public class WebSecurityConfig {
                             .requestMatchers(GET,
                                     "/api/v0/customers"
                             ).permitAll()
+                            .requestMatchers("/api/v0/rating-products**","/api/v0/rating-products/**").permitAll()
                             .requestMatchers(GET,
                                      "/api/v0/categories").permitAll()
                         //     .requestMatchers(GET,
