@@ -1,6 +1,7 @@
 package com.egustore.eshop.controller;
 
 import com.egustore.eshop.dto.ProductDTO;
+import com.egustore.eshop.model.Origin;
 import com.egustore.eshop.model.Product;
 import com.egustore.eshop.service.ProductService;
 import jakarta.validation.Valid;
@@ -29,7 +30,8 @@ public class ProductController {
     }
     //Create category
     @PostMapping("/create")
-    public ResponseEntity<?> createProduct(@RequestBody @Valid ProductDTO productDTO, BindingResult result) throws IOException {
+    public ResponseEntity<?> createProduct(@RequestBody @Valid ProductDTO productDTO, BindingResult result)
+    {
         if(result.hasErrors())
         {
             List<String> errMessage = result.getFieldErrors()
@@ -70,9 +72,15 @@ public class ProductController {
         productService.updateProductById(productDTO, id);
         return ResponseEntity.ok("update Product " + id);
     }
-    @GetMapping("/{id}")
-    public ResponseEntity<Product> getProductById(@PathVariable int id) {
-        return ResponseEntity.ok(productService.getProductById(id));
+//    @GetMapping("/{id}")
+//    public ResponseEntity<Product> getProductById(@PathVariable int id) {
+//        return ResponseEntity.ok(productService.getProductById(id));
+//    }
+
+    @GetMapping("/list")
+    public ResponseEntity<List<Product>> getAllProduct() {
+        List<Product> products = productService.getAllProduct();
+        return ResponseEntity.ok(products);
     }
 
     @PutMapping("image/{id}")

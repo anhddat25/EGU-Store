@@ -1,7 +1,6 @@
 package com.egustore.eshop.controller;
 
-import com.egustore.eshop.dto.CustomerDTO;
-import com.egustore.eshop.dto.CustomerLoginDTO;
+import com.egustore.eshop.dto.*;
 import com.egustore.eshop.model.Customer;
 import com.egustore.eshop.service.CustomerService;
 import jakarta.validation.Valid;
@@ -67,10 +66,47 @@ public class CustomerController {
         List<Customer> customers = customerService.getAllCustomers();
         return ResponseEntity.ok(customers);
     }
-
-    @PutMapping("/update/{id}")
-    public ResponseEntity<String> updateCustomer(@PathVariable int id,@RequestBody CustomerDTO customerDTO) {
-        customerService.updateCustomer(id,customerDTO);
+    @GetMapping("/{id}")
+    public ResponseEntity<Customer> getCustomerById(@PathVariable int id) {
+        return ResponseEntity.ok(customerService.getCustomerById(id));
+    }
+    @PutMapping("/profile/{id}")
+    public ResponseEntity<String> updateProfile(@PathVariable int id, @RequestBody CustomerDTO customerDTO) {
+        customerService.updateProfile(id, customerDTO);
+        return ResponseEntity.ok("Profile updated successfully");
+    }
+    @PutMapping("/change-password/{id}")
+    public ResponseEntity<String> changePassword(@PathVariable int id, @RequestBody ChangePasswordDTO changePasswordDTO) {
+        try {
+            customerService.changePassword(id, changePasswordDTO); // Gọi phương thức changePassword trong dịch vụ
+            return ResponseEntity.ok("Đổi mật khẩu thành công");
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Đã xảy ra lỗi");
+        }
+    }
+    @PostMapping("/forgotPassword")
+    public ResponseEntity<String> forgotPassword(@RequestBody ForgotPasswordDTO forgotPasswordDTO) {
+        try {
+            customerService.forgotPassword(forgotPasswordDTO);
+            return ResponseEntity.ok("Email đặt lại mật khẩu đã được gửi thành công!");
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+    @PostMapping("/resetPassword")
+    public ResponseEntity<?> resetPassword(@RequestBody ResetPasswordDTO resetPasswordDTO) {
+        try {
+            customerService.resetPassword(resetPasswordDTO);
+            return ResponseEntity.ok("Mật khẩu đã được đổi lại thành công!");
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+    @PutMapping("/{id}")
+    public ResponseEntity<String> updateCustomer(@PathVariable int id, @RequestBody CustomerDTO customerDTO) {
+        customerService.updateCustomer(id, customerDTO);
         return ResponseEntity.ok("update customer ");
     }
 

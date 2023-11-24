@@ -46,6 +46,10 @@ public class OriginController {
         List<Origin> origins = originService.getAllOrigins();
         return ResponseEntity.ok(origins);
     }
+    @GetMapping("/{id}")
+    public ResponseEntity<Origin> getOriginById(@PathVariable int id) {
+        return ResponseEntity.ok(originService.getOriginById(id));
+    }
 
     @PutMapping("/update/{id}")
     public ResponseEntity<String> updateOrigins(@PathVariable int id,@RequestBody OriginDTO originDTO) {

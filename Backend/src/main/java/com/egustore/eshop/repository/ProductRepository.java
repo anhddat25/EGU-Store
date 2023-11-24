@@ -30,6 +30,7 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
             "WHERE p.Id = :id")
     Integer updateProductById(@Param("productDTO") ProductDTO productDTO, @Param("id") int id);
 
+
     boolean existsByName(String name);
     Page<Product> findAll(Pageable pageable);
 

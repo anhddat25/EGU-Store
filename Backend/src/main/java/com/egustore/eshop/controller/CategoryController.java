@@ -47,8 +47,11 @@ public class CategoryController {
         List<Category> categories = categoryService.getAllCategories();
         return ResponseEntity.ok(categories);
     }
-
-    @PutMapping("/update/{id}")
+    @GetMapping("/{id}")
+    public ResponseEntity<Category> getCategoryById(@PathVariable int id) {
+        return ResponseEntity.ok(categoryService.getCategoryById(id));
+    }
+    @PutMapping("/{id}")
     public ResponseEntity<String> updateCategory(@PathVariable int id,@RequestBody CategoryDTO categoryDTO) {
         categoryService.updateCategory(id,categoryDTO);
         return ResponseEntity.ok("update category ");
@@ -60,9 +63,10 @@ public class CategoryController {
         return ResponseEntity.ok("delete category " + id);
     }
 
-//    @GetMapping("/active")
-//    public ResponseEntity<List<Category>> getActiveCategories() {
-//        List<Category> categories = categoryService.getActiveCategories();
-//        return ResponseEntity.ok(categories);
-//    }
+    @GetMapping("/active")
+    public ResponseEntity<List<Category>> getActiveCategories() {
+        List<Category> categories = categoryService.getActiveCategories();
+        return ResponseEntity.ok(categories);
+    }
+
 }
