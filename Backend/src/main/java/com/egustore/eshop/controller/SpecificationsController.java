@@ -68,9 +68,9 @@ public class SpecificationsController {
         return ResponseEntity.ok(specificationsService.getSpecById(id));
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<String> updateProductById(@RequestBody SpecificationsDTO specificationsDTO, @PathVariable int id) {
-        specificationsService.updateSpecById(specificationsDTO, id);
-        return ResponseEntity.ok("update Product " + id);
-    }
+//    @PutMapping("/{id}")
+//    public ResponseEntity<String> updateProductById(@RequestBody SpecificationsDTO specificationsDTO, @PathVariable int id) {
+//        specificationsService.updateSpecById(specificationsDTO, id);
+//        return ResponseEntity.ok("update Product " + id);
+//    }
 }

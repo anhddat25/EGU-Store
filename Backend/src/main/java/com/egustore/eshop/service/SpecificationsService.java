@@ -11,5 +11,5 @@ public interface SpecificationsService {
     Specifications updateSpec(int id, SpecificationsDTO specifications);
     List<Specifications> getAllSpec();
     void deleteSpec(int id);
-    Integer updateSpecById(SpecificationsDTO specificationsDTO, int id);
+//    Integer updateSpecById(SpecificationsDTO specificationsDTO, int id);
 }

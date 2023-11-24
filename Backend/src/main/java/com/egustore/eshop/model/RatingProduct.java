@@ -11,7 +11,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "ratingproducts")
+@Table(name = "rating_product")
 public class RatingProduct {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,6 +34,6 @@ public class RatingProduct {
     private Customer customerId;
 
     @ManyToOne
-    @JoinColumn(name = "product-id")
+    @JoinColumn(name = "product_id")
     private Product productId;
 }

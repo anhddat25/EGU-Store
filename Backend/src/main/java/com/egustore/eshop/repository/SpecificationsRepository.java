@@ -9,17 +9,18 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+
 public interface SpecificationsRepository extends JpaRepository <Specifications, Integer>  {
-    @Modifying
-    @Transactional
-    @Query(value = "UPDATE Specifications s SET s.processor = :#{#specificaitonsDTO.processor}, " +
-            "s.graphicsCard = :#{#specificaitonsDTO.graphicsCard}, " +
-            "s.ram = :#{#specificaitonsDTO.ram}, " +
-            "s.storage = :#{#specificaitonsDTO.storage}, " +
-            "s.display = :#{#specificaitonsDTO.display}," +
-            "s.operatingSystem = :#{#specificaitonsDTO.operatingSystem}, " +
-            "s.camera = :#{#specificaitonsDTO.camera}, " +
-            "s.productId = :#{#specificaitonsDTO.productId} " +
-            "WHERE s.Id = :id")
-    Integer updateSpecById(@Param("specificaitonsDTO") SpecificationsDTO specificationsDTO, @Param("id") int id);
+//    @Modifying
+//    @Transactional
+//    @Query(value = "UPDATE Specifications s SET s.processor = :#{#specificaitonsDTO.processor}, " +
+//            "s.graphicsCard = :#{#specificaitonsDTO.graphicsCard}, " +
+//            "s.ram = :#{#specificaitonsDTO.ram}, " +
+//            "s.storage = :#{#specificaitonsDTO.storage}, " +
+//            "s.display = :#{#specificaitonsDTO.display}," +
+//            "s.operatingSystem = :#{#specificaitonsDTO.operatingSystem}, " +
+//            "s.camera = :#{#specificaitonsDTO.camera}, " +
+//            "s.productId = :#{#specificaitonsDTO.productId} " +
+//            "WHERE s.Id = :id")
+//    Integer updateSpecById(@Param("specificaitonsDTO") SpecificationsDTO specificationsDTO, @Param("id") int id);
 }

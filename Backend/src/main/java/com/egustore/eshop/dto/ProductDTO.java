@@ -27,10 +27,6 @@ public class ProductDTO {
 
     private Integer stockQuantity;
 
-    private Date createDate;
-
-    private Date updateDate;
-
     private String description;
 
     private Double discountPercentage;

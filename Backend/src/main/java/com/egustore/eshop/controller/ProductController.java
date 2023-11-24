@@ -30,10 +30,8 @@ public class ProductController {
     }
     //Create category
     @PostMapping("/create")
-    public ResponseEntity<?> createProduct(@RequestBody @Valid ProductDTO productDTO, BindingResult result)
-    {
-        if(result.hasErrors())
-        {
+    public ResponseEntity<?> createProduct(@RequestBody @Valid ProductDTO productDTO, BindingResult result) {
+        if (result.hasErrors()) {
             List<String> errMessage = result.getFieldErrors()
                     .stream()
                     .map(FieldError::getDefaultMessage)
@@ -45,9 +43,6 @@ public class ProductController {
 
         return ResponseEntity.ok("Create Product successfully!");
     }
-
-
-
 
     //Show all categories
     @GetMapping("")
@@ -77,11 +72,6 @@ public class ProductController {
         return ResponseEntity.ok(productService.getProductById(id));
     }
 
-    @GetMapping("/list")
-    public ResponseEntity<List<Product>> getAllProduct() {
-        List<Product> products = productService.getAllProduct();
-        return ResponseEntity.ok(products);
-    }
 
     @PutMapping("image/{id}")
     public ResponseEntity<String> createThumbImageById(@RequestParam("thumbImage") MultipartFile files,@PathVariable int id) throws IOException {

@@ -13,7 +13,6 @@ public interface CategoryService {
     Category getCategoryById(int id);
     Category updateCategory(int id, CategoryDTO category);
     List<Category> getAllCategories();
-    Category updateCategory(int id, CategoryDTO categoryDTO);
     List<Category> getActiveCategories();
     void deleteCategory(int id);
 }
