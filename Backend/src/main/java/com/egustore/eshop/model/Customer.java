@@ -32,7 +32,7 @@ public class Customer implements UserDetails {
 
     @Temporal(TemporalType.DATE)
     @Column(name = "date_of_birth")
-    private Date dateOfBirth = new Date();
+    private Date dateOfBirth;
 
     @Column(name = "email")
     private String email;
@@ -45,7 +45,7 @@ public class Customer implements UserDetails {
 
     @Temporal(TemporalType.DATE)
     @Column(name = "create_date")
-    private Date createDate = new Date();
+    private Date createDate;
 
     @Column(name = "facebook_id")
     private String facebookId;

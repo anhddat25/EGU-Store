@@ -6,13 +6,12 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-
 import java.util.List;
-@Repository
+
 public interface RatingProductRepository extends JpaRepository<RatingProduct, Integer> {
     // Các phương thức truy vấn tùy chọn có thể được thêm vào đây nếu cần
+
     @Query(value = "Select * From egu_store.rating_product r where r.product_id = :productId", nativeQuery = true)
-    List<RatingProduct> getRatingProductByProductId(@Param("productId") Integer productId);
-    @Query(value = "Select * From egu_store.rating_product r where r.customer_id = :customerId", nativeQuery = true)
-    List<RatingProduct> findByCustomerId(@Param("customerId") int customerId);
+    List<RatingProduct> getRatingProductByProductId(@Param("productId") int productId);
+
 }

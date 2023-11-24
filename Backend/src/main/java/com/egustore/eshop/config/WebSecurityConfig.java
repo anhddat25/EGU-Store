@@ -30,13 +30,13 @@ import static org.springframework.http.HttpMethod.*;
 @EnableWebMvc
 @RequiredArgsConstructor
 public class WebSecurityConfig {
-//    private final JwtTokenFilter jwtTokenFilter;
+    private final JwtTokenFilter jwtTokenFilter;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(AbstractHttpConfigurer::disable)
-//                .addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class)
+                .addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class)
                 .authorizeHttpRequests(requests -> {
                     requests
                             .requestMatchers( "**",
@@ -72,9 +72,10 @@ public class WebSecurityConfig {
                                     ,"/api/v0/customer-reports/status"
                             ).permitAll()
                             .requestMatchers(GET,
-                                    "/api/v0/customers"
+                                    "/api/v0/customers**", "/api/v0/customers/**"
                             ).permitAll()
-                            .requestMatchers("/api/v0/rating-products**","/api/v0/rating-products/**").permitAll()
+                            .requestMatchers(GET,"/api/v0/rating-products**","/api/v0/rating-products/**").permitAll()
+                            .requestMatchers(POST,"/api/v0/rating-products").permitAll()
                             .requestMatchers(GET,
                                      "/api/v0/categories").permitAll()
                         //     .requestMatchers(GET,
