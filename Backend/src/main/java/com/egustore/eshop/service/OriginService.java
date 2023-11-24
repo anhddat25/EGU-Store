@@ -1,19 +1,19 @@
 package com.egustore.eshop.service;
 
 import com.egustore.eshop.dto.OriginDTO;
-import com.egustore.eshop.model.Origins;
+import com.egustore.eshop.model.Origin;
 
 import java.util.List;
 
 public interface OriginService {
 
-    Origins createOrigin(OriginDTO originDTO);
+    Origin createOrigin(OriginDTO originDTO);
 
-    Origins getOriginById(int id);
+    Origin getOriginById(int id);
 
-    List<Origins> getAllOrigins();
+    List<Origin> getAllOrigins();
 
-    Origins updateOrigins(int id, OriginDTO originDTO);
+    Origin updateOrigins(int id, OriginDTO originDTO);
 
     void deleteOrigins(int id);
 }

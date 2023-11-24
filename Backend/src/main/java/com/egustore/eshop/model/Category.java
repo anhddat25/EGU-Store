@@ -8,6 +8,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@EqualsAndHashCode(callSuper = false)
 @Table(name = "categories")
 public class Category {
     @Id
@@ -17,13 +18,9 @@ public class Category {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "description")
-    private String description;
-
     @Column(name = "status")
     @Enumerated(EnumType.STRING)
     private CategoryStatus status;
-
 
 }
 

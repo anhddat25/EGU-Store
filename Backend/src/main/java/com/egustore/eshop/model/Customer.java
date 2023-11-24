@@ -6,7 +6,7 @@ import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -17,6 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@EqualsAndHashCode(callSuper = false)
 @Table(name = "customers")
 public class Customer implements UserDetails {
     @Id
@@ -29,8 +30,9 @@ public class Customer implements UserDetails {
     @Column(name = "last_name")
     private String lastName;
 
+    @Temporal(TemporalType.DATE)
     @Column(name = "date_of_birth")
-    private Date dateOfBirth;
+    private Date dateOfBirth = new Date();
 
     @Column(name = "email")
     private String email;
@@ -41,8 +43,9 @@ public class Customer implements UserDetails {
     @Column(name = "password")
     private String password;
 
+    @Temporal(TemporalType.DATE)
     @Column(name = "create_date")
-    private LocalDateTime createDate;
+    private Date createDate = new Date();
 
     @Column(name = "facebook_id")
     private String facebookId;
@@ -62,11 +65,13 @@ public class Customer implements UserDetails {
     @JoinColumn(name = "role_id")
     private Role role;
 
+    @Column(name = "role_id", insertable=false, updatable=false)
+    private Integer roleId;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<SimpleGrantedAuthority> authorityList = new ArrayList<>();
-//        authorityList.add(new SimpleGrantedAuthority("ROLE_" + getRole().getName().toUpperCase()));
-        authorityList.add(new SimpleGrantedAuthority("ROLE_MANAGER") );
+        authorityList.add(new SimpleGrantedAuthority("ROLE_" + getRole().getName().toUpperCase()));
         return authorityList;
     }
     @Override

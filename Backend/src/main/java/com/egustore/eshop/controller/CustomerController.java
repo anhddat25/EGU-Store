@@ -2,6 +2,8 @@ package com.egustore.eshop.controller;
 
 import com.egustore.eshop.dto.*;
 import com.egustore.eshop.model.Customer;
+import com.egustore.eshop.response.CustomerResponse;
+import com.egustore.eshop.response.LoginResponse;
 import com.egustore.eshop.service.CustomerService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +22,6 @@ import java.util.List;
 @CrossOrigin("*")
 public class CustomerController {
     private final CustomerService customerService;
-
     @Autowired
     public CustomerController(CustomerService customerService) {
         this.customerService = customerService;
@@ -28,11 +29,9 @@ public class CustomerController {
 
     //Create category
     @PostMapping("/register")
-    public ResponseEntity<?> createCustomer(@RequestBody @Valid CustomerDTO customerDTO, BindingResult result)
-    {
+    public ResponseEntity<?> createCustomer(@RequestBody @Valid CustomerDTO customerDTO, BindingResult result) {
         try {
-            if(result.hasErrors())
-            {
+            if (result.hasErrors()) {
                 List<String> errMessage = result.getFieldErrors()
                         .stream()
                         .map(FieldError::getDefaultMessage)
@@ -41,24 +40,22 @@ public class CustomerController {
             }
             customerService.createCustomer(customerDTO);
             return ResponseEntity.ok("Register account successfully!");
-        }catch (Exception e){
+        } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody @Valid CustomerLoginDTO customerLoginDTO, BindingResult result)
-    {
+    public ResponseEntity<LoginResponse> login(@RequestBody @Valid CustomerLoginDTO customerLoginDTO, BindingResult result) {
         try {
-            String token = customerService.login(customerLoginDTO.getEmail(),customerLoginDTO.getPassword());
-            return ResponseEntity.ok(token);
-        }  catch (Exception e) {
-            return  ResponseEntity.badRequest().body(e.getMessage());
+            String token = customerService.login(
+                    customerLoginDTO.getEmail(),
+                    customerLoginDTO.getPassword());
+            return ResponseEntity.ok(LoginResponse.builder().message("Succes").token(token).build());
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(LoginResponse.builder().build());
         }
-
-
     }
-
 
     //Show all categories
     @GetMapping("")
@@ -105,8 +102,8 @@ public class CustomerController {
         }
     }
     @PutMapping("/{id}")
-    public ResponseEntity<String> updateCustomer(@PathVariable int id,@RequestBody CustomerDTO customerDTO) {
-        customerService.updateCustomer(id,customerDTO);
+    public ResponseEntity<String> updateCustomer(@PathVariable int id, @RequestBody CustomerDTO customerDTO) {
+        customerService.updateCustomer(id, customerDTO);
         return ResponseEntity.ok("update customer ");
     }
 
@@ -115,5 +112,20 @@ public class CustomerController {
         customerService.deleteCustomer(id);
         return ResponseEntity.ok("delete customer " + id);
     }
+    @PutMapping("/status/{id}")
+    public ResponseEntity<String> updateStatusCustomer(@PathVariable int id,@RequestBody CustomerDTO customerDTO) {
+        customerService.updateStatusCustomer(customerDTO, id);
+        return ResponseEntity.ok("update status and role customer" + id);
+    }
 
+    @PostMapping("/details")
+    public ResponseEntity<CustomerResponse> getCustomerDetails(@RequestHeader("Authorization") String token) {
+        try {
+            String extraToken = token.substring(7);
+            Customer customer = customerService.getCustomerDetails(extraToken);
+            return ResponseEntity.ok(CustomerResponse.fromCustomer(customer));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().build();
+        }
+    }
 }

@@ -1,6 +1,7 @@
 package com.egustore.eshop.config;
 
-import com.egustore.eshop.filters.JwtTokenFilter;
+
+//import com.egustore.eshop.filters.JwtTokenFilter;
 import com.egustore.eshop.model.Role;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -25,33 +26,43 @@ import static org.springframework.http.HttpMethod.*;
 
 
 @Configuration
-@EnableMethodSecurity
+//@EnableMethodSecurity
 @EnableWebSecurity
-//@EnableWebMvc
+@EnableWebMvc
 @RequiredArgsConstructor
 public class WebSecurityConfig {
-    private final JwtTokenFilter jwtTokenFilter;
+//    private final JwtTokenFilter jwtTokenFilter;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(AbstractHttpConfigurer::disable)
-                .addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class)
+//                .addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class)
                 .authorizeHttpRequests(requests -> {
                     requests
-                            .requestMatchers(
+                            .requestMatchers( "**",
+//                            .requestMatchers(
                                     "/api/v0/customers/login", "/api/v0/customers/register"
                             )
                             .permitAll()
+                            .requestMatchers(GET,
+                                    "/api/v0/categories").permitAll()
+                            .requestMatchers(GET,
+                                    "/api/v0/products**").permitAll()
+                            .requestMatchers(POST,
+                                    "/api/v0/categories").hasAnyRole("ADMIN")
+                            .requestMatchers(PUT,
+                                    "/api/v0/categories").hasAnyRole(Role.ADMIN)
+                            .requestMatchers(GET,
+                                    "/api/v0/roles/").permitAll()
 //                            .requestMatchers(GET,
-//                                    "/api/v0/roles/").hasRole("MANAGER")
+//                                    "/api/v0/customers/**").permitAll()
 //                            .requestMatchers(GET,
 //                                    "/api/v0/products/").hasRole("MANAGER")
-//                            .requestMatchers(GET,
-//                                    "/api/v0/categories/").hasRole("MANAGER")
                             .requestMatchers(GET,
-                                    "/api/v0/orders/list").hasRole("MANAGER")
-
+                                    "/api/v0/orders/list").hasRole(Role.ADMIN)
+                            .requestMatchers(POST,
+                                    "/api/v0/orders/create").hasRole("ADMIN")
                             .anyRequest().authenticated();
 
 

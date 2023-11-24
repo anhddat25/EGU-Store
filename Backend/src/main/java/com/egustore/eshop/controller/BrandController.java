@@ -23,7 +23,7 @@ public class BrandController {
     }
 
     @GetMapping("")
-    public ResponseEntity<List<Brand>> getAllBrand(){
+    public ResponseEntity<List<Brand>> getAllBrands(){
         List<Brand> brands = brandService.getAllBrands();
         return ResponseEntity.ok(brands);
     }

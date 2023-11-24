@@ -1,7 +1,7 @@
 package com.egustore.eshop.controller;
 
 import com.egustore.eshop.dto.OriginDTO;
-import com.egustore.eshop.model.Origins;
+import com.egustore.eshop.model.Origin;
 import com.egustore.eshop.service.OriginService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,8 +42,8 @@ public class OriginController {
 
     //Show all image
     @GetMapping("")
-    public ResponseEntity<List<Origins>> getAllOrigins() {
-        List<Origins> origins = originService.getAllOrigins();
+    public ResponseEntity<List<Origin>> getAllOrigins() {
+        List<Origin> origins = originService.getAllOrigins();
         return ResponseEntity.ok(origins);
     }
     @GetMapping("/{id}")

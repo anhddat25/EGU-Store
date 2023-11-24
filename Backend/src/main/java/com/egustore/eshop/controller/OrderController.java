@@ -2,6 +2,7 @@ package com.egustore.eshop.controller;
 
 import com.egustore.eshop.dto.OrderDTO;
 import com.egustore.eshop.model.Order;
+import com.egustore.eshop.model.Product;
 import com.egustore.eshop.service.OrderService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
@@ -25,8 +26,8 @@ public class OrderController {
 
 
     //Create Order
-    @PostMapping("/create")
-    public ResponseEntity<?> createOrder(@RequestBody @Valid OrderDTO orderDTO, BindingResult result) {
+    @PostMapping("")
+    public ResponseEntity<?> createOrder(@RequestBody @Valid List<OrderDTO> orderDTOList, BindingResult result) {
        try {
            if(result.hasErrors())
            {
@@ -36,7 +37,7 @@ public class OrderController {
                        .toList();
                return ResponseEntity.badRequest().body(errMessage);
            }
-           ResponseEntity.ok(orderService.saveOrder(orderDTO));
+           orderService.saveOrders(orderDTOList);
            return ResponseEntity.ok("Succes!");
 
        }catch (Exception e){
@@ -45,25 +46,35 @@ public class OrderController {
 
     }
 
-    @GetMapping("/list")
+
+    @GetMapping("")
     public ResponseEntity<List<Order>> getAllCategories() {
         return ResponseEntity.ok(orderService.getAllOrders());
     }
 
-//    @PutMapping("/get-item/{id}")
-//    public ResponseEntity<Order> updateOrder(@PathVariable int id) {
-//        return ResponseEntity.ok(orderService.getOrderById(id));
-//    }
+    @PutMapping("/get-item/{id}")
+    public ResponseEntity<Order> updateOrder(@PathVariable int id) {
+        return ResponseEntity.ok(orderService.getOrderById(id));
+    }
 
-//    @PutMapping("/update/{id}")
-//    public ResponseEntity<String> updateCategory(@PathVariable int id,@RequestBody OrderDTO orderDTO) {
-//        orderService.updateOrder(id,orderDTO);
-//        return ResponseEntity.ok("update Order " + id);
-//    }
+    @PutMapping("/{id}")
+    public ResponseEntity<String> updateOrderById(@PathVariable int id,@RequestBody OrderDTO orderDTO) {
+        orderService.updateOrderById(orderDTO, id);
+        return ResponseEntity.ok("update Order " + id);
+    }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteOrder(@PathVariable int id) {
         orderService.deleteOrder(id);
         return ResponseEntity.ok("delete Order " + id);
+    }
+    @GetMapping("/{id}")
+    public ResponseEntity<Order> getOrderById(@PathVariable int id) {
+        return ResponseEntity.ok(orderService.getOrderById(id));
+    }
+    @PutMapping("/status/{id}")
+    public ResponseEntity<String> updateOrderStatus(@PathVariable int id,@RequestBody OrderDTO orderDTO) {
+        orderService.updateOrderStatus(orderDTO, id);
+        return ResponseEntity.ok("update Order " + id);
     }
 }

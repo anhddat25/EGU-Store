@@ -22,6 +22,9 @@ public interface CustomerService {
     Customer updateCustomer(int id, CustomerDTO customerDTO);
 
     void deleteCustomer(int id);
+    Integer updateStatusCustomer(CustomerDTO customerDTO,int id);
 
     String login(String email, String password) throws Exception;
+
+    Customer getCustomerDetails(String token) throws Exception;
 }

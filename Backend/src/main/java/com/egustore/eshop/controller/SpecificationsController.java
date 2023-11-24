@@ -1,6 +1,7 @@
 package com.egustore.eshop.controller;
 
 
+import com.egustore.eshop.dto.ProductDTO;
 import com.egustore.eshop.dto.SpecificationsDTO;
 import com.egustore.eshop.model.Specifications;
 import com.egustore.eshop.service.SpecificationsService;
@@ -48,14 +49,20 @@ public class SpecificationsController {
         return ResponseEntity.ok(specifications);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<String> updateSpec(@PathVariable int id,@RequestBody SpecificationsDTO specificationsDTO) {
-        specificationsService.updateSpec(id,specificationsDTO);
-        return ResponseEntity.ok("update Specifications ");
-    }
+//    @PutMapping("/{id}")
+//    public ResponseEntity<String> updateSpec(@PathVariable int id,@RequestBody SpecificationsDTO specificationsDTO) {
+//        specificationsService.updateSpec(id,specificationsDTO);
+//        return ResponseEntity.ok("update Specifications ");
+//    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteSpec(@PathVariable int id) {
         specificationsService.deleteSpec(id);
         return ResponseEntity.ok("delete Specifications " + id);
-}}
+    }
+    @PutMapping("/{id}")
+    public ResponseEntity<String> updateProductById(@RequestBody SpecificationsDTO specificationsDTO, @PathVariable int id) {
+        specificationsService.updateSpecById(specificationsDTO, id);
+        return ResponseEntity.ok("update Product " + id);
+    }
+}
