@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 @RestController
-@RequestMapping("/api/v0/orderdetail")
+@RequestMapping("/api/v0/order-detail")
 @Validated
 @CrossOrigin("*")
 public class OrderDetailController {
