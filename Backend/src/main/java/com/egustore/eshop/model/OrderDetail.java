@@ -17,14 +17,14 @@ public class OrderDetail {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "Quantity")
+    @Column(name = "quantity")
     private int quantity;
 
     @Column(name = "total_price")
     private Double totalPrice;
 
     @ManyToOne
-    @JsonIgnoreProperties("orderdetail")
+    @JsonIgnoreProperties("orderDetail")
     @JoinColumn(name = "order_id")
     private Order order;
 
@@ -32,9 +32,10 @@ public class OrderDetail {
     @JoinColumn(name = "product_id")
     private Product product;
 
-    @Column(name ="product_id", insertable = false, updatable = false)
-    private Integer productId;
-    @Column(name ="order_id", insertable = false, updatable = false)
-    private Integer orderId;
+//    @Column(name ="product_id", insertable = false, updatable = false)
+//    private Integer productId;
+//
+//    @Column(name ="order_id", insertable = false, updatable = false)
+//    private Integer orderId;
 
 }

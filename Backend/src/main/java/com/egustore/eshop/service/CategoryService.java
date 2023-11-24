@@ -11,7 +11,7 @@ import java.util.List;
 public interface CategoryService {
     Category createCategory(CategoryDTO categoryDTO);
     Category getCategoryById(int id);
-//    void updateCategory(Integer id, CategoryDTO categoryDTO);
+    Category updateCategory(int id, CategoryDTO category);
     List<Category> getAllCategories();
     Category updateCategory(int id, CategoryDTO categoryDTO);
     List<Category> getActiveCategories();

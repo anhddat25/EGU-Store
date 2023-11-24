@@ -25,7 +25,7 @@ public class OriginController {
         this.originService = originService;
     }
     //Create images
-    @PostMapping("")
+    @PostMapping("/create")
     public ResponseEntity<?> createOrigins(@RequestBody @Valid OriginDTO originDTO, BindingResult result)
     {
         if(result.hasErrors())
@@ -51,13 +51,13 @@ public class OriginController {
         return ResponseEntity.ok(originService.getOriginById(id));
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/update/{id}")
     public ResponseEntity<String> updateOrigins(@PathVariable int id,@RequestBody OriginDTO originDTO) {
         originService.updateOrigins(id,originDTO);
         return ResponseEntity.ok("update origin ");
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteOrigins(@PathVariable int id) {
         originService.deleteOrigins(id);
         return ResponseEntity.ok("delete origin " + id);

@@ -14,8 +14,8 @@ public interface OrderDetailMapper {
 
     OrderDetail toEntity(OrderDetailDTO orderDetailDTO);
     @Mappings({
-    @Mapping(source = "product.id", target = "productId"),
-    @Mapping(source = "order.id", target = "orderId")})
+            @Mapping(source = "product.id", target = "productId"),
+            @Mapping(source = "order.id", target = "orderId")})
     OrderDetailDTO toDTO(OrderDetail orderDetail);
 
     List<OrderDetailDTO> toDTOList(List<OrderDetail> orderDetails);

@@ -14,14 +14,16 @@ import java.util.List;
 
 
 public interface OrderDetailRepository extends JpaRepository<OrderDetail,Integer> {
-//    @Modifying
+    //    @Modifying
 //    @Transactional
     @Query (value = "Select od.* from order_details od join orders o on od.order_id = o.Id where o.Id = :id", nativeQuery = true)
     List <OrderDetail>getOrderDetailByOrderID(@Param("id") Integer id);
-        @Modifying
+
+    @Modifying
     @Transactional
-        @Query(value = "UPDATE OrderDetail o SET " +
-                "o.quantity = :#{#orderDetailDTO.quantity} " +
+    @Query(value = "UPDATE OrderDetail o SET " +
+                "o.quantity = :#{#orderDetailDTO.quantity} ," +
+                "o.totalPrice = :#{#orderDetailDTO.totalPrice} " +
                 "WHERE o.id = :id")
         Integer updateQuantityDetail(@Param("orderDetailDTO") OrderDetailDTO orderDetailDTO, @Param("id") int id);
 }

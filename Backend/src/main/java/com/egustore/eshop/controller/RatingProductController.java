@@ -24,7 +24,7 @@ public class RatingProductController {
     }
 
 
-    @GetMapping("")
+    @GetMapping("/list")
     public ResponseEntity<List<RatingProduct>> getAllRating(){
         List<RatingProduct> rates = ratingProductService.getAllRatingProducts();
         return ResponseEntity.ok(rates);
@@ -46,12 +46,12 @@ public class RatingProductController {
         ratingProductService.createRating(ratingProductDTO);
         return ResponseEntity.ok("Create Success");
     }
-    @PutMapping("/{id}")
+    @PutMapping("/update/{id}")
     public ResponseEntity<String> updateRating(@PathVariable int id, @RequestBody RatingProductDTO ratingProductDTO){
         ratingProductService.updateRating(id,ratingProductDTO);
         return ResponseEntity.ok("Update Success "+id);
     }
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteRating(@PathVariable int id){
         ratingProductService.deleteRatingProduct(id);
         return ResponseEntity.ok("delete Success "+id);

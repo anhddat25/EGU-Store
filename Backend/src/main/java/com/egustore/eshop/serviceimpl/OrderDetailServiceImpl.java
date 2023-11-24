@@ -2,22 +2,20 @@ package com.egustore.eshop.serviceimpl;
 
 import com.egustore.eshop.dto.OrderDTO;
 import com.egustore.eshop.dto.OrderDetailDTO;
-import com.egustore.eshop.model.Order;
 import com.egustore.eshop.model.OrderDetail;
 import com.egustore.eshop.mapper.OrderDetailMapper;
 import com.egustore.eshop.repository.OrderDetailRepository;
 import com.egustore.eshop.service.OrderDetailService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 @Service
-public class OrderDetailServiceImp implements OrderDetailService {
+public class OrderDetailServiceImpl implements OrderDetailService {
     private final OrderDetailRepository orderDetailRepository;
     private final OrderDetailMapper orderDetailMapper;
 
-    @Autowired
-    public OrderDetailServiceImp(OrderDetailRepository orderDetailRepository, OrderDetailMapper orderDetailMapper) {
+
+    public OrderDetailServiceImpl(OrderDetailRepository orderDetailRepository, OrderDetailMapper orderDetailMapper) {
         this.orderDetailRepository = orderDetailRepository;
         this.orderDetailMapper = orderDetailMapper;
     }
@@ -54,8 +52,8 @@ public class OrderDetailServiceImp implements OrderDetailService {
     public void deleteOrderDetail(int id) {
         orderDetailRepository.deleteById(id);
     }
+    @Override
     public Integer updateQuantityDetail(OrderDetailDTO orderDetailDTO, int id) {
-
         return orderDetailRepository.updateQuantityDetail(orderDetailDTO, id);
     }
 }

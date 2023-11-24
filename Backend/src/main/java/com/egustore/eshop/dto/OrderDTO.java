@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Column;
 import lombok.Data;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 
@@ -16,6 +17,13 @@ public class OrderDTO {
 
     private String phone;
 
+    private String address;
+
+    private String district;
+
+    private String city;
+
+    private String country;
 
     private  Date orderDate;
 
@@ -32,13 +40,15 @@ public class OrderDTO {
 
     private CustomerDTO customer;
 
-    @JsonProperty("order_details_id")
-    private Integer orderdetailId;
+//    @JsonProperty("order_details_id")
+//    private Integer orderdetailId;
 
     private OrderDetailDTO orderdetail;
 
-    @JsonProperty("address_id")
-    private Integer addressId;
 
-    private AddressDTO address;
+//    private AddressDTO address;
+//    @JsonProperty("address_id")
+//    private Integer addressId;
+//
+//    private AddressDTO address;
 }

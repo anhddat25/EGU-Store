@@ -8,8 +8,6 @@ import com.egustore.eshop.model.Category;
 import com.egustore.eshop.model.Origin;
 import com.egustore.eshop.repository.CategoryRepository;
 import com.egustore.eshop.service.CategoryService;
-import jakarta.persistence.EntityNotFoundException;
-import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -61,15 +59,18 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
 //    @Override
-//    @Transactional
-//    public void updateCategory(Integer categoryId, CategoryDTO categoryDTO) {
-//        Category existCategory = getCategoryById(categoryId);
-//        if (existCategory == null) {
-//            throw new EntityNotFoundException("Category not found for ID: " + categoryId);
-//        }
-//        categoryRepository.updateCategory(categoryId, categoryDTO.getName(), categoryDTO.getStatus());
-//
+//    public List<Category> getActiveCategories() {
+//        return categoryRepository.getActiveCategories();
 //    }
+    @Override
+    public Category updateCategory(int id,
+                                   CategoryDTO categoryDTO) {
+        Category existCategory = getCategoryById(id);
+        categoryMapper.updateCategoryFromDTO(categoryDTO, existCategory);
+        categoryRepository.save(existCategory);
+        return existCategory;
+    }
+
     @Override
     public void deleteCategory(int id) {
         categoryRepository.deleteById(id);

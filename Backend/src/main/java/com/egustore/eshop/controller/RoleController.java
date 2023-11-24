@@ -23,7 +23,7 @@ public class RoleController {
         this.roleService = roleService;
     }
     //Create category
-    @PostMapping("")
+    @PostMapping("/update")
     public ResponseEntity<?> createRole(@RequestBody @Valid RoleDTO roleDTO, BindingResult result)
     {
         if(result.hasErrors())
@@ -39,7 +39,7 @@ public class RoleController {
     }
 
     //    //Show all categories
-    @GetMapping("")
+    @GetMapping("/list")
     public ResponseEntity<List<Role>> getAllRole() {
         List<Role> role = roleService.getAllRole();
         return ResponseEntity.ok(role);
@@ -51,7 +51,7 @@ public class RoleController {
 //        return ResponseEntity.ok("update customer ");
 //    }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteRole(@PathVariable int id) {
         roleService.deleteRole(id);
         return ResponseEntity.ok("delete role " + id);

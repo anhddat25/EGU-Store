@@ -10,12 +10,15 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.util.List;
+
 public interface ProductRepository extends JpaRepository<Product, Integer> {
     @Modifying
     @Transactional
     @Query (value = "UPDATE Product p SET p.name = :#{#productDTO.name}, " +
             "p.model = :#{#productDTO.model}, " +
             "p.price = :#{#productDTO.price}, " +
+            "p.thumbImage = :#{#productDTO.thumbImage}, " +
             "p.stockQuantity = :#{#productDTO.stockQuantity}, " +
             "p.description = :#{#productDTO.description}," +
             "p.discountPercentage = :#{#productDTO.discountPercentage}, " +
@@ -32,4 +35,6 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
     Page<Product> findAll(Pageable pageable);
 
 
+    @Query (value ="SELECT p.* ,SUM(od.quantity) AS total_ordered_quantity FROM Products p JOIN  OrderDetails od ON p.id = od.product_id GROUP BY p.id ORDER BY total_ordered_quantity DESC LIMIT 8;", nativeQuery = true)
+    List<Product> getTopProduct();
 }

@@ -1,25 +1,22 @@
 package com.egustore.eshop.dto;
 
 import com.egustore.eshop.enums.ImageStatus;
-import com.egustore.eshop.model.Product;
+import com.egustore.eshop.model.Customer;
+import jakarta.persistence.*;
 import lombok.Data;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Data
-public class ImageDTO {
-
+public class TokenDTO {
     private Integer id;
 
     private String title;
 
     private String imageUrl;
 
-    private Date createDate;
+    private LocalDateTime expDate;
 
-    private Date updateDate;
-
-    private Product products;
-
-    private ImageStatus imageStatus;
+    private Customer customerId;
 }

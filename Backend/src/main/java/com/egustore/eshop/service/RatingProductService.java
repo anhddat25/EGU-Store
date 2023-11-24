@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+
 public interface RatingProductService {
     RatingProduct createRating(RatingProductDTO ratingProductDTO);
     List<RatingProduct> getRatingByProductId(int productId);

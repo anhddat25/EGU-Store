@@ -18,13 +18,15 @@ import java.util.List;
 @Validated
 @CrossOrigin("*")
 public class CategoryController {
+
     private final CategoryService categoryService;
+
     @Autowired
     public CategoryController(CategoryService categoryService) {
         this.categoryService = categoryService;
     }
     //Create category
-    @PostMapping("")
+    @PostMapping("/create")
     public ResponseEntity<?> createCategory(@RequestBody @Valid  CategoryDTO categoryDTO, BindingResult result)
     {
         if(result.hasErrors())
@@ -55,7 +57,7 @@ public class CategoryController {
         return ResponseEntity.ok("update category ");
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteCategory(@PathVariable int id) {
         categoryService.deleteCategory(id);
         return ResponseEntity.ok("delete category " + id);

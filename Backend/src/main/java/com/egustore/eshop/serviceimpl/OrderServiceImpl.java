@@ -1,35 +1,28 @@
 package com.egustore.eshop.serviceimpl;
 
 import com.egustore.eshop.dto.OrderDTO;
-import com.egustore.eshop.dto.ProductDTO;
 import com.egustore.eshop.model.Order;
 import com.egustore.eshop.mapper.OrderMapper;
-import com.egustore.eshop.model.Product;
 import com.egustore.eshop.repository.OrderRepository;
 import com.egustore.eshop.service.OrderService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
-
 @Service
-public class OrderServiceImp implements OrderService {
+public class OrderServiceImpl implements OrderService {
 
-   private final OrderRepository orderRepository;
+    private final OrderRepository orderRepository;
 
-   private final OrderMapper orderMapper;
+    private final OrderMapper orderMapper;
 
-    public OrderServiceImp(OrderRepository orderRepository, OrderMapper orderMapper) {
+    public OrderServiceImpl(OrderRepository orderRepository, OrderMapper orderMapper) {
         this.orderRepository = orderRepository;
         this.orderMapper = orderMapper;
     }
 
     @Override
-    public List<Order> saveOrders(List<OrderDTO> orderDTOList) {
-        List<Order> orders = orderDTOList.stream()
-                .map(orderMapper::toEntity)
-                .collect(Collectors.toList());
-        return orderRepository.saveAll(orders);
+    public Order saveOrder(OrderDTO orderDTO) {
+        return orderRepository.save(orderMapper.toEntity(orderDTO));
     }
 
     @Override
@@ -70,4 +63,10 @@ public class OrderServiceImp implements OrderService {
 
         return orderRepository.updateOrderStatus(orderDTO, id);
     }
+
+    @Override
+    public List<Order> getOrderByCustomerId(int customerId) {
+        return orderRepository.findByCustomerId(customerId);
+    }
+
 }

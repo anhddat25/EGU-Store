@@ -7,6 +7,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -21,7 +23,7 @@ public class Specifications {
     @Column(name = "processor")
     private String processor;
 
-    @Column(name = "graphicsCard")
+    @Column(name = "graphics_card")
     private String graphicsCard;
 
     @Column(name = "ram")
@@ -33,11 +35,17 @@ public class Specifications {
     @Column(name = "display")
     private String display;
 
-    @Column(name = "operatingSystem")
+    @Column(name = "operating_system")
     private String operatingSystem;
 
     @Column(name = "camera")
     private String camera;
+
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private Product productId;
+
+
 
 //    @Column(name = "product_id")
 //    private int product_id;

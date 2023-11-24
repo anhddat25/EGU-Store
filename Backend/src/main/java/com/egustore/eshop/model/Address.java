@@ -5,13 +5,15 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
+import java.time.LocalDateTime;
+
+
 @NoArgsConstructor
 @AllArgsConstructor
+@Data
 @Entity
-@Table(name = "address")
+@Table(name="address")
 public class Address {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -33,14 +35,14 @@ public class Address {
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
-    @ManyToOne
-    @JoinColumn(name = "order_id")
-    private Order order;
+//    @ManyToOne
+//    @JoinColumn(name = "order_id")
+//    private Order orders;
 
-    @Column(name = "city_id", insertable=false, updatable=false)
-    private Integer cityId;
-    @Column(name = "customer_id", insertable=false, updatable=false)
-    private Integer customerId;
-    @Column(name = "order_id", insertable=false, updatable=false)
-    private Integer orderId;
+//    @Column(name = "city_id", insertable=false, updatable=false)
+//    private Integer cityId;
+//    @Column(name = "customer_id", insertable=false, updatable=false)
+//    private Integer customerId;
+//    @Column(name = "order_id", insertable=false, updatable=false)
+//    private Integer orderId;
 }

@@ -1,12 +1,15 @@
 package com.egustore.eshop.repository;
 
 import com.egustore.eshop.dto.OrderDTO;
+import com.egustore.eshop.model.FeedbackProduct;
 import com.egustore.eshop.model.Order;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+
+import java.util.List;
 
 public interface OrderRepository extends JpaRepository<Order, Integer> {
 
@@ -31,5 +34,7 @@ public interface OrderRepository extends JpaRepository<Order, Integer> {
             "o.status = :#{#orderDTO.status} " +
             "WHERE o.id = :id")
     Integer updateOrderStatus(@Param("orderDTO") OrderDTO orderDTO, @Param("id") int id);
-}
 
+    @Query(value = "SELECT o.* FROM orders o  WHERE o.customer_id = ?", nativeQuery = true)
+    List<Order> findByCustomerId(int productId);
+}

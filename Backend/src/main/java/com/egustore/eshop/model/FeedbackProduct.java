@@ -5,10 +5,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
-@Table(name = "feedback_product")
+@Table(name = "feedbackproducts")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -17,9 +18,9 @@ public class FeedbackProduct {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id;
+    private Integer id;
 
-    @Column(name = "name_customer")
+    @Column(name = "name_user")
     private String nameCustomer;
 
     @Column(name = "comment")
@@ -28,18 +29,30 @@ public class FeedbackProduct {
     @Column(name = "status")
     private String status;
 
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "create_date")
-    private Date createDate;
+    private LocalDateTime createDate;
 
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "update_date")
-    private Date updateDate;
+    private LocalDateTime updateDate;
+
+//    @Column(name = "customer_id")
+//    private Integer customerId;
 
     @ManyToOne
     @JoinColumn(name = "customer_id")
-    private Customer customer;
+    private Customer customers;
+
     @ManyToOne
     @JoinColumn(name = "product_id")
-    private Product product;
+    private Product products;
+
+    @Column(name = "customer_id", insertable=false, updatable=false)
+    private Integer customerId;
+
+    @Column(name = "product_id",  insertable=false, updatable=false)
+    private Integer productId;
 
 
 }

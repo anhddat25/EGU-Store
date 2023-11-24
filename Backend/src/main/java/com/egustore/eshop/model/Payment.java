@@ -9,7 +9,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "payment")
+@Table(name = "payments")
 public class Payment {
     @Id
     private Integer version;
@@ -20,33 +20,33 @@ public class Payment {
     @Column(name = "amount")
     private Double amount;
 
-    @Column(name = "bankCode")
+    @Column(name = "bank_code")
     private String bankCode;
 
-    @Column(name = "createDate")
+    @Column(name = "create_date")
     private Date createDate;
 
-    @Column(name = "currentCode")
+    @Column(name = "current_code")
     private String currentCode;
 
-    @Column(name = "ipAddress")
+    @Column(name = "ip_address")
     private String ipAddress;
 
     @Column(name = "locale")
     private String locale;
 
-    @Column(name = "orderInfo")
+    @Column(name = "order_info")
     private String orderInfo;
 
-    @Column(name = "orderType")
+    @Column(name = "order_type")
     private String orderType;
 
-    @Column(name = "returnUrl")
+    @Column(name = "return_url")
     private String returnUrl;
 
     @Column(name = "txt_ref")
-    private String txt_ref;
+    private String txtRef;
 
-    @Column(name = "secureHash")
+    @Column(name = "secure_hash")
     private String secureHash;
 }

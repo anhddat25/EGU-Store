@@ -5,36 +5,50 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.List;
 
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "orders")
+@Table(name = "Orders")
 public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private int id;
 
-    @Column(name = "email")
+    @Column(name = "Email")
     private String email;
 
-    @Column(name = "phone")
+    @Column(name = "Phone")
     private String phone;
 
     @Temporal(TemporalType.DATE)
     @Column(name = "order_date")
-    private Date orderDate = new Date();
+    private Date orderDate;
 
-    @Column(name = "note")
+    @Column(name = "Note")
     private String note;
 
     @Column(name = "status")
     @Enumerated(EnumType.STRING)
     private OrderStatus status;
+
+    @Column(name = "address")
+    private String address;
+
+    @Column(name = "district")
+    private String district;
+
+    @Column(name = "city")
+    private String city;
+
+    @Column(name = "country")
+    private String country;
 
     @Column(name = "payment_method")
     private String paymentMethod;
@@ -49,23 +63,23 @@ public class Order {
     @Column(name = "customer_id", insertable=false, updatable=false)
     private Integer customerId;
 
-    @ManyToOne
+    @OneToMany(mappedBy = "order")
     @JsonIgnoreProperties("order")
-    @JoinColumn(name = "order_details_id")
-    private OrderDetail orderdetail;
+//    @JoinColumn(name = "order_details_id")
+    private List<OrderDetail> orderDetail;
 
 
-    @Column(name = "order_details_id", insertable=false, updatable=false)
-    private Integer orderdetailId;
+//    @Column(name = "orderdetails_id", insertable=false, updatable=false)
+//    private Integer orderdetailId;
+//
+//    @OneToMany(mappedBy = "orders")
+//    @JsonIgnoreProperties("orders")
+////    @JoinColumn(name = "address_id")
+//    private List<Address> address;
 
-    @ManyToOne
-    @JsonIgnoreProperties("order")
-    @JoinColumn(name = "address_id")
-    private Address address;
 
-
-    @Column(name = "address_id", insertable=false, updatable=false)
-    private Integer addressId;
+//    @Column(name = "address_id", insertable=false, updatable=false)
+//    private Integer addressId;
 //    @OneToMany(mappedBy = "order")
 //    private List<OrderDetail> orderDetail;
 }

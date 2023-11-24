@@ -18,9 +18,15 @@ public class Category {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "description")
+    private String description;
+
+    @Column(name = "title")
+    private String title;
+
     @Column(name = "status")
     @Enumerated(EnumType.STRING)
-    private CategoryStatus status;
+    private CategoryStatus categoryStatus;
 
 }
 

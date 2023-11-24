@@ -12,10 +12,15 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class RatingProductDTO {
-    private int id;
+
+    private Integer id;
+
     private String nameCustomer;
-    private int rating;
+
+    private Integer rating;
+
     private Date createDate;
+
     private Date updateDate;
     private Customer customer;
     private Product product;

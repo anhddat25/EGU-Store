@@ -3,6 +3,7 @@ package com.egustore.eshop.controller;
 
 import com.egustore.eshop.dto.ProductDTO;
 import com.egustore.eshop.dto.SpecificationsDTO;
+import com.egustore.eshop.model.Product;
 import com.egustore.eshop.model.Specifications;
 import com.egustore.eshop.service.SpecificationsService;
 import jakarta.validation.Valid;
@@ -60,6 +61,13 @@ public class SpecificationsController {
         specificationsService.deleteSpec(id);
         return ResponseEntity.ok("delete Specifications " + id);
     }
+
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Specifications> getSpecById(@PathVariable int id) {
+        return ResponseEntity.ok(specificationsService.getSpecById(id));
+    }
+
     @PutMapping("/{id}")
     public ResponseEntity<String> updateProductById(@RequestBody SpecificationsDTO specificationsDTO, @PathVariable int id) {
         specificationsService.updateSpecById(specificationsDTO, id);

@@ -17,4 +17,3 @@ public interface CountryMapper {
     @Mapping(target = "id", ignore = true)
     void updateCountryFromDTO(CountryDTO countryDTO, @MappingTarget Country country);
 }
-
