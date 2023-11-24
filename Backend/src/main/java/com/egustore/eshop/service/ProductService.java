@@ -23,7 +23,7 @@ public interface ProductService {
     List<Product> getAllProducts();
     void deleteProduct(int id);
 
-    Integer updateProductById(ProductDTO productDTO, int id);
+//    Integer updateProductById(ProductDTO productDTO, int id);
 
     List<Product>getTopProduct();
 }

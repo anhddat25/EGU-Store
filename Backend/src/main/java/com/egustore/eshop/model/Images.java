@@ -44,7 +44,6 @@ public class Images {
     private ImageStatus imageStatus;
 
     @ManyToOne
-
     @JsonIgnoreProperties("images")
     @JoinColumn(name = "product_id")
     private Product products;

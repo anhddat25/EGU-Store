@@ -1,16 +1,16 @@
 package com.egustore.eshop.dto;
 
 import com.egustore.eshop.enums.ProductStatus;
-import com.egustore.eshop.model.Images;
+import com.egustore.eshop.model.*;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import com.egustore.eshop.model.BaseEntity;
 import jakarta.persistence.Column;
 
 import lombok.Data;
-import java.sql.Date;
+
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @Data
@@ -40,19 +40,19 @@ public class ProductDTO {
     @Enumerated(EnumType.STRING)
     private ProductStatus status;
 
-    @JsonProperty("category_id")
-    private Integer categoryId;
+//    @JsonProperty("category_id")
+//    private Integer categoryId;
 
-    private CategoryDTO category;
+    private Category categoryId;
 
-    @JsonProperty("brand_id")
-    private Integer brandId;
+//    @JsonProperty("brand_id")
+//    private Integer brandId;
 
-    private BrandDTO brand;
+    private Brand brandId;
 
-    @JsonProperty("origin_id")
-    private Integer originId;
+//    @JsonProperty("origin_id")
+//    private Integer originId;
 
-    private OriginDTO origin;
+    private Origin originId;
 
 }

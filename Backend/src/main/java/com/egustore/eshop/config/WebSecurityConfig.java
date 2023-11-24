@@ -43,17 +43,20 @@ public class WebSecurityConfig {
                                     "/api/v0/customers/login", "/api/v0/customers/register"
                             )
                             .permitAll()
-                            .requestMatchers(GET,
-                                    "api/v0/products"
-                            ).permitAll()
                             .requestMatchers(POST,
                                     "api/v0/products/create"
                             ).permitAll()
                             .requestMatchers(GET,
-                                    "api/v0/products/**","api/v0/products**"
+                                    "api/v0/products/**"
                             ).permitAll()
                             .requestMatchers(GET,
                                     "api/v0/products/top"
+                            ).permitAll()
+                            .requestMatchers(PUT,
+                                    "/api/v0/products**", "/api/v0/products/**"
+                            ).permitAll()
+                            .requestMatchers(DELETE,
+                                    "/api/v0/products**","/api/v0/products/**"
                             ).permitAll()
                             .requestMatchers(PUT,
                                     "api/v0/products/image/**","/api/v0/products/image**"
@@ -65,6 +68,18 @@ public class WebSecurityConfig {
                                     "/api/v0/income-reports/byTime**"
                             ).permitAll()
                             .requestMatchers(GET,
+                                    "/api/v0/roles"
+                            ).permitAll()
+                            .requestMatchers(POST,
+                                    "/api/v0/roles"
+                            ).permitAll()
+                            .requestMatchers(DELETE,
+                                    "/api/v0/roles/**","/api/v0/roles**"
+                            ).permitAll()
+                            .requestMatchers(PUT,
+                                    "/api/v0/roles/**","/api/v0/roles**"
+                            ).permitAll()
+                            .requestMatchers(GET,
                                     "/api/v0/customer-reports/all-list"
                                     , "/api/v0/customer-reports/buying-list"
                                     , "/api/v0/customer-reports/none-buying-list"
@@ -73,8 +88,17 @@ public class WebSecurityConfig {
                             .requestMatchers(GET,
                                     "/api/v0/customers"
                             ).permitAll()
+                            .requestMatchers(PUT,
+                                    "/api/v0/customers/status/**","/api/v0/customers/status**"
+                            ).permitAll()
                             .requestMatchers(GET,
-                                     "/api/v0/categories").permitAll()
+                                     "/api/v0/categories/**","/api/v0/categories**").permitAll()
+                            .requestMatchers(POST,
+                                    "/api/v0/categories").permitAll()
+                            .requestMatchers(PUT,
+                                    "/api/v0/categories/**", "/api/v0/categories**").permitAll()
+                            .requestMatchers(DELETE,
+                                    "/api/v0/categories/**", "/api/v0/categories**").permitAll()
                         //     .requestMatchers(GET,
                         //             "/api/v0/products**").permitAll()
                         //     .requestMatchers(POST,
@@ -94,17 +118,29 @@ public class WebSecurityConfig {
                             .requestMatchers(GET,
                                     "/api/v0/orders**", "/api/v0/orders/**").permitAll()
                             .requestMatchers(GET,
-                                    "/api/v0/brands").permitAll()
+                                    "/api/v0/brands/**","/api/v0/brands**").permitAll()
                             .requestMatchers(POST,
                                     "/api/v0/brands").permitAll()
+                            .requestMatchers(PUT,
+                                    "/api/v0/brands/**","/api/v0/brands**").permitAll()
+                            .requestMatchers(DELETE,
+                                    "/api/v0/brands/**","/api/v0/brands**").permitAll()
                             .requestMatchers(GET,
                                     "/api/v0/order-details").permitAll()
+                            .requestMatchers(DELETE,
+                                    "/api/v0/order-detail/delete/**","/api/v0/order-detail/delete**").permitAll()
                             .requestMatchers(GET,
                                     "/api/v0/feedbacks/list/**","/api/v0/feedbacks/list**").permitAll()
                             .requestMatchers(POST,
                                     "/api/v0/feedbacks/create").permitAll()
                             .requestMatchers(GET,
+                                    "/api/v0/origins/**","/api/v0/origins**").permitAll()
+                            .requestMatchers(POST,
                                     "/api/v0/origins").permitAll()
+                            .requestMatchers(PUT,
+                                    "/api/v0/origins/**","/api/v0/origins**").permitAll()
+                            .requestMatchers(DELETE,
+                                    "/api/v0/origins/**","/api/v0/origins**").permitAll()
                             .requestMatchers(GET,
                                     "/api/v0/images/list").permitAll()
                             .requestMatchers(GET,
@@ -116,6 +152,8 @@ public class WebSecurityConfig {
                             .requestMatchers(GET,
                                     "/api/v0/specifications/**","/api/v0/specifications**").permitAll()
                             .requestMatchers(PUT,
+                                    "/api/v0/specifications/**","/api/v0/specifications**").permitAll()
+                            .requestMatchers(DELETE,
                                     "/api/v0/specifications/**","/api/v0/specifications**").permitAll()
                             .requestMatchers(POST,
                                     "/api/v0/specifications").permitAll()

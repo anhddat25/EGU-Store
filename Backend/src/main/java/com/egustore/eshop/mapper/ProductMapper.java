@@ -22,7 +22,7 @@ public interface ProductMapper {
     ProductDTO mapToProductDTO(Product product);
 
     @Mapping(target = "id", ignore = true)
-    @Mapping(target = "createDate", ignore = true)
+//    @Mapping(target = "createDate", ignore = true)
     void updateProductFromDTO(ProductDTO productDTO, @MappingTarget Product product);
 
 }

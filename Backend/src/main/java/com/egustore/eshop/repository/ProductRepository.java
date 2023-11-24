@@ -13,22 +13,21 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface ProductRepository extends JpaRepository<Product, Integer> {
-    @Modifying
-    @Transactional
-    @Query (value = "UPDATE Product p SET p.name = :#{#productDTO.name}, " +
-            "p.model = :#{#productDTO.model}, " +
-            "p.price = :#{#productDTO.price}, " +
-            "p.thumbImage = :#{#productDTO.thumbImage}, " +
-            "p.stockQuantity = :#{#productDTO.stockQuantity}, " +
-            "p.description = :#{#productDTO.description}," +
-            "p.discountPercentage = :#{#productDTO.discountPercentage}, " +
-            "p.discountPrice = :#{#productDTO.discountPrice}, " +
-            "p.status = :#{#productDTO.status}, " +
-            "p.categoryId = :#{#productDTO.categoryId}, " +
-            "p.brandId = :#{#productDTO.brandId}, " +
-            "p.originId = :#{#productDTO.originId} " +
-            "WHERE p.Id = :id")
-    Integer updateProductById(@Param("productDTO") ProductDTO productDTO, @Param("id") int id);
+//    @Modifying
+//    @Transactional
+//    @Query (value = "UPDATE Product p SET p.name = :#{#productDTO.name}, " +
+//            "p.model = :#{#productDTO.model}, " +
+//            "p.price = :#{#productDTO.price}, " +
+//            "p.stockQuantity = :#{#productDTO.stockQuantity}, " +
+//            "p.description = :#{#productDTO.description}," +
+//            "p.discountPercentage = :#{#productDTO.discountPercentage}, " +
+//            "p.discountPrice = :#{#productDTO.discountPrice}, " +
+//            "p.status = :#{#productDTO.status}, " +
+//            "p.category = :#{#productDTO.category}, " +
+//            "p.brand = :#{#productDTO.brand}, " +
+//            "p.origin = :#{#productDTO.origin} " +
+//            "WHERE p.Id = :id")
+//    Integer updateProductById(@Param("productDTO") ProductDTO productDTO, @Param("id") int id);
 
     boolean existsByName(String name);
     Page<Product> findAll(Pageable pageable);

@@ -28,6 +28,12 @@ public class BrandController {
         return ResponseEntity.ok(brands);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Brand> getBrandById(@PathVariable int id){
+        Brand brands = brandService.getBrandById(id);
+        return ResponseEntity.ok(brands);
+    }
+
     @PostMapping("")
     public ResponseEntity<String> createBrand(@RequestBody @Valid BrandDTO brandDTO){
         brandService.createBrand(brandDTO);

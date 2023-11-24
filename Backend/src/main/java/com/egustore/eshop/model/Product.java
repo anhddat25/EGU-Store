@@ -20,9 +20,8 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@EqualsAndHashCode(callSuper = false)
 @Table(name="products")
-public class Product extends BaseEntity{
+public class Product{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -39,13 +38,13 @@ public class Product extends BaseEntity{
     @Column(name = "thumb_image")
     private String thumbImage;
 
-//    @Temporal(TemporalType.DATE)
-//    @Column(name = "create_date")
-//    private Date createDate;
-//
-//    @Temporal(TemporalType.DATE)
-//    @Column(name = "update_date")
-//    private Date updateDate;
+    @Temporal(TemporalType.DATE)
+    @Column(name = "create_date")
+    private Date createDate;
+
+    @Temporal(TemporalType.DATE)
+    @Column(name = "update_date")
+    private Date updateDate;
 
     @Column(name = "stock_quantity")
     private Integer stockQuantity;
@@ -66,29 +65,27 @@ public class Product extends BaseEntity{
 
     @ManyToOne
     @JoinColumn(name = "category_id")
-    private Category category;
+    private Category categoryId;
 
     @ManyToOne
     @JoinColumn(name = "brand_id")
-    private Brand brand;
+    private Brand brandId;
 
     @ManyToOne
     @JoinColumn(name = "origin_id")
-    private Origin origin;
+    private Origin originId;
 
-//    @JsonIgnore
+
     @JsonIgnoreProperties("products")
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "products")
-//    @JsonManagedReference
-//    @JsonBackReference
     private List<Images> images;
 
-    @Column(name = "origin_id", insertable=false, updatable=false)
-    private Integer originId;
-
-    @Column(name = "brand_id",  insertable=false, updatable=false)
-    private Integer brandId;
-
-    @Column(name = "category_id", insertable=false, updatable=false)
-    private Integer categoryId;
+//    @Column(name = "origin_id", insertable=false, updatable=false)
+//    private Integer originId;
+//
+//    @Column(name = "brand_id",  insertable=false, updatable=false)
+//    private Integer brandId;
+//
+//    @Column(name = "category_id", insertable=false, updatable=false)
+//    private Integer categoryId;
 }

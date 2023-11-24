@@ -6,12 +6,15 @@ import com.egustore.eshop.model.Product;
 import com.egustore.eshop.repository.CategoryRepository;
 import com.egustore.eshop.repository.ProductRepository;
 import com.egustore.eshop.service.ProductService;
+import com.google.api.client.util.DateTime;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -47,7 +50,8 @@ public class ProductServiceImpl implements ProductService {
     public Product createProduct(ProductDTO productDTO) {
 
         Product product = productMapper.mapToProduct(productDTO);
-
+        product.setUpdateDate(new Date());
+        product.setCreateDate(new Date());
         return productRepository.save(product);
     }
 
@@ -84,6 +88,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Product updateProduct(int id,ProductDTO productDTO) {
         Product existProduct = getProductById(id);
+        existProduct.setUpdateDate(new Date());
         productMapper.updateProductFromDTO(productDTO, existProduct);
         productRepository.save(existProduct);
         return existProduct;
@@ -95,11 +100,11 @@ public class ProductServiceImpl implements ProductService {
         productRepository.deleteById(id);
     }
 
-    @Override
-    public Integer updateProductById(ProductDTO productDTO, int id) {
-
-        return productRepository.updateProductById(productDTO, id);
-    }
+//    @Override
+//    public Integer updateProductById(ProductDTO productDTO, int id) {
+//
+//        return productRepository.updateProductById(productDTO, id);
+//    }
 
     @Override
     public List<Product>getTopProduct() {

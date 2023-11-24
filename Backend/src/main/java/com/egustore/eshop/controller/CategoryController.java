@@ -26,7 +26,7 @@ public class CategoryController {
         this.categoryService = categoryService;
     }
     //Create category
-    @PostMapping("/create")
+    @PostMapping("")
     public ResponseEntity<?> createCategory(@RequestBody @Valid  CategoryDTO categoryDTO, BindingResult result)
     {
         if(result.hasErrors())
@@ -47,14 +47,18 @@ public class CategoryController {
         List<Category> categories = categoryService.getAllCategories();
         return ResponseEntity.ok(categories);
     }
-
-    @PutMapping("/update/{id}")
+    @GetMapping("/{id}")
+    public ResponseEntity<Category> getCategoriesById(@PathVariable int id) {
+        Category categories = categoryService.getCategoryById(id);
+        return ResponseEntity.ok(categories);
+    }
+    @PutMapping("/{id}")
     public ResponseEntity<String> updateCategory(@PathVariable int id,@RequestBody CategoryDTO categoryDTO) {
         categoryService.updateCategory(id,categoryDTO);
         return ResponseEntity.ok("update category ");
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteCategory(@PathVariable int id) {
         categoryService.deleteCategory(id);
         return ResponseEntity.ok("delete category " + id);

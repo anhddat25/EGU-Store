@@ -79,10 +79,10 @@ public class CustomerController {
         customerService.deleteCustomer(id);
         return ResponseEntity.ok("delete customer " + id);
     }
-//    @PutMapping("/status/{id}")
-//    public ResponseEntity<String> updateStatusCustomer(@PathVariable int id,@RequestBody CustomerDTO customerDTO) {
-//        customerService.updateStatusCustomer(customerDTO, id);
-//        return ResponseEntity.ok("update status and role customer" + id);
-//    }
+    @PutMapping("/status/{id}")
+    public ResponseEntity<String> updateStatusCustomer(@PathVariable int id,@RequestBody CustomerDTO customerDTO) {
+        customerService.updateStatusCustomer(customerDTO, id);
+        return ResponseEntity.ok("update status and role customer" + id);
+    }
 
 }

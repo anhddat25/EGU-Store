@@ -16,7 +16,7 @@ public interface CustomerService {
 //    Integer updateStatusCustomer(Integer id, CustomerDTO customerDTO);
 
     void deleteCustomer(int id);
-//    Integer updateStatusCustomer(CustomerDTO customerDTO,int id);
+    Integer updateStatusCustomer(CustomerDTO customerDTO,int id);
 
     String login(String email, String password) throws Exception;
 }
