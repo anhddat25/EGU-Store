@@ -776,6 +776,39 @@
 23:53:43.715 [http-nio-8080-exec-2] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
 23:53:43.715 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
 23:53:43.717 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+00:37:04.673 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+00:42:10.628 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+00:42:10.808 [main] INFO  com.egustore.eshop.EshopApplication - Starting EshopApplication using Java 17.0.8 with PID 24000 (G:\My Drive\23FA\EGU-Store\Backend\target\classes started by Admin in G:\My Drive\23FA\EGU-Store\Backend)
+00:42:10.810 [main] INFO  com.egustore.eshop.EshopApplication - No active profile set, falling back to 1 default profile: "default"
+00:42:15.955 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+00:42:17.165 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 1190 ms. Found 13 JPA repository interfaces.
+00:42:20.501 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+00:42:20.524 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+00:42:20.529 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+00:42:20.530 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.13]
+00:42:20.820 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+00:42:20.824 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 9859 ms
+00:42:21.874 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+00:42:22.028 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.9.Final
+00:42:22.035 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+00:42:22.480 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+00:42:22.780 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+00:42:22.829 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+00:42:23.305 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7b4b8199
+00:42:23.309 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+00:42:24.358 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+00:42:26.267 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+00:42:26.275 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+00:42:27.116 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+00:42:29.323 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+00:42:29.983 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@71904ea8, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1d63c523, org.springframework.security.web.context.SecurityContextHolderFilter@4a0e3bd, org.springframework.security.web.header.HeaderWriterFilter@30dbcffd, org.springframework.web.filter.CorsFilter@64f55630, org.springframework.security.web.authentication.logout.LogoutFilter@36e6e59f, com.egustore.eshop.filters.JwtTokenFilter@72ad577b, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2d9cc10, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4d57fc11, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@336b6e93, org.springframework.security.web.access.ExceptionTranslationFilter@5ce59833, org.springframework.security.web.access.intercept.AuthorizationFilter@4e8e0052]
+00:42:30.627 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+00:42:30.669 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+00:42:30.685 [main] INFO  com.egustore.eshop.EshopApplication - Started EshopApplication in 21.189 seconds (process running for 23.096)
+00:42:38.792 [http-nio-8080-exec-2] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+00:42:38.793 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+00:42:38.794 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+00:43:17.281 [http-nio-8080-exec-7] INFO  c.e.e.controller.ProductController - email = 12345
 13:09:29.708 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
 13:09:29.759 [main] INFO  com.egustore.eshop.EshopApplication - Starting EshopApplication using Java 17.0.1 with PID 6360 (D:\EGU2\EGU-Store\Backend\target\classes started by khanh duy in D:\EGU2\EGU-Store\Backend)
 13:09:29.761 [main] INFO  com.egustore.eshop.EshopApplication - No active profile set, falling back to 1 default profile: "default"
@@ -7840,3 +7873,93 @@ java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child 
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.base/java.lang.Thread.run(Thread.java:833)
 12:24:02.010 [http-nio-8080-exec-10] WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.bind.MissingServletRequestParameterException: Required request parameter 'page' for method parameter type int is not present]
+19:41:36.965 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+19:41:37.138 [main] INFO  com.egustore.eshop.EshopApplication - Starting EshopApplication using Java 17.0.8 with PID 15236 (G:\My Drive\23FA\EGU-Store\Backend\target\classes started by Admin in G:\My Drive\23FA\EGU-Store\Backend)
+19:41:37.140 [main] INFO  com.egustore.eshop.EshopApplication - No active profile set, falling back to 1 default profile: "default"
+19:41:44.237 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+19:41:45.700 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 1433 ms. Found 18 JPA repository interfaces.
+19:41:48.690 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+19:41:48.718 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+19:41:48.725 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+19:41:48.725 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.13]
+19:41:49.041 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+19:41:49.044 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 11794 ms
+19:41:49.538 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+19:41:49.775 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.9.Final
+19:41:49.783 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+19:41:50.196 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+19:41:50.619 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+19:41:50.680 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+19:41:51.636 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5d01b0d8
+19:41:51.645 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+19:41:52.666 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+19:41:54.659 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+19:41:54.664 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+19:41:55.574 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+19:41:57.284 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+19:41:57.776 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1dade178, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@561494af, org.springframework.security.web.context.SecurityContextHolderFilter@7f5ba1bf, org.springframework.security.web.header.HeaderWriterFilter@2a90c15e, org.springframework.web.filter.CorsFilter@362ad436, org.springframework.security.web.authentication.logout.LogoutFilter@32107bba, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@25e01756, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4afdcdf6, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@79beb8a0, org.springframework.security.web.access.ExceptionTranslationFilter@98dc042, org.springframework.security.web.access.intercept.AuthorizationFilter@6fc44cb6]
+19:41:59.041 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+19:41:59.120 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+19:41:59.138 [main] INFO  com.egustore.eshop.EshopApplication - Started EshopApplication in 23.376 seconds (process running for 25.399)
+19:46:36.571 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+19:46:36.574 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+19:46:36.588 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+19:57:08.810 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+19:57:09.014 [main] INFO  com.egustore.eshop.EshopApplication - Starting EshopApplication using Java 17.0.8 with PID 18860 (G:\My Drive\23FA\EGU-Store\Backend\target\classes started by Admin in G:\My Drive\23FA\EGU-Store\Backend)
+19:57:09.016 [main] INFO  com.egustore.eshop.EshopApplication - No active profile set, falling back to 1 default profile: "default"
+19:57:14.056 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+19:57:15.753 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 1682 ms. Found 19 JPA repository interfaces.
+19:57:17.953 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+19:57:17.966 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+19:57:17.971 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+19:57:17.971 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.13]
+19:57:18.277 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+19:57:18.279 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 9015 ms
+19:57:19.419 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+19:57:19.694 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.9.Final
+19:57:19.702 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+19:57:20.160 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+19:57:20.423 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+19:57:20.460 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+19:57:20.926 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5501d1c8
+19:57:20.931 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+19:57:22.109 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+19:57:26.164 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+19:57:26.171 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+19:57:26.977 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+19:57:29.676 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+19:57:30.061 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@69eb88a7, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2db15764, org.springframework.security.web.context.SecurityContextHolderFilter@300566e, org.springframework.security.web.header.HeaderWriterFilter@6dd0d9a2, org.springframework.web.filter.CorsFilter@7d727123, org.springframework.security.web.authentication.logout.LogoutFilter@5ffae42f, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5e9355a6, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7002dacc, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@48446968, org.springframework.security.web.access.ExceptionTranslationFilter@3acd06b0, org.springframework.security.web.access.intercept.AuthorizationFilter@15cba6dc]
+19:57:30.481 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+19:57:30.510 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+19:57:30.527 [main] INFO  com.egustore.eshop.EshopApplication - Started EshopApplication in 22.665 seconds (process running for 23.674)
+20:24:52.710 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+20:24:52.714 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+20:24:52.725 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+20:28:29.737 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+20:28:29.862 [main] INFO  com.egustore.eshop.EshopApplication - Starting EshopApplication using Java 17.0.8 with PID 22288 (G:\My Drive\23FA\EGU-Store\Backend\target\classes started by Admin in G:\My Drive\23FA\EGU-Store\Backend)
+20:28:29.864 [main] INFO  com.egustore.eshop.EshopApplication - No active profile set, falling back to 1 default profile: "default"
+20:28:33.972 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+20:28:35.584 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 1583 ms. Found 19 JPA repository interfaces.
+20:28:37.531 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+20:28:37.544 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+20:28:37.548 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+20:28:37.548 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.13]
+20:28:37.728 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+20:28:37.730 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 7691 ms
+20:28:38.211 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+20:28:38.376 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.9.Final
+20:28:38.388 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+20:28:38.751 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+20:28:39.082 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+20:28:39.119 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+20:28:39.760 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@47f0f414
+20:28:39.763 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+20:28:40.675 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+20:28:42.664 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+20:28:42.670 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+20:28:43.102 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+20:28:45.382 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+20:28:46.002 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@4c14ed24, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@523cc8b4, org.springframework.security.web.context.SecurityContextHolderFilter@58182d7, org.springframework.security.web.header.HeaderWriterFilter@414b5798, org.springframework.web.filter.CorsFilter@139224ab, org.springframework.security.web.authentication.logout.LogoutFilter@1b9075c9, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@654322b0, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@69abff1d, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@26db7540, org.springframework.security.web.access.ExceptionTranslationFilter@6b8cfbeb, org.springframework.security.web.access.intercept.AuthorizationFilter@fabe3f8]
+20:28:46.931 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+20:28:46.998 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+20:28:47.047 [main] INFO  com.egustore.eshop.EshopApplication - Started EshopApplication in 18.054 seconds (process running for 19.369)
