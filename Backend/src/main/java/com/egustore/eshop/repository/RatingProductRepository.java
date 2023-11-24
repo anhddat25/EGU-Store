@@ -10,4 +10,5 @@ import java.util.List;
 public interface RatingProductRepository extends JpaRepository<RatingProduct, Integer> {
     // Các phương thức truy vấn tùy chọn có thể được thêm vào đây nếu cần
     List<RatingProduct> getRatingProductByProductId(int productId);
+    List<RatingProduct> findByCustomerId(int customerId);
 }
