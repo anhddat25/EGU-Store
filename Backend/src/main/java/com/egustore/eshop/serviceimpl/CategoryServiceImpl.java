@@ -1,11 +1,8 @@
 package com.egustore.eshop.serviceimpl;
 
 import com.egustore.eshop.dto.CategoryDTO;
-import com.egustore.eshop.dto.OriginDTO;
-import com.egustore.eshop.enums.CategoryStatus;
 import com.egustore.eshop.mapper.CategoryMapper;
 import com.egustore.eshop.model.Category;
-import com.egustore.eshop.model.Origin;
 import com.egustore.eshop.repository.CategoryRepository;
 import com.egustore.eshop.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,23 +42,11 @@ public class CategoryServiceImpl implements CategoryService {
         return categoryRepository.findAll();
     }
 
-    @Override
-    public Category updateCategory(int id, CategoryDTO categoryDTO) {
-        Category existCategory = getCategoryById(id);
-        categoryMapper.updateCategoryFromDTO(categoryDTO, existCategory);
-        categoryRepository.save(existCategory);
-        return existCategory;
-    }
-
-    @Override
-    public List<Category> getActiveCategories() {
-        return categoryRepository.getActiveCategories();
-    }
-
 //    @Override
 //    public List<Category> getActiveCategories() {
 //        return categoryRepository.getActiveCategories();
 //    }
+
     @Override
     public Category updateCategory(int id,
                                    CategoryDTO categoryDTO) {

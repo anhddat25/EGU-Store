@@ -1,7 +1,6 @@
 package com.egustore.eshop.controller;
 
 import com.egustore.eshop.dto.FeedbackProductDTO;
-import com.egustore.eshop.model.Customer;
 import com.egustore.eshop.model.FeedbackProduct;
 import com.egustore.eshop.service.FeedbackProductService;
 import jakarta.validation.Valid;
@@ -37,13 +36,18 @@ public class FeedbackController {
         List<FeedbackProduct> feedbacks = feedbackProductService.getFeedbackByProductId(productId);
         return ResponseEntity.ok(feedbacks);
     }
-    @GetMapping("/myfeedback/{customerId}")
-    public ResponseEntity<List<FeedbackProduct>> getFeedbackByCustomerId(@PathVariable int customerId){
-        List<FeedbackProduct> feedbacks = feedbackProductService.getFeedbackByCustomerId(customerId);
-        return ResponseEntity.ok(feedbacks);
-    }
-    @PostMapping("")
-    public ResponseEntity<String> createFeedback(@RequestBody @Valid FeedbackProductDTO feedbackProductDTO){
+
+    @PostMapping("/create")
+    public ResponseEntity<?> createFeedback(@RequestBody @Valid FeedbackProductDTO feedbackProductDTO, BindingResult result){
+
+        if(result.hasErrors())
+        {
+            List<String> errMessage = result.getFieldErrors()
+                    .stream()
+                    .map(FieldError::getDefaultMessage)
+                    .toList();
+            return ResponseEntity.badRequest().body(errMessage);
+        }
         feedbackProductService.createFeedback(feedbackProductDTO);
         return ResponseEntity.ok("Create Success");
     }

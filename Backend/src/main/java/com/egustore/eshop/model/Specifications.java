@@ -4,7 +4,6 @@ import com.egustore.eshop.model.Product;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
@@ -13,7 +12,6 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@EqualsAndHashCode(callSuper = false)
 @Table(name = "specifications")
 public class Specifications {
     @Id
@@ -49,11 +47,4 @@ public class Specifications {
 
 //    @Column(name = "product_id")
 //    private int product_id;
-
-    @ManyToOne
-    @JoinColumn(name = "product_id")
-    private Product product;
-
-    @Column(name = "product_id", insertable=false, updatable=false)
-    private Integer productId;
 }

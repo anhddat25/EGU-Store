@@ -6,17 +6,6 @@ spring:
       enabled: true
       max-file-size: 10MB  # Kích thước tệp tối đa cho mỗi yêu cầu
       max-request-size: 10MB  # Kích thước tối đa của yêu cầu
-  mail:
-    host: smtp.gmail.com
-    port: 587
-    username: huytgps25271@fpt.edu.vn
-    password: dxejcagciedutesp
-    properties:
-      mail:
-        smtp:
-          auth: true
-          starttls:
-            enable: true
   datasource:
     url: jdbc:mysql://localhost:3306/egu_store
     username: root
