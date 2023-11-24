@@ -28,7 +28,7 @@ public class PaymentController {
         this.paymentService = paymentService;
     }
     //Create category
-    @GetMapping("/create-payment")
+    @RequestMapping("/create-payment")
     public String createPayment(
             @RequestParam long amount) throws UnsupportedEncodingException {
         String bankCode = "NCB";
