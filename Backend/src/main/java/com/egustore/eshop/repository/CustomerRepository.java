@@ -7,7 +7,7 @@ import com.egustore.eshop.dto.CustomerDTO;
 import com.egustore.eshop.dto.OrderDTO;
 
 import com.egustore.eshop.model.Customer;
-import jakarta.transaction.Transactional;
+//import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
