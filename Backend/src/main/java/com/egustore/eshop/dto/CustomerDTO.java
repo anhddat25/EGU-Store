@@ -38,7 +38,7 @@ public class CustomerDTO {
 //    @Pattern(regexp = "^(?=.*[a-zA-Z])(?=.*\\d)(?=.*[@_\\-()<>/])+$", message = "Mật khẩu chỉ bao gồm chũ in hoa, chữ thường, số và các kí tự {@_-()<>/}")
     private String password;
 
-    private LocalDateTime createDate;
+    private Date createDate;
 
     private String facebookId;
 

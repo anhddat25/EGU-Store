@@ -41,10 +41,10 @@ public class RatingProductServiceImpl implements RatingProductService {
         return ratingProductOpt.orElseThrow(() -> new RuntimeException("Rating not found"));
     }
 
-    //    @Override
-//    public List<RatingProduct> getRatingByProductId(int productId) {
-//        return ratingProductRepository.getRatingProductByProductId(productId);
-//    }
+    @Override
+    public List<RatingProduct> getRatingByProductId(int productId) {
+        return ratingProductRepository.getRatingProductByProductId(productId);
+    }
 //    @Override
 //    public List<RatingProduct> getRatingByCustomerId(int customerId) {
 //        return ratingProductRepository.findByCustomerId(customerId);
