@@ -42,19 +42,21 @@ public class CategoryServiceImpl implements CategoryService {
         return categoryRepository.findAll();
     }
 
-//    @Override
-//    public List<Category> getActiveCategories() {
-//        return categoryRepository.getActiveCategories();
-//    }
-
     @Override
-    public Category updateCategory(int id,
-                                   CategoryDTO categoryDTO) {
+    public Category updateCategory(int id, CategoryDTO categoryDTO) {
         Category existCategory = getCategoryById(id);
         categoryMapper.updateCategoryFromDTO(categoryDTO, existCategory);
         categoryRepository.save(existCategory);
         return existCategory;
     }
+
+    @Override
+    public List<Category> getActiveCategories() {
+        return categoryRepository.getActiveCategories();
+    }
+
+
+
 
     @Override
     public void deleteCategory(int id) {

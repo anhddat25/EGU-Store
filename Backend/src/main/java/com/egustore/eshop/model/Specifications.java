@@ -39,12 +39,13 @@ public class Specifications {
     @Column(name = "camera")
     private String camera;
 
+
+
+
     @ManyToOne
     @JoinColumn(name = "product_id")
-    private Product productId;
+    private Product product;
 
-
-
-//    @Column(name = "product_id")
-//    private int product_id;
+//    @Column(name = "product_id", insertable=false, updatable=false)
+//    private Integer productId;
 }

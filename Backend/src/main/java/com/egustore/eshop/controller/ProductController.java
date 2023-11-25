@@ -29,9 +29,8 @@ public class ProductController {
     }
     //Create category
     @PostMapping("/create")
-    public ResponseEntity<?> createProduct(@RequestBody @Valid ProductDTO productDTO, BindingResult result) throws IOException {
-        if(result.hasErrors())
-        {
+    public ResponseEntity<?> createProduct(@RequestBody @Valid ProductDTO productDTO, BindingResult result) {
+        if (result.hasErrors()) {
             List<String> errMessage = result.getFieldErrors()
                     .stream()
                     .map(FieldError::getDefaultMessage)
@@ -43,9 +42,6 @@ public class ProductController {
 
         return ResponseEntity.ok("Create Product successfully!");
     }
-
-
-
 
     //Show all categories
     @GetMapping("")
@@ -65,23 +61,16 @@ public class ProductController {
         productService.deleteProduct(id);
         return ResponseEntity.ok("delete Product " + id);
     }
-
-//    @PutMapping("/{id}")
-//    public ResponseEntity<String> updateProductById(@RequestBody ProductDTO productDTO,@PathVariable int id) {
-//        productService.updateProductById(productDTO, id);
-//        return ResponseEntity.ok("update Product " + id);
-//    }
-
     @PutMapping("/{id}")
-    public ResponseEntity<String> updateProduct(@RequestBody ProductDTO productDTO,@PathVariable int id) {
-        productService.updateProduct(id,productDTO);
+    public ResponseEntity<String> updateProductById(@RequestBody ProductDTO productDTO,@PathVariable int id) {
+        productService.updateProductById(productDTO, id);
         return ResponseEntity.ok("update Product " + id);
     }
     @GetMapping("/{id}")
     public ResponseEntity<Product> getProductById(@PathVariable int id) {
-        Product product = productService.getProductById(id);
-        return ResponseEntity.ok(product);
+        return ResponseEntity.ok(productService.getProductById(id));
     }
+
 
     @PutMapping("image/{id}")
     public ResponseEntity<String> createThumbImageById(@RequestParam("thumbImage") MultipartFile files,@PathVariable int id) throws IOException {

@@ -86,11 +86,13 @@ public class WebSecurityConfig {
                                     ,"/api/v0/customer-reports/status"
                             ).permitAll()
                             .requestMatchers(GET,
-                                    "/api/v0/customers"
+                                    "/api/v0/customers**", "/api/v0/customers/**"
                             ).permitAll()
                             .requestMatchers(PUT,
                                     "/api/v0/customers/status/**","/api/v0/customers/status**"
                             ).permitAll()
+                            .requestMatchers(GET,"/api/v0/rating-products**","/api/v0/rating-products/**").permitAll()
+                            .requestMatchers(POST,"/api/v0/rating-products").permitAll()
                             .requestMatchers(GET,
                                      "/api/v0/categories/**","/api/v0/categories**").permitAll()
                             .requestMatchers(POST,

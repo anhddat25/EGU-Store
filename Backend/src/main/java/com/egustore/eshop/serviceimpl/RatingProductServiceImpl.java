@@ -16,6 +16,7 @@ public class RatingProductServiceImpl implements RatingProductService {
 
     private final RatingProductRepository ratingProductRepository;
     private final RatingProductMapper ratingProductMapper;
+
     public RatingProductServiceImpl(RatingProductRepository ratingProductRepository, RatingProductMapper ratingProductMapper) {
         this.ratingProductRepository = ratingProductRepository;
         this.ratingProductMapper = ratingProductMapper;
@@ -27,6 +28,7 @@ public class RatingProductServiceImpl implements RatingProductService {
         RatingProduct ratingProduct = ratingProductMapper.mapToEntity(ratingProductDTO);
         return ratingProductRepository.save(ratingProduct);
     }
+
     @Override
     public RatingProduct updateRating(int id, RatingProductDTO ratingProductDTO) {
         Optional<RatingProduct> ratingProductOpt = ratingProductRepository.findById(id);
@@ -38,9 +40,14 @@ public class RatingProductServiceImpl implements RatingProductService {
 
         return ratingProductOpt.orElseThrow(() -> new RuntimeException("Rating not found"));
     }
+
+    @Override
+    public List<RatingProduct> getRatingByProductId(int productId) {
+        return ratingProductRepository.getRatingProductByProductId(productId);
+    }
 //    @Override
-//    public List<RatingProduct> getRatingByProductId(int productId) {
-//        return ratingProductRepository.getRatingProductByProductId(productId);
+//    public List<RatingProduct> getRatingByCustomerId(int customerId) {
+//        return ratingProductRepository.findByCustomerId(customerId);
 //    }
     @Override
     public List<RatingProduct> getAllRatingProducts() {
@@ -52,3 +59,4 @@ public class RatingProductServiceImpl implements RatingProductService {
         ratingProductRepository.deleteById(id);
     }
 }
+  

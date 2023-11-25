@@ -20,8 +20,9 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+//@EqualsAndHashCode(callSuper = false)
 @Table(name="products")
-public class Product{
+public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -35,7 +36,7 @@ public class Product{
     @Column(name = "price")
     private Double price;
 
-    @Column(name = "thumb_image")
+    @Column(name = "thumbnail")
     private String thumbImage;
 
     @Temporal(TemporalType.DATE)

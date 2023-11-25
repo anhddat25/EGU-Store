@@ -40,6 +40,21 @@ public class PaymentController {
         paymentService.createPayment(paymentDTO);
         return ResponseEntity.ok("Create payment successfully!");
     }
+//    @PostMapping("")
+//    public ResponseEntity<?> createPayment(@RequestBody @Valid PaymentDTO paymentDTO, BindingResult result)
+//    {
+//        if(result.hasErrors())
+//        {
+//            List<String> errMessage = result.getFieldErrors()
+//                    .stream()
+//                    .map(FieldError::getDefaultMessage)
+//                    .toList();
+//            return ResponseEntity.badRequest().body(errMessage);
+//        }
+//        paymentService.createPayment(paymentDTO);
+//        return ResponseEntity.ok("Create payment successfully!");
+//
+//    }
 
     //    //Show all categories
     @GetMapping("/list")
