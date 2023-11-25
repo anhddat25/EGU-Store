@@ -1,13 +1,7 @@
 package com.egustore.eshop.repository;
 
-import com.egustore.eshop.dto.ProductDTO;
-import com.egustore.eshop.dto.SpecificationsDTO;
 import com.egustore.eshop.model.Specifications;
-import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Modifying;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 
 
 public interface SpecificationsRepository extends JpaRepository <Specifications, Integer>  {

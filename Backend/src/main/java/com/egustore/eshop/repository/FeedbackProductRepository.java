@@ -13,8 +13,4 @@ public interface FeedbackProductRepository  extends JpaRepository<FeedbackProduc
 
     @Query(value = "SELECT f.* FROM FeedbackProducts f  WHERE f.product_id = ?", nativeQuery = true)
     List<FeedbackProduct> findByProductId(int productId);
-    List<FeedbackProduct> findByCustomerId(int customerId);
-
-//    @Query(value = "SELECT f.* FROM Feedback_Product f  WHERE f.product_id = ?", nativeQuery = true)
-//    List<FeedbackProduct> findByProductId(int productId);
 }

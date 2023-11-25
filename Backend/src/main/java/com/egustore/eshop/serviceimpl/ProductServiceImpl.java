@@ -2,17 +2,19 @@ package com.egustore.eshop.serviceimpl;
 
 import com.egustore.eshop.dto.ProductDTO;
 import com.egustore.eshop.mapper.ProductMapper;
-import com.egustore.eshop.model.Order;
 import com.egustore.eshop.model.Product;
 import com.egustore.eshop.repository.CategoryRepository;
 import com.egustore.eshop.repository.ProductRepository;
 import com.egustore.eshop.service.ProductService;
+import com.google.api.client.util.DateTime;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -48,14 +50,9 @@ public class ProductServiceImpl implements ProductService {
     public Product createProduct(ProductDTO productDTO) {
 
         Product product = productMapper.mapToProduct(productDTO);
-
         return productRepository.save(product);
     }
 
-    @Override
-    public List<Product> getAllProduct() {
-        return productRepository.findAll();
-    }
     @Override
     public Product getProductById(int id){
         return productRepository.findById(id)
@@ -87,7 +84,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product updateProduct(int id,ProductDTO productDTO) {
+    public Product updateProductById(int id,ProductDTO productDTO) {
         Product existProduct = getProductById(id);
         productMapper.updateProductFromDTO(productDTO, existProduct);
         productRepository.save(existProduct);
@@ -100,11 +97,11 @@ public class ProductServiceImpl implements ProductService {
         productRepository.deleteById(id);
     }
 
-    @Override
-    public Integer updateProductById(ProductDTO productDTO, int id) {
-
-        return productRepository.updateProductById(productDTO, id);
-    }
+//    @Override
+//    public Integer updateProductById(ProductDTO productDTO, int id) {
+//
+//        return productRepository.updateProductById(productDTO, id);
+//    }
 
     @Override
     public List<Product>getTopProduct() {

@@ -1,11 +1,8 @@
 package com.egustore.eshop.serviceimpl;
 
 import com.egustore.eshop.dto.CategoryDTO;
-import com.egustore.eshop.dto.OriginDTO;
-import com.egustore.eshop.enums.CategoryStatus;
 import com.egustore.eshop.mapper.CategoryMapper;
 import com.egustore.eshop.model.Category;
-import com.egustore.eshop.model.Origin;
 import com.egustore.eshop.repository.CategoryRepository;
 import com.egustore.eshop.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;

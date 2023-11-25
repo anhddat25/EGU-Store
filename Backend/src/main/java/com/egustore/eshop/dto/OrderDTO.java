@@ -35,7 +35,7 @@ public class OrderDTO {
 
     private Double discountPrice;
 
-    @Column(name = "customer_id", insertable=false, updatable=false)
+    @JsonProperty("customer_id")
     private Integer customerId;
 
     private CustomerDTO customer;

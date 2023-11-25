@@ -27,7 +27,7 @@ public class CategoryController {
         this.categoryService = categoryService;
     }
     //Create category
-    @PostMapping("/create")
+    @PostMapping("")
     public ResponseEntity<?> createCategory(@RequestBody @Valid  CategoryDTO categoryDTO, BindingResult result)
     {
         if(result.hasErrors())
@@ -49,8 +49,9 @@ public class CategoryController {
         return ResponseEntity.ok(categories);
     }
     @GetMapping("/{id}")
-    public ResponseEntity<Category> getCategoryById(@PathVariable int id) {
-        return ResponseEntity.ok(categoryService.getCategoryById(id));
+    public ResponseEntity<Category> getCategoriesById(@PathVariable int id) {
+        Category categories = categoryService.getCategoryById(id);
+        return ResponseEntity.ok(categories);
     }
     @PutMapping("/{id}")
     public ResponseEntity<String> updateCategory(@PathVariable int id,@RequestBody CategoryDTO categoryDTO) {
@@ -58,16 +59,15 @@ public class CategoryController {
         return ResponseEntity.ok("update category ");
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteCategory(@PathVariable int id) {
         categoryService.deleteCategory(id);
         return ResponseEntity.ok("delete category " + id);
     }
 
-    @GetMapping("/active")
-    public ResponseEntity<List<Category>> getActiveCategories() {
-        List<Category> categories = categoryService.getActiveCategories();
-        return ResponseEntity.ok(categories);
-    }
-
+//    @GetMapping("/active")
+//    public ResponseEntity<List<Category>> getActiveCategories() {
+//        List<Category> categories = categoryService.getActiveCategories();
+//        return ResponseEntity.ok(categories);
+//    }
 }

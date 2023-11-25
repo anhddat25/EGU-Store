@@ -1,7 +1,6 @@
 package com.egustore.eshop.controller;
 
 
-import com.egustore.eshop.dto.ProductDTO;
 import com.egustore.eshop.dto.SpecificationsDTO;
 import com.egustore.eshop.model.Product;
 import com.egustore.eshop.model.Specifications;
@@ -28,7 +27,7 @@ public class SpecificationsController {
         this.specificationsService = specificationsService;
     }
     //Create category
-    @PostMapping("/create")
+    @PostMapping("")
     public ResponseEntity<?> createSpec(@RequestBody @Valid SpecificationsDTO specificationsDTO, BindingResult result)
     {
         if(result.hasErrors())
@@ -50,11 +49,11 @@ public class SpecificationsController {
         return ResponseEntity.ok(specifications);
     }
 
-//    @PutMapping("/{id}")
-//    public ResponseEntity<String> updateSpec(@PathVariable int id,@RequestBody SpecificationsDTO specificationsDTO) {
-//        specificationsService.updateSpec(id,specificationsDTO);
-//        return ResponseEntity.ok("update Specifications ");
-//    }
+    @PutMapping("/{id}")
+    public ResponseEntity<String> updateSpec(@PathVariable int id,@RequestBody SpecificationsDTO specificationsDTO) {
+        specificationsService.updateSpec(id,specificationsDTO);
+        return ResponseEntity.ok("update Specifications ");
+    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteSpec(@PathVariable int id) {

@@ -1,7 +1,6 @@
 package com.egustore.eshop.controller;
 
 import com.egustore.eshop.dto.ProductDTO;
-import com.egustore.eshop.model.Origin;
 import com.egustore.eshop.model.Product;
 import com.egustore.eshop.service.ProductService;
 import jakarta.validation.Valid;
@@ -64,7 +63,7 @@ public class ProductController {
     }
     @PutMapping("/{id}")
     public ResponseEntity<String> updateProductById(@RequestBody ProductDTO productDTO,@PathVariable int id) {
-        productService.updateProductById(productDTO, id);
+        productService.updateProductById(id, productDTO);
         return ResponseEntity.ok("update Product " + id);
     }
     @GetMapping("/{id}")
