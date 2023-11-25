@@ -16,7 +16,7 @@ public interface ProductService {
 //    Product createProduct(ProductDTO productDTO, MultipartFile files) throws IOException;
 
     Product getProductById(int id);
-    Product updateProduct(int id, ProductDTO Product);
+    Product updateProductById(int id, ProductDTO Product);
 
     Product createThumbImage(int Id, MultipartFile files) throws IOException;
 

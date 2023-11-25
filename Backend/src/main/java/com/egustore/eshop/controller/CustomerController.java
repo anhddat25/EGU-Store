@@ -3,6 +3,8 @@ package com.egustore.eshop.controller;
 import com.egustore.eshop.dto.CustomerDTO;
 import com.egustore.eshop.dto.CustomerLoginDTO;
 import com.egustore.eshop.model.Customer;
+import com.egustore.eshop.response.CustomerResponse;
+import com.egustore.eshop.response.LoginResponse;
 import com.egustore.eshop.service.CustomerService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,16 +50,26 @@ public class CustomerController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody @Valid CustomerLoginDTO customerLoginDTO, BindingResult result)
-    {
+    public ResponseEntity<LoginResponse> login(@RequestBody @Valid CustomerLoginDTO customerLoginDTO, BindingResult result) {
         try {
-            String token = customerService.login(customerLoginDTO.getEmail(),customerLoginDTO.getPassword());
-            return ResponseEntity.ok(token);
-        }  catch (Exception e) {
-            return  ResponseEntity.badRequest().body(e.getMessage());
+            String token = customerService.login(
+                    customerLoginDTO.getEmail(),
+                    customerLoginDTO.getPassword());
+            return ResponseEntity.ok(LoginResponse.builder().message("Succes").token(token).build());
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(LoginResponse.builder().build());
         }
+    }
 
-
+    @PostMapping("/details")
+    public ResponseEntity<CustomerResponse> getCustomerDetails(@RequestHeader("Authorization") String token) {
+        try {
+            String extraToken = token.substring(7);
+            Customer customer = customerService.getCustomerDetails(extraToken);
+            return ResponseEntity.ok(CustomerResponse.fromCustomer(customer));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().build();
+        }
     }
 
 

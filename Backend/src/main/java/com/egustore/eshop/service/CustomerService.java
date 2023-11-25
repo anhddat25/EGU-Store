@@ -10,6 +10,8 @@ public interface CustomerService {
 
     Customer getCustomerById(int id);
 
+    Customer getCustomerDetails(String token) throws Exception;
+
     List<Customer> getAllCustomers();
 
     Customer updateCustomer(int id, CustomerDTO customerDTO);

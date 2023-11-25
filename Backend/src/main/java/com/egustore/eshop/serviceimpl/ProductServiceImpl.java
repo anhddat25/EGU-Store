@@ -50,8 +50,6 @@ public class ProductServiceImpl implements ProductService {
     public Product createProduct(ProductDTO productDTO) {
 
         Product product = productMapper.mapToProduct(productDTO);
-        product.setUpdateDate(new Date());
-        product.setCreateDate(new Date());
         return productRepository.save(product);
     }
 
@@ -86,9 +84,8 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product updateProduct(int id,ProductDTO productDTO) {
+    public Product updateProductById(int id,ProductDTO productDTO) {
         Product existProduct = getProductById(id);
-        existProduct.setUpdateDate(new Date());
         productMapper.updateProductFromDTO(productDTO, existProduct);
         productRepository.save(existProduct);
         return existProduct;

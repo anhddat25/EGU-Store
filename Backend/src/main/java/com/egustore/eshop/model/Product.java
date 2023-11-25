@@ -36,16 +36,16 @@ public class Product {
     @Column(name = "price")
     private Double price;
 
-    @Column(name = "thumbnail")
+    @Column(name = "thumb_image")
     private String thumbImage;
 
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "create_date")
-    private Date createDate;
+    private LocalDateTime createDate;
 
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "update_date")
-    private Date updateDate;
+    private LocalDateTime updateDate;
 
     @Column(name = "stock_quantity")
     private Integer stockQuantity;

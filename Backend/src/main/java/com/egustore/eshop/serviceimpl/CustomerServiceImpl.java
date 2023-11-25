@@ -58,7 +58,20 @@ public class CustomerServiceImpl implements CustomerService {
                 .orElseThrow(() -> new RuntimeException("Customer not found"));
     }
 
-
+    @Override
+    public Customer getCustomerDetails(String token) throws Exception {
+        if (jwtTokenUtil.isTokenExpired(token)){
+            throw new Exception("Token is expired");
+        }
+        String email = jwtTokenUtil.extraEmail(token);
+        Optional<Customer> customer = customerRepository.findByEmail(email);
+        if (customer.isPresent()){
+            return customer.get();
+        } else
+        {
+            throw  new Exception("Customer not found");
+        }
+    }
 
     @Override
     public List<Customer> getAllCustomers() {
