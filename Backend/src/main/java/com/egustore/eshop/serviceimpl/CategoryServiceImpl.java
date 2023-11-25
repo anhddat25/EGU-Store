@@ -1,9 +1,11 @@
 package com.egustore.eshop.serviceimpl;
 
 import com.egustore.eshop.dto.CategoryDTO;
+import com.egustore.eshop.dto.OriginDTO;
 import com.egustore.eshop.enums.CategoryStatus;
 import com.egustore.eshop.mapper.CategoryMapper;
 import com.egustore.eshop.model.Category;
+import com.egustore.eshop.model.Origin;
 import com.egustore.eshop.repository.CategoryRepository;
 import com.egustore.eshop.service.CategoryService;
 import jakarta.persistence.EntityNotFoundException;
@@ -46,6 +48,14 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
+    public Category updateCategory(int id, CategoryDTO categoryDTO) {
+        Category existCategory = getCategoryById(id);
+        categoryMapper.updateCategoryFromDTO(categoryDTO, existCategory);
+        categoryRepository.save(existCategory);
+        return existCategory;
+    }
+
+    @Override
     public List<Category> getActiveCategories() {
         return categoryRepository.getActiveCategories();
     }
@@ -60,7 +70,6 @@ public class CategoryServiceImpl implements CategoryService {
 //        categoryRepository.updateCategory(categoryId, categoryDTO.getName(), categoryDTO.getStatus());
 //
 //    }
-
     @Override
     public void deleteCategory(int id) {
         categoryRepository.deleteById(id);

@@ -23,9 +23,13 @@ public class BrandController {
     }
 
     @GetMapping("")
-    public ResponseEntity<List<Brand>> getAllBrand(){
+    public ResponseEntity<List<Brand>> getAllBrands(){
         List<Brand> brands = brandService.getAllBrands();
         return ResponseEntity.ok(brands);
+    }
+    @GetMapping("/{id}")
+    public ResponseEntity<Brand> getBrandById(@PathVariable int id) {
+        return ResponseEntity.ok(brandService.getBrandById(id));
     }
 
     @PostMapping("")

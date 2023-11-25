@@ -12,6 +12,8 @@ import java.util.List;
 public interface FeedbackProductService {
     FeedbackProduct createFeedback(FeedbackProductDTO feedbackProductDTO);
     List<FeedbackProduct> getFeedbackByProductId(int productId);
+    List<FeedbackProduct> getFeedbackByCustomerId(int customerId);
+
     FeedbackProduct updateFeedback(int id , FeedbackProductDTO feedbackProductDTO);
     List<FeedbackProduct> getAllFeedback();
     void deleteFeedback(int id);
