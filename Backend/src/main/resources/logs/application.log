@@ -17894,3 +17894,366 @@ Caused by: java.sql.SQLSyntaxErrorException: Unknown column 'c1_0.create_date' i
 04:06:12.253 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - select c1_0.id,c1_0.create_date,c1_0.date_of_birth,c1_0.email,c1_0.facebook_id,c1_0.first_name,c1_0.google_id,c1_0.last_name,c1_0.password,c1_0.phone_number,c1_0.reset_password_token,r1_0.id,r1_0.name,c1_0.role_id,c1_0.status from customers c1_0 left join roles r1_0 on r1_0.id=c1_0.role_id where c1_0.id=?
 04:06:12.259 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - select i1_0.product_id,i1_0.id,i1_0.create_date,i1_0.status,i1_0.image_url,i1_0.title,i1_0.update_date from images i1_0 where i1_0.product_id=?
 04:06:53.555 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - insert into rating_product (create_date,customer_id,name_customer,product_id,rating,update_date) values (?,?,?,?,?,?)
+23:54:11.142 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+23:54:11.203 [main] INFO  com.egustore.eshop.EshopApplication - Starting EshopApplication using Java 17.0.4.1 with PID 15112 (D:\Doantotnghiep\Going_Up\EGU-Store\Backend\target\classes started by minhl in D:\Doantotnghiep\Going_Up\EGU-Store\Backend)
+23:54:11.204 [main] INFO  com.egustore.eshop.EshopApplication - No active profile set, falling back to 1 default profile: "default"
+23:54:12.307 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+23:54:12.497 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 178 ms. Found 19 JPA repository interfaces.
+23:54:13.390 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+23:54:13.405 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+23:54:13.408 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+23:54:13.409 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.13]
+23:54:13.561 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+23:54:13.563 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2287 ms
+23:54:13.786 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+23:54:13.857 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.9.Final
+23:54:13.860 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+23:54:14.062 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+23:54:14.235 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+23:54:14.264 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+23:54:14.718 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@311a0b3e
+23:54:14.720 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+23:54:14.846 [main] DEBUG o.h.t.d.sql.spi.DdlTypeRegistry - addDescriptor(12, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@3ba46845) replaced previous registration(org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@40a28bda)
+23:54:14.847 [main] DEBUG o.h.t.d.sql.spi.DdlTypeRegistry - addDescriptor(-9, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@592cb470) replaced previous registration(org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@1e6cb932)
+23:54:14.847 [main] DEBUG o.h.t.d.sql.spi.DdlTypeRegistry - addDescriptor(-3, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@6921cfa) replaced previous registration(org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@523abba9)
+23:54:14.847 [main] DEBUG o.h.t.d.sql.spi.DdlTypeRegistry - addDescriptor(4003, org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@6e090aaa) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@15d79b70)
+23:54:14.847 [main] DEBUG o.h.t.d.sql.spi.DdlTypeRegistry - addDescriptor(4001, org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@33430fc) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@45424c0)
+23:54:14.847 [main] DEBUG o.h.t.d.sql.spi.DdlTypeRegistry - addDescriptor(4002, org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@22ae32ba) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@b8b2184)
+23:54:14.848 [main] DEBUG o.h.t.d.sql.spi.DdlTypeRegistry - addDescriptor(2004, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@299a43d9) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@ccd000e)
+23:54:14.848 [main] DEBUG o.h.t.d.sql.spi.DdlTypeRegistry - addDescriptor(2005, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@5fa5c8cf) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@d7055be)
+23:54:14.849 [main] DEBUG o.h.t.d.sql.spi.DdlTypeRegistry - addDescriptor(2011, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@768f4b42) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@12a6e8ed)
+23:54:15.306 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+23:54:16.498 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+23:54:16.501 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+23:54:16.842 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+23:54:18.612 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+23:54:19.139 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@858bf8c, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@30c1447e, org.springframework.security.web.context.SecurityContextHolderFilter@67d4e8f7, org.springframework.security.web.header.HeaderWriterFilter@4d92e9da, org.springframework.web.filter.CorsFilter@5135b459, org.springframework.security.web.authentication.logout.LogoutFilter@48fbb1bc, com.egustore.eshop.filters.JwtTokenFilter@4bd7e0b6, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@51535304, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@521d455c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3a770af8, org.springframework.security.web.access.ExceptionTranslationFilter@3479b4cd, org.springframework.security.web.access.intercept.AuthorizationFilter@246f9fa8]
+23:54:19.661 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+23:54:19.690 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+23:54:19.700 [main] INFO  com.egustore.eshop.EshopApplication - Started EshopApplication in 9.011 seconds (process running for 10.272)
+23:54:45.674 [http-nio-8080-exec-3] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+23:54:45.674 [http-nio-8080-exec-3] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+23:54:45.676 [http-nio-8080-exec-3] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+23:54:45.848 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - select p1_0.id,p1_0.brand_id,p1_0.category_id,p1_0.create_date,p1_0.description,p1_0.discount_percentage,p1_0.discount_price,p1_0.model,p1_0.name,p1_0.origin_id,p1_0.price,p1_0.status,p1_0.stock_quantity,p1_0.thumb_image,p1_0.update_date from products p1_0
+23:54:45.874 [http-nio-8080-exec-3] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 1054, SQLState: 42S22
+23:54:45.874 [http-nio-8080-exec-3] ERROR o.h.e.jdbc.spi.SqlExceptionHelper - Unknown column 'p1_0.thumb_image' in 'field list'
+23:54:47.299 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - select p1_0.id,p1_0.brand_id,p1_0.category_id,p1_0.create_date,p1_0.description,p1_0.discount_percentage,p1_0.discount_price,p1_0.model,p1_0.name,p1_0.origin_id,p1_0.price,p1_0.status,p1_0.stock_quantity,p1_0.thumb_image,p1_0.update_date from products p1_0
+23:54:47.301 [http-nio-8080-exec-2] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 1054, SQLState: 42S22
+23:54:47.301 [http-nio-8080-exec-2] ERROR o.h.e.jdbc.spi.SqlExceptionHelper - Unknown column 'p1_0.thumb_image' in 'field list'
+23:54:47.769 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - select p1_0.id,p1_0.brand_id,p1_0.category_id,p1_0.create_date,p1_0.description,p1_0.discount_percentage,p1_0.discount_price,p1_0.model,p1_0.name,p1_0.origin_id,p1_0.price,p1_0.status,p1_0.stock_quantity,p1_0.thumb_image,p1_0.update_date from products p1_0
+23:54:47.772 [http-nio-8080-exec-4] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 1054, SQLState: 42S22
+23:54:47.772 [http-nio-8080-exec-4] ERROR o.h.e.jdbc.spi.SqlExceptionHelper - Unknown column 'p1_0.thumb_image' in 'field list'
+23:54:49.652 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - select p1_0.id,p1_0.brand_id,p1_0.category_id,p1_0.create_date,p1_0.description,p1_0.discount_percentage,p1_0.discount_price,p1_0.model,p1_0.name,p1_0.origin_id,p1_0.price,p1_0.status,p1_0.stock_quantity,p1_0.thumb_image,p1_0.update_date from products p1_0
+23:54:49.654 [http-nio-8080-exec-5] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 1054, SQLState: 42S22
+23:54:49.654 [http-nio-8080-exec-5] ERROR o.h.e.jdbc.spi.SqlExceptionHelper - Unknown column 'p1_0.thumb_image' in 'field list'
+23:54:50.510 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - select p1_0.id,p1_0.brand_id,p1_0.category_id,p1_0.create_date,p1_0.description,p1_0.discount_percentage,p1_0.discount_price,p1_0.model,p1_0.name,p1_0.origin_id,p1_0.price,p1_0.status,p1_0.stock_quantity,p1_0.thumb_image,p1_0.update_date from products p1_0
+23:54:50.512 [http-nio-8080-exec-6] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 1054, SQLState: 42S22
+23:54:50.512 [http-nio-8080-exec-6] ERROR o.h.e.jdbc.spi.SqlExceptionHelper - Unknown column 'p1_0.thumb_image' in 'field list'
+23:55:56.568 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+23:55:56.572 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+23:55:56.587 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+23:56:02.530 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+23:56:02.591 [main] INFO  com.egustore.eshop.EshopApplication - Starting EshopApplication using Java 17.0.4.1 with PID 20696 (D:\Doantotnghiep\Going_Up\EGU-Store\Backend\target\classes started by minhl in D:\Doantotnghiep\Going_Up\EGU-Store\Backend)
+23:56:02.592 [main] INFO  com.egustore.eshop.EshopApplication - No active profile set, falling back to 1 default profile: "default"
+23:56:03.601 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+23:56:03.784 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 173 ms. Found 19 JPA repository interfaces.
+23:56:04.599 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+23:56:04.609 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+23:56:04.612 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+23:56:04.612 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.13]
+23:56:04.751 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+23:56:04.753 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2089 ms
+23:56:04.930 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+23:56:04.999 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.9.Final
+23:56:05.002 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+23:56:05.192 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+23:56:05.353 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+23:56:05.373 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+23:56:05.755 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@f48a080
+23:56:05.757 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+23:56:05.855 [main] DEBUG o.h.t.d.sql.spi.DdlTypeRegistry - addDescriptor(12, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@45424c0) replaced previous registration(org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@22ae32ba)
+23:56:05.855 [main] DEBUG o.h.t.d.sql.spi.DdlTypeRegistry - addDescriptor(-9, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@b8b2184) replaced previous registration(org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@299a43d9)
+23:56:05.855 [main] DEBUG o.h.t.d.sql.spi.DdlTypeRegistry - addDescriptor(-3, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@ccd000e) replaced previous registration(org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@5fa5c8cf)
+23:56:05.855 [main] DEBUG o.h.t.d.sql.spi.DdlTypeRegistry - addDescriptor(4003, org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@d7055be) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@768f4b42)
+23:56:05.855 [main] DEBUG o.h.t.d.sql.spi.DdlTypeRegistry - addDescriptor(4001, org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@12a6e8ed) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@63b4b9c6)
+23:56:05.855 [main] DEBUG o.h.t.d.sql.spi.DdlTypeRegistry - addDescriptor(4002, org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@6c66ddab) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@603f4e3e)
+23:56:05.855 [main] DEBUG o.h.t.d.sql.spi.DdlTypeRegistry - addDescriptor(2004, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@45fb2354) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@3c7d8a4)
+23:56:05.855 [main] DEBUG o.h.t.d.sql.spi.DdlTypeRegistry - addDescriptor(2005, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@5996d6f2) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@43423d40)
+23:56:05.856 [main] DEBUG o.h.t.d.sql.spi.DdlTypeRegistry - addDescriptor(2011, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@5f3f57ff) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@6200b644)
+23:56:06.301 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+23:56:07.458 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+23:56:07.462 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+23:56:07.797 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+23:56:09.213 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+23:56:09.458 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@4b6e296a, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@14feab02, org.springframework.security.web.context.SecurityContextHolderFilter@7a62e096, org.springframework.security.web.header.HeaderWriterFilter@521d455c, org.springframework.web.filter.CorsFilter@5e3934db, org.springframework.security.web.authentication.logout.LogoutFilter@246f9fa8, com.egustore.eshop.filters.JwtTokenFilter@6517bc6b, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@478d1193, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@69a8617c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7f36b021, org.springframework.security.web.access.ExceptionTranslationFilter@346d441a, org.springframework.security.web.access.intercept.AuthorizationFilter@779e66e5]
+23:56:09.747 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+23:56:09.774 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+23:56:09.782 [main] INFO  com.egustore.eshop.EshopApplication - Started EshopApplication in 7.736 seconds (process running for 8.425)
+23:56:16.819 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+23:56:16.820 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+23:56:16.821 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+23:56:16.988 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - select p1_0.id,p1_0.brand_id,p1_0.category_id,p1_0.create_date,p1_0.description,p1_0.discount_percentage,p1_0.discount_price,p1_0.model,p1_0.name,p1_0.origin_id,p1_0.price,p1_0.status,p1_0.stock_quantity,p1_0.thumbnail,p1_0.update_date from products p1_0
+23:56:17.020 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - select b1_0.id,b1_0.name from brands b1_0 where b1_0.id=?
+23:56:17.033 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - select c1_0.id,c1_0.create_date,c1_0.name,c1_0.status,c1_0.update_date from categories c1_0 where c1_0.id=?
+23:56:17.036 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - select o1_0.id,o1_0.country from origins o1_0 where o1_0.id=?
+23:56:17.047 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - select b1_0.id,b1_0.name from brands b1_0 where b1_0.id=?
+23:56:17.050 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - select b1_0.id,b1_0.name from brands b1_0 where b1_0.id=?
+23:56:17.053 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - select b1_0.id,b1_0.name from brands b1_0 where b1_0.id=?
+23:56:17.056 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - select b1_0.id,b1_0.name from brands b1_0 where b1_0.id=?
+23:56:17.063 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - select b1_0.id,b1_0.name from brands b1_0 where b1_0.id=?
+23:56:17.064 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - select c1_0.id,c1_0.create_date,c1_0.name,c1_0.status,c1_0.update_date from categories c1_0 where c1_0.id=?
+23:56:17.067 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - select b1_0.id,b1_0.name from brands b1_0 where b1_0.id=?
+23:56:17.069 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - select b1_0.id,b1_0.name from brands b1_0 where b1_0.id=?
+23:56:17.072 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - select b1_0.id,b1_0.name from brands b1_0 where b1_0.id=?
+23:56:17.076 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - select b1_0.id,b1_0.name from brands b1_0 where b1_0.id=?
+23:56:17.080 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - select b1_0.id,b1_0.name from brands b1_0 where b1_0.id=?
+23:56:17.082 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - select b1_0.id,b1_0.name from brands b1_0 where b1_0.id=?
+23:56:17.084 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - select b1_0.id,b1_0.name from brands b1_0 where b1_0.id=?
+23:56:17.086 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - select c1_0.id,c1_0.create_date,c1_0.name,c1_0.status,c1_0.update_date from categories c1_0 where c1_0.id=?
+23:56:17.092 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - select c1_0.id,c1_0.create_date,c1_0.name,c1_0.status,c1_0.update_date from categories c1_0 where c1_0.id=?
+23:56:17.185 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - select i1_0.product_id,i1_0.id,i1_0.create_date,i1_0.status,i1_0.image_url,i1_0.title,i1_0.update_date from images i1_0 where i1_0.product_id=?
+23:56:17.188 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - select i1_0.product_id,i1_0.id,i1_0.create_date,i1_0.status,i1_0.image_url,i1_0.title,i1_0.update_date from images i1_0 where i1_0.product_id=?
+23:56:17.190 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - select i1_0.product_id,i1_0.id,i1_0.create_date,i1_0.status,i1_0.image_url,i1_0.title,i1_0.update_date from images i1_0 where i1_0.product_id=?
+23:56:17.194 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - select i1_0.product_id,i1_0.id,i1_0.create_date,i1_0.status,i1_0.image_url,i1_0.title,i1_0.update_date from images i1_0 where i1_0.product_id=?
+23:56:17.196 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - select i1_0.product_id,i1_0.id,i1_0.create_date,i1_0.status,i1_0.image_url,i1_0.title,i1_0.update_date from images i1_0 where i1_0.product_id=?
+23:56:17.199 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - select i1_0.product_id,i1_0.id,i1_0.create_date,i1_0.status,i1_0.image_url,i1_0.title,i1_0.update_date from images i1_0 where i1_0.product_id=?
+23:56:17.201 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - select i1_0.product_id,i1_0.id,i1_0.create_date,i1_0.status,i1_0.image_url,i1_0.title,i1_0.update_date from images i1_0 where i1_0.product_id=?
+23:56:17.203 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - select i1_0.product_id,i1_0.id,i1_0.create_date,i1_0.status,i1_0.image_url,i1_0.title,i1_0.update_date from images i1_0 where i1_0.product_id=?
+23:56:17.205 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - select i1_0.product_id,i1_0.id,i1_0.create_date,i1_0.status,i1_0.image_url,i1_0.title,i1_0.update_date from images i1_0 where i1_0.product_id=?
+23:56:17.208 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - select i1_0.product_id,i1_0.id,i1_0.create_date,i1_0.status,i1_0.image_url,i1_0.title,i1_0.update_date from images i1_0 where i1_0.product_id=?
+23:56:17.210 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - select i1_0.product_id,i1_0.id,i1_0.create_date,i1_0.status,i1_0.image_url,i1_0.title,i1_0.update_date from images i1_0 where i1_0.product_id=?
+23:56:17.212 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - select i1_0.product_id,i1_0.id,i1_0.create_date,i1_0.status,i1_0.image_url,i1_0.title,i1_0.update_date from images i1_0 where i1_0.product_id=?
+23:56:17.214 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - select i1_0.product_id,i1_0.id,i1_0.create_date,i1_0.status,i1_0.image_url,i1_0.title,i1_0.update_date from images i1_0 where i1_0.product_id=?
+23:56:17.215 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - select i1_0.product_id,i1_0.id,i1_0.create_date,i1_0.status,i1_0.image_url,i1_0.title,i1_0.update_date from images i1_0 where i1_0.product_id=?
+23:56:17.216 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - select i1_0.product_id,i1_0.id,i1_0.create_date,i1_0.status,i1_0.image_url,i1_0.title,i1_0.update_date from images i1_0 where i1_0.product_id=?
+23:56:17.222 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - select i1_0.product_id,i1_0.id,i1_0.create_date,i1_0.status,i1_0.image_url,i1_0.title,i1_0.update_date from images i1_0 where i1_0.product_id=?
+23:56:17.226 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - select i1_0.product_id,i1_0.id,i1_0.create_date,i1_0.status,i1_0.image_url,i1_0.title,i1_0.update_date from images i1_0 where i1_0.product_id=?
+23:56:17.232 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - select i1_0.product_id,i1_0.id,i1_0.create_date,i1_0.status,i1_0.image_url,i1_0.title,i1_0.update_date from images i1_0 where i1_0.product_id=?
+23:56:17.235 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - select i1_0.product_id,i1_0.id,i1_0.create_date,i1_0.status,i1_0.image_url,i1_0.title,i1_0.update_date from images i1_0 where i1_0.product_id=?
+23:56:17.237 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - select i1_0.product_id,i1_0.id,i1_0.create_date,i1_0.status,i1_0.image_url,i1_0.title,i1_0.update_date from images i1_0 where i1_0.product_id=?
+23:56:17.239 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - select i1_0.product_id,i1_0.id,i1_0.create_date,i1_0.status,i1_0.image_url,i1_0.title,i1_0.update_date from images i1_0 where i1_0.product_id=?
+23:56:17.243 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - select i1_0.product_id,i1_0.id,i1_0.create_date,i1_0.status,i1_0.image_url,i1_0.title,i1_0.update_date from images i1_0 where i1_0.product_id=?
+23:56:17.246 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - select i1_0.product_id,i1_0.id,i1_0.create_date,i1_0.status,i1_0.image_url,i1_0.title,i1_0.update_date from images i1_0 where i1_0.product_id=?
+23:56:17.247 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - select i1_0.product_id,i1_0.id,i1_0.create_date,i1_0.status,i1_0.image_url,i1_0.title,i1_0.update_date from images i1_0 where i1_0.product_id=?
+23:56:17.249 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - select i1_0.product_id,i1_0.id,i1_0.create_date,i1_0.status,i1_0.image_url,i1_0.title,i1_0.update_date from images i1_0 where i1_0.product_id=?
+23:56:17.251 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - select i1_0.product_id,i1_0.id,i1_0.create_date,i1_0.status,i1_0.image_url,i1_0.title,i1_0.update_date from images i1_0 where i1_0.product_id=?
+23:56:17.254 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - select i1_0.product_id,i1_0.id,i1_0.create_date,i1_0.status,i1_0.image_url,i1_0.title,i1_0.update_date from images i1_0 where i1_0.product_id=?
+23:56:17.259 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - select i1_0.product_id,i1_0.id,i1_0.create_date,i1_0.status,i1_0.image_url,i1_0.title,i1_0.update_date from images i1_0 where i1_0.product_id=?
+23:56:17.263 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - select i1_0.product_id,i1_0.id,i1_0.create_date,i1_0.status,i1_0.image_url,i1_0.title,i1_0.update_date from images i1_0 where i1_0.product_id=?
+23:56:17.265 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - select i1_0.product_id,i1_0.id,i1_0.create_date,i1_0.status,i1_0.image_url,i1_0.title,i1_0.update_date from images i1_0 where i1_0.product_id=?
+23:57:01.021 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+23:57:01.024 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+23:57:01.036 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+23:57:05.291 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+23:57:05.351 [main] INFO  com.egustore.eshop.EshopApplication - Starting EshopApplication using Java 17.0.4.1 with PID 11352 (D:\Doantotnghiep\Going_Up\EGU-Store\Backend\target\classes started by minhl in D:\Doantotnghiep\Going_Up\EGU-Store\Backend)
+23:57:05.352 [main] INFO  com.egustore.eshop.EshopApplication - No active profile set, falling back to 1 default profile: "default"
+23:57:06.365 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+23:57:06.564 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 186 ms. Found 19 JPA repository interfaces.
+23:57:07.394 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+23:57:07.404 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+23:57:07.407 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+23:57:07.408 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.13]
+23:57:07.549 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+23:57:07.550 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2128 ms
+23:57:07.741 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+23:57:07.804 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.9.Final
+23:57:07.809 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+23:57:07.984 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+23:57:08.151 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+23:57:08.171 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+23:57:08.543 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@f48a080
+23:57:08.545 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+23:57:08.637 [main] DEBUG o.h.t.d.sql.spi.DdlTypeRegistry - addDescriptor(12, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@45424c0) replaced previous registration(org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@22ae32ba)
+23:57:08.637 [main] DEBUG o.h.t.d.sql.spi.DdlTypeRegistry - addDescriptor(-9, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@b8b2184) replaced previous registration(org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@299a43d9)
+23:57:08.638 [main] DEBUG o.h.t.d.sql.spi.DdlTypeRegistry - addDescriptor(-3, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@ccd000e) replaced previous registration(org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@5fa5c8cf)
+23:57:08.638 [main] DEBUG o.h.t.d.sql.spi.DdlTypeRegistry - addDescriptor(4003, org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@d7055be) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@768f4b42)
+23:57:08.638 [main] DEBUG o.h.t.d.sql.spi.DdlTypeRegistry - addDescriptor(4001, org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@12a6e8ed) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@63b4b9c6)
+23:57:08.638 [main] DEBUG o.h.t.d.sql.spi.DdlTypeRegistry - addDescriptor(4002, org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@6c66ddab) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@603f4e3e)
+23:57:08.638 [main] DEBUG o.h.t.d.sql.spi.DdlTypeRegistry - addDescriptor(2004, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@45fb2354) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@3c7d8a4)
+23:57:08.638 [main] DEBUG o.h.t.d.sql.spi.DdlTypeRegistry - addDescriptor(2005, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@5996d6f2) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@43423d40)
+23:57:08.638 [main] DEBUG o.h.t.d.sql.spi.DdlTypeRegistry - addDescriptor(2011, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@5f3f57ff) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@6200b644)
+23:57:09.066 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+23:57:10.178 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+23:57:10.181 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+23:57:10.521 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+23:57:11.875 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+23:57:12.138 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@16bba8ae, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7c689379, org.springframework.security.web.context.SecurityContextHolderFilter@71bebddf, org.springframework.security.web.header.HeaderWriterFilter@54cb2cee, org.springframework.web.filter.CorsFilter@8fa4647, org.springframework.security.web.authentication.logout.LogoutFilter@4b6e296a, com.egustore.eshop.filters.JwtTokenFilter@53ec379a, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@123e87cd, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@45e931a9, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@53a2dbf2, org.springframework.security.web.access.ExceptionTranslationFilter@2c59b9f4, org.springframework.security.web.access.intercept.AuthorizationFilter@202d83b9]
+23:57:12.455 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+23:57:12.481 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+23:57:12.490 [main] INFO  com.egustore.eshop.EshopApplication - Started EshopApplication in 7.675 seconds (process running for 8.364)
+23:58:27.449 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+23:58:27.450 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+23:58:27.451 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+23:58:27.681 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - select p1_0.id,p1_0.brand_id,p1_0.category_id,p1_0.create_date,p1_0.description,p1_0.discount_percentage,p1_0.discount_price,p1_0.model,p1_0.name,p1_0.origin_id,p1_0.price,p1_0.status,p1_0.stock_quantity,p1_0.thumbnail,p1_0.update_date from products p1_0
+23:58:27.681 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - select c1_0.id,c1_0.create_date,c1_0.name,c1_0.status,c1_0.thumbnail,c1_0.update_date from categories c1_0
+23:58:27.716 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - select b1_0.id,b1_0.name from brands b1_0 where b1_0.id=?
+23:58:27.719 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - select c1_0.id,c1_0.create_date,c1_0.name,c1_0.status,c1_0.thumbnail,c1_0.update_date from categories c1_0 where c1_0.id=?
+23:58:27.722 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - select o1_0.id,o1_0.country from origins o1_0 where o1_0.id=?
+23:58:27.729 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - select b1_0.id,b1_0.name from brands b1_0 where b1_0.id=?
+23:58:27.733 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - select b1_0.id,b1_0.name from brands b1_0 where b1_0.id=?
+23:58:27.736 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - select b1_0.id,b1_0.name from brands b1_0 where b1_0.id=?
+23:58:27.739 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - select b1_0.id,b1_0.name from brands b1_0 where b1_0.id=?
+23:58:27.745 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - select b1_0.id,b1_0.name from brands b1_0 where b1_0.id=?
+23:58:27.746 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - select c1_0.id,c1_0.create_date,c1_0.name,c1_0.status,c1_0.thumbnail,c1_0.update_date from categories c1_0
+23:58:27.748 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - select c1_0.id,c1_0.create_date,c1_0.name,c1_0.status,c1_0.thumbnail,c1_0.update_date from categories c1_0 where c1_0.id=?
+23:58:27.751 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - select b1_0.id,b1_0.name from brands b1_0 where b1_0.id=?
+23:58:27.755 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - select b1_0.id,b1_0.name from brands b1_0 where b1_0.id=?
+23:58:27.758 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - select b1_0.id,b1_0.name from brands b1_0 where b1_0.id=?
+23:58:27.761 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - select b1_0.id,b1_0.name from brands b1_0 where b1_0.id=?
+23:58:27.766 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - select b1_0.id,b1_0.name from brands b1_0 where b1_0.id=?
+23:58:27.768 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - select b1_0.id,b1_0.name from brands b1_0 where b1_0.id=?
+23:58:27.770 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - select b1_0.id,b1_0.name from brands b1_0 where b1_0.id=?
+23:58:27.771 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - select c1_0.id,c1_0.create_date,c1_0.name,c1_0.status,c1_0.thumbnail,c1_0.update_date from categories c1_0 where c1_0.id=?
+23:58:27.776 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - select c1_0.id,c1_0.create_date,c1_0.name,c1_0.status,c1_0.thumbnail,c1_0.update_date from categories c1_0 where c1_0.id=?
+23:58:27.805 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - select i1_0.product_id,i1_0.id,i1_0.create_date,i1_0.status,i1_0.image_url,i1_0.title,i1_0.update_date from images i1_0 where i1_0.product_id=?
+23:58:27.809 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - select i1_0.product_id,i1_0.id,i1_0.create_date,i1_0.status,i1_0.image_url,i1_0.title,i1_0.update_date from images i1_0 where i1_0.product_id=?
+23:58:27.811 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - select i1_0.product_id,i1_0.id,i1_0.create_date,i1_0.status,i1_0.image_url,i1_0.title,i1_0.update_date from images i1_0 where i1_0.product_id=?
+23:58:27.815 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - select i1_0.product_id,i1_0.id,i1_0.create_date,i1_0.status,i1_0.image_url,i1_0.title,i1_0.update_date from images i1_0 where i1_0.product_id=?
+23:58:27.818 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - select i1_0.product_id,i1_0.id,i1_0.create_date,i1_0.status,i1_0.image_url,i1_0.title,i1_0.update_date from images i1_0 where i1_0.product_id=?
+23:58:27.820 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - select i1_0.product_id,i1_0.id,i1_0.create_date,i1_0.status,i1_0.image_url,i1_0.title,i1_0.update_date from images i1_0 where i1_0.product_id=?
+23:58:27.822 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - select i1_0.product_id,i1_0.id,i1_0.create_date,i1_0.status,i1_0.image_url,i1_0.title,i1_0.update_date from images i1_0 where i1_0.product_id=?
+23:58:27.823 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - select i1_0.product_id,i1_0.id,i1_0.create_date,i1_0.status,i1_0.image_url,i1_0.title,i1_0.update_date from images i1_0 where i1_0.product_id=?
+23:58:27.825 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - select i1_0.product_id,i1_0.id,i1_0.create_date,i1_0.status,i1_0.image_url,i1_0.title,i1_0.update_date from images i1_0 where i1_0.product_id=?
+23:58:27.828 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - select i1_0.product_id,i1_0.id,i1_0.create_date,i1_0.status,i1_0.image_url,i1_0.title,i1_0.update_date from images i1_0 where i1_0.product_id=?
+23:58:27.831 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - select i1_0.product_id,i1_0.id,i1_0.create_date,i1_0.status,i1_0.image_url,i1_0.title,i1_0.update_date from images i1_0 where i1_0.product_id=?
+23:58:27.833 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - select i1_0.product_id,i1_0.id,i1_0.create_date,i1_0.status,i1_0.image_url,i1_0.title,i1_0.update_date from images i1_0 where i1_0.product_id=?
+23:58:27.834 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - select i1_0.product_id,i1_0.id,i1_0.create_date,i1_0.status,i1_0.image_url,i1_0.title,i1_0.update_date from images i1_0 where i1_0.product_id=?
+23:58:27.837 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - select i1_0.product_id,i1_0.id,i1_0.create_date,i1_0.status,i1_0.image_url,i1_0.title,i1_0.update_date from images i1_0 where i1_0.product_id=?
+23:58:27.839 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - select i1_0.product_id,i1_0.id,i1_0.create_date,i1_0.status,i1_0.image_url,i1_0.title,i1_0.update_date from images i1_0 where i1_0.product_id=?
+23:58:27.847 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - select i1_0.product_id,i1_0.id,i1_0.create_date,i1_0.status,i1_0.image_url,i1_0.title,i1_0.update_date from images i1_0 where i1_0.product_id=?
+23:58:27.849 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - select i1_0.product_id,i1_0.id,i1_0.create_date,i1_0.status,i1_0.image_url,i1_0.title,i1_0.update_date from images i1_0 where i1_0.product_id=?
+23:58:27.851 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - select i1_0.product_id,i1_0.id,i1_0.create_date,i1_0.status,i1_0.image_url,i1_0.title,i1_0.update_date from images i1_0 where i1_0.product_id=?
+23:58:27.852 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - select i1_0.product_id,i1_0.id,i1_0.create_date,i1_0.status,i1_0.image_url,i1_0.title,i1_0.update_date from images i1_0 where i1_0.product_id=?
+23:58:27.854 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - select i1_0.product_id,i1_0.id,i1_0.create_date,i1_0.status,i1_0.image_url,i1_0.title,i1_0.update_date from images i1_0 where i1_0.product_id=?
+23:58:27.856 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - select i1_0.product_id,i1_0.id,i1_0.create_date,i1_0.status,i1_0.image_url,i1_0.title,i1_0.update_date from images i1_0 where i1_0.product_id=?
+23:58:27.858 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - select i1_0.product_id,i1_0.id,i1_0.create_date,i1_0.status,i1_0.image_url,i1_0.title,i1_0.update_date from images i1_0 where i1_0.product_id=?
+23:58:27.861 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - select i1_0.product_id,i1_0.id,i1_0.create_date,i1_0.status,i1_0.image_url,i1_0.title,i1_0.update_date from images i1_0 where i1_0.product_id=?
+23:58:27.863 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - select i1_0.product_id,i1_0.id,i1_0.create_date,i1_0.status,i1_0.image_url,i1_0.title,i1_0.update_date from images i1_0 where i1_0.product_id=?
+23:58:27.865 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - select i1_0.product_id,i1_0.id,i1_0.create_date,i1_0.status,i1_0.image_url,i1_0.title,i1_0.update_date from images i1_0 where i1_0.product_id=?
+23:58:27.866 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - select i1_0.product_id,i1_0.id,i1_0.create_date,i1_0.status,i1_0.image_url,i1_0.title,i1_0.update_date from images i1_0 where i1_0.product_id=?
+23:58:27.868 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - select i1_0.product_id,i1_0.id,i1_0.create_date,i1_0.status,i1_0.image_url,i1_0.title,i1_0.update_date from images i1_0 where i1_0.product_id=?
+23:58:27.870 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - select i1_0.product_id,i1_0.id,i1_0.create_date,i1_0.status,i1_0.image_url,i1_0.title,i1_0.update_date from images i1_0 where i1_0.product_id=?
+23:58:27.872 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - select i1_0.product_id,i1_0.id,i1_0.create_date,i1_0.status,i1_0.image_url,i1_0.title,i1_0.update_date from images i1_0 where i1_0.product_id=?
+23:58:27.874 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - select i1_0.product_id,i1_0.id,i1_0.create_date,i1_0.status,i1_0.image_url,i1_0.title,i1_0.update_date from images i1_0 where i1_0.product_id=?
+23:58:59.301 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - select r1_0.id,r1_0.create_date,r1_0.customer_id,r1_0.name_customer,r1_0.product_id,r1_0.rating,r1_0.update_date from rating_product r1_0
+23:58:59.306 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - select c1_0.id,c1_0.create_date,c1_0.date_of_birth,c1_0.email,c1_0.facebook_id,c1_0.first_name,c1_0.google_id,c1_0.last_name,c1_0.password,c1_0.phone_number,c1_0.reset_password_token,r1_0.id,r1_0.name,c1_0.role_id,c1_0.status from customers c1_0 left join roles r1_0 on r1_0.id=c1_0.role_id where c1_0.id=?
+23:58:59.311 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - select p1_0.id,b1_0.id,b1_0.name,c1_0.id,c1_0.create_date,c1_0.name,c1_0.status,c1_0.thumbnail,c1_0.update_date,p1_0.create_date,p1_0.description,p1_0.discount_percentage,p1_0.discount_price,p1_0.model,p1_0.name,o1_0.id,o1_0.country,p1_0.price,p1_0.status,p1_0.stock_quantity,p1_0.thumbnail,p1_0.update_date from products p1_0 left join brands b1_0 on b1_0.id=p1_0.brand_id left join categories c1_0 on c1_0.id=p1_0.category_id left join origins o1_0 on o1_0.id=p1_0.origin_id where p1_0.id=?
+23:58:59.316 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - select p1_0.id,b1_0.id,b1_0.name,c1_0.id,c1_0.create_date,c1_0.name,c1_0.status,c1_0.thumbnail,c1_0.update_date,p1_0.create_date,p1_0.description,p1_0.discount_percentage,p1_0.discount_price,p1_0.model,p1_0.name,o1_0.id,o1_0.country,p1_0.price,p1_0.status,p1_0.stock_quantity,p1_0.thumbnail,p1_0.update_date from products p1_0 left join brands b1_0 on b1_0.id=p1_0.brand_id left join categories c1_0 on c1_0.id=p1_0.category_id left join origins o1_0 on o1_0.id=p1_0.origin_id where p1_0.id=?
+23:58:59.323 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - select p1_0.id,b1_0.id,b1_0.name,c1_0.id,c1_0.create_date,c1_0.name,c1_0.status,c1_0.thumbnail,c1_0.update_date,p1_0.create_date,p1_0.description,p1_0.discount_percentage,p1_0.discount_price,p1_0.model,p1_0.name,o1_0.id,o1_0.country,p1_0.price,p1_0.status,p1_0.stock_quantity,p1_0.thumbnail,p1_0.update_date from products p1_0 left join brands b1_0 on b1_0.id=p1_0.brand_id left join categories c1_0 on c1_0.id=p1_0.category_id left join origins o1_0 on o1_0.id=p1_0.origin_id where p1_0.id=?
+23:58:59.327 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - select p1_0.id,b1_0.id,b1_0.name,c1_0.id,c1_0.create_date,c1_0.name,c1_0.status,c1_0.thumbnail,c1_0.update_date,p1_0.create_date,p1_0.description,p1_0.discount_percentage,p1_0.discount_price,p1_0.model,p1_0.name,o1_0.id,o1_0.country,p1_0.price,p1_0.status,p1_0.stock_quantity,p1_0.thumbnail,p1_0.update_date from products p1_0 left join brands b1_0 on b1_0.id=p1_0.brand_id left join categories c1_0 on c1_0.id=p1_0.category_id left join origins o1_0 on o1_0.id=p1_0.origin_id where p1_0.id=?
+23:58:59.332 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - select p1_0.id,b1_0.id,b1_0.name,c1_0.id,c1_0.create_date,c1_0.name,c1_0.status,c1_0.thumbnail,c1_0.update_date,p1_0.create_date,p1_0.description,p1_0.discount_percentage,p1_0.discount_price,p1_0.model,p1_0.name,o1_0.id,o1_0.country,p1_0.price,p1_0.status,p1_0.stock_quantity,p1_0.thumbnail,p1_0.update_date from products p1_0 left join brands b1_0 on b1_0.id=p1_0.brand_id left join categories c1_0 on c1_0.id=p1_0.category_id left join origins o1_0 on o1_0.id=p1_0.origin_id where p1_0.id=?
+23:58:59.335 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - select p1_0.id,b1_0.id,b1_0.name,c1_0.id,c1_0.create_date,c1_0.name,c1_0.status,c1_0.thumbnail,c1_0.update_date,p1_0.create_date,p1_0.description,p1_0.discount_percentage,p1_0.discount_price,p1_0.model,p1_0.name,o1_0.id,o1_0.country,p1_0.price,p1_0.status,p1_0.stock_quantity,p1_0.thumbnail,p1_0.update_date from products p1_0 left join brands b1_0 on b1_0.id=p1_0.brand_id left join categories c1_0 on c1_0.id=p1_0.category_id left join origins o1_0 on o1_0.id=p1_0.origin_id where p1_0.id=?
+23:58:59.352 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - select i1_0.product_id,i1_0.id,i1_0.create_date,i1_0.status,i1_0.image_url,i1_0.title,i1_0.update_date from images i1_0 where i1_0.product_id=?
+23:58:59.357 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - select i1_0.product_id,i1_0.id,i1_0.create_date,i1_0.status,i1_0.image_url,i1_0.title,i1_0.update_date from images i1_0 where i1_0.product_id=?
+23:58:59.359 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - select i1_0.product_id,i1_0.id,i1_0.create_date,i1_0.status,i1_0.image_url,i1_0.title,i1_0.update_date from images i1_0 where i1_0.product_id=?
+23:58:59.361 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - select i1_0.product_id,i1_0.id,i1_0.create_date,i1_0.status,i1_0.image_url,i1_0.title,i1_0.update_date from images i1_0 where i1_0.product_id=?
+23:58:59.362 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - select i1_0.product_id,i1_0.id,i1_0.create_date,i1_0.status,i1_0.image_url,i1_0.title,i1_0.update_date from images i1_0 where i1_0.product_id=?
+23:58:59.364 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - select i1_0.product_id,i1_0.id,i1_0.create_date,i1_0.status,i1_0.image_url,i1_0.title,i1_0.update_date from images i1_0 where i1_0.product_id=?
+23:59:10.238 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - select c1_0.id,c1_0.create_date,c1_0.name,c1_0.status,c1_0.thumbnail,c1_0.update_date from categories c1_0 where c1_0.id=?
+23:59:35.099 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - select o1_0.id,o1_0.address,o1_0.city,o1_0.country,o1_0.customer_id,o1_0.discount_price,o1_0.district,o1_0.email,o1_0.note,o1_0.order_date,o1_0.payment_method,o1_0.phone,o1_0.status from orders o1_0
+23:59:35.116 [http-nio-8080-exec-3] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 1054, SQLState: 42S22
+23:59:35.116 [http-nio-8080-exec-3] ERROR o.h.e.jdbc.spi.SqlExceptionHelper - Unknown column 'o1_0.address' in 'field list'
+23:59:40.084 [http-nio-8080-exec-1] WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'int'; For input string: "list"]
+23:59:41.408 [http-nio-8080-exec-2] WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'int'; For input string: "list"]
+00:00:11.492 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - select a1_0.id,a1_0.city_id,a1_0.customer_id,a1_0.district,a1_0.street,a1_0.street_number from address a1_0
+00:00:11.499 [http-nio-8080-exec-6] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 1054, SQLState: 42S22
+00:00:11.499 [http-nio-8080-exec-6] ERROR o.h.e.jdbc.spi.SqlExceptionHelper - Unknown column 'a1_0.district' in 'field list'
+00:00:12.909 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - select a1_0.id,a1_0.city_id,a1_0.customer_id,a1_0.district,a1_0.street,a1_0.street_number from address a1_0
+00:00:12.911 [http-nio-8080-exec-7] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 1054, SQLState: 42S22
+00:00:12.911 [http-nio-8080-exec-7] ERROR o.h.e.jdbc.spi.SqlExceptionHelper - Unknown column 'a1_0.district' in 'field list'
+00:00:13.749 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - select a1_0.id,a1_0.city_id,a1_0.customer_id,a1_0.district,a1_0.street,a1_0.street_number from address a1_0
+00:00:13.751 [http-nio-8080-exec-8] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 1054, SQLState: 42S22
+00:00:13.751 [http-nio-8080-exec-8] ERROR o.h.e.jdbc.spi.SqlExceptionHelper - Unknown column 'a1_0.district' in 'field list'
+00:10:23.483 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - select a1_0.id,a1_0.city_id,a1_0.customer_id,a1_0.district,a1_0.street,a1_0.street_number from address a1_0
+00:11:19.174 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - select b1_0.id,b1_0.name from brands b1_0
+00:11:40.473 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - select c1_0.id,c1_0.city,c1_0.country_id from cities c1_0
+00:12:10.732 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - select c1_0.id,c1_0.country from countries c1_0
+00:12:25.319 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - select c1_0.id,c1_0.create_date,c1_0.date_of_birth,c1_0.email,c1_0.facebook_id,c1_0.first_name,c1_0.google_id,c1_0.last_name,c1_0.password,c1_0.phone_number,c1_0.reset_password_token,c1_0.role_id,c1_0.status from customers c1_0
+00:12:25.323 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - select r1_0.id,r1_0.name from roles r1_0 where r1_0.id=?
+00:14:08.732 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - select f1_0.id,f1_0.comment,f1_0.create_date,f1_0.customer_id,f1_0.name_user,f1_0.product_id,f1_0.status,f1_0.update_date from feedbackproducts f1_0
+00:14:44.901 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - select i1_0.id,i1_0.create_date,i1_0.status,i1_0.image_url,i1_0.product_id,i1_0.title,i1_0.update_date from images i1_0
+00:15:36.510 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - CALL spSelectedDefaultByYear()
+00:15:36.517 [http-nio-8080-exec-8] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 1305, SQLState: 42000
+00:15:36.518 [http-nio-8080-exec-8] ERROR o.h.e.jdbc.spi.SqlExceptionHelper - PROCEDURE egu_store.spSelectedDefaultByYear does not exist
+00:17:18.149 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - select p1_0.version,p1_0.amount,p1_0.bank_code,p1_0.command,p1_0.create_date,p1_0.current_code,p1_0.ip_address,p1_0.locale,p1_0.order_info,p1_0.order_type,p1_0.return_url,p1_0.secure_hash,p1_0.txt_ref from payments p1_0
+00:17:18.155 [http-nio-8080-exec-1] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 1054, SQLState: 42S22
+00:17:18.155 [http-nio-8080-exec-1] ERROR o.h.e.jdbc.spi.SqlExceptionHelper - Unknown column 'p1_0.txt_ref' in 'field list'
+00:21:11.692 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - select p1_0.version,p1_0.amount,p1_0.bank_code,p1_0.command,p1_0.create_date,p1_0.current_code,p1_0.ip_address,p1_0.locale,p1_0.order_info,p1_0.order_type,p1_0.return_url,p1_0.secure_hash,p1_0.txt_ref from payments p1_0
+00:21:11.693 [http-nio-8080-exec-5] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 1054, SQLState: 42S22
+00:21:11.693 [http-nio-8080-exec-5] ERROR o.h.e.jdbc.spi.SqlExceptionHelper - Unknown column 'p1_0.txt_ref' in 'field list'
+00:21:14.904 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - select p1_0.version,p1_0.amount,p1_0.bank_code,p1_0.command,p1_0.create_date,p1_0.current_code,p1_0.ip_address,p1_0.locale,p1_0.order_info,p1_0.order_type,p1_0.return_url,p1_0.secure_hash,p1_0.txt_ref from payments p1_0
+00:21:14.905 [http-nio-8080-exec-6] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 1054, SQLState: 42S22
+00:21:14.905 [http-nio-8080-exec-6] ERROR o.h.e.jdbc.spi.SqlExceptionHelper - Unknown column 'p1_0.txt_ref' in 'field list'
+00:21:23.716 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+00:21:23.720 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+00:21:23.729 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+00:21:27.204 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+00:21:27.275 [main] INFO  com.egustore.eshop.EshopApplication - Starting EshopApplication using Java 17.0.4.1 with PID 20760 (D:\Doantotnghiep\Going_Up\EGU-Store\Backend\target\classes started by minhl in D:\Doantotnghiep\Going_Up\EGU-Store\Backend)
+00:21:27.277 [main] INFO  com.egustore.eshop.EshopApplication - No active profile set, falling back to 1 default profile: "default"
+00:21:28.747 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+00:21:28.997 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 239 ms. Found 19 JPA repository interfaces.
+00:21:30.120 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+00:21:30.130 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+00:21:30.133 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+00:21:30.134 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.13]
+00:21:30.332 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+00:21:30.335 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2980 ms
+00:21:30.588 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+00:21:30.680 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.9.Final
+00:21:30.684 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+00:21:30.946 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+00:21:31.110 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+00:21:31.137 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+00:21:31.599 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@56266bda
+00:21:31.602 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+00:21:31.721 [main] DEBUG o.h.t.d.sql.spi.DdlTypeRegistry - addDescriptor(12, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@6a902015) replaced previous registration(org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@55d99dc3)
+00:21:31.721 [main] DEBUG o.h.t.d.sql.spi.DdlTypeRegistry - addDescriptor(-9, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@521a506c) replaced previous registration(org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@3c64339f)
+00:21:31.721 [main] DEBUG o.h.t.d.sql.spi.DdlTypeRegistry - addDescriptor(-3, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@579f3c8e) replaced previous registration(org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@4eb1943b)
+00:21:31.721 [main] DEBUG o.h.t.d.sql.spi.DdlTypeRegistry - addDescriptor(4003, org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@4e2824b1) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@534d0e20)
+00:21:31.721 [main] DEBUG o.h.t.d.sql.spi.DdlTypeRegistry - addDescriptor(4001, org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@7d18338b) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@3f4a605f)
+00:21:31.721 [main] DEBUG o.h.t.d.sql.spi.DdlTypeRegistry - addDescriptor(4002, org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@30c8c6ab) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@bcfe29c)
+00:21:31.721 [main] DEBUG o.h.t.d.sql.spi.DdlTypeRegistry - addDescriptor(2004, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@37f71c05) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@5bd3ca3c)
+00:21:31.722 [main] DEBUG o.h.t.d.sql.spi.DdlTypeRegistry - addDescriptor(2005, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@2dd8a273) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@59f76e56)
+00:21:31.722 [main] DEBUG o.h.t.d.sql.spi.DdlTypeRegistry - addDescriptor(2011, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@566f4659) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@1328f482)
+00:21:32.197 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+00:21:33.396 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+00:21:33.399 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+00:21:33.746 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+00:21:35.309 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+00:21:35.561 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@3dd4f91d, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4a65ce06, org.springframework.security.web.context.SecurityContextHolderFilter@bb78f01, org.springframework.security.web.header.HeaderWriterFilter@55785ee7, org.springframework.web.filter.CorsFilter@30a0a440, org.springframework.security.web.authentication.logout.LogoutFilter@5ef22587, com.egustore.eshop.filters.JwtTokenFilter@6e212f38, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@246f9fa8, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@45c5cd9a, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@116c43d4, org.springframework.security.web.access.ExceptionTranslationFilter@2fd2a6a4, org.springframework.security.web.access.intercept.AuthorizationFilter@5145dddc]
+00:21:35.926 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+00:21:35.958 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+00:21:35.969 [main] INFO  com.egustore.eshop.EshopApplication - Started EshopApplication in 9.277 seconds (process running for 10.079)
+00:21:42.694 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+00:21:42.694 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+00:21:42.697 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms
+00:21:42.902 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - select p1_0.version,p1_0.amount,p1_0.bank_code,p1_0.command,p1_0.create_date,p1_0.current_code,p1_0.ip_address,p1_0.locale,p1_0.order_info,p1_0.order_type,p1_0.return_url,p1_0.secure_hash,p1_0.txt_ref from payments p1_0
+00:22:17.131 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - select r1_0.id,r1_0.name from roles r1_0
+00:22:51.914 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - select t1_0.id,t1_0.customer_id,t1_0.exp_date,t1_0.image_url,t1_0.token from tokens t1_0
+00:22:51.929 [http-nio-8080-exec-4] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 1054, SQLState: 42S22
+00:22:51.930 [http-nio-8080-exec-4] ERROR o.h.e.jdbc.spi.SqlExceptionHelper - Unknown column 't1_0.image_url' in 'field list'
+00:23:55.602 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - select t1_0.id,t1_0.customer_id,t1_0.exp_date,t1_0.image_url,t1_0.token from tokens t1_0
+00:24:16.562 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - select s1_0.id,s1_0.camera,s1_0.display,s1_0.graphics_card,s1_0.operating_system,s1_0.processor,s1_0.product_id,s1_0.ram,s1_0.storage from specifications s1_0
+00:28:09.320 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - select o1_0.id,o1_0.address,o1_0.city,o1_0.country,o1_0.customer_id,o1_0.discount_price,o1_0.district,o1_0.email,o1_0.note,o1_0.order_date,o1_0.payment_method,o1_0.phone,o1_0.status from orders o1_0
+00:28:09.322 [http-nio-8080-exec-2] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 1054, SQLState: 42S22
+00:28:09.322 [http-nio-8080-exec-2] ERROR o.h.e.jdbc.spi.SqlExceptionHelper - Unknown column 'o1_0.city' in 'field list'
+00:28:10.969 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - select o1_0.id,o1_0.address,o1_0.city,o1_0.country,o1_0.customer_id,o1_0.discount_price,o1_0.district,o1_0.email,o1_0.note,o1_0.order_date,o1_0.payment_method,o1_0.phone,o1_0.status from orders o1_0
+00:28:10.970 [http-nio-8080-exec-1] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 1054, SQLState: 42S22
+00:28:10.970 [http-nio-8080-exec-1] ERROR o.h.e.jdbc.spi.SqlExceptionHelper - Unknown column 'o1_0.city' in 'field list'
+00:29:01.593 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - select o1_0.id,o1_0.address,o1_0.city,o1_0.country,o1_0.customer_id,o1_0.discount_price,o1_0.district,o1_0.email,o1_0.note,o1_0.order_date,o1_0.payment_method,o1_0.phone,o1_0.status from orders o1_0
+00:29:01.639 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - select o1_0.order_id,o1_0.id,p1_0.id,b1_0.id,b1_0.name,c1_0.id,c1_0.create_date,c1_0.name,c1_0.status,c1_0.thumbnail,c1_0.update_date,p1_0.create_date,p1_0.description,p1_0.discount_percentage,p1_0.discount_price,p1_0.model,p1_0.name,o3_0.id,o3_0.country,p1_0.price,p1_0.status,p1_0.stock_quantity,p1_0.thumbnail,p1_0.update_date,o1_0.quantity,o1_0.total_price from order_details o1_0 left join products p1_0 on p1_0.id=o1_0.product_id left join brands b1_0 on b1_0.id=p1_0.brand_id left join categories c1_0 on c1_0.id=p1_0.category_id left join origins o3_0 on o3_0.id=p1_0.origin_id where o1_0.order_id=?
+00:29:01.646 [http-nio-8080-exec-3] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 1146, SQLState: 42S02
+00:29:01.646 [http-nio-8080-exec-3] ERROR o.h.e.jdbc.spi.SqlExceptionHelper - Table 'egu_store.order_details' doesn't exist
+00:29:01.648 [http-nio-8080-exec-3] WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.http.converter.HttpMessageNotWritableException: Could not write JSON: JDBC exception executing SQL [select o1_0.order_id,o1_0.id,p1_0.id,b1_0.id,b1_0.name,c1_0.id,c1_0.create_date,c1_0.name,c1_0.status,c1_0.thumbnail,c1_0.update_date,p1_0.create_date,p1_0.description,p1_0.discount_percentage,p1_0.discount_price,p1_0.model,p1_0.name,o3_0.id,o3_0.country,p1_0.price,p1_0.status,p1_0.stock_quantity,p1_0.thumbnail,p1_0.update_date,o1_0.quantity,o1_0.total_price from order_details o1_0 left join products p1_0 on p1_0.id=o1_0.product_id left join brands b1_0 on b1_0.id=p1_0.brand_id left join categories c1_0 on c1_0.id=p1_0.category_id left join origins o3_0 on o3_0.id=p1_0.origin_id where o1_0.order_id=?] [Table 'egu_store.order_details' doesn't exist] [n/a]]
+00:29:07.620 [http-nio-8080-exec-5] WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'int'; For input string: "list"]
+00:33:54.856 [http-nio-8080-exec-7] WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'int'; For input string: "list"]
+00:34:00.828 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - select o1_0.id,o1_0.address,o1_0.city,o1_0.country,o1_0.customer_id,o1_0.discount_price,o1_0.district,o1_0.email,o1_0.note,o1_0.order_date,o1_0.payment_method,o1_0.phone,o1_0.status from orders o1_0
+00:34:00.832 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - select o1_0.order_id,o1_0.id,p1_0.id,b1_0.id,b1_0.name,c1_0.id,c1_0.create_date,c1_0.name,c1_0.status,c1_0.thumbnail,c1_0.update_date,p1_0.create_date,p1_0.description,p1_0.discount_percentage,p1_0.discount_price,p1_0.model,p1_0.name,o3_0.id,o3_0.country,p1_0.price,p1_0.status,p1_0.stock_quantity,p1_0.thumbnail,p1_0.update_date,o1_0.quantity,o1_0.total_price from order_details o1_0 left join products p1_0 on p1_0.id=o1_0.product_id left join brands b1_0 on b1_0.id=p1_0.brand_id left join categories c1_0 on c1_0.id=p1_0.category_id left join origins o3_0 on o3_0.id=p1_0.origin_id where o1_0.order_id=?
+00:34:00.834 [http-nio-8080-exec-9] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 1146, SQLState: 42S02
+00:34:00.834 [http-nio-8080-exec-9] ERROR o.h.e.jdbc.spi.SqlExceptionHelper - Table 'egu_store.order_details' doesn't exist
+00:34:00.834 [http-nio-8080-exec-9] WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.http.converter.HttpMessageNotWritableException: Could not write JSON: JDBC exception executing SQL [select o1_0.order_id,o1_0.id,p1_0.id,b1_0.id,b1_0.name,c1_0.id,c1_0.create_date,c1_0.name,c1_0.status,c1_0.thumbnail,c1_0.update_date,p1_0.create_date,p1_0.description,p1_0.discount_percentage,p1_0.discount_price,p1_0.model,p1_0.name,o3_0.id,o3_0.country,p1_0.price,p1_0.status,p1_0.stock_quantity,p1_0.thumbnail,p1_0.update_date,o1_0.quantity,o1_0.total_price from order_details o1_0 left join products p1_0 on p1_0.id=o1_0.product_id left join brands b1_0 on b1_0.id=p1_0.brand_id left join categories c1_0 on c1_0.id=p1_0.category_id left join origins o3_0 on o3_0.id=p1_0.origin_id where o1_0.order_id=?] [Table 'egu_store.order_details' doesn't exist] [n/a]]
+00:40:12.957 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - select o1_0.id,o1_0.address,o1_0.city,o1_0.country,o1_0.customer_id,o1_0.discount_price,o1_0.district,o1_0.email,o1_0.note,o1_0.order_date,o1_0.payment_method,o1_0.phone,o1_0.status from orders o1_0
+00:40:12.971 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - select o1_0.order_id,o1_0.id,p1_0.id,b1_0.id,b1_0.name,c1_0.id,c1_0.create_date,c1_0.name,c1_0.status,c1_0.thumbnail,c1_0.update_date,p1_0.create_date,p1_0.description,p1_0.discount_percentage,p1_0.discount_price,p1_0.model,p1_0.name,o3_0.id,o3_0.country,p1_0.price,p1_0.status,p1_0.stock_quantity,p1_0.thumbnail,p1_0.update_date,o1_0.quantity,o1_0.total_price from order_details o1_0 left join products p1_0 on p1_0.id=o1_0.product_id left join brands b1_0 on b1_0.id=p1_0.brand_id left join categories c1_0 on c1_0.id=p1_0.category_id left join origins o3_0 on o3_0.id=p1_0.origin_id where o1_0.order_id=?
+00:40:12.977 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - select o1_0.order_id,o1_0.id,p1_0.id,b1_0.id,b1_0.name,c1_0.id,c1_0.create_date,c1_0.name,c1_0.status,c1_0.thumbnail,c1_0.update_date,p1_0.create_date,p1_0.description,p1_0.discount_percentage,p1_0.discount_price,p1_0.model,p1_0.name,o3_0.id,o3_0.country,p1_0.price,p1_0.status,p1_0.stock_quantity,p1_0.thumbnail,p1_0.update_date,o1_0.quantity,o1_0.total_price from order_details o1_0 left join products p1_0 on p1_0.id=o1_0.product_id left join brands b1_0 on b1_0.id=p1_0.brand_id left join categories c1_0 on c1_0.id=p1_0.category_id left join origins o3_0 on o3_0.id=p1_0.origin_id where o1_0.order_id=?
+00:40:12.982 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - select o1_0.order_id,o1_0.id,p1_0.id,b1_0.id,b1_0.name,c1_0.id,c1_0.create_date,c1_0.name,c1_0.status,c1_0.thumbnail,c1_0.update_date,p1_0.create_date,p1_0.description,p1_0.discount_percentage,p1_0.discount_price,p1_0.model,p1_0.name,o3_0.id,o3_0.country,p1_0.price,p1_0.status,p1_0.stock_quantity,p1_0.thumbnail,p1_0.update_date,o1_0.quantity,o1_0.total_price from order_details o1_0 left join products p1_0 on p1_0.id=o1_0.product_id left join brands b1_0 on b1_0.id=p1_0.brand_id left join categories c1_0 on c1_0.id=p1_0.category_id left join origins o3_0 on o3_0.id=p1_0.origin_id where o1_0.order_id=?
+00:40:53.688 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - select o1_0.id,o1_0.order_id,o1_0.product_id,o1_0.quantity,o1_0.total_price from order_details o1_0

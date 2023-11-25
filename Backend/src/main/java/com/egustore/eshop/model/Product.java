@@ -36,7 +36,7 @@ public class Product {
     @Column(name = "price")
     private Double price;
 
-    @Column(name = "thumb_image")
+    @Column(name = "thumbnail")
     private String thumbImage;
 
     @Temporal(TemporalType.TIMESTAMP)
