@@ -37,9 +37,6 @@ public class FeedbackProduct {
     @Column(name = "update_date")
     private LocalDateTime updateDate;
 
-//    @Column(name = "customer_id")
-//    private Integer customerId;
-
     @ManyToOne
     @JoinColumn(name = "customer_id")
     private Customer customers;

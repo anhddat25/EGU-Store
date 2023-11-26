@@ -34,9 +34,9 @@ public class RatingProduct {
 
     @ManyToOne
     @JoinColumn(name = "customer_id")
-    private Customer customerId;
+    private Customer customers;
 
     @ManyToOne
     @JoinColumn(name = "product_id")
-    private Product productId;
+    private Product products;
 }

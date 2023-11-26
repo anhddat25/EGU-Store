@@ -36,7 +36,7 @@ public class RatingProductController {
         List<RatingProduct> rates = ratingProductService.getRatingByProductId(productId);
         return ResponseEntity.ok(rates);
     }
-    @GetMapping("/myrating/{customerId}")
+    @GetMapping("/my-rating/{customerId}")
     public ResponseEntity<List<RatingProduct>> getFeedbackByCustomerId(@PathVariable int customerId){
         List<RatingProduct> rates = ratingProductService.getRatingByCustomerId(customerId);
         return ResponseEntity.ok(rates);
