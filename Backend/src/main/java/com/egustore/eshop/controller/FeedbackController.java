@@ -37,6 +37,11 @@ public class FeedbackController {
         return ResponseEntity.ok(feedbacks);
     }
 
+    @GetMapping("/myfeedback/{customerId}")
+    public ResponseEntity<List<FeedbackProduct>> getFeedbackByCustomerId(@PathVariable int customerId){
+        List<FeedbackProduct> feedbacks = feedbackProductService.getFeedbackByCustomerId(customerId);
+        return ResponseEntity.ok(feedbacks);
+    }
     @PostMapping("/create")
     public ResponseEntity<?> createFeedback(@RequestBody @Valid FeedbackProductDTO feedbackProductDTO, BindingResult result){
 

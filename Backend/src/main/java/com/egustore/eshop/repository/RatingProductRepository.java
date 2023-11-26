@@ -13,5 +13,8 @@ public interface RatingProductRepository extends JpaRepository<RatingProduct, In
 
     @Query(value = "Select * From egu_store.rating_product r where r.product_id = :productId", nativeQuery = true)
     List<RatingProduct> getRatingProductByProductId(@Param("productId") int productId);
-
+//List<RatingProduct> getRatingProductByProductId(int productId);
+//    List<RatingProduct> findByCustomerId(int customerId);
+@Query(value = "Select * From egu_store.rating_product r where r.customer_id = :customerId", nativeQuery = true)
+List<RatingProduct> findByCustomerId(@Param("customerId") int customerId);
 }

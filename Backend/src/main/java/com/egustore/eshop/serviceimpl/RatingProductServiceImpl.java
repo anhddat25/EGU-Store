@@ -45,10 +45,10 @@ public class RatingProductServiceImpl implements RatingProductService {
     public List<RatingProduct> getRatingByProductId(int productId) {
         return ratingProductRepository.getRatingProductByProductId(productId);
     }
-//    @Override
-//    public List<RatingProduct> getRatingByCustomerId(int customerId) {
-//        return ratingProductRepository.findByCustomerId(customerId);
-//    }
+    @Override
+    public List<RatingProduct> getRatingByCustomerId(int customerId) {
+        return ratingProductRepository.findByCustomerId(customerId);
+    }
     @Override
     public List<RatingProduct> getAllRatingProducts() {
         return ratingProductRepository.findAll();
