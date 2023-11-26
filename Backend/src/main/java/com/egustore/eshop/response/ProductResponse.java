@@ -22,7 +22,7 @@ public class ProductResponse extends BaseResponse{
         ProductResponse productResponse = ProductResponse.builder()
                 .name(product.getName())
                 .price(product.getPrice())
-                .thumbImage(product.getThumbImage())
+                .thumbImage(product.getThumbnail())
                 .description(product.getDescription())
                 .categoryId(product.getCategoryId().getId())
                 .build();

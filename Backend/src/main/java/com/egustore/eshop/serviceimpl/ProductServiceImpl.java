@@ -70,7 +70,7 @@ public class ProductServiceImpl implements ProductService {
 
             // Update the image URL in the database
             Product existingEntity = existingProduct.get();
-            existingEntity.setThumbImage(imageUrl);
+            existingEntity.setThumbnail(imageUrl);
             return productRepository.save(existingEntity);
         } else {
             // Handle the case where the entity with the given ID does not exist
