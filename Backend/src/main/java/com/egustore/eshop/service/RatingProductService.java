@@ -10,7 +10,7 @@ import java.util.List;
 public interface RatingProductService {
     RatingProduct createRating(RatingProductDTO ratingProductDTO);
     List<RatingProduct> getRatingByProductId(int productId);
-    List<RatingProduct> getRatingByCustomerId(int customerId);
+    RatingProduct getRatingByCustomerId(int productId,int customerId);
     RatingProduct updateRating(int id , RatingProductDTO ratingProductDTO);
     List<RatingProduct> getAllRatingProducts();
     void deleteRatingProduct(int id);

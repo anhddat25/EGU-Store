@@ -21,6 +21,9 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Column(name = "name")
+    private String name;
+
     @Column(name = "Email")
     private String email;
 
@@ -41,20 +44,14 @@ public class Order {
     @Column(name = "address")
     private String address;
 
-    @Column(name = "district")
-    private String district;
-
-    @Column(name = "city")
-    private String city;
-
-    @Column(name = "country")
-    private String country;
-
     @Column(name = "payment_method")
     private String paymentMethod;
 
     @Column(name = "discount_price")
     private Double discountPrice;
+
+    @Column(name = "total_amount")
+    private Double totalAmount;
 
     @ManyToOne
     @JoinColumn(name = "customer_id")
