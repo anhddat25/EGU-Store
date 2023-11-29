@@ -1,5 +1,6 @@
 package com.egustore.eshop.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,6 +15,7 @@ import java.util.Date;
 @Entity
 @Table(name = "rating_products")
 public class RatingProduct {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -37,6 +39,7 @@ public class RatingProduct {
     private Customer customers;
 
     @ManyToOne
+    @JsonIgnoreProperties("ratingProduct")
     @JoinColumn(name = "product_id")
     private Product products;
 }
