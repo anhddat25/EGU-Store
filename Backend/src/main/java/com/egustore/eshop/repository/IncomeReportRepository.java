@@ -17,7 +17,7 @@ public interface IncomeReportRepository extends JpaRepository<IncomeReport, Date
             "\tsum(od.Quantity*od.total_price) 'Revenue' from egu_store.orders o \n" +
             "\tjoin egu_store.order_details od on  o.Id = od.order_id\n" +
             "     WHERE DATE(o.order_date) BETWEEN :startDate AND :endDate AND o.status = 'DELIVERED'\n" +
-            "\tgroup by date(o.order_date)", nativeQuery = true)
+            "\tgroup by date(o.order_date) ORDER BY Date ASC", nativeQuery = true)
     List<IncomeReport> spSelectedByYear(
             @Param("startDate") Date startDate,
             @Param("endDate") Date endDate
@@ -29,6 +29,6 @@ public interface IncomeReportRepository extends JpaRepository<IncomeReport, Date
             "\tsum(od.Quantity*od.total_price) \"Revenue\" \n" +
             "    from egu_store.orders o \n" +
             "\tjoin egu_store.order_details od on  o.Id = od.order_id where o.status = 'DELIVERED'\n" +
-            "\tgroup by date(o.order_date)", nativeQuery = true)
+            "\tgroup by date(o.order_date) ORDER BY Date ASC", nativeQuery = true)
     List<IncomeReport> spSelectedDefaultByTime();
 }
