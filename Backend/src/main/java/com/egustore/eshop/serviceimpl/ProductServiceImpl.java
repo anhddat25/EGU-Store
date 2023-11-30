@@ -6,15 +6,12 @@ import com.egustore.eshop.model.Product;
 import com.egustore.eshop.repository.CategoryRepository;
 import com.egustore.eshop.repository.ProductRepository;
 import com.egustore.eshop.service.ProductService;
-import com.google.api.client.util.DateTime;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -46,6 +43,12 @@ public class ProductServiceImpl implements ProductService {
 //        return productRepository.save(product);
 //    }
 
+    @Override
+    public Product updateProductStock(ProductDTO productDTO){
+        Product product = productRepository.findById(productDTO.getId()).orElseThrow(() -> new IllegalArgumentException("Voucher code does not exist"));
+        product.setStockQuantity(product.getStockQuantity()-productDTO.getStockQuantity());
+        return productRepository.save(product);
+    }
     @Override
     public Product createProduct(ProductDTO productDTO) {
 
