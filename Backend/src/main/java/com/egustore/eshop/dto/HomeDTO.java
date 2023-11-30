@@ -8,7 +8,7 @@ public class HomeDTO {
     @Id
     private Long id;
     private String thumbnail;
-    private String Name;
+    private String Model;
     private Double Price;
     private Double Discount;
     private double rate;
