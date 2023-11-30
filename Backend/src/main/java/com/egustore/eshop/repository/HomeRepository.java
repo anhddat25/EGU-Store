@@ -9,7 +9,7 @@ import java.util.List;
 public interface HomeRepository extends JpaRepository<Home,Integer> {
 
     @Query(value ="SELECT p.id as id," +
-            "p.model as Name, " +
+            "p.model as Model, " +
             "p.thumbnail as thumbnail," +
             "p.price as Price," +
             "p.discount_price as Discount, " +
