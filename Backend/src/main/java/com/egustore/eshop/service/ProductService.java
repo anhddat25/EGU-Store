@@ -3,9 +3,6 @@ package com.egustore.eshop.service;
 import com.egustore.eshop.dto.ProductDTO;
 import com.egustore.eshop.model.Category;
 import com.egustore.eshop.model.Product;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.repository.query.Param;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -15,7 +12,7 @@ public interface ProductService {
     Product createProduct(ProductDTO productDTO);
 
 //    Product createProduct(ProductDTO productDTO, MultipartFile files) throws IOException;
-
+    Product updateProductStock(ProductDTO productDTO);
     Product getProductById(int id);
     Product updateProductById(int id, ProductDTO Product);
 

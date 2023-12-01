@@ -13,19 +13,15 @@ import java.util.Date;
 public class OrderDTO {
     private Integer id;
 
+    private String name;
+
     private String email;
 
     private String phone;
 
     private String address;
 
-    private String district;
-
-    private String city;
-
-    private String country;
-
-    private  Date orderDate;
+    private  Date orderDate = new Date();
 
     private String note;
 
@@ -35,6 +31,8 @@ public class OrderDTO {
 
     private Double discountPrice;
 
+    private Double totalAmount;
+
     @JsonProperty("customer_id")
     private Integer customerId;
 
@@ -43,7 +41,7 @@ public class OrderDTO {
 //    @JsonProperty("order_details_id")
 //    private Integer orderdetailId;
 
-    private OrderDetailDTO orderdetail;
+//    private OrderDetailDTO orderdetail;
 
 
 //    private AddressDTO address;

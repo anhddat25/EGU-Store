@@ -36,11 +36,17 @@ public class RatingProductController {
         List<RatingProduct> rates = ratingProductService.getRatingByProductId(productId);
         return ResponseEntity.ok(rates);
     }
-//    @GetMapping("/my-rating/{customerId}")
-//    public ResponseEntity<List<RatingProduct>> getFeedbackByCustomerId(@PathVariable int customerId){
-//        List<RatingProduct> rates = ratingProductService.getRatingByCustomerId(customerId);
-//        return ResponseEntity.ok(rates);
-//    }
+
+    @GetMapping("/total/{productId}")
+    public ResponseEntity<?> getRatingTotalByProductId(@PathVariable int productId){
+        Integer rates = ratingProductService.getRatingTotalByProductId(productId);
+        return ResponseEntity.ok(rates);
+    }
+    @GetMapping("/my-rating")
+    public ResponseEntity<RatingProduct> getFeedbackByCustomerId(@RequestParam int productId,@RequestParam int customerId){
+        RatingProduct rates = ratingProductService.getRatingByCustomerId(productId,customerId);
+        return ResponseEntity.ok(rates);
+    }
     @PostMapping("")
     public ResponseEntity<String> createRating(@RequestBody @Valid RatingProductDTO ratingProductDTO){
         ratingProductService.createRating(ratingProductDTO);

@@ -76,6 +76,10 @@ public class Product {
     @JoinColumn(name = "origin_id")
     private Origin originId;
 
+    @JsonIgnoreProperties("products")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "products")
+    private List<RatingProduct> ratingProduct;
+
 
     @JsonIgnoreProperties("products")
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "products")

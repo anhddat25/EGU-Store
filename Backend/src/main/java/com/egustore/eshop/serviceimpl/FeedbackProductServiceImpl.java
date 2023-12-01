@@ -32,7 +32,10 @@ public class FeedbackProductServiceImpl implements FeedbackProductService {
         return feedbackProductRepository.findByProductId(productId);
     }
 
-
+    @Override
+    public List<FeedbackProduct> getFeedbackByCustomerId(int customerId) {
+        return feedbackProductRepository.findByCustomerId(customerId);
+    }
     @Override
     public FeedbackProduct updateFeedback(int id, FeedbackProductDTO feedbackProductDTO) {
         Optional<FeedbackProduct> feedbackProductOpt = feedbackProductRepository.findById(id);

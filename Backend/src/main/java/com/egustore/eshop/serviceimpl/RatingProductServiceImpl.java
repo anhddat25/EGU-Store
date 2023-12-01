@@ -2,7 +2,6 @@ package com.egustore.eshop.serviceimpl;
 
 import com.egustore.eshop.dto.RatingProductDTO;
 import com.egustore.eshop.mapper.RatingProductMapper;
-import com.egustore.eshop.model.FeedbackProduct;
 import com.egustore.eshop.model.RatingProduct;
 import com.egustore.eshop.repository.RatingProductRepository;
 import com.egustore.eshop.service.RatingProductService;
@@ -45,10 +44,16 @@ public class RatingProductServiceImpl implements RatingProductService {
     public List<RatingProduct> getRatingByProductId(int productId) {
         return ratingProductRepository.getRatingProductByProductId(productId);
     }
-//    @Override
-//    public List<RatingProduct> getRatingByCustomerId(int customerId) {
-//        return ratingProductRepository.findByCustomerId(customerId);
-//    }
+
+    @Override
+    public Integer getRatingTotalByProductId(int productId) {
+        return ratingProductRepository.getRatingTotalByProductId(productId);
+    }
+
+    @Override
+    public RatingProduct getRatingByCustomerId(int productId,int customerId) {
+        return ratingProductRepository.findByProductsIdAndCustomersId(productId,customerId);
+    }
     @Override
     public List<RatingProduct> getAllRatingProducts() {
         return ratingProductRepository.findAll();

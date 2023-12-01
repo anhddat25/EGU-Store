@@ -12,7 +12,7 @@ import java.util.Date;
 @Table(name = "payments")
 public class Payment {
     @Id
-    private Integer version;
+    private String version;
 
     @Column(name = "command")
     private String command;

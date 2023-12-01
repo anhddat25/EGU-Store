@@ -23,7 +23,7 @@ public class ProductDTO {
 
     private Double price;
 
-    private String thumbImage;
+    private String thumbnail;
 
     private Integer stockQuantity;
 
