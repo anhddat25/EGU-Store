@@ -20,9 +20,9 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-//@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(callSuper = false)
 @Table(name="products")
-public class Product {
+public class Product extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -39,13 +39,13 @@ public class Product {
     @Column(name = "thumbnail")
     private String thumbnail;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "create_date")
-    private LocalDateTime createDate;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "update_date")
-    private LocalDateTime updateDate;
+//    @Temporal(TemporalType.TIMESTAMP)
+//    @Column(name = "create_date")
+//    private LocalDateTime createDate;
+//
+//    @Temporal(TemporalType.TIMESTAMP)
+//    @Column(name = "update_date")
+//    private LocalDateTime updateDate;
 
     @Column(name = "stock_quantity")
     private Integer stockQuantity;
