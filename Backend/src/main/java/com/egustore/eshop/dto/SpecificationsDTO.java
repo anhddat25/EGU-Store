@@ -23,5 +23,5 @@ public class SpecificationsDTO {
 
     private String camera;
 
-    private Product productId;
+    private Product products;
 }

@@ -44,6 +44,15 @@ public class Order {
     @Column(name = "address")
     private String address;
 
+    @Column(name = "district")
+    private String district;
+
+    @Column(name = "city")
+    private String city;
+
+    @Column(name = "country")
+    private String country;
+
     @Column(name = "payment_method")
     private String paymentMethod;
 

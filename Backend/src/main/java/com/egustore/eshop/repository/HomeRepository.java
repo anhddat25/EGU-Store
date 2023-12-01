@@ -19,7 +19,7 @@ public interface HomeRepository extends JpaRepository<Home,Integer> {
             "group by r.product_id " +
             "UNION ALL " +
             "SELECT p.id as id, " +
-            "p.model as Name, " +
+            "p.model as Model, " +
             "p.thumbnail, " +
             "p.price as Price , " +
             "p.discount_price as Discount , " +
