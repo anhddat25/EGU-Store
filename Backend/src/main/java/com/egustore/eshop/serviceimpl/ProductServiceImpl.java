@@ -2,6 +2,7 @@ package com.egustore.eshop.serviceimpl;
 
 import com.egustore.eshop.dto.ProductDTO;
 import com.egustore.eshop.mapper.ProductMapper;
+import com.egustore.eshop.model.Category;
 import com.egustore.eshop.model.Product;
 import com.egustore.eshop.repository.CategoryRepository;
 import com.egustore.eshop.repository.ProductRepository;
@@ -45,7 +46,10 @@ public class ProductServiceImpl implements ProductService {
 //        productDTO.setThumbImage(imageUrl);
 //        return productRepository.save(product);
 //    }
-
+@Override
+public List<Product> getProductsByCategory(Category category) {
+    return productRepository.findByCategory(category);
+}
     @Override
     public Product createProduct(ProductDTO productDTO) {
 
@@ -70,7 +74,7 @@ public class ProductServiceImpl implements ProductService {
 
             // Update the image URL in the database
             Product existingEntity = existingProduct.get();
-            existingEntity.setThumbImage(imageUrl);
+            existingEntity.setThumbnail(imageUrl);
             return productRepository.save(existingEntity);
         } else {
             // Handle the case where the entity with the given ID does not exist

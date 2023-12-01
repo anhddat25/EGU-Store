@@ -37,7 +37,7 @@ public class Product {
     private Double price;
 
     @Column(name = "thumbnail")
-    private String thumbImage;
+    private String thumbnail;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "create_date")
@@ -66,7 +66,7 @@ public class Product {
 
     @ManyToOne
     @JoinColumn(name = "category_id")
-    private Category categoryId;
+    private Category category;
 
     @ManyToOne
     @JoinColumn(name = "brand_id")

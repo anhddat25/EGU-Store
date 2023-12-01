@@ -1,6 +1,7 @@
 package com.egustore.eshop.service;
 
 import com.egustore.eshop.dto.ProductDTO;
+import com.egustore.eshop.model.Category;
 import com.egustore.eshop.model.Product;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -26,4 +27,6 @@ public interface ProductService {
 //    Integer updateProductById(ProductDTO productDTO, int id);
 
     List<Product>getTopProduct();
+
+    List<Product> getProductsByCategory(Category category);
 }

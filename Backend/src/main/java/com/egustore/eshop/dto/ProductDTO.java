@@ -36,19 +36,20 @@ public class ProductDTO {
     @Enumerated(EnumType.STRING)
     private ProductStatus status;
 
-//    @JsonProperty("category_id")
+    @JsonProperty("category_id")
 //    private Integer categoryId;
 
     private Category categoryId;
 
-//    @JsonProperty("brand_id")
+    @JsonProperty("brand_id")
 //    private Integer brandId;
 
     private Brand brandId;
 
-//    @JsonProperty("origin_id")
+    @JsonProperty("origin_id")
 //    private Integer originId;
 
     private Origin originId;
+
 
 }
