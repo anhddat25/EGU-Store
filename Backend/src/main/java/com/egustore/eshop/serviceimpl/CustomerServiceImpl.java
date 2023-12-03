@@ -51,9 +51,9 @@ public class CustomerServiceImpl implements CustomerService {
     public Customer createCustomer(CustomerDTO customerDTO) {
         Customer customer = CustomerMapper.INSTANCE.mapToCustomer(customerDTO);
 //        if (customer.getFacebookId() == null && customer.getGoogleId() == null) {
-            String password = customer.getPassword();
-            String encodePassword = passwordEncoder.encode(password);
-            customer.setPassword(encodePassword);
+        String password = customer.getPassword();
+        String encodePassword = passwordEncoder.encode(password);
+        customer.setPassword(encodePassword);
 
 //        }
 
