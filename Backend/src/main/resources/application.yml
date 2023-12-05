@@ -11,6 +11,10 @@ spring:
     username: root
     password: 123456
     driverClassName: com.mysql.cj.jdbc.Driver
+  messages:
+    basename: i18n/mess
+    encoding: UTF-8
+    default-locale: en
   jpa:
     show-sql: true
     hibernate:

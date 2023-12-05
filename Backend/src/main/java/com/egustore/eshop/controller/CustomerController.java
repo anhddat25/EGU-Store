@@ -6,16 +6,20 @@ import com.egustore.eshop.model.Customer;
 import com.egustore.eshop.response.CustomerResponse;
 import com.egustore.eshop.response.LoginResponse;
 import com.egustore.eshop.service.CustomerService;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.LocaleResolver;
 
 import java.util.List;
+import java.util.Locale;
 
 @RestController
 @RequestMapping("/api/v0/customers")
@@ -23,10 +27,14 @@ import java.util.List;
 @CrossOrigin("*")
 public class CustomerController {
     private final CustomerService customerService;
+    private final MessageSource messageSource;
+    private final LocaleResolver localeResolver;
 
     @Autowired
-    public CustomerController(CustomerService customerService) {
+    public CustomerController(CustomerService customerService, MessageSource messageSource, LocaleResolver request, LocaleResolver localeResolver) {
         this.customerService = customerService;
+        this.messageSource = messageSource;
+        this.localeResolver = localeResolver;
     }
 
     //Create category
@@ -50,14 +58,15 @@ public class CustomerController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<LoginResponse> login(@RequestBody @Valid CustomerLoginDTO customerLoginDTO, BindingResult result) {
+    public ResponseEntity<LoginResponse> login(@RequestBody @Valid CustomerLoginDTO customerLoginDTO, BindingResult result, HttpServletRequest request) {
         try {
             String token = customerService.login(
                     customerLoginDTO.getEmail(),
                     customerLoginDTO.getPassword());
-            return ResponseEntity.ok(LoginResponse.builder().message("Succes").token(token).build());
+            Locale locale = localeResolver.resolveLocale(request);
+            return ResponseEntity.ok(LoginResponse.builder().message(messageSource.getMessage("customer.login.login_successfully",null,locale)).token(token).build());
         } catch (Exception e) {
-            return ResponseEntity.badRequest().body(LoginResponse.builder().build());
+            return ResponseEntity.badRequest().body(LoginResponse.builder().message(e.getMessage()).build());
         }
     }
 
