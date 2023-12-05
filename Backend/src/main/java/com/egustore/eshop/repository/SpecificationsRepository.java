@@ -3,6 +3,8 @@ package com.egustore.eshop.repository;
 import com.egustore.eshop.model.Specifications;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.List;
+
 
 public interface SpecificationsRepository extends JpaRepository <Specifications, Integer>  {
 //    @Modifying
@@ -17,4 +19,7 @@ public interface SpecificationsRepository extends JpaRepository <Specifications,
 //            "s.productId = :#{#specificaitonsDTO.productId} " +
 //            "WHERE s.Id = :id")
 //    Integer updateSpecById(@Param("specificaitonsDTO") SpecificationsDTO specificationsDTO, @Param("id") int id);
+
+
+    Specifications findByProductId(int products);
 }
