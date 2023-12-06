@@ -17894,3 +17894,161 @@ Caused by: java.sql.SQLSyntaxErrorException: Unknown column 'c1_0.create_date' i
 04:06:12.253 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - select c1_0.id,c1_0.create_date,c1_0.date_of_birth,c1_0.email,c1_0.facebook_id,c1_0.first_name,c1_0.google_id,c1_0.last_name,c1_0.password,c1_0.phone_number,c1_0.reset_password_token,r1_0.id,r1_0.name,c1_0.role_id,c1_0.status from customers c1_0 left join roles r1_0 on r1_0.id=c1_0.role_id where c1_0.id=?
 04:06:12.259 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - select i1_0.product_id,i1_0.id,i1_0.create_date,i1_0.status,i1_0.image_url,i1_0.title,i1_0.update_date from images i1_0 where i1_0.product_id=?
 04:06:53.555 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - insert into rating_product (create_date,customer_id,name_customer,product_id,rating,update_date) values (?,?,?,?,?,?)
+12:38:55.086 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+12:38:55.219 [main] INFO  com.egustore.eshop.EshopApplication - Starting EshopApplication using Java 17.0.8 with PID 18180 (G:\My Drive\23FA\EGU-Store\Backend\target\classes started by Admin in G:\My Drive\23FA\EGU-Store\Backend)
+12:38:55.224 [main] INFO  com.egustore.eshop.EshopApplication - No active profile set, falling back to 1 default profile: "default"
+12:38:59.240 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+12:39:00.324 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 1072 ms. Found 19 JPA repository interfaces.
+12:39:01.859 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+12:39:01.878 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+12:39:01.883 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+12:39:01.883 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.13]
+12:39:02.069 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+12:39:02.074 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 6691 ms
+12:39:02.573 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+12:39:02.731 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.9.Final
+12:39:02.741 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+12:39:03.318 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+12:39:03.606 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+12:39:03.639 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+12:39:04.279 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1008df1e
+12:39:04.283 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+12:39:04.561 [main] DEBUG o.h.t.d.sql.spi.DdlTypeRegistry - addDescriptor(12, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@42503099) replaced previous registration(org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@39dda56f)
+12:39:04.562 [main] DEBUG o.h.t.d.sql.spi.DdlTypeRegistry - addDescriptor(-9, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@60844992) replaced previous registration(org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@2ee456c7)
+12:39:04.564 [main] DEBUG o.h.t.d.sql.spi.DdlTypeRegistry - addDescriptor(-3, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@6df37f7a) replaced previous registration(org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@39514976)
+12:39:04.565 [main] DEBUG o.h.t.d.sql.spi.DdlTypeRegistry - addDescriptor(4003, org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@7bdb4f17) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@77856cc5)
+12:39:04.566 [main] DEBUG o.h.t.d.sql.spi.DdlTypeRegistry - addDescriptor(4001, org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@1fbd5e0) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@32d22650)
+12:39:04.567 [main] DEBUG o.h.t.d.sql.spi.DdlTypeRegistry - addDescriptor(4002, org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@135064ea) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@4f6fd101)
+12:39:04.568 [main] DEBUG o.h.t.d.sql.spi.DdlTypeRegistry - addDescriptor(2004, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@106459d9) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@33a71d23)
+12:39:04.573 [main] DEBUG o.h.t.d.sql.spi.DdlTypeRegistry - addDescriptor(2005, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@23c05889) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@12166229)
+12:39:04.576 [main] DEBUG o.h.t.d.sql.spi.DdlTypeRegistry - addDescriptor(2011, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@208e5b23) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@2bcb1414)
+12:39:05.293 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+12:39:07.127 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+12:39:07.133 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+12:39:07.975 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+12:39:09.498 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+12:39:09.514 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'customerController' defined in file [G:\My Drive\23FA\EGU-Store\Backend\target\classes\com\egustore\eshop\controller\CustomerController.class]: Unsatisfied dependency expressed through constructor parameter 4: No qualifying bean of type 'com.egustore.eshop.utils.LocalizationUtils' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+12:39:09.516 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+12:39:09.518 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+12:39:09.535 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+12:39:09.539 [main] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+12:39:09.558 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+12:39:09.616 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 4 of constructor in com.egustore.eshop.controller.CustomerController required a bean of type 'com.egustore.eshop.utils.LocalizationUtils' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.egustore.eshop.utils.LocalizationUtils' in your configuration.
+
+12:42:32.321 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+12:42:32.429 [main] INFO  com.egustore.eshop.EshopApplication - Starting EshopApplication using Java 17.0.8 with PID 13408 (G:\My Drive\23FA\EGU-Store\Backend\target\classes started by Admin in G:\My Drive\23FA\EGU-Store\Backend)
+12:42:32.442 [main] INFO  com.egustore.eshop.EshopApplication - No active profile set, falling back to 1 default profile: "default"
+12:42:36.192 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+12:42:37.469 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 1252 ms. Found 19 JPA repository interfaces.
+12:42:39.075 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+12:42:39.086 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+12:42:39.090 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+12:42:39.090 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.13]
+12:42:39.249 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+12:42:39.251 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 6675 ms
+12:42:39.526 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+12:42:39.645 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.9.Final
+12:42:39.652 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+12:42:39.997 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+12:42:40.254 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+12:42:40.286 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+12:42:40.776 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@4315fe1b
+12:42:40.779 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+12:42:41.015 [main] DEBUG o.h.t.d.sql.spi.DdlTypeRegistry - addDescriptor(12, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@6df37f7a) replaced previous registration(org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@39514976)
+12:42:41.016 [main] DEBUG o.h.t.d.sql.spi.DdlTypeRegistry - addDescriptor(-9, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@7bdb4f17) replaced previous registration(org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@77856cc5)
+12:42:41.016 [main] DEBUG o.h.t.d.sql.spi.DdlTypeRegistry - addDescriptor(-3, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@1fbd5e0) replaced previous registration(org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@32d22650)
+12:42:41.016 [main] DEBUG o.h.t.d.sql.spi.DdlTypeRegistry - addDescriptor(4003, org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@135064ea) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@4f6fd101)
+12:42:41.016 [main] DEBUG o.h.t.d.sql.spi.DdlTypeRegistry - addDescriptor(4001, org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@106459d9) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@33a71d23)
+12:42:41.017 [main] DEBUG o.h.t.d.sql.spi.DdlTypeRegistry - addDescriptor(4002, org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@23c05889) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@12166229)
+12:42:41.017 [main] DEBUG o.h.t.d.sql.spi.DdlTypeRegistry - addDescriptor(2004, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@208e5b23) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@2bcb1414)
+12:42:41.019 [main] DEBUG o.h.t.d.sql.spi.DdlTypeRegistry - addDescriptor(2005, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@aee05f4) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@2b4829aa)
+12:42:41.020 [main] DEBUG o.h.t.d.sql.spi.DdlTypeRegistry - addDescriptor(2011, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@794d28a3) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@a55e82a)
+12:42:41.853 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+12:42:43.534 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+12:42:43.540 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+12:42:43.970 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+12:42:45.290 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+12:42:45.307 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'customerController' defined in file [G:\My Drive\23FA\EGU-Store\Backend\target\classes\com\egustore\eshop\controller\CustomerController.class]: Unsatisfied dependency expressed through constructor parameter 4: No qualifying bean of type 'com.egustore.eshop.utils.LocalizationUtils' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+12:42:45.309 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+12:42:45.314 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+12:42:45.330 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+12:42:45.336 [main] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+12:42:45.357 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+12:42:45.429 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 4 of constructor in com.egustore.eshop.controller.CustomerController required a bean of type 'com.egustore.eshop.utils.LocalizationUtils' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.egustore.eshop.utils.LocalizationUtils' in your configuration.
+
+12:43:19.436 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+12:43:19.543 [main] INFO  com.egustore.eshop.EshopApplication - Starting EshopApplication using Java 17.0.8 with PID 4088 (G:\My Drive\23FA\EGU-Store\Backend\target\classes started by Admin in G:\My Drive\23FA\EGU-Store\Backend)
+12:43:19.544 [main] INFO  com.egustore.eshop.EshopApplication - No active profile set, falling back to 1 default profile: "default"
+12:43:23.277 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+12:43:24.376 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 1084 ms. Found 19 JPA repository interfaces.
+12:43:25.798 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+12:43:25.811 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+12:43:25.815 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+12:43:25.815 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.13]
+12:43:26.040 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+12:43:26.042 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 6375 ms
+12:43:26.524 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+12:43:26.685 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.2.9.Final
+12:43:26.693 [main] INFO  org.hibernate.cfg.Environment - HHH000406: Using bytecode reflection optimizer
+12:43:27.064 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+12:43:27.306 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+12:43:27.343 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+12:43:27.809 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2d5ae78e
+12:43:27.812 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+12:43:28.011 [main] DEBUG o.h.t.d.sql.spi.DdlTypeRegistry - addDescriptor(12, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@7bdb4f17) replaced previous registration(org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@77856cc5)
+12:43:28.011 [main] DEBUG o.h.t.d.sql.spi.DdlTypeRegistry - addDescriptor(-9, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@1fbd5e0) replaced previous registration(org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@32d22650)
+12:43:28.011 [main] DEBUG o.h.t.d.sql.spi.DdlTypeRegistry - addDescriptor(-3, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@135064ea) replaced previous registration(org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@4f6fd101)
+12:43:28.012 [main] DEBUG o.h.t.d.sql.spi.DdlTypeRegistry - addDescriptor(4003, org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@106459d9) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@33a71d23)
+12:43:28.012 [main] DEBUG o.h.t.d.sql.spi.DdlTypeRegistry - addDescriptor(4001, org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@23c05889) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@12166229)
+12:43:28.012 [main] DEBUG o.h.t.d.sql.spi.DdlTypeRegistry - addDescriptor(4002, org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@208e5b23) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@2bcb1414)
+12:43:28.012 [main] DEBUG o.h.t.d.sql.spi.DdlTypeRegistry - addDescriptor(2004, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@aee05f4) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@2b4829aa)
+12:43:28.013 [main] DEBUG o.h.t.d.sql.spi.DdlTypeRegistry - addDescriptor(2005, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@794d28a3) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@a55e82a)
+12:43:28.013 [main] DEBUG o.h.t.d.sql.spi.DdlTypeRegistry - addDescriptor(2011, org.hibernate.type.descriptor.sql.internal.CapacityDependentDdlType@70ee9d31) replaced previous registration(org.hibernate.type.descriptor.sql.internal.DdlTypeImpl@1a01ffff)
+12:43:28.742 [main] INFO  o.h.b.i.BytecodeProviderInitiator - HHH000021: Bytecode provider name : bytebuddy
+12:43:30.436 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+12:43:30.442 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+12:43:30.955 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+12:43:32.543 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+12:43:34.414 [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@3656a6cd, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7eee42fc, org.springframework.security.web.context.SecurityContextHolderFilter@605a10fd, org.springframework.security.web.header.HeaderWriterFilter@10ecdd85, org.springframework.web.filter.CorsFilter@5967f0ff, org.springframework.security.web.authentication.logout.LogoutFilter@60a6564c, com.egustore.eshop.filters.JwtTokenFilter@158e3a79, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@35eb95d3, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@240fe338, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@580694ce, org.springframework.security.web.access.ExceptionTranslationFilter@5de769c8, org.springframework.security.web.access.intercept.AuthorizationFilter@40c4b938]
+12:43:34.995 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+12:43:35.034 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+12:43:35.045 [main] INFO  com.egustore.eshop.EshopApplication - Started EshopApplication in 16.392 seconds (process running for 17.296)
+12:44:00.543 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+12:44:00.544 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+12:44:00.547 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+12:44:00.999 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - select c1_0.id,c1_0.create_date,c1_0.date_of_birth,c1_0.email,c1_0.facebook_id,c1_0.first_name,c1_0.google_id,c1_0.last_name,c1_0.password,c1_0.phone_number,c1_0.reset_password_token,c1_0.role_id,c1_0.status from customers c1_0 where c1_0.email=?
+12:44:01.068 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - select r1_0.id,r1_0.name from roles r1_0 where r1_0.id=?
+12:44:01.380 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - select c1_0.id,c1_0.create_date,c1_0.date_of_birth,c1_0.email,c1_0.facebook_id,c1_0.first_name,c1_0.google_id,c1_0.last_name,c1_0.password,c1_0.phone_number,c1_0.reset_password_token,c1_0.role_id,c1_0.status from customers c1_0 where c1_0.email=?
+12:44:07.885 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - select c1_0.id,c1_0.create_date,c1_0.date_of_birth,c1_0.email,c1_0.facebook_id,c1_0.first_name,c1_0.google_id,c1_0.last_name,c1_0.password,c1_0.phone_number,c1_0.reset_password_token,c1_0.role_id,c1_0.status from customers c1_0 where c1_0.email=?
+12:44:07.888 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - select r1_0.id,r1_0.name from roles r1_0 where r1_0.id=?
+12:44:07.959 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - select c1_0.id,c1_0.create_date,c1_0.date_of_birth,c1_0.email,c1_0.facebook_id,c1_0.first_name,c1_0.google_id,c1_0.last_name,c1_0.password,c1_0.phone_number,c1_0.reset_password_token,c1_0.role_id,c1_0.status from customers c1_0 where c1_0.email=?
