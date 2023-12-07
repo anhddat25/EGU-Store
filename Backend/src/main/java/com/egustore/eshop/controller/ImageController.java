@@ -59,6 +59,12 @@ public class ImageController {
         return ResponseEntity.ok(images);
     }
 
+    @GetMapping("/products/{id}")
+    public ResponseEntity<List<Images>> getImageByProduct(@PathVariable int id) {
+        List<Images> images = imageService.getByProductId(id);
+        return ResponseEntity.ok(images);
+    }
+
     @PutMapping("/{id}")
     public ResponseEntity<String> updateImages(@PathVariable int id,@RequestBody ImageDTO imageDTO) {
         imageService.updateImage(id,imageDTO);
