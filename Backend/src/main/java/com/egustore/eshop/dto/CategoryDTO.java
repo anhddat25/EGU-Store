@@ -25,6 +25,6 @@ public class CategoryDTO {
 
     private LocalDateTime updateDate;
 
-    private CategoryStatus categoryStatus;
+    private CategoryStatus status;
 
 }
