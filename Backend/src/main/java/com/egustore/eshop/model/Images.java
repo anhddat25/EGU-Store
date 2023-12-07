@@ -36,8 +36,8 @@ public class Images {
     @Column(name = "update_date")
     private Date updateDate;
 
-//    @Column(name = "product_id", insertable=false, updatable=false)
-//    private Integer product_id;
+    @Column(name = "product_id", insertable=false, updatable=false)
+    private Integer productId;
 
     @Column(name = "status")
     @Enumerated(EnumType.STRING)
