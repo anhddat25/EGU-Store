@@ -2,9 +2,10 @@ package com.egustore.eshop.controller;
 
 import com.egustore.eshop.dto.*;
 import com.egustore.eshop.model.Customer;
-import com.egustore.eshop.response.CustomerResponse;
-import com.egustore.eshop.response.LoginResponse;
+import com.egustore.eshop.response.*;
 import com.egustore.eshop.service.CustomerService;
+import com.egustore.eshop.utils.LocalizationUtils;
+import com.egustore.eshop.utils.MessageKeys;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,6 +14,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.context.MessageSource;
+import org.springframework.web.servlet.LocaleResolver;
 
 import java.util.List;
 
@@ -22,10 +25,12 @@ import java.util.List;
 @CrossOrigin("*")
 public class CustomerController {
     private final CustomerService customerService;
+    private final LocalizationUtils localizationUtils;
 
     @Autowired
-    public CustomerController(CustomerService customerService) {
+    public CustomerController(CustomerService customerService, MessageSource messageSource, LocaleResolver request, LocaleResolver localeResolver, LocalizationUtils localizationUtils) {
         this.customerService = customerService;
+        this.localizationUtils = localizationUtils;
     }
 
     //Create category
@@ -42,22 +47,22 @@ public class CustomerController {
                 return ResponseEntity.badRequest().body(errMessage);
             }
             customerService.createCustomer(customerDTO);
-            return ResponseEntity.ok("Register account successfully!");
+            return ResponseEntity.ok(RegisterResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.REGISTER_SUCCESSFULLY)).build());
         }catch (Exception e){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
     }
 
     @PostMapping("/login")
-    public ResponseEntity<LoginResponse> login(@RequestBody @Valid CustomerLoginDTO customerLoginDTO, BindingResult result) {
-        try {
-            String token = customerService.login(
-                    customerLoginDTO.getEmail(),
-                    customerLoginDTO.getPassword());
-            return ResponseEntity.ok(LoginResponse.builder().message("Succes").token(token).build());
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().body(LoginResponse.builder().build());
-        }
+        public ResponseEntity<LoginResponse> login(@RequestBody @Valid CustomerLoginDTO customerLoginDTO, BindingResult result) {
+            try {
+                String token = customerService.login(
+                        customerLoginDTO.getEmail(),
+                        customerLoginDTO.getPassword());
+                return ResponseEntity.ok(LoginResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.LOGIN_SUCCESSFULLY)).token(token).build());
+            } catch (Exception e) {
+                return ResponseEntity.badRequest().body(LoginResponse.builder().message(e.getMessage()).build());
+            }
     }
 
     @PostMapping("/details")
@@ -76,15 +81,15 @@ public class CustomerController {
         return ResponseEntity.ok(customerService.getCustomerById(id));
     }
     @PutMapping("/profile/{id}")
-    public ResponseEntity<String> updateProfile(@PathVariable int id, @RequestBody CustomerDTO customerDTO) {
+    public ResponseEntity<UpdateProfileResponse> updateProfile(@PathVariable int id, @RequestBody CustomerDTO customerDTO) {
         customerService.updateProfile(id, customerDTO);
-        return ResponseEntity.ok("Profile updated successfully");
+        return ResponseEntity.ok(UpdateProfileResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.UPDATEPROFILE_SUCCESSFULLY)).build());
     }
     @PutMapping("/change-password/{id}")
-    public ResponseEntity<String> changePassword(@PathVariable int id, @RequestBody ChangePasswordDTO changePasswordDTO) {
+    public ResponseEntity<?> changePassword(@PathVariable int id, @RequestBody ChangePasswordDTO changePasswordDTO) {
         try {
             customerService.changePassword(id, changePasswordDTO); // Gọi phương thức changePassword trong dịch vụ
-            return ResponseEntity.ok("Đổi mật khẩu thành công");
+            return ResponseEntity.ok(ChangPasswordResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.CHANGEPASSWORD_SUCCESSFULLY)).build());
         } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         } catch (Exception e) {
@@ -92,10 +97,10 @@ public class CustomerController {
         }
     }
     @PostMapping("/forgotPassword")
-    public ResponseEntity<String> forgotPassword(@RequestBody ForgotPasswordDTO forgotPasswordDTO) {
+    public ResponseEntity<?> forgotPassword(@RequestBody ForgotPasswordDTO forgotPasswordDTO) {
         try {
             customerService.forgotPassword(forgotPasswordDTO);
-            return ResponseEntity.ok("Email đặt lại mật khẩu đã được gửi thành công!");
+            return ResponseEntity.ok(ForgotpasswordResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.FORGOTPASSWORD_SUCCESSFULLY)).build());
         } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
@@ -104,7 +109,7 @@ public class CustomerController {
     public ResponseEntity<?> resetPassword(@RequestBody ResetPasswordDTO resetPasswordDTO) {
         try {
             customerService.resetPassword(resetPasswordDTO);
-            return ResponseEntity.ok("Mật khẩu đã được đổi lại thành công!");
+        return ResponseEntity.ok(ResetpasswordResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.RESETPASSWORD_SUCCESSFULLY)).build());
         } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
@@ -117,20 +122,20 @@ public class CustomerController {
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<String> updateCustomer(@PathVariable int id,@RequestBody CustomerDTO customerDTO) {
+    public ResponseEntity<UpdateCustomerResponse> updateCustomer(@PathVariable int id, @RequestBody CustomerDTO customerDTO) {
         customerService.updateCustomer(id,customerDTO);
-        return ResponseEntity.ok("update customer ");
+        return ResponseEntity.ok(UpdateCustomerResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.UPDATECUSTOMER_SUCCESSFULLY)).build());
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> deleteCustomer(@PathVariable int id) {
+    public ResponseEntity<DeleteCustomerResponse> deleteCustomer(@PathVariable int id) {
         customerService.deleteCustomer(id);
-        return ResponseEntity.ok("delete customer " + id);
+        return ResponseEntity.ok(DeleteCustomerResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.DELETECUSTOMER_SUCCESSFULLY)).build());
     }
     @PutMapping("/status/{id}")
-    public ResponseEntity<String> updateStatusCustomer(@PathVariable int id,@RequestBody CustomerDTO customerDTO) {
+    public ResponseEntity<UpdateStatusResponse> updateStatusCustomer(@PathVariable int id, @RequestBody CustomerDTO customerDTO) {
         customerService.updateStatusCustomer(customerDTO, id);
-        return ResponseEntity.ok("update status and role customer" + id);
+        return ResponseEntity.ok(UpdateStatusResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.UPDATESTATUS_SUCCESSFULLY)).build());
     }
 
 }
