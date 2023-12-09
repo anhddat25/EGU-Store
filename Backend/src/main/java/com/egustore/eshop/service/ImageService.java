@@ -17,6 +17,8 @@ public interface ImageService {
 
     List<Images> getAllImages();
 
+    List<Images> getByProductId(int id);
+
     Images updateImage(int id,
                        ImageDTO imageDTO);
 

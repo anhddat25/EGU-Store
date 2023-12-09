@@ -19,10 +19,11 @@ public class TopSoldReportServiceImpl implements TopSoldReportService {
         this.topSoldReportRepository = topSoldReportRepository;
         this.topSoldReportMapper = topSoldReportMapper;
     }
-    
+
 
     @Override
     public List<TopSoldReportDTO> getTopSoldReport() {
         return topSoldReportMapper.toDTOList(topSoldReportRepository.getTopSold());
     }
+
 }

@@ -8,6 +8,9 @@ public interface SpecificationsService {
     Specifications createSpec(SpecificationsDTO specificationsDTO);
     Specifications getSpecById(int id);
     Specifications updateSpec(int id, SpecificationsDTO specifications);
+
+    Specifications getByProduct(int products);
+
     List<Specifications> getAllSpec();
     void deleteSpec(int id);
 //    Integer updateSpecById(SpecificationsDTO specificationsDTO, int id);

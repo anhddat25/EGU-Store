@@ -2,12 +2,10 @@ package com.egustore.eshop.repository;
 
 
 
+
 import com.egustore.eshop.model.TopSoldReport;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
-
-import java.util.Date;
 import java.util.List;
 
 public interface TopSoldReportRepository extends JpaRepository<TopSoldReport, Integer> {

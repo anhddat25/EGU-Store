@@ -3,7 +3,6 @@ package com.egustore.eshop.serviceimpl;
 import com.egustore.eshop.dto.ImageDTO;
 import com.egustore.eshop.enums.ImageStatus;
 import com.egustore.eshop.mapper.ImageMapper;
-import com.egustore.eshop.model.FeedbackProduct;
 import com.egustore.eshop.model.Images;
 import com.egustore.eshop.model.Product;
 import com.egustore.eshop.repository.ImageRepository;
@@ -50,6 +49,11 @@ public class ImageServiceImpl implements ImageService {
     @Override
     public List<Images> getAllImages() {
         return imageRepository.findAll();
+    }
+
+    @Override
+    public List<Images> getByProductId(int id) {
+        return imageRepository.findByProductId(id);
     }
 
     @Override
