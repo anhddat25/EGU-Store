@@ -3,10 +3,12 @@ package com.egustore.eshop.controller;
 import com.egustore.eshop.dto.AddVoucherDTO;
 import com.egustore.eshop.dto.VoucherDTO;
 import com.egustore.eshop.model.Voucher;
+import com.egustore.eshop.response.*;
 import com.egustore.eshop.service.VoucherService;
+import com.egustore.eshop.utils.LocalizationUtils;
+import com.egustore.eshop.utils.MessageKeys;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -22,16 +24,18 @@ import java.util.Optional;
 public class VoucherController {
 
     private final VoucherService voucherService;
+    private final LocalizationUtils localizationUtils;
 
     @Autowired
-    public VoucherController(VoucherService voucherService) {
+    public VoucherController(VoucherService voucherService, LocalizationUtils localizationUtils) {
         this.voucherService = voucherService;
+        this.localizationUtils = localizationUtils;
     }
 
     @PostMapping("/create-voucher")
-    public ResponseEntity<String> createVoucher(@RequestBody @Valid VoucherDTO voucherDTO) {
+    public ResponseEntity<CreateVoucherResponse> createVoucher(@RequestBody @Valid VoucherDTO voucherDTO) {
         voucherService.createVoucher(voucherDTO);
-        return ResponseEntity.ok("Create discount code successfully");
+        return ResponseEntity.ok(CreateVoucherResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.VOUCHER_SUCCESSFULLY)).build());
     }
     @GetMapping("/myVoucher/{customerId}")
     public ResponseEntity<List<Voucher>> getActiveVouchersForCustomer(@PathVariable int customerId) {
@@ -39,10 +43,10 @@ public class VoucherController {
         return ResponseEntity.ok(vouchers);
     }
     @PutMapping("/addToMyVoucher")
-    public ResponseEntity<String> addMyVoucher(@RequestBody AddVoucherDTO addVoucherDTO) {
+    public ResponseEntity<?> addMyVoucher(@RequestBody AddVoucherDTO addVoucherDTO) {
         try {
             voucherService.addMyVoucher(addVoucherDTO);
-            return ResponseEntity.ok("Add discount code successfully");
+            return ResponseEntity.ok(UpdateVoucherResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.UPDATEVOUCHER_SUCCESSFULLY)).build());
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
@@ -61,7 +65,7 @@ public class VoucherController {
     public ResponseEntity<?> updateVoucherByCode(@PathVariable String codeVoucher) {
         try {
             voucherService.useMyVoucher(codeVoucher);
-            return ResponseEntity.ok("Update status successfully");
+            return ResponseEntity.ok(UpdateVoucherStatusResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.UPDATE_VOUCHER_STATUS_SUCCESSFULLY)).build());
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }

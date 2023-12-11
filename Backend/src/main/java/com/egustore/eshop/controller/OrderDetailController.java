@@ -1,10 +1,14 @@
 package com.egustore.eshop.controller;
 
-import com.egustore.eshop.dto.OrderDTO;
 import com.egustore.eshop.dto.OrderDetailDTO;
-import com.egustore.eshop.model.Order;
 import com.egustore.eshop.model.OrderDetail;
+import com.egustore.eshop.response.CreateOrderDetailResponse;
+import com.egustore.eshop.response.DeleteOrderDetailResponse;
+import com.egustore.eshop.response.DeleteOrderResponse;
+import com.egustore.eshop.response.OrderDetailQuantityResponse;
 import com.egustore.eshop.service.OrderDetailService;
+import com.egustore.eshop.utils.LocalizationUtils;
+import com.egustore.eshop.utils.MessageKeys;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -21,9 +25,12 @@ import java.util.List;
 public class OrderDetailController {
     private final OrderDetailService orderDetailService;
 
+    private final LocalizationUtils localizationUtils;
+
     @Autowired
-    public OrderDetailController(OrderDetailService orderDetailService) {
+    public OrderDetailController(OrderDetailService orderDetailService, LocalizationUtils localizationUtils) {
         this.orderDetailService = orderDetailService;
+        this.localizationUtils = localizationUtils;
     }
 
     //Create Order
@@ -37,7 +44,8 @@ public class OrderDetailController {
                     .toList();
             return ResponseEntity.badRequest().body(errMessage);
         }
-        return ResponseEntity.ok(orderDetailService.createOrderDetail(orderDetailDTO));
+        orderDetailService.createOrderDetail(orderDetailDTO);
+        return ResponseEntity.ok(CreateOrderDetailResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.ORDERDETAIL_SUCCESSFULLY)).build());
     }
 
     @GetMapping("")
@@ -58,9 +66,9 @@ public class OrderDetailController {
 //    }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> deleteOrder(@PathVariable int id) {
+    public ResponseEntity<DeleteOrderDetailResponse> deleteOrder(@PathVariable int id) {
         orderDetailService.deleteOrderDetail(id);
-        return ResponseEntity.ok("delete OrderDetail " + id);
+        return ResponseEntity.ok(DeleteOrderDetailResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.DELETEORDERDETAIL_SUCCESSFULLY)).build());
     }
     @GetMapping("/{id}")
     public ResponseEntity<OrderDetail> getOrderDetailById(@PathVariable int id) {
@@ -71,8 +79,8 @@ public class OrderDetailController {
         return ResponseEntity.ok(orderDetailService.getOrderDetailByOrderID(id));
     }
     @PutMapping("/quantity/{id}")
-    public ResponseEntity<String> updateQuantityDetail(@PathVariable int id,@RequestBody OrderDetailDTO orderDetailDTO) {
+    public ResponseEntity<OrderDetailQuantityResponse> updateQuantityDetail(@PathVariable int id,@RequestBody OrderDetailDTO orderDetailDTO) {
         orderDetailService.updateQuantityDetail(orderDetailDTO, id);
-        return ResponseEntity.ok("update Quantity Order Detail " + id);
+        return ResponseEntity.ok(OrderDetailQuantityResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.ORDERDETAILQUANTITY_SUCCESSFULLY)).build());
     }
 }

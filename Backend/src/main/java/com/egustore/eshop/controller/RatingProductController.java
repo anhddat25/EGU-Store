@@ -1,10 +1,11 @@
 package com.egustore.eshop.controller;
 
-import com.egustore.eshop.dto.FeedbackProductDTO;
 import com.egustore.eshop.dto.RatingProductDTO;
-import com.egustore.eshop.model.FeedbackProduct;
 import com.egustore.eshop.model.RatingProduct;
+import com.egustore.eshop.response.*;
 import com.egustore.eshop.service.RatingProductService;
+import com.egustore.eshop.utils.LocalizationUtils;
+import com.egustore.eshop.utils.MessageKeys;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -18,9 +19,11 @@ import java.util.List;
 public class RatingProductController {
 
     private final RatingProductService ratingProductService;
+    private final LocalizationUtils localizationUtils;
 
-    public RatingProductController(RatingProductService ratingProductService) {
+    public RatingProductController(RatingProductService ratingProductService, LocalizationUtils localizationUtils) {
         this.ratingProductService = ratingProductService;
+        this.localizationUtils = localizationUtils;
     }
 
 
@@ -48,19 +51,19 @@ public class RatingProductController {
         return ResponseEntity.ok(rates);
     }
     @PostMapping("")
-    public ResponseEntity<String> createRating(@RequestBody @Valid RatingProductDTO ratingProductDTO){
+    public ResponseEntity<CreateRatingResponse> createRating(@RequestBody @Valid RatingProductDTO ratingProductDTO){
         ratingProductService.createRating(ratingProductDTO);
-        return ResponseEntity.ok("Create Success");
+        return ResponseEntity.ok(CreateRatingResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.RATING_SUCCESSFULLY)).build());
     }
     @PutMapping("/update/{id}")
-    public ResponseEntity<String> updateRating(@PathVariable int id, @RequestBody RatingProductDTO ratingProductDTO){
+    public ResponseEntity<UpdateRatingResponse> updateRating(@PathVariable int id, @RequestBody RatingProductDTO ratingProductDTO){
         ratingProductService.updateRating(id,ratingProductDTO);
-        return ResponseEntity.ok("Update Success "+id);
+        return ResponseEntity.ok(UpdateRatingResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.UPDATERATING_SUCCESSFULLY)).build());
     }
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> deleteRating(@PathVariable int id){
+    public ResponseEntity<DeleteRatingResponse> deleteRating(@PathVariable int id){
         ratingProductService.deleteRatingProduct(id);
-        return ResponseEntity.ok("delete Success "+id);
+        return ResponseEntity.ok(DeleteRatingResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.DELETERATING_SUCCESSFULLY)).build());
     }
 
 }

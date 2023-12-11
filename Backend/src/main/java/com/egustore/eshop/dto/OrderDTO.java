@@ -21,7 +21,13 @@ public class OrderDTO {
 
     private String address;
 
-    private  Date orderDate = new Date();
+    private String district;
+
+    private String city;
+
+    private String country;
+
+    private Date orderDate = new Date();
 
     private String note;
 

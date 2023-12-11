@@ -2,10 +2,12 @@ package com.egustore.eshop.controller;
 
 import com.egustore.eshop.dto.ProductDTO;
 import com.egustore.eshop.model.Product;
+import com.egustore.eshop.response.*;
 import com.egustore.eshop.service.ProductService;
+import com.egustore.eshop.utils.LocalizationUtils;
+import com.egustore.eshop.utils.MessageKeys;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -22,10 +24,11 @@ import java.util.List;
 @CrossOrigin("*")
 public class ProductController {
     private final ProductService productService;
-
+    private final LocalizationUtils localizationUtils;
     @Autowired
-    public ProductController(ProductService productService) {
+    public ProductController(ProductService productService, LocalizationUtils localizationUtils) {
         this.productService = productService;
+        this.localizationUtils = localizationUtils;
     }
     //Create category
     @PostMapping("/create")
@@ -40,7 +43,7 @@ public class ProductController {
 
         productService.createProduct(productDTO);
 
-        return ResponseEntity.ok("Create Product successfully!");
+        return ResponseEntity.ok(CreateProductResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.PRODUCT_SUCCESSFULLY)).build());
     }
 
     //Show all categories
@@ -57,19 +60,19 @@ public class ProductController {
 //    }
 
     @PutMapping("/stock-quantity")
-    public ResponseEntity<String> updateProductStock(@RequestBody ProductDTO productDTO){
+    public ResponseEntity<UpdateProductStockResponse> updateProductStock(@RequestBody ProductDTO productDTO){
         productService.updateProductStock(productDTO);
-        return ResponseEntity.ok("update Stock success ");
+        return ResponseEntity.ok(UpdateProductStockResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.UPDATE_PRODUCT_STOCK_SUCCESSFULLY)).build());
     }
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteProduct(@PathVariable int id) {
+    public ResponseEntity<DeleteProductResponse> deleteProduct(@PathVariable int id) {
         productService.deleteProduct(id);
-        return ResponseEntity.ok("delete Product " + id);
+        return ResponseEntity.ok(DeleteProductResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.DELETE_PRODUCT_SUCCESSFULLY)).build());
     }
     @PutMapping("/{id}")
-    public ResponseEntity<String> updateProductById(@RequestBody ProductDTO productDTO,@PathVariable int id) {
+    public ResponseEntity<UpdateProductResponse> updateProductById(@RequestBody ProductDTO productDTO,@PathVariable int id) {
         productService.updateProductById(id, productDTO);
-        return ResponseEntity.ok("update Product " + id);
+        return ResponseEntity.ok(UpdateProductResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.UPDATE_RODUCT_SUCCESSFULLY)).build());
     }
     @GetMapping("/{id}")
     public ResponseEntity<Product> getProductById(@PathVariable int id) {
@@ -78,9 +81,9 @@ public class ProductController {
 
 
     @PutMapping("image/{id}")
-    public ResponseEntity<String> createThumbImageById(@RequestParam("thumbImage") MultipartFile files,@PathVariable int id) throws IOException {
+    public ResponseEntity<UpdateProductImageResponse> createThumbImageById(@RequestParam("thumbImage") MultipartFile files,@PathVariable int id) throws IOException {
         productService.createThumbImage(id, files);
-        return ResponseEntity.ok("create thumb product image " + id);
+        return ResponseEntity.ok(UpdateProductImageResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.UPDATE_PRODUCT_IMAGE_SUCCESSFULLY)).build());
     }
 
     @GetMapping("/top")

@@ -2,9 +2,11 @@ package com.egustore.eshop.controller;
 
 
 import com.egustore.eshop.dto.SpecificationsDTO;
-import com.egustore.eshop.model.Product;
 import com.egustore.eshop.model.Specifications;
+import com.egustore.eshop.response.*;
 import com.egustore.eshop.service.SpecificationsService;
+import com.egustore.eshop.utils.LocalizationUtils;
+import com.egustore.eshop.utils.MessageKeys;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -21,10 +23,12 @@ import java.util.List;
 @CrossOrigin("*")
 public class SpecificationsController {
     private final SpecificationsService specificationsService;
+    private final LocalizationUtils localizationUtils;
 
     @Autowired
-    public SpecificationsController(SpecificationsService specificationsService) {
+    public SpecificationsController(SpecificationsService specificationsService, LocalizationUtils localizationUtils) {
         this.specificationsService = specificationsService;
+        this.localizationUtils = localizationUtils;
     }
     //Create category
     @PostMapping("")
@@ -39,7 +43,7 @@ public class SpecificationsController {
             return ResponseEntity.badRequest().body(errMessage);
         }
         specificationsService.createSpec(specificationsDTO);
-        return ResponseEntity.ok("Create Specification successfully!");
+        return ResponseEntity.ok(CreateSpecificationResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.SPECIFICATION_SUCCESSFULLY)).build());
     }
 
     //    //Show all categories
@@ -50,15 +54,15 @@ public class SpecificationsController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<String> updateSpec(@PathVariable int id,@RequestBody SpecificationsDTO specificationsDTO) {
+    public ResponseEntity<UpdateSepcificationResponse> updateSpec(@PathVariable int id,@RequestBody SpecificationsDTO specificationsDTO) {
         specificationsService.updateSpec(id,specificationsDTO);
-        return ResponseEntity.ok("update Specifications ");
+        return ResponseEntity.ok(UpdateSepcificationResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.UPDATESPECIFICATION_SUCCESSFULLY)).build());
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteSpec(@PathVariable int id) {
+    public ResponseEntity<DeleteSpecificationResponse> deleteSpec(@PathVariable int id) {
         specificationsService.deleteSpec(id);
-        return ResponseEntity.ok("delete Specifications " + id);
+        return ResponseEntity.ok(DeleteSpecificationResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.DELETESPECIFICATION_SUCCESSFULLY)).build());
     }
 
 
