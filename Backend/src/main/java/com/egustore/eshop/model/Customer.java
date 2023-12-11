@@ -2,6 +2,7 @@ package com.egustore.eshop.model;
 
 import com.egustore.eshop.enums.CustomerStatus;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -24,6 +25,7 @@ public class Customer implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @NotBlank(message = "${LOGIN_SUCCESSFULLY}")
     @Column(name = "first_name")
     private String firstName;
 

@@ -18,7 +18,7 @@ public class CustomerDTO {
 
     private Integer id;
 
-//    @NotBlank(message = "Không được để trống!")
+    @NotEmpty(message = "${LOGIN_SUCCESSFULLY}")
     private String firstName;
 
 //    @NotBlank(message = "Không được để trống!")

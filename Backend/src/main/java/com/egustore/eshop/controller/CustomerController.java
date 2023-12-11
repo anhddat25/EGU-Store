@@ -18,10 +18,10 @@ import org.springframework.context.MessageSource;
 import org.springframework.web.servlet.LocaleResolver;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/v0/customers")
-@Validated
 @CrossOrigin("*")
 public class CustomerController {
     private final CustomerService customerService;
@@ -35,22 +35,25 @@ public class CustomerController {
 
     //Create category
     @PostMapping("/register")
-    public ResponseEntity<?> createCustomer(@RequestBody @Valid CustomerDTO customerDTO, BindingResult result)
+    public ResponseEntity<RegisterResponse> createCustomer(@RequestBody @Valid CustomerDTO customerDTO, BindingResult result)
     {
-        try {
-            if(result.hasErrors())
-            {
-                List<String> errMessage = result.getFieldErrors()
-                        .stream()
-                        .map(FieldError::getDefaultMessage)
-                        .toList();
-                return ResponseEntity.badRequest().body(errMessage);
+            try {
+                if(result.hasErrors())
+                {
+                    List<String> errMessages = result.getFieldErrors()
+                            .stream()
+                            .map(FieldError -> localizationUtils.getLocalizedMessage(FieldError.getCode()))
+                            .toList();
+                    return ResponseEntity.badRequest().body(RegisterResponse.builder().errors(errMessages).build());
+                }
+                Customer customer = customerService.createCustomer(customerDTO);
+                return ResponseEntity.ok(RegisterResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.LOGIN_FAILED)).customer(customer).build());
+            }catch (Exception e){
+                return ResponseEntity.badRequest().body(RegisterResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.REGISTER_FAILED)).build());
+
             }
-            customerService.createCustomer(customerDTO);
-            return ResponseEntity.ok(RegisterResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.REGISTER_SUCCESSFULLY)).build());
-        }catch (Exception e){
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
-        }
+
+
     }
 
     @PostMapping("/login")
@@ -61,7 +64,7 @@ public class CustomerController {
                         customerLoginDTO.getPassword());
                 return ResponseEntity.ok(LoginResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.LOGIN_SUCCESSFULLY)).token(token).build());
             } catch (Exception e) {
-                return ResponseEntity.badRequest().body(LoginResponse.builder().message(e.getMessage()).build());
+                return ResponseEntity.badRequest().body(LoginResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.LOGIN_FAILED,e.getMessage())).build());
             }
     }
 
