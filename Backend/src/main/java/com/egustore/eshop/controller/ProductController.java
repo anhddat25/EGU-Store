@@ -1,7 +1,9 @@
 package com.egustore.eshop.controller;
 
 import com.egustore.eshop.dto.ProductDTO;
+import com.egustore.eshop.model.Category;
 import com.egustore.eshop.model.Product;
+import com.egustore.eshop.service.CategoryService;
 import com.egustore.eshop.service.ProductService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -87,6 +89,14 @@ public class ProductController {
     public ResponseEntity<List<Product>> getTopProduct() {
         List<Product> product = productService.getTopProduct();
         return ResponseEntity.ok(product);
+    }
+    @Autowired
+    private CategoryService categoryService;
+    @GetMapping("/category/{categoryId}")
+    public List<Product> getProductsByCategory(@PathVariable int categoryId) {
+        Category category = categoryService.getCategoryById(categoryId);
+        return productService.getProductsByCategory(category);
+
     }
 
 }
