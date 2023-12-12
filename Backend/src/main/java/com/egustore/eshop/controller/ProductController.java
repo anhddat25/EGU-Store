@@ -1,8 +1,10 @@
 package com.egustore.eshop.controller;
 
 import com.egustore.eshop.dto.ProductDTO;
+import com.egustore.eshop.model.Brand;
 import com.egustore.eshop.model.Category;
 import com.egustore.eshop.model.Product;
+import com.egustore.eshop.service.BrandService;
 import com.egustore.eshop.service.CategoryService;
 import com.egustore.eshop.service.ProductService;
 import jakarta.validation.Valid;
@@ -96,6 +98,15 @@ public class ProductController {
     public List<Product> getProductsByCategory(@PathVariable int categoryId) {
         Category category = categoryService.getCategoryById(categoryId);
         return productService.getProductsByCategory(category);
+
+    }
+    @Autowired
+    private BrandService BrandService;
+    @GetMapping("/brand/{brandId}")
+    public List<Product> getProductsByBrand(@PathVariable int brandId) {
+
+        Brand brand = BrandService.getBrandById(brandId);
+        return productService.getProductsByBrand(brand);
 
     }
 

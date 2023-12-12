@@ -2,6 +2,7 @@ package com.egustore.eshop.serviceimpl;
 
 import com.egustore.eshop.dto.ProductDTO;
 import com.egustore.eshop.mapper.ProductMapper;
+import com.egustore.eshop.model.Brand;
 import com.egustore.eshop.model.Category;
 import com.egustore.eshop.model.Product;
 import com.egustore.eshop.repository.CategoryRepository;
@@ -45,8 +46,13 @@ public class ProductServiceImpl implements ProductService {
 //    }
 @Override
 public List<Product> getProductsByCategory(Category category) {
-    return productRepository.findByCategory(category);
+    return productRepository.findByCategoryId(category);
 }
+
+    @Override
+    public List<Product> getProductsByBrand(Brand brand) {
+        return productRepository.findByBrandId(brand);
+    }
     @Override
     public Product updateProductStock(ProductDTO productDTO){
         Product product = productRepository.findById(productDTO.getId()).orElseThrow(() -> new IllegalArgumentException("Voucher code does not exist"));

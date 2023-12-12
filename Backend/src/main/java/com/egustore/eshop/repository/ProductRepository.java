@@ -1,6 +1,7 @@
 package com.egustore.eshop.repository;
 
 import com.egustore.eshop.dto.ProductDTO;
+import com.egustore.eshop.model.Brand;
 import com.egustore.eshop.model.Category;
 import com.egustore.eshop.model.Product;
 import jakarta.transaction.Transactional;
@@ -36,6 +37,7 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 
     @Query (value ="SELECT p.* ,SUM(od.quantity) AS total_ordered_quantity FROM Products p JOIN  Order_Details od ON p.id = od.product_id JOIN  Orders o ON od.order_id = o.id  WHERE o.status = 'DELIVERED' GROUP BY p.id ORDER BY total_ordered_quantity DESC LIMIT 20;", nativeQuery = true)
     List<Product> getTopProduct();
-    List<Product> findByCategory(Category category);
+    List<Product> findByCategoryId(Category category);
+    List<Product> findByBrandId(Brand brand);
 
 }
