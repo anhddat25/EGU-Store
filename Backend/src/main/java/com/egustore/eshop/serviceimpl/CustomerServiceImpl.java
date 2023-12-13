@@ -173,7 +173,7 @@ public class CustomerServiceImpl implements CustomerService {
     public String login(String email, String password) throws Exception{
         Optional<Customer> optionalCustomer = customerRepository.findByEmail(email);
         if (optionalCustomer.isEmpty()){
-            throw  new Exception(localizationUtils.getLocalizedMessage(MessageKeys.LOGIN_FAILED_EMAIL_PASSWORD));
+            throw  new Exception(localizationUtils.getLocalizedMessage(MessageKeys.DOES_NOT_EXIST));
         } Customer customer = optionalCustomer.get();
         Role role = roleRepository.findById(customer.getRole().getId())
                 .orElseThrow(() -> new RuntimeException("Role not found"));

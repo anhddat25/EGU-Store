@@ -14,6 +14,7 @@ public class MessageKeys {
     public static  final String LOGIN_FAILED = "customer.login.login_failed";
     public static final String REGISTER_FAILED ="customer.register.register_failed";
     public static  final String LOGIN_FAILED_EMAIL_PASSWORD = "customer.login.login_failed.wrong_email_password";
+    public static  final String DOES_NOT_EXIST = "customer.login.login_failed.does_not_exist";
     //address
     public static  final String CREATEADDRESS_SUCCESSFULLY = "address.create.create_successfully";
     public static  final String UPDATEADDRESS_SUCCESSFULLY = "address.update.update_successfully";
