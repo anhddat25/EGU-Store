@@ -16,14 +16,7 @@ public class CategoryDTO {
 
     private String name;
 
-    private String description;
-
-    private String title;
-
-    private LocalDateTime createDate;
-
-
-    private LocalDateTime updateDate;
+    private String thumbnail;
 
     private CategoryStatus status;
 
