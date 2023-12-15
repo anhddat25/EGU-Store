@@ -33,7 +33,7 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
     Page<Product> findAll(Pageable pageable);
 
 
-    @Query (value ="SELECT p.* ,SUM(od.quantity) AS total_ordered_quantity FROM Products p JOIN  Order_Details od ON p.id = od.product_id JOIN  Orders o ON od.order_id = o.id  WHERE o.status = 'DELIVERED' GROUP BY p.id ORDER BY total_ordered_quantity DESC LIMIT 20;", nativeQuery = true)
+    @Query (value ="SELECT p.* ,SUM(od.quantity) AS total_ordered_quantity FROM Products p JOIN  Order_Details od ON p.id = od.product_id JOIN  Orders o ON od.order_id = o.id  WHERE o.status = 'DELIVERED' AND p.status = 'AVAILABLE' GROUP BY p.id ORDER BY total_ordered_quantity DESC LIMIT 20;", nativeQuery = true)
     List<Product> getTopProduct();
 
 
