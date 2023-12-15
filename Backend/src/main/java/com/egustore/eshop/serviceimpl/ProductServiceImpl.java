@@ -6,13 +6,22 @@ import com.egustore.eshop.model.Product;
 import com.egustore.eshop.repository.CategoryRepository;
 import com.egustore.eshop.repository.ProductRepository;
 import com.egustore.eshop.service.ProductService;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.EncodeHintType;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.common.BitMatrix;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -109,5 +118,31 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<Product>getTopProduct() {
         return productRepository.getTopProduct();
+    }
+    @Override
+    public byte[] generateQRCode(String data) {
+        try {
+             Map<EncodeHintType, Object> hints = new HashMap<>();
+             hints.put(EncodeHintType.CHARACTER_SET, "UTF-8");
+             BitMatrix matrix = new MultiFormatWriter().encode(data, BarcodeFormat.QR_CODE, 300, 300, hints);
+             BufferedImage image = toBufferedImage(matrix);
+             ByteArrayOutputStream stream = new ByteArrayOutputStream();
+             ImageIO.write(image, "png", stream);
+             return stream.toByteArray();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    private BufferedImage toBufferedImage(BitMatrix matrix) {
+        int width = matrix.getWidth();
+        int height = matrix.getHeight();
+        BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+        for (int x = 0; x < width; x++) {
+            for (int y = 0; y < height; y++) {
+                image.setRGB(x, y, matrix.get(x, y) ? 0xFF000000 : 0xFFFFFFFF);
+            }
+        }
+        return image;
     }
 }

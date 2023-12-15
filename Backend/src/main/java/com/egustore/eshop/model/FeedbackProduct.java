@@ -1,5 +1,6 @@
 package com.egustore.eshop.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,7 +29,7 @@ public class FeedbackProduct {
 
     @Column(name = "status")
     private String status;
-
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "create_date")
     private LocalDateTime createDate;

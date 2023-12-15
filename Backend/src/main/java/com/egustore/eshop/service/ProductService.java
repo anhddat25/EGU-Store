@@ -23,4 +23,5 @@ public interface ProductService {
 //    Integer updateProductById(ProductDTO productDTO, int id);
 
     List<Product>getTopProduct();
+    byte[] generateQRCode(String data);
 }

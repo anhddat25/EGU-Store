@@ -5,8 +5,11 @@ import com.egustore.eshop.model.Customer;
 import com.egustore.eshop.response.CustomerResponse;
 import com.egustore.eshop.response.LoginResponse;
 import com.egustore.eshop.service.CustomerService;
+import com.egustore.eshop.utils.LocalizationUtils;
+import com.egustore.eshop.utils.MessageKeys;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -22,10 +25,12 @@ import java.util.List;
 @CrossOrigin("*")
 public class CustomerController {
     private final CustomerService customerService;
+    private final LocalizationUtils localizationUtils;
 
     @Autowired
-    public CustomerController(CustomerService customerService) {
+    public CustomerController(CustomerService customerService, LocalizationUtils localizationUtils) {
         this.customerService = customerService;
+        this.localizationUtils = localizationUtils;
     }
 
     //Create category
@@ -54,7 +59,7 @@ public class CustomerController {
             String token = customerService.login(
                     customerLoginDTO.getEmail(),
                     customerLoginDTO.getPassword());
-            return ResponseEntity.ok(LoginResponse.builder().message("Succes").token(token).build());
+            return ResponseEntity.ok(LoginResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.LOGIN_SUCCESSFULLY)).token(token).build());
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(LoginResponse.builder().build());
         }
