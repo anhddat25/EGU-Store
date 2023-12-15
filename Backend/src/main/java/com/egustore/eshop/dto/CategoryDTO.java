@@ -14,6 +14,7 @@ import java.time.LocalDateTime;
 public class CategoryDTO {
     private Integer id;
 
+    @NotEmpty(message = "{customer.login.login_successfully}")
     private String name;
 
     private String thumbnail;

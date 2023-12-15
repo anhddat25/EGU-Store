@@ -1,10 +1,11 @@
 package com.egustore.eshop.controller;
 
 import com.egustore.eshop.dto.OrderDTO;
-import com.egustore.eshop.model.FeedbackProduct;
 import com.egustore.eshop.model.Order;
-import com.egustore.eshop.model.Product;
+import com.egustore.eshop.response.*;
 import com.egustore.eshop.service.OrderService;
+import com.egustore.eshop.utils.LocalizationUtils;
+import com.egustore.eshop.utils.MessageKeys;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -21,8 +22,11 @@ import java.util.List;
 public class OrderController {
     private final OrderService orderService;
 
-    public OrderController(OrderService orderService) {
+    private final LocalizationUtils localizationUtils;
+
+    public OrderController(OrderService orderService, LocalizationUtils localizationUtils) {
         this.orderService = orderService;
+        this.localizationUtils = localizationUtils;
     }
 
 
@@ -38,10 +42,10 @@ public class OrderController {
                         .toList();
                 return ResponseEntity.badRequest().body(errMessage);
             }
-            return ResponseEntity.ok(orderService.saveOrder(orderDTO));
-
+            orderService.saveOrder(orderDTO);
+            return ResponseEntity.ok(CreateOrderResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.ORDER_SUCCESSFULLY)).build());
         }catch (Exception e){
-            return ResponseEntity.badRequest().body(e.getMessage());
+            return ResponseEntity.badRequest().body(CreateOrderResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.ORDER_FAILED,e.getMessage())).build());
         }
 
     }
@@ -58,24 +62,36 @@ public class OrderController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<String> updateOrderById(@PathVariable int id,@RequestBody OrderDTO orderDTO) {
+    public ResponseEntity<UpdateOrderResponse> updateOrderById(@PathVariable int id,@RequestBody OrderDTO orderDTO) {
+        try{
         orderService.updateOrderById(orderDTO, id);
-        return ResponseEntity.ok("update Order " + id);
+        return ResponseEntity.ok(UpdateOrderResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.UPDATEORDER_SUCCESSFULLY)).build());
+        }catch (Exception e){
+            return ResponseEntity.badRequest().body(UpdateOrderResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.UPDATEORDER_FAILED,e.getMessage())).build());
+        }
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteOrder(@PathVariable int id) {
+    public ResponseEntity<DeleteOrderResponse> deleteOrder(@PathVariable int id) {
+        try{
         orderService.deleteOrder(id);
-        return ResponseEntity.ok("delete Order " + id);
+        return ResponseEntity.ok(DeleteOrderResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.DELETEORDER_SUCCESSFULLY)).build());
+        }catch (Exception e){
+            return ResponseEntity.badRequest().body(DeleteOrderResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.DELETEORDER_FAILED,e.getMessage())).build());
+        }
     }
     @GetMapping("/{id}")
     public ResponseEntity<Order> getOrderById(@PathVariable int id) {
         return ResponseEntity.ok(orderService.getOrderById(id));
     }
     @PutMapping("/status/{id}")
-    public ResponseEntity<String> updateOrderStatus(@PathVariable int id,@RequestBody OrderDTO orderDTO) {
+    public ResponseEntity<UpdateOrderStatusResponse> updateOrderStatus(@PathVariable int id, @RequestBody OrderDTO orderDTO) {
+        try{
         orderService.updateOrderStatus(orderDTO, id);
-        return ResponseEntity.ok("update Order " + id);
+        return ResponseEntity.ok(UpdateOrderStatusResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.ORDERSTATUS_SUCCESSFULLY)).build());
+        }catch (Exception e){
+            return ResponseEntity.badRequest().body(UpdateOrderStatusResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.ORDERSTATUS_FAILED,e.getMessage())).build());
+        }
     }
 
 

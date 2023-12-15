@@ -3,12 +3,12 @@ package com.egustore.eshop.controller;
 
 import com.egustore.eshop.dto.PaymentDTO;
 import com.egustore.eshop.model.Payment;
+import com.egustore.eshop.response.*;
 import com.egustore.eshop.service.PaymentService;
-import jakarta.validation.Valid;
+import com.egustore.eshop.utils.LocalizationUtils;
+import com.egustore.eshop.utils.MessageKeys;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,10 +21,12 @@ import java.util.List;
 @CrossOrigin("*")
 public class PaymentController {
     private final PaymentService paymentService;
+    private final LocalizationUtils localizationUtils;
 
     @Autowired
-    public PaymentController(PaymentService paymentService) {
+    public PaymentController(PaymentService paymentService, LocalizationUtils localizationUtils) {
         this.paymentService = paymentService;
+        this.localizationUtils = localizationUtils;
     }
     //Create category
     @RequestMapping("/create-payment")
@@ -47,14 +49,22 @@ public class PaymentController {
     }
 
     @PutMapping("/update/{version}")
-    public ResponseEntity<String> updatePayment(@PathVariable int version,@RequestBody PaymentDTO paymentDTO) {
+    public ResponseEntity<UpdatePaymentResponse> updatePayment(@PathVariable int version,@RequestBody PaymentDTO paymentDTO) {
+        try{
         paymentService.updatePayment(version,paymentDTO);
-        return ResponseEntity.ok("update payment ");
+        return ResponseEntity.ok(UpdatePaymentResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.UPDATEPAYMENT_SUCCESSFULLY)).build());
+        }catch (Exception e){
+            return ResponseEntity.badRequest().body(UpdatePaymentResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.UPDATEPAYMENT_FAILED,e.getMessage())).build());
+        }
     }
 
     @DeleteMapping("/delete/{version}")
-    public ResponseEntity<String> deletePayment(@PathVariable int version) {
+    public ResponseEntity<DeletePaymentResponse> deletePayment(@PathVariable int version) {
+        try{
         paymentService.deletePayment(version);
-        return ResponseEntity.ok("delete Payment " + version);
-
-}}
+        return ResponseEntity.ok(DeletePaymentResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.DELETEPAYMENT_SUCCESSFULLY)).build());
+        }catch (Exception e){
+            return ResponseEntity.badRequest().body(DeletePaymentResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.DELETEPAYMENT_FAILED,e.getMessage())).build());
+        }
+    }
+}

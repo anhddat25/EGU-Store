@@ -2,7 +2,13 @@ package com.egustore.eshop.controller;
 
 import com.egustore.eshop.dto.OriginDTO;
 import com.egustore.eshop.model.Origin;
+import com.egustore.eshop.response.CreateOriginResponse;
+import com.egustore.eshop.response.DeleteOrderDetailResponse;
+import com.egustore.eshop.response.DeleteOriginResponse;
+import com.egustore.eshop.response.UpdateOriginResponse;
 import com.egustore.eshop.service.OriginService;
+import com.egustore.eshop.utils.LocalizationUtils;
+import com.egustore.eshop.utils.MessageKeys;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,10 +25,11 @@ import java.util.List;
 @CrossOrigin("*")
 public class OriginController {
     private final OriginService originService;
-
+    private final LocalizationUtils localizationUtils;
     @Autowired
-    public OriginController(OriginService originService) {
+    public OriginController(OriginService originService, LocalizationUtils localizationUtils) {
         this.originService = originService;
+        this.localizationUtils = localizationUtils;
     }
     //Create images
     @PostMapping("")
@@ -37,7 +44,7 @@ public class OriginController {
             return ResponseEntity.badRequest().body(errMessage);
         }
         originService.createOrigin(originDTO);
-        return ResponseEntity.ok("Create origin successfully!");
+        return ResponseEntity.ok(CreateOriginResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.ORIGIN_SUCCESSFULLY)).build());
     }
 
     //Show all image
@@ -53,14 +60,14 @@ public class OriginController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<String> updateOrigins(@PathVariable int id,@RequestBody OriginDTO originDTO) {
+    public ResponseEntity<UpdateOriginResponse> updateOrigins(@PathVariable int id,@RequestBody OriginDTO originDTO) {
         originService.updateOrigins(id,originDTO);
-        return ResponseEntity.ok("update origin ");
+        return ResponseEntity.ok(UpdateOriginResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.UPDATEORIGIN_SUCCESSFULLY)).build());
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteOrigins(@PathVariable int id) {
+    public ResponseEntity<DeleteOriginResponse> deleteOrigins(@PathVariable int id) {
         originService.deleteOrigins(id);
-        return ResponseEntity.ok("delete origin " + id);
+        return ResponseEntity.ok(DeleteOriginResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.DELETEORIGIN_SUCCESSFULLY)).build());
     }
 }

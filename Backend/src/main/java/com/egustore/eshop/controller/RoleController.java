@@ -2,7 +2,10 @@ package com.egustore.eshop.controller;
 
 import com.egustore.eshop.dto.RoleDTO;
 import com.egustore.eshop.model.Role;
+import com.egustore.eshop.response.*;
 import com.egustore.eshop.service.RoleService;
+import com.egustore.eshop.utils.LocalizationUtils;
+import com.egustore.eshop.utils.MessageKeys;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,10 +20,12 @@ import java.util.List;
 @CrossOrigin("*")
 public class RoleController {
     private final RoleService roleService;
+    private final LocalizationUtils localizationUtils;
 
     @Autowired
-    public RoleController(RoleService roleService) {
+    public RoleController(RoleService roleService, LocalizationUtils localizationUtils) {
         this.roleService = roleService;
+        this.localizationUtils = localizationUtils;
     }
     //Create category
     @PostMapping("")
@@ -35,7 +40,7 @@ public class RoleController {
             return ResponseEntity.badRequest().body(errMessage);
         }
         roleService.createRole(roleDTO);
-        return ResponseEntity.ok("Create role successfully!");
+        return ResponseEntity.ok(CreateRoleResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.ROLE_SUCCESSFULLY)).build());
     }
 
     //    //Show all categories
@@ -52,9 +57,9 @@ public class RoleController {
 //    }
 
     @DeleteMapping("{id}")
-    public ResponseEntity<String> deleteRole(@PathVariable int id) {
+    public ResponseEntity<DeleteRoleResponse> deleteRole(@PathVariable int id) {
         roleService.deleteRole(id);
-        return ResponseEntity.ok("delete role " + id);
+        return ResponseEntity.ok(DeleteRoleResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.DELETEROLE_SUCCESSFULLY)).build());
     }
 
     @GetMapping("/{id}")

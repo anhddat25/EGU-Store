@@ -2,7 +2,9 @@ package com.egustore.eshop.model;
 
 import com.egustore.eshop.enums.CategoryStatus;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
+import org.hibernate.validator.constraints.NotBlank;
 
 @Data
 @AllArgsConstructor
@@ -15,6 +17,7 @@ public class Category  extends BaseEntity{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @NotEmpty(message = "{LOGIN_SUCCESSFULLY}")
     @Column(name = "name")
     private String name;
     @Column(name = "thumbnail")

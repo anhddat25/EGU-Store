@@ -12,6 +12,8 @@ import com.egustore.eshop.model.Role;
 import com.egustore.eshop.repository.CustomerRepository;
 import com.egustore.eshop.repository.RoleRepository;
 import com.egustore.eshop.service.CustomerService;
+import com.egustore.eshop.utils.LocalizationUtils;
+import com.egustore.eshop.utils.MessageKeys;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -34,9 +36,11 @@ public class CustomerServiceImpl implements CustomerService {
     private final JwtTokenUtil jwtTokenUtil;
     private final AuthenticationManager authenticationManager;
     private final JavaMailSender emailSender;
+    private final LocalizationUtils localizationUtils;
+
 
     @Autowired
-    public CustomerServiceImpl(CustomerRepository customerRepository, RoleRepository roleRepository, CustomerMapper customerMapper, PasswordEncoder passwordEncoder, JwtTokenUtil jwtTokenUtil, AuthenticationManager authenticationManager, JavaMailSender emailSender)
+    public CustomerServiceImpl(CustomerRepository customerRepository, RoleRepository roleRepository, CustomerMapper customerMapper, PasswordEncoder passwordEncoder, JwtTokenUtil jwtTokenUtil, AuthenticationManager authenticationManager, JavaMailSender emailSender, LocalizationUtils localizationUtils)
     {
         this.customerRepository = customerRepository;
         this.roleRepository = roleRepository;
@@ -45,6 +49,7 @@ public class CustomerServiceImpl implements CustomerService {
         this.jwtTokenUtil = jwtTokenUtil;
         this.authenticationManager = authenticationManager;
         this.emailSender = emailSender;
+        this.localizationUtils = localizationUtils;
     }
 
     @Override
@@ -168,14 +173,14 @@ public class CustomerServiceImpl implements CustomerService {
     public String login(String email, String password) throws Exception{
         Optional<Customer> optionalCustomer = customerRepository.findByEmail(email);
         if (optionalCustomer.isEmpty()){
-            throw  new Exception("Invalid");
+            throw  new Exception(localizationUtils.getLocalizedMessage(MessageKeys.DOES_NOT_EXIST));
         } Customer customer = optionalCustomer.get();
         Role role = roleRepository.findById(customer.getRole().getId())
                 .orElseThrow(() -> new RuntimeException("Role not found"));
 
         if (!passwordEncoder.matches(password, customer.getPassword()))
         {
-            throw  new BadCredentialsException("Wrong email or password");
+            throw  new BadCredentialsException(localizationUtils.getLocalizedMessage(MessageKeys.LOGIN_FAILED_EMAIL_PASSWORD));
         }
         UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(email,password ,customer.getAuthorities());
         authenticationManager.authenticate(authenticationToken);
