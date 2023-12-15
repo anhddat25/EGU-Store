@@ -10,7 +10,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 
@@ -63,6 +65,11 @@ public class CategoryController {
     public ResponseEntity<String> deleteCategory(@PathVariable int id) {
         categoryService.deleteCategory(id);
         return ResponseEntity.ok("delete category " + id);
+    }
+    @PutMapping("image/{id}")
+    public ResponseEntity<String> createThumbImageById(@RequestParam("thumbImage") MultipartFile files, @PathVariable int id) throws IOException {
+        categoryService.createThumbImage(id, files);
+        return ResponseEntity.ok("create thumb category image " + id);
     }
 
 //    @GetMapping("/active")
