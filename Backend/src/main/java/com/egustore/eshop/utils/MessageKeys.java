@@ -23,6 +23,10 @@ public class MessageKeys {
     public static  final String CREATEFEEDBACK_SUCCESSFULLY = "feedback.create.create_successfully";
     public static  final String UPDATEFEEDBACK_SUCCESSFULLY = "feedback.update.update_successfully";
     public static  final String DELETEFEEDBACK_SUCCESSFULLY = "feedback.delete.delete_successfully";
+
+    public static  final String CREATEFEEDBACK_FAILED = "feedback.create.create_failed";
+    public static  final String UPDATEFEEDBACK_FAILED = "feedback.update.update_failed";
+    public static  final String DELETEFEEDBACK_FAILED = "feedback.delete.delete_failed";
     //city
     public static  final String CREATECITY_SUCCESSFULLY = "city.create.create_successfully";
     public static  final String UPDATECITY_SUCCESSFULLY = "city.update.update_successfully";
@@ -38,6 +42,11 @@ public class MessageKeys {
     public static  final String UPDATEORDER_SUCCESSFULLY = "order.update.update_successfully";
     public static  final String DELETEORDER_SUCCESSFULLY = "order.delete.delete_successfully";
 
+    public static  final String ORDER_FAILED = "order.create.create_failed";
+    public static  final String ORDERSTATUS_FAILED = "order.change_status.change_status_failed";
+    public static  final String UPDATEORDER_FAILED = "order.update.update_failed";
+    public static  final String DELETEORDER_FAILED = "order.delete.delete_failed";
+
 //    Order Detail
     public static  final String ORDERDETAIL_SUCCESSFULLY = "order_detail.create.create_successfully";
     public static  final String ORDERDETAILQUANTITY_SUCCESSFULLY = "order_detail.change_quantity.change_quantity_success";
@@ -52,6 +61,9 @@ public class MessageKeys {
     public static  final String UPDATEPAYMENT_SUCCESSFULLY = "payment.update.update_successfully";
     public static  final String DELETEPAYMENT_SUCCESSFULLY = "payment.delete.delete_successfully";
 
+    public static  final String UPDATEPAYMENT_FAILED = "payment.update.update_failed";
+    public static  final String DELETEPAYMENT_FAILED = "payment.delete.delete_failed";
+
 //    Product
     public static  final String PRODUCT_SUCCESSFULLY = "product.create.create_successfully";
     public static  final String UPDATE_PRODUCT_STOCK_SUCCESSFULLY = "product.update-stock.update_successfully";
@@ -60,6 +72,10 @@ public class MessageKeys {
     public static  final String DELETE_PRODUCT_SUCCESSFULLY = "product.delete.delete_successfully";
 
 //    Rating
+    public static  final String RATING_FAILED = "rating.create.create_failed";
+    public static  final String UPDATERATING_FAILED = "rating.update.update_failed";
+    public static  final String DELETERATING_FAILED = "rating.delete.delete_failed";
+
     public static  final String RATING_SUCCESSFULLY = "rating.create.create_successfully";
     public static  final String UPDATERATING_SUCCESSFULLY = "rating.update.update_successfully";
     public static  final String DELETERATING_SUCCESSFULLY = "rating.delete.delete_successfully";

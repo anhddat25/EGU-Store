@@ -50,13 +50,21 @@ public class PaymentController {
 
     @PutMapping("/update/{version}")
     public ResponseEntity<UpdatePaymentResponse> updatePayment(@PathVariable int version,@RequestBody PaymentDTO paymentDTO) {
+        try{
         paymentService.updatePayment(version,paymentDTO);
         return ResponseEntity.ok(UpdatePaymentResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.UPDATEPAYMENT_SUCCESSFULLY)).build());
+        }catch (Exception e){
+            return ResponseEntity.badRequest().body(UpdatePaymentResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.UPDATEPAYMENT_FAILED,e.getMessage())).build());
+        }
     }
 
     @DeleteMapping("/delete/{version}")
     public ResponseEntity<DeletePaymentResponse> deletePayment(@PathVariable int version) {
+        try{
         paymentService.deletePayment(version);
         return ResponseEntity.ok(DeletePaymentResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.DELETEPAYMENT_SUCCESSFULLY)).build());
-
-    }}
+        }catch (Exception e){
+            return ResponseEntity.badRequest().body(DeletePaymentResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.DELETEPAYMENT_FAILED,e.getMessage())).build());
+        }
+    }
+}

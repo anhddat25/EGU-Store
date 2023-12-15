@@ -52,18 +52,30 @@ public class RatingProductController {
     }
     @PostMapping("")
     public ResponseEntity<CreateRatingResponse> createRating(@RequestBody @Valid RatingProductDTO ratingProductDTO){
+        try{
         ratingProductService.createRating(ratingProductDTO);
         return ResponseEntity.ok(CreateRatingResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.RATING_SUCCESSFULLY)).build());
+        }catch (Exception e){
+            return ResponseEntity.badRequest().body(CreateRatingResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.RATING_FAILED,e.getMessage())).build());
+        }
     }
     @PutMapping("/update/{id}")
     public ResponseEntity<UpdateRatingResponse> updateRating(@PathVariable int id, @RequestBody RatingProductDTO ratingProductDTO){
+        try{
         ratingProductService.updateRating(id,ratingProductDTO);
         return ResponseEntity.ok(UpdateRatingResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.UPDATERATING_SUCCESSFULLY)).build());
+        }catch (Exception e){
+            return ResponseEntity.badRequest().body(UpdateRatingResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.UPDATERATING_FAILED,e.getMessage())).build());
+        }
     }
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<DeleteRatingResponse> deleteRating(@PathVariable int id){
+        try{
         ratingProductService.deleteRatingProduct(id);
         return ResponseEntity.ok(DeleteRatingResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.DELETERATING_SUCCESSFULLY)).build());
+        }catch (Exception e){
+            return ResponseEntity.badRequest().body(DeleteRatingResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.DELETERATING_FAILED,e.getMessage())).build());
+        }
     }
 
 }

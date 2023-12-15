@@ -2,10 +2,7 @@ package com.egustore.eshop.controller;
 
 import com.egustore.eshop.dto.FeedbackProductDTO;
 import com.egustore.eshop.model.FeedbackProduct;
-import com.egustore.eshop.response.CreateFeedbackResponse;
-import com.egustore.eshop.response.DeleteFeedbackResponse;
-import com.egustore.eshop.response.RegisterResponse;
-import com.egustore.eshop.response.UpdateFeedbackResponse;
+import com.egustore.eshop.response.*;
 import com.egustore.eshop.service.FeedbackProductService;
 import com.egustore.eshop.utils.LocalizationUtils;
 import com.egustore.eshop.utils.MessageKeys;
@@ -54,7 +51,7 @@ public class FeedbackController {
     }
     @PostMapping("/create")
     public ResponseEntity<?> createFeedback(@RequestBody @Valid FeedbackProductDTO feedbackProductDTO, BindingResult result){
-
+        try {
         if(result.hasErrors())
         {
             List<String> errMessage = result.getFieldErrors()
@@ -65,21 +62,29 @@ public class FeedbackController {
         }
         feedbackProductService.createFeedback(feedbackProductDTO);
         return ResponseEntity.ok(CreateFeedbackResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.CREATEFEEDBACK_SUCCESSFULLY)).build());
-
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(CreateFeedbackResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.CREATEFEEDBACK_FAILED,e.getMessage())).build());
+        }
     }
 
 
     @PutMapping("/update/{id}")
     public ResponseEntity<?> updateFeedback(@PathVariable int id, @RequestBody FeedbackProductDTO feedbackProductDTO){
+        try {
         feedbackProductService.updateFeedback(id,feedbackProductDTO);
         return ResponseEntity.ok(UpdateFeedbackResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.UPDATEFEEDBACK_SUCCESSFULLY)).build());
-
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(UpdateFeedbackResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.UPDATEFEEDBACK_FAILED,e.getMessage())).build());
+        }
     }
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> deleteFeedback(@PathVariable int id){
+        try {
         feedbackProductService.deleteFeedback(id);
         return ResponseEntity.ok(DeleteFeedbackResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.DELETEFEEDBACK_SUCCESSFULLY)).build());
-
+    } catch (Exception e) {
+        return ResponseEntity.badRequest().body(DeleteFeedbackResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.DELETEFEEDBACK_FAILED,e.getMessage())).build());
+    }
     }
 
 

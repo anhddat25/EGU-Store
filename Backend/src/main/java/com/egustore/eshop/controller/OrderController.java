@@ -2,10 +2,7 @@ package com.egustore.eshop.controller;
 
 import com.egustore.eshop.dto.OrderDTO;
 import com.egustore.eshop.model.Order;
-import com.egustore.eshop.response.CreateOrderResponse;
-import com.egustore.eshop.response.DeleteOrderResponse;
-import com.egustore.eshop.response.UpdateOrderResponse;
-import com.egustore.eshop.response.UpdateOrderStatusResponse;
+import com.egustore.eshop.response.*;
 import com.egustore.eshop.service.OrderService;
 import com.egustore.eshop.utils.LocalizationUtils;
 import com.egustore.eshop.utils.MessageKeys;
@@ -48,7 +45,7 @@ public class OrderController {
             orderService.saveOrder(orderDTO);
             return ResponseEntity.ok(CreateOrderResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.ORDER_SUCCESSFULLY)).build());
         }catch (Exception e){
-            return ResponseEntity.badRequest().body(e.getMessage());
+            return ResponseEntity.badRequest().body(CreateOrderResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.ORDER_FAILED,e.getMessage())).build());
         }
 
     }
@@ -66,14 +63,22 @@ public class OrderController {
 
     @PutMapping("/{id}")
     public ResponseEntity<UpdateOrderResponse> updateOrderById(@PathVariable int id,@RequestBody OrderDTO orderDTO) {
+        try{
         orderService.updateOrderById(orderDTO, id);
         return ResponseEntity.ok(UpdateOrderResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.UPDATEORDER_SUCCESSFULLY)).build());
+        }catch (Exception e){
+            return ResponseEntity.badRequest().body(UpdateOrderResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.UPDATEORDER_FAILED,e.getMessage())).build());
+        }
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<DeleteOrderResponse> deleteOrder(@PathVariable int id) {
+        try{
         orderService.deleteOrder(id);
         return ResponseEntity.ok(DeleteOrderResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.DELETEORDER_SUCCESSFULLY)).build());
+        }catch (Exception e){
+            return ResponseEntity.badRequest().body(DeleteOrderResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.DELETEORDER_FAILED,e.getMessage())).build());
+        }
     }
     @GetMapping("/{id}")
     public ResponseEntity<Order> getOrderById(@PathVariable int id) {
@@ -81,8 +86,12 @@ public class OrderController {
     }
     @PutMapping("/status/{id}")
     public ResponseEntity<UpdateOrderStatusResponse> updateOrderStatus(@PathVariable int id, @RequestBody OrderDTO orderDTO) {
+        try{
         orderService.updateOrderStatus(orderDTO, id);
         return ResponseEntity.ok(UpdateOrderStatusResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.ORDERSTATUS_SUCCESSFULLY)).build());
+        }catch (Exception e){
+            return ResponseEntity.badRequest().body(UpdateOrderStatusResponse.builder().message(localizationUtils.getLocalizedMessage(MessageKeys.ORDERSTATUS_FAILED,e.getMessage())).build());
+        }
     }
 
 
