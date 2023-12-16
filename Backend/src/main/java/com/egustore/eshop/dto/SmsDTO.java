@@ -1,11 +1,10 @@
 package com.egustore.eshop.dto;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 @Data
-public class SmsRequest {
+public class SmsDTO {
     @NotBlank
     private final String phoneNumber="+84568072469";
     @NotBlank

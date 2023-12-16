@@ -1,7 +1,7 @@
 package com.egustore.eshop.controller;
 
-import com.egustore.eshop.dto.SmsRequest;
-import com.egustore.eshop.serviceimpl.SmsService;
+import com.egustore.eshop.dto.SmsDTO;
+import com.egustore.eshop.serviceimpl.SmsSender;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,15 +11,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/v0/sms")
 public class SMSController {
-    private final SmsService smsService;
+    private final SmsSender smsSender;
 
-    public SMSController(SmsService smsService) {
-        this.smsService = smsService;
+    public SMSController(SmsSender smsSender) {
+        this.smsSender = smsSender;
     }
 
 
     @PostMapping
-    public void sendSms(@Valid @RequestBody SmsRequest smsRequest){
-        smsService.sendSms(smsRequest);
+    public void sendSms(@Valid @RequestBody SmsDTO smsDTO){
+        smsSender.sendSms(smsDTO);
     }
 }

@@ -6,6 +6,7 @@ import com.egustore.eshop.dto.ChangePasswordDTO;
 import com.egustore.eshop.dto.CustomerDTO;
 import com.egustore.eshop.dto.ForgotPasswordDTO;
 import com.egustore.eshop.dto.ResetPasswordDTO;
+import com.egustore.eshop.enums.CustomerStatus;
 import com.egustore.eshop.mapper.CustomerMapper;
 import com.egustore.eshop.model.Customer;
 import com.egustore.eshop.model.Role;
@@ -62,6 +63,7 @@ public class CustomerServiceImpl implements CustomerService {
             String encodePassword = passwordEncoder.encode(password);
             customer.setPassword(encodePassword);
             customer.setRole(customerRole);
+            customer.setStatus(CustomerStatus.ACTIVE);
 //        }
 
         return customerRepository.save(customer);
@@ -107,12 +109,12 @@ public class CustomerServiceImpl implements CustomerService {
     }
     private void sendResetTokenEmail(String email, String resetToken) {
         try {
-            String htmlContent = "Mã khôi phục: "+resetToken;
+            String htmlContent = "Mã khôi phục mật khẩu tại cửa hàng EGU Store: "+resetToken;
             SimpleMailMessage message = new SimpleMailMessage();
             message.setTo(email);
-            message.setSubject("Khôi phục mật khẩu");
+            message.setSubject("Yêu cầu khôi phục mật khẩu");
             message.setText(htmlContent);
-            message.setFrom("Admin");
+//            message.setFrom("Admin");
             emailSender.send(message);
         } catch (Exception e) {
             System.err.println("Lỗi khi gửi email: " + e.getMessage());

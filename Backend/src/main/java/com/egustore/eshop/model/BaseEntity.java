@@ -20,6 +20,7 @@ public class BaseEntity {
     @Column(name = "create_date")
     private LocalDateTime createDate;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @Column(name = "update_date")
     private LocalDateTime updateDate;
     @PrePersist

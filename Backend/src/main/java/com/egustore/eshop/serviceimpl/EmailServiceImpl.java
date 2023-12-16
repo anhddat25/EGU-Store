@@ -1,6 +1,7 @@
 package com.egustore.eshop.serviceimpl;
 
 import com.egustore.eshop.service.EmailService;
+import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
@@ -14,18 +15,16 @@ public class EmailServiceImpl implements EmailService {
     }
 
     @Override
-    public void sendEmail(String to, String subject, String body) {
+    public void sendEmail(String to, String subject, String body) throws MailException {
         try {
             SimpleMailMessage message = new SimpleMailMessage();
             message.setTo(to);
             message.setSubject(subject);
             message.setText(body);
-            message.setFrom("Admin"); // Địa chỉ người gửi, có thể thay đổi tùy theo yêu cầu của bạn
+            message.setFrom("edgu1707@gmail.com"); // Thay đổi địa chỉ người gửi thành một địa chỉ cụ thể
             emailSender.send(message);
-        } catch (Exception e) {
-            System.err.println("Lỗi khi gửi email: " + e.getMessage());
-            e.printStackTrace();
+        } catch (MailException e) {
+            throw e; // Ném lại ngoại lệ để báo hiệu rằng việc gửi email thất bại
         }
     }
-
 }

@@ -1,10 +1,10 @@
 package com.egustore.eshop.controller;
 
 import com.egustore.eshop.dto.OrderDetailDTO;
-import com.egustore.eshop.dto.SmsRequest;
+import com.egustore.eshop.dto.SmsDTO;
 import com.egustore.eshop.model.OrderDetail;
 import com.egustore.eshop.service.OrderDetailService;
-import com.egustore.eshop.serviceimpl.SmsService;
+import com.egustore.eshop.serviceimpl.SmsSender;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,16 +20,16 @@ import java.util.List;
 @CrossOrigin("*")
 public class OrderDetailController {
     private final OrderDetailService orderDetailService;
-    private final SmsService smsService;
+    private final SmsSender smsSender;
     @Autowired
-    public OrderDetailController(OrderDetailService orderDetailService, SmsService smsService) {
+    public OrderDetailController(OrderDetailService orderDetailService, SmsSender smsSender) {
         this.orderDetailService = orderDetailService;
-        this.smsService = smsService;
+        this.smsSender = smsSender;
     }
 
     //Create Order
     @PostMapping("/create")
-    public ResponseEntity<?> createOrder(@RequestBody @Valid OrderDetailDTO orderDetailDTO, BindingResult result, SmsRequest smsRequest) {
+    public ResponseEntity<?> createOrder(@RequestBody @Valid OrderDetailDTO orderDetailDTO, BindingResult result, SmsDTO smsDTO) {
         if(result.hasErrors())
         {
             List<String> errMessage = result.getFieldErrors()
@@ -39,7 +39,7 @@ public class OrderDetailController {
             return ResponseEntity.badRequest().body(errMessage);
         }
         orderDetailService.createOrderDetail(orderDetailDTO);
-        smsService.sendSms(smsRequest);
+        smsSender.sendSms(smsDTO);
         return ResponseEntity.ok("create suss");
     }
 
