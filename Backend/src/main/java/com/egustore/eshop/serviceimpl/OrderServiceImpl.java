@@ -14,6 +14,7 @@ import com.egustore.eshop.repository.OrderRepository;
 import com.egustore.eshop.repository.ProductRepository;
 import com.egustore.eshop.service.OrderService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -92,8 +93,13 @@ public class OrderServiceImpl implements OrderService {
         return existOrder;
     }
     @Override
+    @Transactional
     public void deleteOrder(int id) {
-        orderRepository.deleteById(id);
+        Order order = orderRepository.findById(id).orElse(null);
+        if(order != null) {
+            order.setIsActive(false);
+            orderRepository.save(order);
+        }
     }
 
     @Override

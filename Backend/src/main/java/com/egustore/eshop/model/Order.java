@@ -59,6 +59,9 @@ public class Order {
     @Column(name = "total_price")
     private Double totalPrice;
 
+    @Column(name = "is_active")
+    private Boolean isActive;
+
     @ManyToOne
     @JoinColumn(name = "customer_id",insertable=false, updatable=false)
     private Customer customer;
