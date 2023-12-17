@@ -1,6 +1,7 @@
 package com.egustore.eshop.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -25,6 +26,7 @@ public class OrderDetail {
 
     @ManyToOne
     @JsonIgnoreProperties("orderDetail")
+    @JsonManagedReference
     @JoinColumn(name = "order_id")
     private Order order;
 

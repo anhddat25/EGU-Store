@@ -80,6 +80,13 @@ public class Product extends BaseEntity{
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "products")
     private List<RatingProduct> ratingProduct;
 
+    @JsonIgnoreProperties("products")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "products")
+    private List<FeedbackProduct> feedbackProducts;
+
+    @JsonIgnoreProperties("products")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "products")
+    private List<Specifications> specifications;
 
     @JsonIgnoreProperties("products")
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "products")
