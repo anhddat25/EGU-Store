@@ -29,6 +29,12 @@ public class OrderController {
         this.localizationUtils = localizationUtils;
     }
 
+    @GetMapping("")
+    public ResponseEntity<List<Order>> getAllCategories() {
+        return ResponseEntity.ok(orderService.getAllOrders());
+    }
+
+
 
     //Create Order
     @PostMapping("/create")
@@ -51,10 +57,6 @@ public class OrderController {
     }
 
 
-    @GetMapping("")
-    public ResponseEntity<List<Order>> getAllCategories() {
-        return ResponseEntity.ok(orderService.getAllOrders());
-    }
 
     @PutMapping("/get-item/{id}")
     public ResponseEntity<Order> updateOrder(@PathVariable int id) {

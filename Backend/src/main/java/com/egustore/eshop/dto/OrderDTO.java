@@ -1,12 +1,14 @@
 package com.egustore.eshop.dto;
 
 import com.egustore.eshop.enums.OrderStatus;
+import com.egustore.eshop.model.Customer;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Column;
 import lombok.Data;
 
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.List;
 
 
 @Data
@@ -27,32 +29,24 @@ public class OrderDTO {
 
     private String country;
 
-    private Date orderDate = new Date();
-
     private String note;
 
     private OrderStatus status;
 
+    @JsonProperty("order_date")
+    private LocalDateTime orderDate;
+
+    @JsonProperty("payment_method")
     private String paymentMethod;
 
-    private Double discountPrice;
-
-    private Double totalAmount;
+    @JsonProperty("total_price")
+    private Double totalPrice;
 
     @JsonProperty("customer_id")
     private Integer customerId;
 
-    private CustomerDTO customer;
-
-//    @JsonProperty("order_details_id")
-//    private Integer orderdetailId;
-
-//    private OrderDetailDTO orderdetail;
+    @JsonProperty("cart_items")
+    private List<CartItemDTO> cartItems;
 
 
-//    private AddressDTO address;
-//    @JsonProperty("address_id")
-//    private Integer addressId;
-//
-//    private AddressDTO address;
 }

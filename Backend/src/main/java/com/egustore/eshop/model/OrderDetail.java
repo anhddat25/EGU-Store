@@ -1,5 +1,6 @@
 package com.egustore.eshop.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
@@ -17,25 +18,25 @@ public class OrderDetail {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    //Là số lượng sản phẩm
     @Column(name = "quantity")
-    private int quantity;
+    private Integer quantity;
+
+    @Column(name = "price")
+    private Double price;
 
     @Column(name = "total_price")
     private Double totalPrice;
 
     @ManyToOne
-    @JsonIgnoreProperties("orderDetail")
     @JoinColumn(name = "order_id")
+    @JsonBackReference
     private Order order;
 
     @ManyToOne
     @JoinColumn(name = "product_id")
     private Product product;
 
-//    @Column(name ="product_id", insertable = false, updatable = false)
-//    private Integer productId;
-//
-//    @Column(name ="order_id", insertable = false, updatable = false)
-//    private Integer orderId;
+
 
 }

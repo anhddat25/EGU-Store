@@ -13,20 +13,20 @@ import java.util.List;
 
 public interface OrderRepository extends JpaRepository<Order, Integer> {
 
-    @Modifying
-    @Transactional
-    @Query(value = "UPDATE Order o SET " +
-            "o.email = :#{#orderDTO.email}, " +
-            "o.phone = :#{#orderDTO.phone}, " +
-            "o.orderDate = :#{#orderDTO.orderDate}, " +
-            "o.note = :#{#orderDTO.note}, " +
-            "o.status = :#{#orderDTO.status}, " +
-            "o.paymentMethod = :#{#orderDTO.paymentMethod}, " +
-            "o.discountPrice = :#{#orderDTO.discountPrice}, " +
-            "o.customerId = :#{#orderDTO.customerId} " +
-            // Remove the extra comma
-            "WHERE o.id = :id")
-    Integer updateOrderById(@Param("orderDTO") OrderDTO orderDTO, @Param("id") int id);
+//    @Modifying
+//    @Transactional
+//    @Query(value = "UPDATE Order o SET " +
+//            "o.email = :#{#orderDTO.email}, " +
+//            "o.phone = :#{#orderDTO.phone}, " +
+//            "o.orderDate = :#{#orderDTO.orderDate}, " +
+//            "o.note = :#{#orderDTO.note}, " +
+//            "o.status = :#{#orderDTO.status}, " +
+//            "o.paymentMethod = :#{#orderDTO.paymentMethod}, " +
+//            "o.discountPrice = :#{#orderDTO.discountPrice}, " +
+//            "o.customerId = :#{#orderDTO.customerId} " +
+//            // Remove the extra comma
+//            "WHERE o.id = :id")
+//    Integer updateOrderById(@Param("orderDTO") OrderDTO orderDTO, @Param("id") int id);
 
     @Modifying
     @Transactional

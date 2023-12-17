@@ -18,7 +18,7 @@ spring:
       max-file-size: 10MB  # Kích thước tệp tối đa cho mỗi yêu cầu
       max-request-size: 10MB  # Kích thước tối đa của yêu cầu
   datasource:
-    url: jdbc:mysql://localhost:3306/egu_store
+    url: jdbc:mysql://localhost:3306/egu
     username: root
     password: 123456
     driverClassName: com.mysql.cj.jdbc.Driver

@@ -17,6 +17,7 @@ public class OrderDetailDTO {
 
     private Integer quantity;
 
+    @JsonProperty("total_price")
     private Double totalPrice;
 
     @JsonProperty("product_id")

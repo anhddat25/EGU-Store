@@ -2,6 +2,7 @@ package com.egustore.eshop.model;
 
 import com.egustore.eshop.enums.OrderStatus;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -19,22 +20,21 @@ public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     @Column(name = "name")
     private String name;
 
-    @Column(name = "Email")
+    @Column(name = "email")
     private String email;
 
-    @Column(name = "Phone")
+    @Column(name = "phone")
     private String phone;
 
-    @Temporal(TemporalType.DATE)
     @Column(name = "order_date")
-    private Date orderDate;
+    private LocalDateTime orderDate;
 
-    @Column(name = "Note")
+    @Column(name = "note")
     private String note;
 
     @Column(name = "status")
@@ -56,36 +56,24 @@ public class Order {
     @Column(name = "payment_method")
     private String paymentMethod;
 
-    @Column(name = "discount_price")
-    private Double discountPrice;
-
-    @Column(name = "total_amount")
-    private Double totalAmount;
+    @Column(name = "total_price")
+    private Double totalPrice;
 
     @ManyToOne
-    @JoinColumn(name = "customer_id")
+    @JoinColumn(name = "customer_id",insertable=false, updatable=false)
     private Customer customer;
 
-    @Column(name = "customer_id", insertable=false, updatable=false)
+    @Column(name = "customer_id")
     private Integer customerId;
 
-    @OneToMany(mappedBy = "order")
-    @JsonIgnoreProperties("order")
-//    @JoinColumn(name = "order_details_id")
-    private List<OrderDetail> orderDetail;
+    @PrePersist
+    protected void onCreate(){
+        LocalDateTime now = LocalDateTime.now();
+        orderDate = now;
+    }
 
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference
+    private List<OrderDetail> orderDetails;
 
-//    @Column(name = "orderdetails_id", insertable=false, updatable=false)
-//    private Integer orderdetailId;
-//
-//    @OneToMany(mappedBy = "orders")
-//    @JsonIgnoreProperties("orders")
-////    @JoinColumn(name = "address_id")
-//    private List<Address> address;
-
-
-//    @Column(name = "address_id", insertable=false, updatable=false)
-//    private Integer addressId;
-//    @OneToMany(mappedBy = "order")
-//    private List<OrderDetail> orderDetail;
 }
