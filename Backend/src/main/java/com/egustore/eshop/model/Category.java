@@ -6,6 +6,8 @@ import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
 import org.hibernate.validator.constraints.NotBlank;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -25,6 +27,9 @@ public class Category  extends BaseEntity{
     @Column(name = "status")
     @Enumerated(EnumType.STRING)
     private CategoryStatus status;
+
+    @OneToMany(mappedBy = "category")
+    private List<Product> products;
 
 }
 

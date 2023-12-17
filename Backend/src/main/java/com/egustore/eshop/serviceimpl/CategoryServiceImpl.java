@@ -3,11 +3,14 @@ package com.egustore.eshop.serviceimpl;
 import com.egustore.eshop.dto.CategoryDTO;
 import com.egustore.eshop.mapper.CategoryMapper;
 import com.egustore.eshop.model.Category;
+import com.egustore.eshop.model.Product;
 import com.egustore.eshop.repository.CategoryRepository;
+import com.egustore.eshop.repository.ProductRepository;
 import com.egustore.eshop.service.CategoryService;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -19,13 +22,15 @@ public class CategoryServiceImpl implements CategoryService {
     private final CategoryRepository categoryRepository;
     private final CategoryMapper categoryMapper;
     private final GoogleDriveApiService googleDriveApiService;
+    private final ProductRepository productRepository;
 
     @Autowired
-    public CategoryServiceImpl(CategoryRepository categoryRepository, CategoryMapper categoryMapper, GoogleDriveApiService googleDriveApiService)
+    public CategoryServiceImpl(CategoryRepository categoryRepository, CategoryMapper categoryMapper, GoogleDriveApiService googleDriveApiService, ProductRepository productRepository)
     {
         this.categoryRepository = categoryRepository;
         this.categoryMapper = categoryMapper;
         this.googleDriveApiService = googleDriveApiService;
+        this.productRepository = productRepository;
     }
 
     @Override
@@ -78,10 +83,18 @@ public class CategoryServiceImpl implements CategoryService {
             throw new EntityNotFoundException("Entity with ID " + Id + " not found");
         }
     }
-
-
     @Override
+    @Transactional
     public void deleteCategory(int id) {
-        categoryRepository.deleteById(id);
+        Category category = categoryRepository.findById(id).orElse(null);
+        if (category != null) {
+            List<Product> products = category.getProducts();
+
+            for (Product product : products) {
+                product.setCategory(product.getCategory() == category ? null : product.getCategory());
+            }
+            productRepository.saveAll(products);
+            categoryRepository.delete(category);
+        }
     }
 }

@@ -66,7 +66,7 @@ public class Product extends BaseEntity{
 
     @ManyToOne
     @JoinColumn(name = "category_id")
-    private Category categoryId;
+    private Category category;
 
     @ManyToOne
     @JoinColumn(name = "brand_id")
@@ -84,6 +84,8 @@ public class Product extends BaseEntity{
     @JsonIgnoreProperties("products")
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "products")
     private List<Images> images;
+
+
 
 //    @Column(name = "origin_id", insertable=false, updatable=false)
 //    private Integer originId;
