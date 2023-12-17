@@ -25,6 +25,7 @@ public class OrderDetail {
     private Double totalPrice;
 
     @ManyToOne
+    @JsonIgnoreProperties("orderDetail")
     @JsonManagedReference
     @JoinColumn(name = "order_id")
     private Order order;

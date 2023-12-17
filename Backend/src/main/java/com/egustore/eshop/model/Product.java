@@ -63,9 +63,12 @@ public class Product extends BaseEntity{
     @Enumerated(EnumType.STRING)
     private ProductStatus status;
 
+
+    @ManyToOne
     @JoinColumn(name = "category_id")
     private Category categoryId;
 
+    @ManyToOne
     @JoinColumn(name = "brand_id")
     private Brand brandId;
 
@@ -79,15 +82,15 @@ public class Product extends BaseEntity{
 
     @JsonIgnoreProperties("products")
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "products")
-    private List<Images> images;
-
-    @JsonIgnoreProperties("products")
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "products")
     private List<FeedbackProduct> feedbackProducts;
 
     @JsonIgnoreProperties("products")
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "products")
     private List<Specifications> specifications;
+
+    @JsonIgnoreProperties("products")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "products")
+    private List<Images> images;
 
 //    @Column(name = "origin_id", insertable=false, updatable=false)
 //    private Integer originId;
