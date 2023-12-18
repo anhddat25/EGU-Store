@@ -47,7 +47,13 @@ public class Customer implements UserDetails {
 
     @Temporal(TemporalType.DATE)
     @Column(name = "create_date")
-    private Date createDate;
+    private LocalDateTime createDate;
+
+    @PrePersist
+    protected void onCreate(){
+        LocalDateTime now = LocalDateTime.now();
+        createDate = now;
+    }
 
     @Column(name = "facebook_id")
     private String facebookId;

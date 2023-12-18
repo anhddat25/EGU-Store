@@ -6,6 +6,7 @@ import com.egustore.eshop.dto.ChangePasswordDTO;
 import com.egustore.eshop.dto.CustomerDTO;
 import com.egustore.eshop.dto.ForgotPasswordDTO;
 import com.egustore.eshop.dto.ResetPasswordDTO;
+import com.egustore.eshop.enums.CustomerStatus;
 import com.egustore.eshop.mapper.CustomerMapper;
 import com.egustore.eshop.model.Customer;
 import com.egustore.eshop.model.Role;
@@ -54,13 +55,20 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public Customer createCustomer(CustomerDTO customerDTO) {
+        Role customerRole = roleRepository.findByName("CUSTOMER");
+        if (customerRepository.existsByEmail(customerDTO.getEmail())) {
+            throw new IllegalArgumentException("This email has been registered");
+        }
+        if (customerRepository.existsByPhoneNumber(customerDTO.getPhoneNumber())) {
+            throw new IllegalArgumentException("This Phone Number has been registered");
+        }
         Customer customer = CustomerMapper.INSTANCE.mapToCustomer(customerDTO);
-//        if (customer.getFacebookId() == null && customer.getGoogleId() == null) {
-            String password = customer.getPassword();
-            String encodePassword = passwordEncoder.encode(password);
-            customer.setPassword(encodePassword);
+        String password = customer.getPassword();
+        String encodePassword = passwordEncoder.encode(password);
+        customer.setPassword(encodePassword);
+        customer.setRole(customerRole);
+        customer.setStatus(CustomerStatus.ACTIVE);
 
-//        }
 
         return customerRepository.save(customer);
     }

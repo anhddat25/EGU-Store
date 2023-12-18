@@ -51,7 +51,7 @@ public class WebSecurityConfig {
                             .requestMatchers(GET,
                                     "/api/v0/categories/active/**").permitAll()
                             .requestMatchers(GET,
-                                    "/api/v0/categories/**").hasAnyRole("ADMIN","MANAGER")
+                                    "/api/v0/categories/**").hasAnyRole("ADMIN")
                             .requestMatchers(POST,
                                     "/api/v0/categories").hasAnyRole("ADMIN")
                             .requestMatchers(PUT,
@@ -66,7 +66,7 @@ public class WebSecurityConfig {
 
 
                             .requestMatchers(POST,
-                                    "/api/v0/orders/**").hasAnyRole("ADMIN","CUSTOMER","MANAGER")
+                                    "/api/v0/orders/**").hasAnyRole("ADMIN","CUSTOMER")
 //
                             .anyRequest().authenticated();
 
