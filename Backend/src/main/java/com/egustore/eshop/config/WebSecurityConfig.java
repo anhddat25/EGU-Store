@@ -40,35 +40,34 @@ public class WebSecurityConfig {
                 .authorizeHttpRequests(requests -> {
                     requests
                             .requestMatchers(
-                                    "**"
-                            )
-                            .permitAll()
-                            .requestMatchers(GET,
-                                    "/api/v0/categories").permitAll()
-                            .requestMatchers(GET,
-                                    "/api/v0/products**").permitAll()
-                            .requestMatchers(GET,
-                                    "/api/v0/orders/**").permitAll()
-                            .requestMatchers(POST,
-                                    "/api/v0/orders/**").permitAll()
-                            .requestMatchers(POST,
-                                    "/api/v0/order_details/**").permitAll()
+                                    "/api/v0/customers/login",
+                                    "/api/v0/customers/register"
+                            ).permitAll()
 
+                            .requestMatchers(GET,
+                                    "/api/v0/roles").permitAll()
+
+
+                            .requestMatchers(GET,
+                                    "/api/v0/categories/active/**").permitAll()
+                            .requestMatchers(GET,
+                                    "/api/v0/categories/**").hasAnyRole("ADMIN","MANAGER")
                             .requestMatchers(POST,
                                     "/api/v0/categories").hasAnyRole("ADMIN")
                             .requestMatchers(PUT,
                                     "/api/v0/categories").hasAnyRole("ADMIN")
+                            .requestMatchers(DELETE,
+                                    "/api/v0/categories").hasAnyRole("ADMIN")
+
                             .requestMatchers(GET,
-                                    "/api/v0/roles/").permitAll()
-//                            .requestMatchers(GET,
-//                                    "/api/v0/customers/**").permitAll()
-//                            .requestMatchers(GET,
-//                                    "/api/v0/products/").hasRole("MANAGER")
+                                    "/api/v0/products").permitAll()
+
+
 
 
                             .requestMatchers(POST,
-                                    "/api/v0/orders/create").hasRole("ADMIN")
-
+                                    "/api/v0/orders/**").hasAnyRole("ADMIN","CUSTOMER","MANAGER")
+//
                             .anyRequest().authenticated();
 
 

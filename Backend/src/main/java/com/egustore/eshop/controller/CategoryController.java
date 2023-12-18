@@ -1,6 +1,7 @@
 package com.egustore.eshop.controller;
 
 import com.egustore.eshop.dto.CategoryDTO;
+import com.egustore.eshop.enums.CategoryStatus;
 import com.egustore.eshop.model.Category;
 import com.egustore.eshop.service.CategoryService;
 import jakarta.validation.Valid;
@@ -27,6 +28,14 @@ public class CategoryController {
     public CategoryController(CategoryService categoryService) {
         this.categoryService = categoryService;
     }
+
+    //Show all categories
+    @GetMapping("")
+    public ResponseEntity<List<Category>> getAllCategories() {
+        List<Category> categories = categoryService.getAllCategories();
+        return ResponseEntity.ok(categories);
+    }
+
     //Create category
     @PostMapping("")
     public ResponseEntity<?> createCategory(@RequestBody @Valid  CategoryDTO categoryDTO, BindingResult result)
@@ -43,12 +52,7 @@ public class CategoryController {
         return ResponseEntity.ok("Create category successfully!");
     }
 
-    //Show all categories
-    @GetMapping("")
-    public ResponseEntity<List<Category>> getAllCategories() {
-        List<Category> categories = categoryService.getAllCategories();
-        return ResponseEntity.ok(categories);
-    }
+
     @GetMapping("/{id}")
     public ResponseEntity<Category> getCategoriesById(@PathVariable int id) {
         Category categories = categoryService.getCategoryById(id);
@@ -71,9 +75,18 @@ public class CategoryController {
         return ResponseEntity.ok("create thumb category image " + id);
     }
 
-//    @GetMapping("/active")
-//    public ResponseEntity<List<Category>> getActiveCategories() {
-//        List<Category> categories = categoryService.getActiveCategories();
-//        return ResponseEntity.ok(categories);
-//    }
+    @GetMapping("/active")
+    public ResponseEntity<List<Category>> getActiveCategories() {
+        List<Category> categories = categoryService.getActiveCategories();
+        return ResponseEntity.ok(categories);
+    }
+    @GetMapping("/active/{id}")
+    public ResponseEntity<Category> getCategoriesByIdActive(@PathVariable int id) {
+        Category categories = categoryService.getCategoryById(id);
+        if (categories != null && categories.getStatus() == CategoryStatus.ACTIVE) {
+            return ResponseEntity.ok(categories);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }

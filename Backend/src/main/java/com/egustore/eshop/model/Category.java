@@ -1,6 +1,7 @@
 package com.egustore.eshop.model;
 
 import com.egustore.eshop.enums.CategoryStatus;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
@@ -19,7 +20,6 @@ public class Category  extends BaseEntity{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotEmpty(message = "{LOGIN_SUCCESSFULLY}")
     @Column(name = "name")
     private String name;
     @Column(name = "thumbnail")
@@ -29,6 +29,7 @@ public class Category  extends BaseEntity{
     private CategoryStatus status;
 
     @OneToMany(mappedBy = "category")
+    @JsonManagedReference
     private List<Product> products;
 
 }

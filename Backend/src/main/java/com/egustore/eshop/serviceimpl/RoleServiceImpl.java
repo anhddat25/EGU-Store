@@ -13,14 +13,12 @@ import java.util.List;
 public class RoleServiceImpl implements RoleService {
     private final RoleRepository roleRepository;
     private final RoleMapper roleMapper;
-
     @Autowired
     public RoleServiceImpl(RoleRepository roleRepository,RoleMapper roleMapper)
     {
         this.roleRepository = roleRepository;
         this.roleMapper = roleMapper;
     }
-
     @Override
     public Role createRole(RoleDTO roleDTO) {
         Role role = RoleMapper.INSTANCE.mapToRole(roleDTO);

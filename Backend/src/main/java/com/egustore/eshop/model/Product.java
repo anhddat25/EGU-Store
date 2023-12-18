@@ -39,14 +39,6 @@ public class Product extends BaseEntity{
     @Column(name = "thumbnail")
     private String thumbnail;
 
-//    @Temporal(TemporalType.TIMESTAMP)
-//    @Column(name = "create_date")
-//    private LocalDateTime createDate;
-//
-//    @Temporal(TemporalType.TIMESTAMP)
-//    @Column(name = "update_date")
-//    private LocalDateTime updateDate;
-
     @Column(name = "stock_quantity")
     private Integer stockQuantity;
 
@@ -66,6 +58,7 @@ public class Product extends BaseEntity{
 
     @ManyToOne
     @JoinColumn(name = "category_id")
+    @JsonBackReference
     private Category category;
 
     @ManyToOne
@@ -79,7 +72,6 @@ public class Product extends BaseEntity{
     @JsonIgnoreProperties("products")
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "products")
     private List<RatingProduct> ratingProduct;
-
 
     @JsonIgnoreProperties("products")
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "products")

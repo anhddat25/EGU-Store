@@ -13,12 +13,7 @@ import java.time.LocalDateTime;
 @Data
 public class CategoryDTO {
     private Integer id;
-
-    @NotEmpty(message = "{customer.login.login_successfully}")
     private String name;
-
     private String thumbnail;
-
     private CategoryStatus status;
-
 }

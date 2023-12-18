@@ -30,7 +30,14 @@ public class ProductController {
         this.productService = productService;
         this.localizationUtils = localizationUtils;
     }
-    //Create category
+
+    @GetMapping("")
+    public ResponseEntity<List<Product>> getAllProduct() {
+        List<Product> product = productService.getAllProducts();
+        return ResponseEntity.ok(product);
+    }
+
+
     @PostMapping("/create")
     public ResponseEntity<?> createProduct(@RequestBody @Valid ProductDTO productDTO, BindingResult result) {
         if (result.hasErrors()) {
@@ -47,11 +54,7 @@ public class ProductController {
     }
 
     //Show all categories
-    @GetMapping("")
-    public ResponseEntity<List<Product>> getAllProduct() {
-        List<Product> product = productService.getAllProducts();
-        return ResponseEntity.ok(product);
-    }
+
 
 //    @PutMapping("/{id}")
 //    public ResponseEntity<String> updateProduct(@PathVariable int id,@RequestBody ProductDTO productDTO) {
