@@ -62,11 +62,11 @@ public class OrderServiceImpl implements OrderService {
     }
     public Integer updateOrderStatus(OrderDTO orderDTO, int id) {
         if(orderDTO.getStatus().equals(OrderStatus.DELIVERED) ){
-
+            return orderRepository.updateOrderStatusPayment(id);
         }
         return orderRepository.updateOrderStatus(orderDTO, id);
     }
-    
+
     @Override
     public List<Order> getOrderByCustomerId(int customerId) {
         return orderRepository.findByCustomerId(customerId);

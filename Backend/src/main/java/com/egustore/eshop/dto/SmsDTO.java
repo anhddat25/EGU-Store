@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 public class SmsDTO {
     @NotBlank
-    private final String phoneNumber="+84568072469";
+    private final String phoneNumber="+84358677058";
     @NotBlank
     private final String message = "Có 1 đơn hàng mới được đặt thành công tại https://cellphones.com.vn/";
 

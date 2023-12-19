@@ -87,6 +87,8 @@ public class WebSecurityConfig {
 
                             .requestMatchers(GET,
                                     "/api/v0/home").permitAll()
+                            .requestMatchers(POST,
+                                    "/api/v0/sms").permitAll()
 
                             .requestMatchers(PUT,
                                     "/api/v0/customers/change-password/**").hasAnyRole("ADMIN","CUSTOMER")
