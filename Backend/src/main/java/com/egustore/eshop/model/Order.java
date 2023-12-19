@@ -45,14 +45,16 @@ public class Order {
     @Column(name = "address")
     private String address;
 
-    @Column(name = "district")
-    private String district;
-
-    @Column(name = "city")
-    private String city;
-
-    @Column(name = "country")
-    private String country;
+//    @Column(name = "district")
+//    private String district;
+//
+//    @Column(name = "city")
+//    private String city;
+//
+//    @Column(name = "ward")
+//    private String ward;
+    @Column(name= "status_payment")
+    private String statusPayment;
 
     @Column(name = "payment_method")
     private String paymentMethod;
@@ -71,7 +73,6 @@ public class Order {
     private Integer customerId;
 
     @OneToMany( cascade = CascadeType.ALL,mappedBy = "order", fetch = FetchType.LAZY)
-    @JsonManagedReference
 //    @JoinColumn(name = "order_details_id")
     private List<OrderDetail> orderDetail;
 

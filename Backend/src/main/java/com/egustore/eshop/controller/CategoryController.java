@@ -72,9 +72,9 @@ public class CategoryController {
         return ResponseEntity.ok("create thumb category image " + id);
     }
 
-//    @GetMapping("/active")
-//    public ResponseEntity<List<Category>> getActiveCategories() {
-//        List<Category> categories = categoryService.getActiveCategories();
-//        return ResponseEntity.ok(categories);
-//    }
+    @GetMapping("/active")
+    public ResponseEntity<List<Category>> getActiveCategories() {
+        List<Category> categories = categoryService.getActiveCategories();
+        return ResponseEntity.ok(categories);
+    }
 }

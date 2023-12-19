@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 @RestController
 @RequestMapping("/api/v0/order-details")
-@Validated
 @CrossOrigin("*")
 public class OrderDetailController {
     private final OrderDetailService orderDetailService;
@@ -39,7 +38,7 @@ public class OrderDetailController {
             return ResponseEntity.badRequest().body(errMessage);
         }
         orderDetailService.createOrderDetail(orderDetailDTO);
-        smsSender.sendSms(smsDTO);
+//        smsSender.sendSms(smsDTO);
         return ResponseEntity.ok("create suss");
     }
 

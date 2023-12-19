@@ -1,6 +1,7 @@
 package com.egustore.eshop.serviceimpl;
 
 import com.egustore.eshop.dto.OrderDTO;
+import com.egustore.eshop.enums.OrderStatus;
 import com.egustore.eshop.model.Order;
 import com.egustore.eshop.mapper.OrderMapper;
 import com.egustore.eshop.repository.OrderRepository;
@@ -60,10 +61,12 @@ public class OrderServiceImpl implements OrderService {
         return orderRepository.updateOrderById(orderDTO, id);
     }
     public Integer updateOrderStatus(OrderDTO orderDTO, int id) {
+        if(orderDTO.getStatus().equals(OrderStatus.DELIVERED) ){
 
+        }
         return orderRepository.updateOrderStatus(orderDTO, id);
     }
-
+    
     @Override
     public List<Order> getOrderByCustomerId(int customerId) {
         return orderRepository.findByCustomerId(customerId);

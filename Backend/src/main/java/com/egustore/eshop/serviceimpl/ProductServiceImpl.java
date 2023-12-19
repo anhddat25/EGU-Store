@@ -2,6 +2,7 @@ package com.egustore.eshop.serviceimpl;
 
 import com.egustore.eshop.dto.ProductDTO;
 import com.egustore.eshop.mapper.ProductMapper;
+import com.egustore.eshop.model.Category;
 import com.egustore.eshop.model.Product;
 import com.egustore.eshop.repository.CategoryRepository;
 import com.egustore.eshop.repository.ProductRepository;
@@ -71,6 +72,10 @@ public class ProductServiceImpl implements ProductService {
                 .orElseThrow(() -> new RuntimeException("Product not found"));
     }
 
+    @Override
+    public List<Product> getProductsByCategory(Category category) {
+        return productRepository.findByCategoryId(category);
+    }
     @Override
     public Product createThumbImage(int Id, MultipartFile files) throws IOException {
         Optional<Product> existingProduct = productRepository.findById(Id);

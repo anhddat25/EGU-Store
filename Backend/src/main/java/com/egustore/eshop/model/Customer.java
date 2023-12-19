@@ -43,9 +43,14 @@ public class Customer implements UserDetails {
     @Column(name = "password")
     private String password;
 
-    @Temporal(TemporalType.DATE)
     @Column(name = "create_date")
     private Date createDate;
+
+    @PrePersist
+    protected void onCreate(){
+        Date now = new Date();
+        createDate = now;
+    }
 
     @Column(name = "facebook_id")
     private String facebookId;
@@ -72,7 +77,8 @@ public class Customer implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<SimpleGrantedAuthority> authorityList = new ArrayList<>();
 //        authorityList.add(new SimpleGrantedAuthority("ROLE_" + getRole().getName().toUpperCase()));
-        authorityList.add(new SimpleGrantedAuthority("ROLE_MANAGER") );
+        authorityList.add(new SimpleGrantedAuthority("ROLE_ADMIN") );
+        authorityList.add(new SimpleGrantedAuthority("ROLE_CUSTOMER") );
         return authorityList;
     }
     @Override

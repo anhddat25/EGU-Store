@@ -12,8 +12,10 @@ import com.egustore.eshop.model.Customer;
 import com.egustore.eshop.model.Role;
 import com.egustore.eshop.repository.CustomerRepository;
 import com.egustore.eshop.repository.RoleRepository;
+import com.egustore.eshop.response.LoginResponse;
 import com.egustore.eshop.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -181,7 +183,9 @@ public class CustomerServiceImpl implements CustomerService {
         } Customer customer = optionalCustomer.get();
         Role role = roleRepository.findById(customer.getRole().getId())
                 .orElseThrow(() -> new RuntimeException("Role not found"));
-
+        if(customer.getStatus() == CustomerStatus.LOCKED){
+            throw new BadCredentialsException("Account is locked");
+        }
         if (!passwordEncoder.matches(password, customer.getPassword()))
         {
             throw  new BadCredentialsException("Wrong email or password");
