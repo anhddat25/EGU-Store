@@ -33,6 +33,13 @@ public class OrderDTO {
 
     private Double totalAmount;
 
+//    private String ward;
+//
+//    private String district;
+//
+//    private String city;
+//    @JsonProperty("status_payment")
+    private String statusPayment;
     @JsonProperty("customer_id")
     private Integer customerId;
 

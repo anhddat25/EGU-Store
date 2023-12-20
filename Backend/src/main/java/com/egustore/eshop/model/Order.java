@@ -2,6 +2,7 @@ package com.egustore.eshop.model;
 
 import com.egustore.eshop.enums.OrderStatus;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -44,14 +45,16 @@ public class Order {
     @Column(name = "address")
     private String address;
 
-    @Column(name = "district")
-    private String district;
-
-    @Column(name = "city")
-    private String city;
-
-    @Column(name = "country")
-    private String country;
+//    @Column(name = "district")
+//    private String district;
+//
+//    @Column(name = "city")
+//    private String city;
+//
+//    @Column(name = "ward")
+//    private String ward;
+    @Column(name= "status_payment")
+    private String statusPayment;
 
     @Column(name = "payment_method")
     private String paymentMethod;
@@ -69,8 +72,7 @@ public class Order {
     @Column(name = "customer_id", insertable=false, updatable=false)
     private Integer customerId;
 
-    @OneToMany(mappedBy = "order")
-    @JsonIgnoreProperties("order")
+    @OneToMany( cascade = CascadeType.ALL,mappedBy = "order", fetch = FetchType.LAZY)
 //    @JoinColumn(name = "order_details_id")
     private List<OrderDetail> orderDetail;
 

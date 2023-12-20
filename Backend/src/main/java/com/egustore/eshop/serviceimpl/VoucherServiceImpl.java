@@ -93,4 +93,18 @@ public class VoucherServiceImpl implements VoucherService {
             voucherRepository.save(voucher);
         }
     }
+    @Override
+    public List<Voucher> getAllVoucher() {
+        return voucherRepository.findAll();
+    }
+
+    @Override
+    public Optional<Voucher> findVoucherById(int id) {
+        return voucherRepository.findById(id);
+    }
+
+    @Override
+    public void deleteVoucher(int id) {
+        voucherRepository.deleteById(id);
+    }
 }

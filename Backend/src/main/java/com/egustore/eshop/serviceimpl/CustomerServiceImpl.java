@@ -6,13 +6,16 @@ import com.egustore.eshop.dto.ChangePasswordDTO;
 import com.egustore.eshop.dto.CustomerDTO;
 import com.egustore.eshop.dto.ForgotPasswordDTO;
 import com.egustore.eshop.dto.ResetPasswordDTO;
+import com.egustore.eshop.enums.CustomerStatus;
 import com.egustore.eshop.mapper.CustomerMapper;
 import com.egustore.eshop.model.Customer;
 import com.egustore.eshop.model.Role;
 import com.egustore.eshop.repository.CustomerRepository;
 import com.egustore.eshop.repository.RoleRepository;
+import com.egustore.eshop.response.LoginResponse;
 import com.egustore.eshop.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -49,12 +52,20 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public Customer createCustomer(CustomerDTO customerDTO) {
+        Role customerRole = roleRepository.findByName("CUSTOMER");
+        if (customerRepository.existsByEmail(customerDTO.getEmail())) {
+            throw new IllegalArgumentException("This email has been registered");
+        }
+        if (customerRepository.existsByPhoneNumber(customerDTO.getPhoneNumber())) {
+            throw new IllegalArgumentException("This Phone Number has been registered");
+        }
         Customer customer = CustomerMapper.INSTANCE.mapToCustomer(customerDTO);
 //        if (customer.getFacebookId() == null && customer.getGoogleId() == null) {
             String password = customer.getPassword();
             String encodePassword = passwordEncoder.encode(password);
             customer.setPassword(encodePassword);
-
+            customer.setRole(customerRole);
+            customer.setStatus(CustomerStatus.ACTIVE);
 //        }
 
         return customerRepository.save(customer);
@@ -100,12 +111,12 @@ public class CustomerServiceImpl implements CustomerService {
     }
     private void sendResetTokenEmail(String email, String resetToken) {
         try {
-            String htmlContent = "Mã khôi phục: "+resetToken;
+            String htmlContent = "Mã khôi phục mật khẩu tại cửa hàng EGU Store: "+resetToken;
             SimpleMailMessage message = new SimpleMailMessage();
             message.setTo(email);
-            message.setSubject("Khôi phục mật khẩu");
+            message.setSubject("Yêu cầu khôi phục mật khẩu");
             message.setText(htmlContent);
-            message.setFrom("Admin");
+//            message.setFrom("Admin");
             emailSender.send(message);
         } catch (Exception e) {
             System.err.println("Lỗi khi gửi email: " + e.getMessage());
@@ -172,7 +183,9 @@ public class CustomerServiceImpl implements CustomerService {
         } Customer customer = optionalCustomer.get();
         Role role = roleRepository.findById(customer.getRole().getId())
                 .orElseThrow(() -> new RuntimeException("Role not found"));
-
+        if(customer.getStatus() == CustomerStatus.LOCKED){
+            throw new BadCredentialsException("Account is locked");
+        }
         if (!passwordEncoder.matches(password, customer.getPassword()))
         {
             throw  new BadCredentialsException("Wrong email or password");

@@ -6,7 +6,6 @@ import com.egustore.eshop.model.Voucher;
 import com.egustore.eshop.service.VoucherService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -65,5 +64,19 @@ public class VoucherController {
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
+    }
+    @GetMapping("")
+    public ResponseEntity<List<Voucher>> getAllVoucher(){
+        List<Voucher> voucher = voucherService.getAllVoucher();
+        return ResponseEntity.ok(voucher);
+    }
+    @GetMapping("/{id}")
+    public Optional<Voucher> getVoucherById(@PathVariable int id){
+        return voucherService.findVoucherById(id);
+    }
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<String> deleteVoucher(@PathVariable int id){
+        voucherService.deleteVoucher(id);
+        return ResponseEntity.ok("Delete Successfully");
     }
 }

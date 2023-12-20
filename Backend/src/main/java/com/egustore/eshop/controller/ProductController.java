@@ -1,10 +1,13 @@
 package com.egustore.eshop.controller;
 
 import com.egustore.eshop.dto.ProductDTO;
+import com.egustore.eshop.model.Category;
 import com.egustore.eshop.model.Product;
+import com.egustore.eshop.service.CategoryService;
 import com.egustore.eshop.service.ProductService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -22,10 +25,12 @@ import java.util.List;
 @CrossOrigin("*")
 public class ProductController {
     private final ProductService productService;
+    private final CategoryService categoryService;
 
     @Autowired
-    public ProductController(ProductService productService) {
+    public ProductController(ProductService productService, CategoryService categoryService) {
         this.productService = productService;
+        this.categoryService = categoryService;
     }
     //Create category
     @PostMapping("/create")
@@ -87,6 +92,21 @@ public class ProductController {
     public ResponseEntity<List<Product>> getTopProduct() {
         List<Product> product = productService.getTopProduct();
         return ResponseEntity.ok(product);
+    }
+    @GetMapping(value = "/generateQRCode", produces = MediaType.IMAGE_PNG_VALUE)
+    public ResponseEntity<byte[]> generateQRCode(@RequestParam("data") String data) {
+        byte[] imageBytes = productService.generateQRCode(data);
+        if (imageBytes != null) {
+            return ResponseEntity.ok().contentType(MediaType.IMAGE_PNG).body(imageBytes);
+        } else {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+    @GetMapping("/category/{categoryId}")
+    public List<Product> getProductsByCategory(@PathVariable int categoryId) {
+        Category category = categoryService.getCategoryById(categoryId);
+        return productService.getProductsByCategory(category);
+
     }
 
 }

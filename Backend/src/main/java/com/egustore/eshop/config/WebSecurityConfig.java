@@ -40,29 +40,126 @@ public class WebSecurityConfig {
                 .authorizeHttpRequests(requests -> {
                     requests
                             .requestMatchers(
-                                    "**"
-                            )
-                            .permitAll()
+                                    "/api/v0/customers/login",
+                                    "/api/v0/customers/register",
+                                    "/api/v0/customers/forgotPassword",
+                                    "/api/v0/customers/resetPassword",
+
+
+                                    "api/v0/specifications**",
+                                    "/api/v0/products**",
+                                    "api/v0/brands**",
+                                    "api/v0/images**"
+                            ).permitAll()
                             .requestMatchers(GET,
-                                    "/api/v0/categories").permitAll()
+                                    "/api/v0/rating-products").permitAll()
                             .requestMatchers(GET,
-                                    "/api/v0/products**").permitAll()
+                                    "/api/v0/rating-products/**").permitAll()
+                            .requestMatchers(GET,
+                                    "/api/v0/rating-products/**").permitAll()
+                            .requestMatchers(GET,
+                                    "/api/v0/feedbacks/list/**").permitAll()
+                            .requestMatchers(GET,
+                                    "api/v0/specifications/products/**").permitAll()
+
+                            .requestMatchers(GET,
+                                    "/api/v0/images/products/**").permitAll()
+
+                            .requestMatchers(GET,
+                                    "/api/v0/roles").permitAll()
+
+
+                            .requestMatchers(GET,
+                                    "/api/v0/categories/active").permitAll()
+                            .requestMatchers(GET,
+                                    "/api/v0/categories/**").permitAll()
                             .requestMatchers(POST,
                                     "/api/v0/categories").hasAnyRole("ADMIN")
                             .requestMatchers(PUT,
                                     "/api/v0/categories").hasAnyRole("ADMIN")
-                            .requestMatchers(GET,
-                                    "/api/v0/roles/").permitAll()
-//                            .requestMatchers(GET,
-//                                    "/api/v0/customers/**").permitAll()
-//                            .requestMatchers(GET,
-//                                    "/api/v0/products/").hasRole("MANAGER")
+                            .requestMatchers(DELETE,
+                                    "/api/v0/categories").hasAnyRole("ADMIN")
 
                             .requestMatchers(GET,
-                                    "/api/v0/orders/list").hasRole("ADMIN")
+                                    "/api/v0/products").permitAll()
+                            .requestMatchers(GET,
+                                    "/api/v0/products/**").permitAll()
+
+                            .requestMatchers(GET,
+                                    "/api/v0/home").permitAll()
                             .requestMatchers(POST,
-                                    "/api/v0/orders/create").hasRole("ADMIN")
+                                    "/api/v0/sms").permitAll()
 
+                            .requestMatchers(PUT,
+                                    "/api/v0/customers/change-password/**").hasAnyRole("ADMIN","CUSTOMER")
+
+                            .requestMatchers(GET,
+                                    "/api/v0/orders").hasAnyRole("ADMIN","CUSTOMER")
+
+                            .requestMatchers(GET,
+                                    "/api/v0/orders/list/**").hasAnyRole("ADMIN","CUSTOMER")
+                            .requestMatchers(POST,
+                                    "/api/v0/orders/**").hasAnyRole("ADMIN","CUSTOMER")
+
+                            .requestMatchers(PUT,
+                                    "/api/v0/orders/**").hasAnyRole("ADMIN")
+                            .requestMatchers(POST,
+                                    "/api/v0/order-details/create").hasAnyRole("ADMIN","CUSTOMER")
+                            .requestMatchers(PUT,
+                                    "/api/v0/order-details/**").hasAnyRole("ADMIN")
+                            .requestMatchers(DELETE,
+                                    "/api/v0/order-details/**").hasAnyRole("ADMIN")
+
+                            .requestMatchers(POST,
+                                    "/api/v0/specifications**").hasAnyRole("ADMIN")
+                            .requestMatchers(PUT,
+                                    "/api/v0/specifications/**").hasAnyRole("ADMIN")
+                            .requestMatchers(DELETE,
+                                    "/api/v0/specifications/**").hasAnyRole("ADMIN")
+                            .requestMatchers(PUT,
+                                    "/api/v0/customers/status/**").hasAnyRole("ADMIN")
+
+
+                            .requestMatchers(POST,
+                                    "/api/v0/rating-products").permitAll()
+
+                            .requestMatchers(POST,
+                                    "/api/v0/brands").hasAnyRole("ADMIN")
+                            .requestMatchers(PUT,
+                                    "/api/v0/brands/**").hasAnyRole("ADMIN")
+                            .requestMatchers(DELETE,
+                                    "/api/v0/brands/**").hasAnyRole("ADMIN")
+
+                            .requestMatchers(POST,
+                                    "/api/v0/origins").hasAnyRole("ADMIN")
+                            .requestMatchers(PUT,
+                                    "/api/v0/origins/**").hasAnyRole("ADMIN")
+                            .requestMatchers(DELETE,
+                                    "/api/v0/origins/**").hasAnyRole("ADMIN")
+
+
+                            .requestMatchers(POST,
+                                    "/api/v0/products").hasAnyRole("ADMIN")
+                            .requestMatchers(PUT,
+                                    "/api/v0/products/**").hasAnyRole("ADMIN")
+                            .requestMatchers(DELETE,
+                                    "/api/v0/products/**").hasAnyRole("ADMIN")
+
+                            .requestMatchers(POST,
+                                    "/api/v0/images/upload").hasAnyRole("ADMIN")
+                            .requestMatchers(PUT,
+                                    "/api/v0/images/update/**").hasAnyRole("ADMIN")
+                            .requestMatchers(DELETE,
+                                    "/api/v0/images/delete/**").hasAnyRole("ADMIN")
+
+                            .requestMatchers(POST,
+                                    "/api/v0/vouchers").hasAnyRole("ADMIN")
+                            .requestMatchers(PUT,
+                                    "/api/v0/vouchers/**").hasAnyRole("ADMIN")
+                            .requestMatchers(DELETE,
+                                    "/api/v0/vouchers/**").hasAnyRole("ADMIN")
+
+//
                             .anyRequest().authenticated();
 
 

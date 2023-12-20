@@ -1,6 +1,7 @@
 package com.egustore.eshop.repository;
 
 import com.egustore.eshop.dto.ProductDTO;
+import com.egustore.eshop.model.Category;
 import com.egustore.eshop.model.Product;
 import jakarta.transaction.Transactional;
 import org.springframework.data.domain.Page;
@@ -32,8 +33,8 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
     boolean existsByName(String name);
     Page<Product> findAll(Pageable pageable);
 
-
-    @Query (value ="SELECT p.* ,SUM(od.quantity) AS total_ordered_quantity FROM Products p JOIN  Order_Details od ON p.id = od.product_id JOIN  Orders o ON od.order_id = o.id  WHERE o.status = 'DELIVERED' GROUP BY p.id ORDER BY total_ordered_quantity DESC LIMIT 20;", nativeQuery = true)
+    List<Product> findByCategoryId(Category category);
+    @Query (value ="SELECT p.* ,SUM(od.quantity) AS total_ordered_quantity FROM Products p JOIN  Order_Details od ON p.id = od.product_id JOIN  Orders o ON od.order_id = o.id  WHERE o.status = 'DELIVERED' AND p.status = 'AVAILABLE' GROUP BY p.id ORDER BY total_ordered_quantity DESC LIMIT 20;", nativeQuery = true)
     List<Product> getTopProduct();
 
 

@@ -20,4 +20,7 @@ public interface VoucherService {
     void useMyVoucher(String codeVoucher) throws Exception;
 
     void updateVoucherStatus();
+    List<Voucher> getAllVoucher();
+    Optional<Voucher> findVoucherById(int id);
+    void deleteVoucher(int id);
 }

@@ -8,24 +8,38 @@ import java.util.List;
 
 public interface HomeRepository extends JpaRepository<Home,Integer> {
 
-    @Query(value ="SELECT p.id as id," +
-            "p.model as Model, " +
-            "p.thumbnail as thumbnail," +
-            "p.price as Price," +
-            "p.discount_price as Discount, " +
-            "sum(r.Rating) as rate, " +
-            "count(r.Rating) as count from egu_store.products p join egu_store.rating_products r " +
-            "on r.product_id = p.id " +
-            "group by r.product_id " +
-            "UNION ALL " +
-            "SELECT p.id as id, " +
-            "p.model as Model, " +
-            "p.thumbnail, " +
-            "p.price as Price , " +
-            "p.discount_price as Discount , " +
-            "0 as rate, " +
-            "0 as count from egu_store.products p Where p.id " +
-            "not in (SELECT product_id FROM egu_store.rating_products)", nativeQuery = true)
+    @Query(value ="SELECT\n" +
+            "    p.id AS id,\n" +
+            "    p.model AS Model,\n" +
+            "    p.thumbnail AS thumbnail,\n" +
+            "    p.price AS Price,\n" +
+            "    p.discount_price AS Discount,\n" +
+            "    COALESCE(SUM(r.Rating), 0) AS rate,\n" +
+            "    COALESCE(COUNT(r.Rating), 0) AS count\n" +
+            "FROM\n" +
+            "    egu_store.products p\n" +
+            "LEFT JOIN\n" +
+            "    egu_store.rating_products r ON r.product_id = p.id\n" +
+            "WHERE\n" +
+            "    p.status = 'AVAILABLE'\n" +
+            "GROUP BY\n" +
+            "    p.id\n" +
+            "\n" +
+            "UNION ALL\n" +
+            "\n" +
+            "SELECT\n" +
+            "    p.id AS id,\n" +
+            "    p.model AS Model,\n" +
+            "    p.thumbnail,\n" +
+            "    p.price AS Price,\n" +
+            "    p.discount_price AS Discount,\n" +
+            "    0 AS rate,\n" +
+            "    0 AS count\n" +
+            "FROM\n" +
+            "    egu_store.products p\n" +
+            "WHERE\n" +
+            "    p.id NOT IN (SELECT product_id FROM egu_store.rating_products)\n" +
+            "    AND p.status = 'AVAILABLE'", nativeQuery = true)
     List<Home> getAllListWithRating();
 
 }
