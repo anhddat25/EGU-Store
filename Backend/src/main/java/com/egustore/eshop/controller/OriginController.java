@@ -48,9 +48,8 @@ public class OriginController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Origin> getOriginsById(@PathVariable int id) {
-        Origin origins = originService.getOriginById(id);
-        return ResponseEntity.ok(origins);
+    public ResponseEntity<Origin> getOriginById(@PathVariable int id) {
+        return ResponseEntity.ok(originService.getOriginById(id));
     }
 
     @PutMapping("/{id}")

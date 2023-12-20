@@ -43,6 +43,11 @@ public class SpecificationsServiceImpl implements SpecificationsService {
     }
 
     @Override
+    public Specifications getByProduct(int products) {
+        return specificationsReposity.findByProductId(products);
+    }
+
+    @Override
     public List<Specifications> getAllSpec() {
         return specificationsReposity.findAll();
     }

@@ -1,15 +1,15 @@
 package com.egustore.eshop.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Entity
-@Table(name = "feedbackproducts")
+@Table(name = "feedback_products")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -20,7 +20,7 @@ public class FeedbackProduct {
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "name_user")
+    @Column(name = "name_customer")
     private String nameCustomer;
 
     @Column(name = "comment")
@@ -28,7 +28,7 @@ public class FeedbackProduct {
 
     @Column(name = "status")
     private String status;
-
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "create_date")
     private LocalDateTime createDate;
@@ -36,9 +36,6 @@ public class FeedbackProduct {
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "update_date")
     private LocalDateTime updateDate;
-
-//    @Column(name = "customer_id")
-//    private Integer customerId;
 
     @ManyToOne
     @JoinColumn(name = "customer_id")

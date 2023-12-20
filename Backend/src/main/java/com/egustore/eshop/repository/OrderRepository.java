@@ -35,6 +35,13 @@ public interface OrderRepository extends JpaRepository<Order, Integer> {
             "WHERE o.id = :id")
     Integer updateOrderStatus(@Param("orderDTO") OrderDTO orderDTO, @Param("id") int id);
 
+    @Modifying
+    @Transactional
+    @Query(value = "UPDATE Order o SET " +
+            "o.statusPayment = 'Đã thanh toán' " +
+            "WHERE o.id = :id")
+    Integer updateOrderStatusPayment(@Param("id") int id);
+
     @Query(value = "SELECT o.* FROM orders o  WHERE o.customer_id = ?", nativeQuery = true)
     List<Order> findByCustomerId(int productId);
 }

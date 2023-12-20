@@ -2,20 +2,27 @@ package com.egustore.eshop.serviceimpl;
 
 import com.egustore.eshop.dto.ProductDTO;
 import com.egustore.eshop.mapper.ProductMapper;
+import com.egustore.eshop.model.Category;
 import com.egustore.eshop.model.Product;
 import com.egustore.eshop.repository.CategoryRepository;
 import com.egustore.eshop.repository.ProductRepository;
 import com.egustore.eshop.service.ProductService;
-import com.google.api.client.util.DateTime;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.EncodeHintType;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.common.BitMatrix;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.time.LocalDateTime;
-import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -47,6 +54,12 @@ public class ProductServiceImpl implements ProductService {
 //    }
 
     @Override
+    public Product updateProductStock(ProductDTO productDTO){
+        Product product = productRepository.findById(productDTO.getId()).orElseThrow(() -> new IllegalArgumentException("Voucher code does not exist"));
+        product.setStockQuantity(product.getStockQuantity()-productDTO.getStockQuantity());
+        return productRepository.save(product);
+    }
+    @Override
     public Product createProduct(ProductDTO productDTO) {
 
         Product product = productMapper.mapToProduct(productDTO);
@@ -60,6 +73,10 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public List<Product> getProductsByCategory(Category category) {
+        return productRepository.findByCategoryId(category);
+    }
+    @Override
     public Product createThumbImage(int Id, MultipartFile files) throws IOException {
         Optional<Product> existingProduct = productRepository.findById(Id);
 
@@ -70,7 +87,7 @@ public class ProductServiceImpl implements ProductService {
 
             // Update the image URL in the database
             Product existingEntity = existingProduct.get();
-            existingEntity.setThumbImage(imageUrl);
+            existingEntity.setThumbnail(imageUrl);
             return productRepository.save(existingEntity);
         } else {
             // Handle the case where the entity with the given ID does not exist
@@ -106,5 +123,31 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<Product>getTopProduct() {
         return productRepository.getTopProduct();
+    }
+    @Override
+    public byte[] generateQRCode(String data) {
+        try {
+             Map<EncodeHintType, Object> hints = new HashMap<>();
+             hints.put(EncodeHintType.CHARACTER_SET, "UTF-8");
+             BitMatrix matrix = new MultiFormatWriter().encode(data, BarcodeFormat.QR_CODE, 300, 300, hints);
+             BufferedImage image = toBufferedImage(matrix);
+             ByteArrayOutputStream stream = new ByteArrayOutputStream();
+             ImageIO.write(image, "png", stream);
+             return stream.toByteArray();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    private BufferedImage toBufferedImage(BitMatrix matrix) {
+        int width = matrix.getWidth();
+        int height = matrix.getHeight();
+        BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+        for (int x = 0; x < width; x++) {
+            for (int y = 0; y < height; y++) {
+                image.setRGB(x, y, matrix.get(x, y) ? 0xFF000000 : 0xFFFFFFFF);
+            }
+        }
+        return image;
     }
 }

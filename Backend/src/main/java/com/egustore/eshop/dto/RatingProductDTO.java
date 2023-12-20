@@ -23,6 +23,6 @@ public class RatingProductDTO {
 
     private Date updateDate;
 
-    private Customer customerId;
-    private Product productId;
+    private Customer customers;
+    private Product products;
 }

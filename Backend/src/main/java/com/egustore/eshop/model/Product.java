@@ -20,9 +20,9 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-//@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(callSuper = false)
 @Table(name="products")
-public class Product {
+public class Product extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -36,16 +36,16 @@ public class Product {
     @Column(name = "price")
     private Double price;
 
-    @Column(name = "thumb_image")
-    private String thumbImage;
+    @Column(name = "thumbnail")
+    private String thumbnail;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "create_date")
-    private LocalDateTime createDate;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "update_date")
-    private LocalDateTime updateDate;
+//    @Temporal(TemporalType.TIMESTAMP)
+//    @Column(name = "create_date")
+//    private LocalDateTime createDate;
+//
+//    @Temporal(TemporalType.TIMESTAMP)
+//    @Column(name = "update_date")
+//    private LocalDateTime updateDate;
 
     @Column(name = "stock_quantity")
     private Integer stockQuantity;
@@ -76,6 +76,17 @@ public class Product {
     @JoinColumn(name = "origin_id")
     private Origin originId;
 
+    @JsonIgnoreProperties("products")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "products")
+    private List<RatingProduct> ratingProduct;
+
+    @JsonIgnoreProperties("products")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "products")
+    private List<FeedbackProduct> feedbackProducts;
+
+    @JsonIgnoreProperties("products")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "products")
+    private List<Specifications> specifications;
 
     @JsonIgnoreProperties("products")
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "products")

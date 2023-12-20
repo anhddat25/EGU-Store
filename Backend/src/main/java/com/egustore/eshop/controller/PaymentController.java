@@ -12,6 +12,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 @RestController
@@ -26,35 +27,17 @@ public class PaymentController {
         this.paymentService = paymentService;
     }
     //Create category
-    @PostMapping("/create")
-    public ResponseEntity<?> createPayment(@RequestBody @Valid PaymentDTO paymentDTO, BindingResult result)
-    {
-        if(result.hasErrors())
-        {
-            List<String> errMessage = result.getFieldErrors()
-                    .stream()
-                    .map(FieldError::getDefaultMessage)
-                    .toList();
-            return ResponseEntity.badRequest().body(errMessage);
-        }
-        paymentService.createPayment(paymentDTO);
-        return ResponseEntity.ok("Create payment successfully!");
+    @RequestMapping("/create-payment")
+    public String createPayment(
+            @RequestParam long amount) throws UnsupportedEncodingException {
+        String bankCode = "NCB";
+        String vnp_Command = "pay";
+        String orderType = "other";
+        long amountP = amount * 100;
+        String vnp_Version = "2.1.0";
+        String vnp_IpAddr = "127.0.0.1";
+        return paymentService.createPayment(vnp_Version, vnp_Command, orderType, amountP, bankCode, vnp_IpAddr);
     }
-//    @PostMapping("")
-//    public ResponseEntity<?> createPayment(@RequestBody @Valid PaymentDTO paymentDTO, BindingResult result)
-//    {
-//        if(result.hasErrors())
-//        {
-//            List<String> errMessage = result.getFieldErrors()
-//                    .stream()
-//                    .map(FieldError::getDefaultMessage)
-//                    .toList();
-//            return ResponseEntity.badRequest().body(errMessage);
-//        }
-//        paymentService.createPayment(paymentDTO);
-//        return ResponseEntity.ok("Create payment successfully!");
-//
-//    }
 
     //    //Show all categories
     @GetMapping("/list")

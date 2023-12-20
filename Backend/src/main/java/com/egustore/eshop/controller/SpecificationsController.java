@@ -67,6 +67,11 @@ public class SpecificationsController {
         return ResponseEntity.ok(specificationsService.getSpecById(id));
     }
 
+    @GetMapping("/products/{id}")
+    public ResponseEntity<Specifications> getByProduct(@PathVariable int id) {
+        return ResponseEntity.ok(specificationsService.getByProduct(id));
+    }
+
 //    @PutMapping("/{id}")
 //    public ResponseEntity<String> updateProductById(@RequestBody SpecificationsDTO specificationsDTO, @PathVariable int id) {
 //        specificationsService.updateSpecById(specificationsDTO, id);

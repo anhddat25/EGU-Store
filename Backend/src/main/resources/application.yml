@@ -1,6 +1,17 @@
 server:
   port: 8080
 spring:
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: edgu1707@gmail.com
+    password: hiwfdzxbbrslynea
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
   servlet:
     multipart:
       enabled: true
@@ -22,3 +33,7 @@ spring:
 jwt:
   expiration: 604800
   secretKey: TBhqQps4YkrQTQ6jJJy5V6+zIbzCtGNSnBAuaIlOmME=
+twilio:
+  account_sid: AC975fa53f45eb8b406aa120345df3cbee
+  auth_token: 79e627f27ea5bdd99ce76bb32d918ed8
+  trial_number: +12058946527

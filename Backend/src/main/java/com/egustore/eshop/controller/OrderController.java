@@ -38,8 +38,7 @@ public class OrderController {
                         .toList();
                 return ResponseEntity.badRequest().body(errMessage);
             }
-            ResponseEntity.ok(orderService.saveOrder(orderDTO));
-            return ResponseEntity.ok("Succes!");
+            return ResponseEntity.ok(orderService.saveOrder(orderDTO));
 
         }catch (Exception e){
             return ResponseEntity.badRequest().body(e.getMessage());

@@ -43,6 +43,6 @@ public class Specifications {
     @JoinColumn(name = "product_id")
     private Product products;
 
-//    @Column(name = "product_id", insertable=false, updatable=false)
-//    private Integer productId;
+    @Column(name = "product_id", insertable=false, updatable=false)
+    private Integer productId;
 }
